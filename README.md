@@ -10,13 +10,15 @@
 
 
 #ENDPOINTS
-* Changes
-* Collections
-* Companies
-* Discover 
+* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Changes">Changes</a>
+* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Collections"> Collections </a>
+* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Companies"> Companies </a>
+* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Discover"> Discover </a>
+| <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/DiscoverTV"> DiscoverTV </a> |
+<a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/DiscoverMovie"> Discover </a>
 * Certifications **
 * Keywords
-* Genres (t & m & id list)
+* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Genres"> Genres </a>
 * Networks
 * Reviews 
 * TV
