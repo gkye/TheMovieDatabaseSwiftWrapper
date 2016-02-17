@@ -1,4 +1,4 @@
-#INCOMPLETE DO NOT USE...YET
+#INCOMPLETE !!
 ##Usage
 
 1. Get an API key-> <a href="themoviedb.org">themoviedb.org</a>
