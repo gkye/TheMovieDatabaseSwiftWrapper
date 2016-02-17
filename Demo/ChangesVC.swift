@@ -21,15 +21,7 @@ class ChangesVC: UIViewController{
 //        }
 
         
-//        CompanyMDB.companyInfo(apikey, companyId: 33){
-//            apiReturn in
-//            let com = apiReturn.MBDBReturn as! CompanyMDB
-//            print(com.name)
-//            print(com.description)
-//            print(com.parent_company?.logo_path)
-//            print(com.parent_company?.name)
-//            
-//        }
+
 //        
 //        DiscoverMovie.companyMovies(apikey, companyId: 33, language: "EN", page: nil){
 //            apiReturn in

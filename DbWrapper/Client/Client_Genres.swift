@@ -18,6 +18,8 @@ extension Client{
             url = "http://api.themoviedb.org/3/genre/\(listType)/list";
         }else{
             url = "http://api.themoviedb.org/3/genre/\(genreId)/movies";
+            print(url)
+
         }
         
         if(language != nil){

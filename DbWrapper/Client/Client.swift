@@ -28,7 +28,7 @@ class Client{
                     let json = JSON(value)
                     cReturn.error = nil
                     cReturn.json = json
-                    cReturn.MBDBReturn = json["results"].object
+                    cReturn.MBDBReturn = json.object
                     if(json["page"] != nil){
                         cReturn.pageResults = PageResultsMDB.init(results: json)
                     }else{

@@ -32,8 +32,9 @@ class CollectionMDB{
         overview = results["overview"].string
     }
     
-    class func Collection(api_key: String!, collectionId: Double!, language: String?, completion: (ClientReturn) -> ()) -> (){
-        Client.Collection(api_key, collectionId: collectionId, language: language){
+    ///Get the basic collection information for a specific collection id.
+    class func Collection(api_key: String!, collectionId: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
+        Client.Collection(api_key, collectionId: "\(collectionId)", language: language){
             apiReturn in
             var aReturn = apiReturn;
             if(apiReturn.error == nil){
@@ -41,6 +42,18 @@ class CollectionMDB{
             }
             completion(aReturn)
         }
-        
+    }
+    
+    ///Get all of the images for a particular collection by collection id.
+    class func CollectionImages(api_key: String!, collectionId: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
+        let modId =  "\(collectionId)/images"
+        Client.Collection(api_key, collectionId: modId, language: language){
+            apiReturn in
+            var aReturn = apiReturn;
+            if(apiReturn.error == nil){
+                aReturn.MBDBReturn = ImagesMDB.init(results: aReturn.json!)
+            }
+            completion(aReturn)
+        }
     }
 }

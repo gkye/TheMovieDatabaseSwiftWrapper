@@ -27,12 +27,13 @@ class Images_MDB {
         vote_count = results["vote_count"].int
         width = results["width"].int
     }
-    
 }
+
 
 class ImagesMDB {
     var backdrops = [Images_MDB]()
     var posters = [Images_MDB]()
+    var stills = [Images_MDB]()
     var id: Int!
     init(results: JSON){
         id = results["id"].int
@@ -44,6 +45,12 @@ class ImagesMDB {
         if(results["posters"].count > 0){
             for (var i = 0; i < results["posters"].count; i++){
                 posters.append(Images_MDB(results: results["posters"][i]))
+            }
+        }
+        
+        if(results["stills"].count > 0){
+            for (var i = 0; i < results["stills"].count; i++){
+               stills.append(Images_MDB(results: results["stills"][i]))
             }
         }
         

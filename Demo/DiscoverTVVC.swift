@@ -16,8 +16,26 @@ class DiscoverTVVC: UIViewController{
     
     override func viewDidLoad() {
         
-       // Basic query
+        // Basic query
         DiscoverTV.discoverTV(apikey, language: "EN", sort_by: nil, page: 1){
+            apiReturn in
+            let tvshows = apiReturn.MBDBReturn as! [TVMDB]
+            print(tvshows[0].name)
+            print(tvshows[0].overview)
+            print(tvshows[0].popularity)
+        }
+        
+        //Discover TV in "America/Toronto" timezone, start query on page 3
+        DiscoverTV.discoverTV(apikey, language: "EN", sort_by: nil, page: 3, first_air_date_year: nil, first_air_date_gte: nil, first_air_date_lte: nil, air_date_gte: nil, air_date_lte: nil, timezone: "America/Toronto", vote_average_gte: nil, vote_count_gte: nil, with_genres: nil, with_networks: nil){
+            apiReturn in
+            print(self.tv[0].name)
+            print(self.tv[0].popularity)
+            print(self.tv[0].first_air_date)
+            print(self.tv[0].overview)
+        }
+
+// Dicover shows which first aired in 2002
+        DiscoverTV.discoverTV(apikey, first_air_date_year: "2002", first_air_date_gte: nil, first_air_date_lte: nil, air_date_gte: nil, air_date_lte: nil, language: "EN", sort_by: nil, page: 1, timezone: nil){
             apiReturn in
             self.tv = apiReturn.MBDBReturn as! [TVMDB]
             print(self.tv[0].name)
@@ -25,33 +43,16 @@ class DiscoverTVVC: UIViewController{
             print(self.tv[0].first_air_date)
             print(self.tv[0].overview)
         }
+
         
-//        DiscoverTV.discoverTV(apikey, language: "EN", sort_by: nil, page: 3, first_air_date_year: nil, first_air_date_gte: nil, first_air_date_lte: nil, air_date_gte: nil, air_date_lte: nil, timezone: nil, vote_average_gte: nil, vote_count_gte: nil, with_genres: nil, with_networks: nil){
-//            apiReturn in
-//            print(self.tv[0].name)
-//            print(self.tv[0].popularity)
-//            print(self.tv[0].first_air_date)
-//            print(self.tv[0].overview)
-//        }
-//
-//        DiscoverTV.discoverTV(apikey, first_air_date_year: "2000", first_air_date_gte: nil, first_air_date_lte: nil, air_date_gte: nil, air_date_lte: nil, language: "EN", sort_by: nil, page: 1, timezone: nil){
-//            apiReturn in
-//            self.tv = apiReturn.MBDBReturn as! [TVMDB]
-//            print(self.tv[0].name)
-//            print(self.tv[0].popularity)
-//            print(self.tv[0].first_air_date)
-//            print(self.tv[0].overview)
-//        }
-//        
-//       // Discover popular shows on HBO network
-//        DiscoverTV.discoverTVWith(apikey, with_genres: nil, with_networks: nil, sort_by: DiscoverSortByTV().popularity_desc, language: nil, page: nil){
-//            apiReturn in
-//            self.tv = apiReturn.MBDBReturn as! [TVMDB]
-//            print(self.tv[0].name)
-//            print(self.tv[0].popularity)
-//            print(self.tv[0].first_air_date)
-//            print(self.tv[0].overview)
-//        }
+        // Discover popular Scifi & Fantasy shows on HBO network
+        DiscoverTV.discoverTVWith(apikey, with_genres: TVGenres.ScifiFantasy.rawValue, with_networks: "49", sort_by: DiscoverSortByTV().popularity_desc, language: nil, page: nil){
+            apiReturn in
+            let tvshows = apiReturn.MBDBReturn as! [TVMDB]
+            print(tvshows[0].name)
+            print(tvshows[0].overview)
+            print(tvshows[0].popularity)
+        }
 
         
     }

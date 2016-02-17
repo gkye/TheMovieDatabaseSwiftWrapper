@@ -77,6 +77,18 @@ class TVMDB: DiscoverTV {
         }
     }
     
+    class func tv_alternativeTitles(api_key: String!, tvShowID: Int!, completion: (ClientReturn) -> ()) -> (){
+        
+        Client.TV("\(tvShowID)/alternative_titles", api_key: api_key, page: nil, language: nil, timezone: nil){
+            apiReturn in
+            var aReturn = apiReturn
+            if(aReturn.error == nil){
+                aReturn.MBDBReturn = Alternative_TitlesMDB.init(results: apiReturn.json)
+            }
+            completion(aReturn)
+        }
+    }
+    
     ///Get the cast & crew information about a TV series. Just like the website, this information from the last season of the series.
     class func tv_credits(api_key: String!, tvShowID: Int!, completion: (ClientReturn) -> ()) -> (){
         Client.TV("\(tvShowID)/credits", api_key: api_key, page: nil, language: nil, timezone: nil){
@@ -88,6 +100,8 @@ class TVMDB: DiscoverTV {
             completion(aReturn)
         }
     }
+    
+    
     
     ///Get the images (posters and backdrops) for a TV series.
     class func tv_images(api_key: String!, tvShowID: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
@@ -191,23 +205,23 @@ class TVMDB: DiscoverTV {
         }
     }
     
-//    
-//    ID
-//    accountstates**
-//    alternativetitles**
-//    changes**
-//    content_rating**
-//    credits
-//    external_ids **
-//    images
-//    keywords ***
-//    rating **
-//    similar
-//    translations**
-//    videos
-//    latest
-//    ontheair
-//    airingtoday
-//    toprated
-//    popular
+    //
+    //    ID
+    //    accountstates**
+    //    alternativetitles**
+    //    changes**
+    //    content_rating**
+    //    credits
+    //    external_ids **
+    //    images
+    //    keywords ***
+    //    rating **
+    //    similar
+    //    translations**
+    //    videos
+    //    latest
+    //    ontheair
+    //    airingtoday
+    //    toprated
+    //    popular
 }

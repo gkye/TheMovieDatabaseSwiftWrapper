@@ -45,6 +45,7 @@ class Test: UIViewController{
             apiReturn in
             let config = apiReturn.MBDBReturn as! ConfigurationMDB
             print(config.base_url)
+            print(config.secure_base_url)
             print(config.backdrop_sizes)
             print(config.profile_sizes)
         }
