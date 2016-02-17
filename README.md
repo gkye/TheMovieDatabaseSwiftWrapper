@@ -9,7 +9,7 @@
 <br>
 
 
-#ENDPOINTS
+## ENDPOINTS
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Changes">Changes</a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Collections"> Collections </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Companies"> Companies </a>
