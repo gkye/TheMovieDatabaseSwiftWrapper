@@ -1,4 +1,4 @@
-#INCOMPLETE !!
+
 ##Usage
 
 1. Get an API key-> <a href="themoviedb.org">themoviedb.org</a>
@@ -7,6 +7,8 @@
 </blockquote>
 2. View <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki">Wikis</a> for examples 
 <br>
+
+
 #ENDPOINTS
 * Changes
 * Collections
@@ -18,6 +20,16 @@
 * Networks
 * Reviews 
 * TV
+
+## TO BE COVERED
+---------
+* Credits 
+* Find 
+* List 
+* People 
+* Search 
+* TV Seasons 
+* TV Episodes
 
 ##Compatibility
 iOS 8.0 +
