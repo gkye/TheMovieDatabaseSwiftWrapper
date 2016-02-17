@@ -1,7 +1,7 @@
 ##Usage
 <blockquote>
- Get an API key-> themoviedb.org
-<p>"A TMDb user account is required to request an API key."</p>
+ Get an API key-> <a href="themoviedb.org">themoviedb.org</a>
+<p>"A TMDb user account is required to request an API key."*</p>
 </blockquote>
 
 ##Compatibility
