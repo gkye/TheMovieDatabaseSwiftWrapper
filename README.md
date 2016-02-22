@@ -21,7 +21,7 @@
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Genres"> Genres </a>
 * Networks
 * Reviews 
-* <a href="/wiki/TV">TV</a>
+* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TV">TV</a>
 
 ## TO BE COVERED
 ---------
