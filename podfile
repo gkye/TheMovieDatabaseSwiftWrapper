@@ -5,8 +5,7 @@
 
 target 'MDBSwiftWrapper' do
 pod 'Alamofire'
-pod 'SwiftyJSON'
-
+pod 'SwiftyJSON’
 end
 
 target 'MDBSwiftWrapperTests' do
