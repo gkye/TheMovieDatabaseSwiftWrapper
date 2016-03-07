@@ -23,7 +23,7 @@
 * Reviews 
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TV">TV</a>
 
-## TO BE COVERED
+## TODO
 ---------
 * Credits 
 * Find 
