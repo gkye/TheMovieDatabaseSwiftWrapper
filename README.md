@@ -19,7 +19,7 @@
 * Certifications **
 * Keywords
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Genres"> Genres </a>
-* Networks
+ * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Networks"> Networks </a>
 * Reviews 
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TV">TV</a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TVSeasons">TVSeasons</a>
