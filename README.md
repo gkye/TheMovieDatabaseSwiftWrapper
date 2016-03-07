@@ -33,7 +33,6 @@
 * List 
 * People 
 * Search 
-* Add `Reviews` to TV, Movies, TVSeason, TVEpisodes
 
 ##Compatibility
 iOS 8.0 +
