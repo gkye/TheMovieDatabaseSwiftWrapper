@@ -33,7 +33,6 @@
 * List 
 * People 
 * Search 
-* TV Episodes
 * Add `Reviews` to TV, Movies, TVSeason, TVEpisodes
 
 ##Compatibility
