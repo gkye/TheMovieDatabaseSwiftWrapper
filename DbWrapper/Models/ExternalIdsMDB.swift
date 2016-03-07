@@ -10,12 +10,12 @@ import Foundation
 import SwiftyJSON
 class ExternalIdsMDB{
     
-    var imdb_id: String!
-    var freebase_mid: String!
+    var imdb_id: String?
+    var freebase_mid: String?
     var id: Int!
-    var freebase_id: String!
-    var tvdb_id: Int!
-    var tvrage_id: Int!
+    var freebase_id: String?
+    var tvdb_id: Int?
+    var tvrage_id: Int?
     
     
     //TV(S/EP) MV

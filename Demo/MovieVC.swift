@@ -14,17 +14,6 @@ class MovieVC : UIViewController{
     
     override func viewDidLoad() {
         
-        
-        //
-        //        MovieMDB.movie_images(apikey, movieID: 111, language: "en"){
-        //            apiReturn in
-        //            let images = apiReturn.MBDBReturn as! ImagesMDB
-        //            if(images.posters.count > 0){
-        //                print(images.posters[0].height)
-        //            }
-        //            if(images.backdrops.count > 0){
-        //                print(images.backdrops[0].vote_average)
-        //            }
         //        }
         //
         //        Discover.discover(apikey, discoverType: "tv", language: nil){
@@ -99,9 +88,11 @@ class MovieVC : UIViewController{
         //            print(images.posters[0].file_path)
         //
         //        }
+        //** episode start
+        
         
         //The flash season 1, episode 3 information
-        //        TVEpisodesMDB.episode_number(apikey, tvShowId: 60735, seasonNumber: 1, episodeNumber: 3, language: nil){
+        //        TVEpisodesMDB.number(apikey, tvShowId: 60735, seasonNumber: 1, episodeNumber: 3, language: nil){
         //            apiReturn in
         //            let episodes = TVEpisodesMDB.init(results: apiReturn.json!)
         //            print(episodes.overview)
@@ -110,7 +101,7 @@ class MovieVC : UIViewController{
         //        }
         //
         //       // The flash season 1, episode 3 credits
-        //        TVEpisodesMDB.episode_credits(apikey, tvShowId: 60735, seasonNumber: 1, episodeNumber: 3){
+        //        TVEpisodesMDB.credits(apikey, tvShowId: 60735, seasonNumber: 1, episodeNumber: 3){
         //            apiReturn in
         //            let credits = apiReturn.MBDBReturn as! CastCrewMDB
         //            print(credits.crew.count)
@@ -121,38 +112,36 @@ class MovieVC : UIViewController{
         //                print(i1.job)
         //            }
         //        }
-        //
-        //        //Game of thrones season 5 episode 1
-        //        TVEpisodesMDB.episode_videos(apikey, tvShowId: 1399, seasonNumber: 5, episodeNumber: 1, language: nil){
+        //        TVEpisodesMDB.externalIDS(apikey, tvShowId: 60735, seasonNumber: 1, episodeNumber: 1, language: "en"){
         //            apiReturn in
-        //           let videos = apiReturn.MBDBReturn as! [VideosMDB]
-        //            for vid in videos {
-        //                print(vid.site)
-        //                print(vid.name)
-        //            }
+        //            let ids = apiReturn.MBDBReturn as! ExternalIdsMDB
+        //            print(ids.imdb_id)
+        //            print(ids.tvdb_id) //**might return nil
+        //            print(ids.freebase_mid)
+        //            print(ids.freebase_id)
+        //            print(ids.tvrage_id)
         //        }
-        //
-        //        TVEpisodesMDB.episode_images(apikey, tvShowId: 1399, seasonNumber: 1, episodeNumber: 1){
+        
+        //        TVEpisodesMDB.images(apikey, tvShowId: 60735, seasonNumber: 1, episodeNumber: 1){
         //            apiReturn in
         //            let images = apiReturn.MBDBReturn as! ImagesMDB
         //            print(images.stills[0].iso_639_1)
         //            print(images.stills[0].width)
         //            print(images.stills[0].file_path)
+        //            //TV show have no posters or backdrops (stills only)
         //        }
         
-        
-        
-        
-        
-        
-        //        TVSeasonsMDB.externalIDS(apikey, tvShowId: 1402, seasonNumber: 1, language: "en"){
-        //            apiReturn in
-        //            let ids = apiReturn.MBDBReturn as! ExternalIdsMDB
-        //            print(ids.imdb_id)
-        //            print(ids.tvdb_id)
-        //            print(ids.freebase_mid)
-        //            print(ids.freebase_id)
-        //        }
+        //        //Game of thrones season 5 episode 1
+        TVEpisodesMDB.videos(apikey, tvShowId: 1399, seasonNumber: 5, episodeNumber: 1, language: nil){
+            apiReturn in
+            let videos = apiReturn.MBDBReturn as! [VideosMDB]
+            for vid in videos {
+                print(vid.site)
+                print(vid.name)
+                print(vid.type)
+            }
+        }
+                
         
         //        MovieMDB.movie(apikey, movieID: 7984, language: "en"){
         //            apiReturn in
@@ -202,70 +191,70 @@ class MovieVC : UIViewController{
         //        }
         
         
-//        MovieMDB.videos(apikey, movieID: 607, language: "en"){
-//            apiReturn in
-//            let videos = apiReturn.MBDBReturn as! [VideosMDB]
-//            for i in videos {
-//                print(i.site)
-//                print(i.key)
-//                print(i.name)
-//            }
-//        }
+        //        MovieMDB.videos(apikey, movieID: 607, language: "en"){
+        //            apiReturn in
+        //            let videos = apiReturn.MBDBReturn as! [VideosMDB]
+        //            for i in videos {
+        //                print(i.site)
+        //                print(i.key)
+        //                print(i.name)
+        //            }
+        //        }
         
-//        MovieMDB.similar(apikey, movieID: 334, page: 1, language: "en"){
-//            relatedMovies in
-//            let movie = relatedMovies.MBDBReturn as! [MovieMDB]
-//            print(movie[0].title)
-//            print(movie[0].original_title)
-//            print(movie[0].release_date)
-//            print(movie[0].overview)
-//        }
+        //        MovieMDB.similar(apikey, movieID: 334, page: 1, language: "en"){
+        //            relatedMovies in
+        //            let movie = relatedMovies.MBDBReturn as! [MovieMDB]
+        //            print(movie[0].title)
+        //            print(movie[0].original_title)
+        //            print(movie[0].release_date)
+        //            print(movie[0].overview)
+        //        }
         
-//        MovieMDB.latest(apikey){
-//            latestMovies in
-//            let movie = latestMovies.MBDBReturn as! MovieDetailedMDB
-//            print(movie.title)
-//            print(movie.original_title)
-//            print(movie.release_date)
-//            print(movie.overview)
-//            print(movie.budget)
-//        }
+        //        MovieMDB.latest(apikey){
+        //            latestMovies in
+        //            let movie = latestMovies.MBDBReturn as! MovieDetailedMDB
+        //            print(movie.title)
+        //            print(movie.original_title)
+        //            print(movie.release_date)
+        //            print(movie.overview)
+        //            print(movie.budget)
+        //        }
         
-//        MovieMDB.nowplaying(apikey, language: "en", page: 1){
-//            nowPlaying in
-//            let movie = nowPlaying.MBDBReturn as! [MovieMDB]
-//            print(movie[0].title)
-//            print(movie[0].original_title)
-//            print(movie[0].release_date)
-//            print(movie[0].overview)
-//        }
+        //        MovieMDB.nowplaying(apikey, language: "en", page: 1){
+        //            nowPlaying in
+        //            let movie = nowPlaying.MBDBReturn as! [MovieMDB]
+        //            print(movie[0].title)
+        //            print(movie[0].original_title)
+        //            print(movie[0].release_date)
+        //            print(movie[0].overview)
+        //        }
         
-//        MovieMDB.popular(apikey, language: "en", page: 1){
-//            popularMovies in
-//            let movie = popularMovies.MBDBReturn as! [MovieMDB]
-//            print(movie[0].title)
-//            print(movie[0].original_title)
-//            print(movie[0].release_date)
-//            print(movie[0].overview)
-//        }
+        //        MovieMDB.popular(apikey, language: "en", page: 1){
+        //            popularMovies in
+        //            let movie = popularMovies.MBDBReturn as! [MovieMDB]
+        //            print(movie[0].title)
+        //            print(movie[0].original_title)
+        //            print(movie[0].release_date)
+        //            print(movie[0].overview)
+        //        }
         
-//        MovieMDB.toprated(apikey, language: "en"){
-//            topRatedMovies in
-//            let movie = topRatedMovies.MBDBReturn as! [MovieMDB]
-//            print(movie[0].title)
-//            print(movie[0].original_title)
-//            print(movie[0].release_date)
-//            print(movie[0].overview)
-//        }
+        //        MovieMDB.toprated(apikey, language: "en"){
+        //            topRatedMovies in
+        //            let movie = topRatedMovies.MBDBReturn as! [MovieMDB]
+        //            print(movie[0].title)
+        //            print(movie[0].original_title)
+        //            print(movie[0].release_date)
+        //            print(movie[0].overview)
+        //        }
         
-        MovieMDB.upcoming(apikey, language: "en"){
-            upcomingMovies in
-            let movie = upcomingMovies.MBDBReturn as! [MovieMDB]
-            print(movie[0].title)
-            print(movie[0].original_title)
-            print(movie[0].release_date)
-            print(movie[0].overview)
-        }
+        //        MovieMDB.upcoming(apikey, language: "en"){
+        //            upcomingMovies in
+        //            let movie = upcomingMovies.MBDBReturn as! [MovieMDB]
+        //            print(movie[0].title)
+        //            print(movie[0].original_title)
+        //            print(movie[0].release_date)
+        //            print(movie[0].overview)
+        //        }
         
         
         

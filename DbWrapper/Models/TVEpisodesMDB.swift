@@ -15,7 +15,7 @@ class TVEpisodesMDB {
     var air_date: String!
     var crew = [CrewMDB]()
     var guest_stars = [CastMDB]()
-    var episode_number: Int!
+    var number: Int!
     var name: String!
     var overview: String!
     var id: Int!
@@ -34,7 +34,7 @@ class TVEpisodesMDB {
             }
         }
         
-        episode_number = results["episode_number"].int
+        number = results["number"].int
         
         if(results["guest_stars"] != nil){
             for(var i = 0; i < results["guest_stars"].count; i++ ){
@@ -60,7 +60,7 @@ class TVEpisodesMDB {
     }
     
     ///Get the primary information about a TV episode by combination of a season and episode number.
-    class func episode_number(api_key: String, tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
+    class func number(api_key: String, tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
         let urltype = "\(tvShowId)/season/\(seasonNumber)/episode/\(episodeNumber)"
         Client.Seasons(urltype, api_key: apikey, language: language){
             apiReturn in
@@ -74,7 +74,7 @@ class TVEpisodesMDB {
     }
     
     ///Get the TV episode credits by combination of season and episode number.
-    class func episode_credits(api_key: String, tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, completion: (ClientReturn) -> ()) -> (){
+    class func credits(api_key: String, tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, completion: (ClientReturn) -> ()) -> (){
         let urltype = "\(tvShowId)/season/\(seasonNumber)/episode/\(episodeNumber)/credits"
         Client.Seasons(urltype, api_key: apikey, language: nil){
             apiReturn in
@@ -86,8 +86,22 @@ class TVEpisodesMDB {
         }
     }
     
+    ///Get the external ids for a TV episode by comabination of a season and episode number.
+    class func externalIDS(api_key: String, tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int, language: String, completion: (ClientReturn) -> ()) -> (){
+        let urltype = "\(tvShowId)/season/\(seasonNumber)/episode/\(episodeNumber)/external_ids"
+        Client.Seasons(urltype, api_key: apikey, language: language){
+            apiReturn in
+            var aReturn = apiReturn
+            if(aReturn.error == nil){
+                aReturn.MBDBReturn = ExternalIdsMDB.init(results: aReturn.json!)
+            }
+            
+            completion(aReturn)
+        }
+    }
+    
     ///Get the images (episode stills) for a TV episode by combination of a season and episode number. Since episode stills don't have a language, this call will always return all images. **ONLY `stills` retuned from ImagesMDB (`posters` & `backdrops` will be empty)**
-    class func episode_images(api_key: String, tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, completion: (ClientReturn) -> ()) -> (){
+    class func images(api_key: String, tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, completion: (ClientReturn) -> ()) -> (){
         let urltype = "\(tvShowId)/season/\(seasonNumber)/episode/\(episodeNumber)/images"
         Client.Seasons(urltype, api_key: apikey, language: nil){
             apiReturn in
@@ -100,7 +114,7 @@ class TVEpisodesMDB {
         }
     }
     
-    class func episode_videos(api_key: String, tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
+    class func videos(api_key: String, tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
         let urltype = "\(tvShowId)/season/\(seasonNumber)/episode/\(episodeNumber)/videos"
         Client.Seasons(urltype, api_key: apikey, language: language){
             apiReturn in

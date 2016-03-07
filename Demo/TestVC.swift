@@ -28,13 +28,13 @@ class Test: UIViewController{
 //            print(rev.iso_639_1)
 //            print(rev)
 //        }
-        TVSeasonsMDB.externalIDS(apikey, tvShowId: 1396, seasonNumber: 1, language: "en"){
-            apiReturn in
-            let ids = apiReturn.MBDBReturn as! ExternalIdsMDB
-            print(ids.tvdb_id)
-            print(ids.freebase_mid)
-            print(ids.freebase_id)
-        }
+//        TVSeasonsMDB.externalIDS(apikey, tvShowId: 1396, seasonNumber: 1, language: "en"){
+//            apiReturn in
+//            let ids = apiReturn.MBDBReturn as! ExternalIdsMDB
+//            print(ids.tvdb_id)
+//            print(ids.freebase_mid)
+//            print(ids.freebase_id)
+//        }
         
         //
         //
@@ -58,6 +58,12 @@ class Test: UIViewController{
 //            print(config.profile_sizes)
 //        }
         
+        NetworksMDB.networks(apikey, networkId: 200){
+            netwrk in
+            let network = netwrk.MBDBReturn as! NetworksMDB
+            print(network.id)
+            print(network.name)
+        }
     }
     
         

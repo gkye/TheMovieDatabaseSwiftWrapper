@@ -13,7 +13,7 @@ class Images_MDB {
     var aspect_ratio: String!
     var file_path: String!
     var height: Int!
-    var iso_639_1: String!
+    var iso_639_1: String?
     var vote_average: Int!
     var vote_count: Int!
     var width: Int!
