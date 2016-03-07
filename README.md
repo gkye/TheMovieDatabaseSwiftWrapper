@@ -24,7 +24,6 @@
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TV">TV</a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TVSeasons">TVSeasons</a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TVEpisodes">TVEpisodes</a>
-
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Movie">Movie</a>
 
 ## TODO
