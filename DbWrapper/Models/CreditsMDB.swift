@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 
 
@@ -16,13 +17,23 @@ struct Credits_Episodes{
     var overview: String!
     var season_number: Int!
     var still_path: String?
-    //add init
+    init(episodes: JSON){
+        air_date = episodes["air_date"].string
+        episode_number = episodes["episode_number"].int
+        overview = episodes["overview"].string
+        season_number = episodes["season_number"].int
+        still_path = episodes["still_path"].string
+    }
 }
 struct Credits_Seasons{
     var air_date: String!
     var poster_path: String!
     var season_number: Int!
-    //add init
+    init(seasons: JSON){
+        air_date = seasons["air_date"].string
+        poster_path = seasons["poster_path"].string
+        season_number = seasons["season_number"].int
+    }
 }
 
 
@@ -31,9 +42,27 @@ struct Credits_Media{
     var name: String!
     var original_name: String!
     var character: String!
-    var episodes: [Credits_Episodes]!
-    var seasons: [Credits_Seasons]!
-    //add init
+    var episodes = [Credits_Episodes]()
+    var seasons = [Credits_Seasons]()
+    init(media: JSON){
+        id = media["id"].int
+        name = media["name"].string
+        original_name = media["original_name"].string
+        character = media["character"].string
+        
+        if(media["episodes"].count > 0){
+            for episode in media["episodes"]{
+                episodes.append(Credits_Episodes.init(episodes: episode.1))
+            }
+        }
+        
+        if(media["seasons"].count > 0){
+            for(var i = 0; i < media["seasons"].count; i++ ){
+                seasons.append(Credits_Seasons.init(seasons: media["seasons"][i]))
+                
+            }
+        }
+    }
 }
 
 class CreditsMDB{
@@ -42,10 +71,31 @@ class CreditsMDB{
     var department: String!
     var job: String!
     var media: Credits_Media!
-    var mediaType: String!
+    var media_Type: String!
     var id: String!
     var person: (name: String!, id: Int!)
-    //super.init
+    init(credits: JSON){
+        credit_type = credits["credit_type"].string
+        department = credits["department"].string
+        job = credits["job"].string
+        
+        media = Credits_Media.init(media: credits["media"])
+        
+        media_Type = credits["media_type"].string
+        id = credits["id"].string
+        person = (name: credits["person"]["name"].string, id: credits["person"]["id"].int)
+    }
     
+    ///Get the detailed information about a particular credit record. This is currently only supported with the new credit model found in TV. These ids can be found from any TV credit response as well as the tv_credits and combined_credits methods for people. The episodes object returns a list of episodes and are generally going to be guest stars. The season array will return a list of season numbers.
+    class func credits(apiKey: String, creditID: String, language: String, completion: (ClientReturn) -> ()) -> (){
+        Client.Credits(apiKey, creditID: creditID, language: language){
+            apiReturn in
+            var aReturn = apiReturn;
+            if(apiReturn.error == nil){
+                aReturn.MBDBReturn = CreditsMDB.init(credits: apiReturn.json!)
+            }
+            completion(aReturn)
+        }
+    }
     
 }

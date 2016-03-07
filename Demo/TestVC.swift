@@ -20,21 +20,21 @@ class Test: UIViewController{
         //        }
         //
         
-//        ReviewsMDB.review(apikey, reviewId: "5013bc76760ee372cb00253e"){
-//            apiReturn in
-//            let rev = apiReturn.MBDBReturn as! ReviewsMDB
-//            print(rev.id)
-//            print(rev.content)
-//            print(rev.iso_639_1)
-//            print(rev)
-//        }
-//        TVSeasonsMDB.externalIDS(apikey, tvShowId: 1396, seasonNumber: 1, language: "en"){
-//            apiReturn in
-//            let ids = apiReturn.MBDBReturn as! ExternalIdsMDB
-//            print(ids.tvdb_id)
-//            print(ids.freebase_mid)
-//            print(ids.freebase_id)
-//        }
+        //        ReviewsMDB.review(apikey, reviewId: "5013bc76760ee372cb00253e"){
+        //            apiReturn in
+        //            let rev = apiReturn.MBDBReturn as! ReviewsMDB
+        //            print(rev.id)
+        //            print(rev.content)
+        //            print(rev.iso_639_1)
+        //            print(rev)
+        //        }
+        //        TVSeasonsMDB.externalIDS(apikey, tvShowId: 1396, seasonNumber: 1, language: "en"){
+        //            apiReturn in
+        //            let ids = apiReturn.MBDBReturn as! ExternalIdsMDB
+        //            print(ids.tvdb_id)
+        //            print(ids.freebase_mid)
+        //            print(ids.freebase_id)
+        //        }
         
         //
         //
@@ -48,23 +48,43 @@ class Test: UIViewController{
         //            }
         //        }
         //
-    
-//        ConfigurationMDB.configuration(apikey){
-//            apiReturn in
-//            let config = apiReturn.MBDBReturn as! ConfigurationMDB
-//            print(config.base_url)
-//            print(config.secure_base_url)
-//            print(config.backdrop_sizes)
-//            print(config.profile_sizes)
-//        }
         
-        NetworksMDB.networks(apikey, networkId: 200){
-            netwrk in
-            let network = netwrk.MBDBReturn as! NetworksMDB
-            print(network.id)
-            print(network.name)
+        //        ConfigurationMDB.configuration(apikey){
+        //            apiReturn in
+        //            let config = apiReturn.MBDBReturn as! ConfigurationMDB
+        //            print(config.base_url)
+        //            print(config.secure_base_url)
+        //            print(config.backdrop_sizes)
+        //            print(config.profile_sizes)
+        //        }
+        
+        //        NetworksMDB.networks(apikey, networkId: 200){
+        //            netwrk in
+        //            let network = netwrk.MBDBReturn as! NetworksMDB
+        //            print(network.id)
+        //            print(network.name)
+        //        }
+        
+        CreditsMDB.credits(apikey, creditID: "5256c98419c2956ff604fd2c", language: "en"){
+            credits in
+            let credit = credits.MBDBReturn as! CreditsMDB
+            if(credit.media.episodes.count > 0){
+                print(credit.media.episodes[0].overview)
+                print(credit.media.episodes[0].season_number)
+                print(credit.media.episodes[0].air_date)
+            }
+            if(credit.media.seasons.count > 0){
+                print(credit.media.seasons[0].season_number)
+                print(credit.media.seasons[0].poster_path)
+                print(credit.media.seasons[0].air_date)
+            }
+            print(credit.media_Type)
+            print(credit.department)
+            print(credit.job)
+            print(credit.id)
+            print(credit.person.name)
         }
     }
     
-        
+    
 }
