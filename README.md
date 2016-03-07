@@ -29,7 +29,6 @@
 
 ## TODO
 ---------
-* Credits 
 * Find 
 * List 
 * People 
