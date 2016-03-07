@@ -12,7 +12,7 @@ extension Client{
 
     class func Configuration(api_key: String!, completion: (ClientReturn) -> ()) -> (){
         let parameters: [String : AnyObject] = ["api_key": api_key]
-        let url = "http://api.themoviedb.org/3/configuration"
+        let url = "https://api.themoviedb.org/3/configuration"
         networkRequest(url, parameters: parameters, completion: {
             apiReturn in
             

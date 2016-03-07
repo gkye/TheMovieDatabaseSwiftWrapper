@@ -17,7 +17,7 @@ extension Client{
             parameters["language"] = language
         }
         
-        let url = "http://api.themoviedb.org/3/tv/\(urlType)"
+        let url = "https://api.themoviedb.org/3/tv/\(urlType)"
         networkRequest(url, parameters: parameters, completion: {
             apiReturn in
             completion(apiReturn)

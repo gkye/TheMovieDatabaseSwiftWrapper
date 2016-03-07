@@ -141,7 +141,7 @@ extension Client{
             parameters["year"] = year
         }
         
-        let url = "http://api.themoviedb.org/3/discover/\(baseURL)"
+        let url = "https://api.themoviedb.org/3/discover/\(baseURL)"
         
         networkRequest(url, parameters: parameters){
             apiReturn in

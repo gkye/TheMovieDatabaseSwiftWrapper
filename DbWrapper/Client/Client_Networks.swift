@@ -11,7 +11,7 @@ extension Client{
     
     class func networks(api_key: String!, networkId: Int!, completion: (ClientReturn) -> ()) -> (){
         let parameters: [String : AnyObject] = ["api_key": api_key]
-         let url = "http://api.themoviedb.org/3/network/\(networkId)"
+         let url = "https://api.themoviedb.org/3/network/\(networkId)"
         networkRequest(url, parameters: parameters, completion: {
             apiReturn in
             

@@ -12,7 +12,7 @@ extension Client{
     
     class func Company(api_key: String!, companyId: Int!, completion: (ClientReturn) -> ()) -> (){
         let parameters: [String : AnyObject] = ["api_key": api_key]
-        let url = "http://api.themoviedb.org/3/company/\(companyId)"
+        let url = "https://api.themoviedb.org/3/company/\(companyId)"
         networkRequest(url, parameters: parameters, completion: {
             apiReturn in
             
@@ -30,7 +30,7 @@ extension Client{
             parameters["language"] = language
         }
         
-        let url = "http://api.themoviedb.org/3/company/\(companyId)/movies"
+        let url = "https://api.themoviedb.org/3/company/\(companyId)/movies"
         networkRequest(url, parameters: parameters, completion: {
             apiReturn in
             

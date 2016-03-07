@@ -24,7 +24,7 @@ extension Client{
             parameters["end_date"] = endDate
         }
         
-        let url = "http://api.themoviedb.org/3/\(changeType)/changes"
+        let url = "https://api.themoviedb.org/3/\(changeType)/changes"
         
         
         networkRequest(url, parameters: parameters){

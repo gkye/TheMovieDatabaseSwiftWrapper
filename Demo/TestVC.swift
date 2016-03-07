@@ -111,14 +111,25 @@ class Test: UIViewController{
 //            }
 //        }
         
-        TVMDB.keywords(apikey, tvShowID: 1396){
+//        TVMDB.keywords(apikey, tvShowID: 1396){
+//            apiReturn in
+//            let keywords = apiReturn.MBDBReturn as! [KeywordsMDB]
+//            for keyword in keywords{
+//                print(keyword.id)
+//                print(keyword.name)
+//            }
+//        }
+        
+        
+        TVMDB.content_ratings(apikey, tvShowID: 1396){
             apiReturn in
-            let keywords = apiReturn.MBDBReturn as! [KeywordsMDB]
-            for keyword in keywords{
-                print(keyword.id)
-                print(keyword.name)
+            let ratings = apiReturn.MBDBReturn as! [Content_RatingsMDB]
+            for rating in ratings {
+                print(rating.iso_3166_1)
+                print(rating.rating)
             }
         }
+        
     }
     
     

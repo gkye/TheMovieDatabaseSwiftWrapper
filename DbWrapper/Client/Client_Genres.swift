@@ -15,9 +15,9 @@ extension Client{
         var parameters: [String : AnyObject] = ["api_key": api_key]
         var url = "";
         if(movieList == false || movieList == nil){
-            url = "http://api.themoviedb.org/3/genre/\(listType)/list";
+            url = "https://api.themoviedb.org/3/genre/\(listType)/list";
         }else{
-            url = "http://api.themoviedb.org/3/genre/\(genreId)/movies";
+            url = "https://api.themoviedb.org/3/genre/\(genreId)/movies";
             print(url)
 
         }

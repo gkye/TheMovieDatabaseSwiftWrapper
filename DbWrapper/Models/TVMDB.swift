@@ -5,15 +5,29 @@
 //  Created by George on 2016-02-12.
 //  Copyright © 2016 GeorgeKye. All rights reserved.
 //
-//TODO: SIMILAR TV SHOWS
-//- videos
-//    - tanslations
-//-credits
-//-images
+//TODO: - tanslations
 //
 
 import Foundation
 import SwiftyJSON
+
+
+class Content_RatingsMDB{
+    var iso_3166_1: String!
+    var rating: String!
+    
+    init(results: JSON){
+        iso_3166_1 = results["iso_3166_1"].string
+        rating = results["rating"].string
+    }
+    class func initialize(json: JSON)->[Content_RatingsMDB] {
+        var discoverReturn = [Content_RatingsMDB]()
+        for(var i = 0; i < json.count; i++){
+            discoverReturn.append(Content_RatingsMDB(results: json[i]))
+        }
+        return discoverReturn
+    }
+}
 
 class TVMDB: DiscoverTV {
     
@@ -64,7 +78,7 @@ class TVMDB: DiscoverTV {
         return discoverReturn
     }
     
-    //Mark: Main base for public funcs
+    //MARK: public functions
     
     ///Get the primary information about a TV series by id.
     class func tv(api_key: String!, tvShowID: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
@@ -91,6 +105,17 @@ class TVMDB: DiscoverTV {
         }
     }
     
+    ///Get the content ratings for a specific TV show id.
+    class func content_ratings(api_key: String, tvShowID: Int,  completion: (ClientReturn) -> ()) -> (){
+        Client.TV("\(tvShowID)/content_ratings", api_key: api_key, page: nil, language: nil, timezone: nil){
+            apiReturn in
+            var aReturn = apiReturn
+            if(aReturn.error == nil){
+                aReturn.MBDBReturn = Content_RatingsMDB.initialize(aReturn.json!["results"])
+            }
+            completion(aReturn)
+        }
+    }
     
     ///Get the cast & crew information about a TV series. Just like the website, this information from the last season of the series.
     class func credits(api_key: String!, tvShowID: Int!, completion: (ClientReturn) -> ()) -> (){
@@ -140,7 +165,6 @@ class TVMDB: DiscoverTV {
         }
     }
     
-    
     ///Get the similar TV shows for a specific tv id.
     class func similar(api_key: String!, tvShowID: Int!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
         Client.TV("\(tvShowID)/similar", api_key: api_key, page: page, language: language, timezone: nil){
@@ -155,7 +179,6 @@ class TVMDB: DiscoverTV {
         }
     }
     
-    
     ///Get the videos that have been added to a TV series (trailers, opening credits, etc...)
     class func videos(api_key: String!, tvShowID: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
         Client.TV("\(tvShowID)/videos", api_key: api_key, page: nil, language: language, timezone: nil){
@@ -167,7 +190,6 @@ class TVMDB: DiscoverTV {
             completion(aReturn)
         }
     }
-    
     
     ///Get the latest TV show id.
     class func latest(api_key: String!,  completion: (ClientReturn) -> ()) -> (){
@@ -192,7 +214,6 @@ class TVMDB: DiscoverTV {
             completion(aReturn)
         }
     }
-    
     
     ///Get the list of TV shows that air today. Without a specified timezone, this query defaults to EST (Eastern Time UTC-05:00).
     class func airingtoday(api_key: String!, page: Int?, language: String?, timezone: String?, completion: (ClientReturn) -> ()) -> (){
@@ -233,20 +254,6 @@ class TVMDB: DiscoverTV {
     //
     //    ID
     //    accountstates**
-    //    alternativetitles**
     //    changes**
-    //    content_rating**
-    //    credits
-    //    external_ids **
-    //    images
-    //    keywords ***
-    //    rating **
-    //    similar
     //    translations**
-    //    videos
-    //    latest
-    //    ontheair
-    //    airingtoday
-    //    toprated
-    //    popular
 }
