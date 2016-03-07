@@ -20,10 +20,20 @@ extension Client{
             parameters["language"] = language
         }
         
+        //--Alternative titles (lazy change later)
+        if(urlType.containsString("alternative_titles")){
+            print("alt", urlType)
+            if(language != nil){
+                parameters["country"] = language
+            }
+        }
+        
         let url = "http://api.themoviedb.org/3/movie/\(urlType)"
         networkRequest(url, parameters: parameters, completion: {
             apiReturn in
             completion(apiReturn)
         })
     }
+    
+
 }

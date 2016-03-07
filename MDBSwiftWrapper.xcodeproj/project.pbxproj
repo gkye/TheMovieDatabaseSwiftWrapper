@@ -20,14 +20,14 @@
 		5E38A9CE1C6D56560037AB4B /* Client_Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38A9CD1C6D56560037AB4B /* Client_Company.swift */; };
 		5E38A9D01C6DAD6F0037AB4B /* KeywordMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38A9CF1C6DAD6F0037AB4B /* KeywordMDB.swift */; };
 		5E38A9D21C6DAE1A0037AB4B /* Client_Keywords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38A9D11C6DAE1A0037AB4B /* Client_Keywords.swift */; };
-		5E774D171C72E65300783844 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5EFC2A101C6C6A2A0014FA45 /* Info.plist */; };
+		5E6C786B1C751C27009BA56F /* ExternalIdsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6C786A1C751C27009BA56F /* ExternalIdsMDB.swift */; };
 		5E774D1A1C738D9300783844 /* MovieDetailedMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E774D191C738D9300783844 /* MovieDetailedMDB.swift */; };
 		5E774D1C1C7391E300783844 /* Client_Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E774D1B1C7391E300783844 /* Client_Movies.swift */; };
 		5E774D1E1C73939000783844 /* MovieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E774D1D1C73939000783844 /* MovieVC.swift */; };
 		5E774D201C74979000783844 /* EpisodesMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E774D1F1C74979000783844 /* EpisodesMDB.swift */; };
 		5E774D221C7498D800783844 /* TVSeasonsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E774D211C7498D800783844 /* TVSeasonsMDB.swift */; };
 		5E774D241C749ECC00783844 /* Client_SeasonsEpisodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E774D231C749ECC00783844 /* Client_SeasonsEpisodes.swift */; };
-		5E774D281C74C21300783844 /* Client_MISC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E774D271C74C21300783844 /* Client_MISC.swift */; };
+		5E774D281C74C21300783844 /* Alternative_TitlesMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E774D271C74C21300783844 /* Alternative_TitlesMDB.swift */; };
 		5EDC8EC61C6DBF440086B77B /* GenresMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC8EC51C6DBF440086B77B /* GenresMDB.swift */; };
 		5EDC8EC81C6DBF7F0086B77B /* Client_Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC8EC71C6DBF7F0086B77B /* Client_Genres.swift */; };
 		5EDC8ECA1C6E460C0086B77B /* MovieMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC8EC91C6E460C0086B77B /* MovieMDB.swift */; };
@@ -88,13 +88,14 @@
 		5E38A9CD1C6D56560037AB4B /* Client_Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client_Company.swift; path = DbWrapper/Models/Client_Company.swift; sourceTree = SOURCE_ROOT; };
 		5E38A9CF1C6DAD6F0037AB4B /* KeywordMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeywordMDB.swift; sourceTree = "<group>"; };
 		5E38A9D11C6DAE1A0037AB4B /* Client_Keywords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_Keywords.swift; sourceTree = "<group>"; };
+		5E6C786A1C751C27009BA56F /* ExternalIdsMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalIdsMDB.swift; sourceTree = "<group>"; };
 		5E774D191C738D9300783844 /* MovieDetailedMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailedMDB.swift; sourceTree = "<group>"; };
 		5E774D1B1C7391E300783844 /* Client_Movies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_Movies.swift; sourceTree = "<group>"; };
 		5E774D1D1C73939000783844 /* MovieVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieVC.swift; sourceTree = "<group>"; };
 		5E774D1F1C74979000783844 /* EpisodesMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodesMDB.swift; sourceTree = "<group>"; };
 		5E774D211C7498D800783844 /* TVSeasonsMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVSeasonsMDB.swift; sourceTree = "<group>"; };
 		5E774D231C749ECC00783844 /* Client_SeasonsEpisodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_SeasonsEpisodes.swift; sourceTree = "<group>"; };
-		5E774D271C74C21300783844 /* Client_MISC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client_MISC.swift; path = ../Models/Client_MISC.swift; sourceTree = "<group>"; };
+		5E774D271C74C21300783844 /* Alternative_TitlesMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alternative_TitlesMDB.swift; sourceTree = "<group>"; };
 		5EDC8EC51C6DBF440086B77B /* GenresMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresMDB.swift; sourceTree = "<group>"; };
 		5EDC8EC71C6DBF7F0086B77B /* Client_Genres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_Genres.swift; sourceTree = "<group>"; };
 		5EDC8EC91C6E460C0086B77B /* MovieMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieMDB.swift; sourceTree = "<group>"; };
@@ -103,7 +104,7 @@
 		5EDC8ECF1C6E4AB20086B77B /* Client_Networks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_Networks.swift; sourceTree = "<group>"; };
 		5EDC8ED11C6E4C2B0086B77B /* TestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		5EDC8ED31C6E4E6C0086B77B /* Client_Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_Review.swift; sourceTree = "<group>"; };
-		5EDC8ED71C6E51CE0086B77B /* ReviewMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewMDB.swift; path = "../../../JASON BACKUP/ReviewMDB.swift"; sourceTree = "<group>"; };
+		5EDC8ED71C6E51CE0086B77B /* ReviewMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewMDB.swift; sourceTree = "<group>"; };
 		5EFC2A011C6C6A2A0014FA45 /* MDBSwiftWrapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDBSwiftWrapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EFC2A041C6C6A2A0014FA45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EFC2A091C6C6A2A0014FA45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -261,7 +262,6 @@
 				5E01076B1C7194410042BE40 /* Client_TV.swift */,
 				5E774D1B1C7391E300783844 /* Client_Movies.swift */,
 				5E774D231C749ECC00783844 /* Client_SeasonsEpisodes.swift */,
-				5E774D271C74C21300783844 /* Client_MISC.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -271,6 +271,7 @@
 			children = (
 				5E0107781C72DCF30042BE40 /* ConfigurationMDB.swift */,
 				5EFC2A2D1C6C6B460014FA45 /* CollectionsMDB.swift */,
+				5E774D271C74C21300783844 /* Alternative_TitlesMDB.swift */,
 				5E38A9CB1C6D54920037AB4B /* CompaniesMDB.swift */,
 				5EFC2A2E1C6C6B460014FA45 /* Discover */,
 				5EDC8EC51C6DBF440086B77B /* GenresMDB.swift */,
@@ -278,6 +279,7 @@
 				5EDC8ECD1C6E4A950086B77B /* NetworksMDB.swift */,
 				5E0107691C718E210042BE40 /* PageResultsMDB.swift */,
 				5EFC2A431C6C71FA0014FA45 /* ChangesMDB.swift */,
+				5E6C786A1C751C27009BA56F /* ExternalIdsMDB.swift */,
 				5E0107721C723E370042BE40 /* CastCrewMDB.swift */,
 				5E0107741C72CED70042BE40 /* ImagesMDB.swift */,
 				5E0107761C72D1D40042BE40 /* VideosMDB.swift */,
@@ -395,7 +397,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E774D171C72E65300783844 /* Info.plist in Resources */,
 				5EFC2A0F1C6C6A2A0014FA45 /* LaunchScreen.storyboard in Resources */,
 				5EFC2A0C1C6C6A2A0014FA45 /* Assets.xcassets in Resources */,
 				5EFC2A0A1C6C6A2A0014FA45 /* Main.storyboard in Resources */,
@@ -494,7 +495,7 @@
 				5E38A9D01C6DAD6F0037AB4B /* KeywordMDB.swift in Sources */,
 				5EFC2A461C6C720B0014FA45 /* Client_Changes.swift in Sources */,
 				5E774D1A1C738D9300783844 /* MovieDetailedMDB.swift in Sources */,
-				5E774D281C74C21300783844 /* Client_MISC.swift in Sources */,
+				5E774D281C74C21300783844 /* Alternative_TitlesMDB.swift in Sources */,
 				5EDC8ED01C6E4AB20086B77B /* Client_Networks.swift in Sources */,
 				5EFC2A4B1C6D18180014FA45 /* Client.swift in Sources */,
 				5EDC8ED21C6E4C2B0086B77B /* TestVC.swift in Sources */,
@@ -502,6 +503,7 @@
 				5E38A9D21C6DAE1A0037AB4B /* Client_Keywords.swift in Sources */,
 				5EFC2A341C6C6B460014FA45 /* Client_Collections.swift in Sources */,
 				5E38A9CC1C6D54920037AB4B /* CompaniesMDB.swift in Sources */,
+				5E6C786B1C751C27009BA56F /* ExternalIdsMDB.swift in Sources */,
 				5EDC8ED41C6E4E6C0086B77B /* Client_Review.swift in Sources */,
 				5EFC2A481C6C75BD0014FA45 /* ChangesVC.swift in Sources */,
 				5E0107751C72CED70042BE40 /* ImagesMDB.swift in Sources */,

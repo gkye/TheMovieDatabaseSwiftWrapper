@@ -64,6 +64,8 @@ class TVMDB: DiscoverTV {
         return discoverReturn
     }
     
+    //Mark: Main base for public funcs
+    
     ///Get the primary information about a TV series by id.
     class func tv(api_key: String!, tvShowID: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
         
@@ -77,20 +79,21 @@ class TVMDB: DiscoverTV {
         }
     }
     
-    class func tv_alternativeTitles(api_key: String!, tvShowID: Int!, completion: (ClientReturn) -> ()) -> (){
-        
+    ///Get the alternative titles for a specific show ID.
+    class func alternativeTitles(api_key: String!, tvShowID: Int!, completion: (ClientReturn) -> ()) -> (){
         Client.TV("\(tvShowID)/alternative_titles", api_key: api_key, page: nil, language: nil, timezone: nil){
             apiReturn in
             var aReturn = apiReturn
             if(aReturn.error == nil){
-                aReturn.MBDBReturn = Alternative_TitlesMDB.init(results: apiReturn.json)
+                aReturn.MBDBReturn = Alternative_TitlesMDB.init(results: apiReturn.json!)
             }
             completion(aReturn)
         }
     }
     
+    
     ///Get the cast & crew information about a TV series. Just like the website, this information from the last season of the series.
-    class func tv_credits(api_key: String!, tvShowID: Int!, completion: (ClientReturn) -> ()) -> (){
+    class func credits(api_key: String!, tvShowID: Int!, completion: (ClientReturn) -> ()) -> (){
         Client.TV("\(tvShowID)/credits", api_key: api_key, page: nil, language: nil, timezone: nil){
             apiReturn in
             var aReturn = apiReturn
@@ -101,10 +104,20 @@ class TVMDB: DiscoverTV {
         }
     }
     
-    
+    //Get the external ids that we have stored for a TV series.
+    class func externalIDS(api_key: String!, tvShowID: Int!, language: String, completion: (ClientReturn) -> ()) -> (){
+        Client.TV("\(tvShowID)/external_ids", api_key: api_key, page: nil, language: language, timezone: nil){
+            apiReturn in
+            var aReturn = apiReturn
+            if(aReturn.error == nil){
+                aReturn.MBDBReturn = ExternalIdsMDB.init(results: aReturn.json!)
+            }
+            completion(aReturn)
+        }
+    }
     
     ///Get the images (posters and backdrops) for a TV series.
-    class func tv_images(api_key: String!, tvShowID: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
+    class func images(api_key: String!, tvShowID: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
         Client.TV("\(tvShowID)/images", api_key: api_key, page: nil, language: language, timezone: nil){
             apiReturn in
             var aReturn = apiReturn
@@ -116,7 +129,7 @@ class TVMDB: DiscoverTV {
     }
     
     ///Get the similar TV shows for a specific tv id.
-    class func tv_similar(api_key: String!, tvShowID: Int!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
+    class func similar(api_key: String!, tvShowID: Int!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
         Client.TV("\(tvShowID)/similar", api_key: api_key, page: page, language: language, timezone: nil){
             apiReturn in
             var aReturn = apiReturn
@@ -131,7 +144,7 @@ class TVMDB: DiscoverTV {
     
     
     ///Get the videos that have been added to a TV series (trailers, opening credits, etc...)
-    class func tv_videos(api_key: String!, tvShowID: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
+    class func videos(api_key: String!, tvShowID: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
         Client.TV("\(tvShowID)/videos", api_key: api_key, page: nil, language: language, timezone: nil){
             apiReturn in
             var aReturn = apiReturn
@@ -144,8 +157,7 @@ class TVMDB: DiscoverTV {
     
     
     ///Get the latest TV show id.
-    class func tv_latest(api_key: String!,  completion: (ClientReturn) -> ()) -> (){
-        
+    class func latest(api_key: String!,  completion: (ClientReturn) -> ()) -> (){
         Client.TV("latest", api_key: api_key, page: nil, language: nil, timezone: nil){
             apiReturn in
             var aReturn = apiReturn
@@ -157,7 +169,7 @@ class TVMDB: DiscoverTV {
     }
     
     ///Get the list of TV shows that are currently on the air. This query looks for any TV show that has an episode with an air date in the next 7 days.
-    class func tv_ontheair(api_key: String!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
+    class func ontheair(api_key: String!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
         Client.TV("on_the_air", api_key: api_key, page: page, language: language, timezone: nil){
             apiReturn in
             var aReturn = apiReturn
@@ -170,7 +182,7 @@ class TVMDB: DiscoverTV {
     
     
     ///Get the list of TV shows that air today. Without a specified timezone, this query defaults to EST (Eastern Time UTC-05:00).
-    class func tv_airingtoday(api_key: String!, page: Int?, language: String?, timezone: String?, completion: (ClientReturn) -> ()) -> (){
+    class func airingtoday(api_key: String!, page: Int?, language: String?, timezone: String?, completion: (ClientReturn) -> ()) -> (){
         Client.TV("airing_today", api_key: api_key, page: page, language: language, timezone: timezone){
             apiReturn in
             var aReturn = apiReturn
@@ -182,7 +194,7 @@ class TVMDB: DiscoverTV {
     }
     
     ///Get the list of top rated TV shows. By default, this list will only include TV shows that have 2 or more votes. This list refreshes every day.
-    class func tv_toprated(api_key: String!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
+    class func toprated(api_key: String!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
         Client.TV("top_rated", api_key: api_key, page: page, language: language, timezone: nil){
             apiReturn in
             var aReturn = apiReturn
@@ -194,7 +206,7 @@ class TVMDB: DiscoverTV {
     }
     
     ///Get the list of popular TV shows. This list refreshes every day.
-    class func tv_popular(api_key: String!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
+    class func popular(api_key: String!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
         Client.TV("popular", api_key: api_key, page: page, language: language, timezone: nil){
             apiReturn in
             var aReturn = apiReturn

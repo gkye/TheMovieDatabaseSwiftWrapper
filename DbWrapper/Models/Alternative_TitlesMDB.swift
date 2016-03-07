@@ -18,14 +18,22 @@ struct Alt_TitlesMDB{
     }
 }
 class Alternative_TitlesMDB {
+    
+    
     var id: Int!
     var titles = [Alt_TitlesMDB]()
+    
     init(results: JSON){
         id = results["id"].int
-        if(results["results"].count > 0){
+        if(results["results"] != nil){ //TV Changes
             for(var i = 0;i < results["results"].count; i++ ){
-                titles.append(Alt_TitlesMDB.init(result: results))
+                titles.append(Alt_TitlesMDB.init(result: results["results"][i]))
+            }
+        }else if (results["titles"] != nil){ //Movie Changes
+            for(var i = 0;i < results["titles"].count; i++ ){
+                titles.append(Alt_TitlesMDB.init(result: results["titles"][i]))
             }
         }
+        
     }
 }

@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyJSON
 
+public typealias Changes1MDB = (id:Double, adult:Bool!)
 
 class ChangesMDB{
     var id: Int64!

@@ -49,7 +49,7 @@ class MovieDetailedMDB: MovieMDB {
         if(results["belong_to_collection"] != nil){
             belongs_to_collection = belongstocollectionMovieMDB(results: results["belong_to_collection"])
         }
-        budget = results["budge"].int
+        budget = results["budget"].int
         
         if(results["genres"] != nil){
             for(var i = 0; i < results["genres"].count; i++ ){

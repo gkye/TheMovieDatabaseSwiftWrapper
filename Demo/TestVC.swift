@@ -19,16 +19,24 @@ class Test: UIViewController{
         //            print(net.name)
         //        }
         //
-        //        ReviewsMDB.review(apikey, reviewId: "5013bc76760ee372cb00253e"){
-        //            apiReturn in
-        //            let rev = apiReturn.MBDBReturn as! ReviewsMDB
-        //            print(rev.id)
-        //            print(rev.content)
-        //            print(rev.iso_639_1)
-        //            print(rev)
-        //        }
+        
+//        ReviewsMDB.review(apikey, reviewId: "5013bc76760ee372cb00253e"){
+//            apiReturn in
+//            let rev = apiReturn.MBDBReturn as! ReviewsMDB
+//            print(rev.id)
+//            print(rev.content)
+//            print(rev.iso_639_1)
+//            print(rev)
+//        }
+        TVSeasonsMDB.externalIDS(apikey, tvShowId: 1396, seasonNumber: 1, language: "en"){
+            apiReturn in
+            let ids = apiReturn.MBDBReturn as! ExternalIdsMDB
+            print(ids.tvdb_id)
+            print(ids.freebase_mid)
+            print(ids.freebase_id)
+        }
+        
         //
-        //      
         //
         //        KeywordMDB.tv_keywords(apikey, tvShowID: 1398){
         //            apiReturn in
@@ -41,14 +49,14 @@ class Test: UIViewController{
         //        }
         //
     
-        ConfigurationMDB.configuration(apikey){
-            apiReturn in
-            let config = apiReturn.MBDBReturn as! ConfigurationMDB
-            print(config.base_url)
-            print(config.secure_base_url)
-            print(config.backdrop_sizes)
-            print(config.profile_sizes)
-        }
+//        ConfigurationMDB.configuration(apikey){
+//            apiReturn in
+//            let config = apiReturn.MBDBReturn as! ConfigurationMDB
+//            print(config.base_url)
+//            print(config.secure_base_url)
+//            print(config.backdrop_sizes)
+//            print(config.profile_sizes)
+//        }
         
     }
     

@@ -75,8 +75,21 @@ class MovieMDB:  DiscoverMovie {
         }
     }
     
+    ///Get the alternative titles for a specific movie id.
+    class func alternativeTitles(api_key: String!, movieID: Int!, country: String?, completion: (ClientReturn) -> ()) -> (){
+        //language changed to country to avoid modifiying multiple defined functions. 
+        Client.Movies("\(movieID)/alternative_titles", api_key: api_key, page: nil, language: country){
+            apiReturn in
+            var aReturn = apiReturn
+            if(aReturn.error == nil){
+                aReturn.MBDBReturn = Alternative_TitlesMDB.init(results: apiReturn.json!)
+            }
+            completion(aReturn)
+        }
+    }
+    
     ///Get the cast and crew information for a specific movie id.
-    class func movie_credits(api_key: String!, movieID: Int!, completion: (ClientReturn) -> ()) -> (){
+    class func credits(api_key: String!, movieID: Int!, completion: (ClientReturn) -> ()) -> (){
         Client.Movies("\(movieID)/credits", api_key: api_key, page: nil, language: nil){
             apiReturn in
             var aReturn = apiReturn
@@ -88,7 +101,7 @@ class MovieMDB:  DiscoverMovie {
     }
     
     ///Get the images (posters and backdrops) for a specific movie id.
-    class func movie_images(api_key: String!, movieID: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
+    class func images(api_key: String!, movieID: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
         Client.Movies("\(movieID)/images", api_key: api_key, page: nil, language: language){
             apiReturn in
             var aReturn = apiReturn
@@ -100,7 +113,7 @@ class MovieMDB:  DiscoverMovie {
     }
     
     ///Get the videos (trailers, teasers, clips, etc...) for a specific movie id.
-    class func movie_videos(api_key: String!, movieID: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
+    class func videos(api_key: String!, movieID: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
         Client.Movies("\(movieID)/videos", api_key: api_key, page: nil, language: language){
             apiReturn in
             var aReturn = apiReturn
@@ -112,7 +125,7 @@ class MovieMDB:  DiscoverMovie {
     }
     
     ///Get the similar movies for a specific movie id.
-    class func movie_similar(api_key: String!, movieID: Int!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
+    class func similar(api_key: String!, movieID: Int!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
         Client.Movies("\(movieID)/similar", api_key: api_key, page: page, language: language){
             apiReturn in
             var aReturn = apiReturn
@@ -125,20 +138,20 @@ class MovieMDB:  DiscoverMovie {
         }
     }
     ///Get the latest movie id.
-    class func movies_latest(api_key: String!, completion: (ClientReturn) -> ()) -> (){
+    class func latest(api_key: String!, completion: (ClientReturn) -> ()) -> (){
         Client.Movies("latest", api_key: api_key, page: nil, language: nil){
             apiReturn in
             var aReturn = apiReturn
             if(aReturn.error == nil){
-                aReturn.MBDBReturn = MovieMDB.initialize(apiReturn.json!["results"])
+                aReturn.MBDBReturn = MovieDetailedMDB.init(results: apiReturn.json!)
             }
             completion(aReturn)
         }
     }
     
     ///Get the list of movies playing that have been, or are being released this week. This list refreshes every day.
-    class func movies_nowplaying(api_key: String!,language: String?, page: Int?, completion: (ClientReturn) -> ()) -> (){
-        Client.Movies("nowplaying", api_key: api_key, page: page, language: language){
+    class func nowplaying(api_key: String!,language: String?, page: Int?, completion: (ClientReturn) -> ()) -> (){
+        Client.Movies("now_playing", api_key: api_key, page: page, language: language){
             apiReturn in
             var aReturn = apiReturn
             if(aReturn.error == nil){
@@ -149,7 +162,7 @@ class MovieMDB:  DiscoverMovie {
     }
     
     ///Get the list of popular movies on The Movie Database. This list refreshes every day.
-    class func movies_popular(api_key: String!,language: String?, page: Int?, completion: (ClientReturn) -> ()) -> (){
+    class func popular(api_key: String!,language: String?, page: Int?, completion: (ClientReturn) -> ()) -> (){
         Client.Movies("popular", api_key: api_key, page: page, language: language){
             apiReturn in
             var aReturn = apiReturn
@@ -161,7 +174,7 @@ class MovieMDB:  DiscoverMovie {
     }
     
     ///Get the list of top rated movies. By default, this list will only include movies that have 50 or more votes. This list refreshes every day.
-    class func movies_toprated(api_key: String!,language: String?, completion: (ClientReturn) -> ()) -> (){
+    class func toprated(api_key: String!,language: String?, completion: (ClientReturn) -> ()) -> (){
         Client.Movies("top_rated", api_key: api_key, page: nil, language: language){
             apiReturn in
             var aReturn = apiReturn
@@ -173,7 +186,7 @@ class MovieMDB:  DiscoverMovie {
     }
     
     ///Get the list of upcoming movies by release date. This list refreshes every day.
-    class func movies_upcoming(api_key: String!,language: String?, completion: (ClientReturn) -> ()) -> (){
+    class func upcoming(api_key: String!,language: String?, completion: (ClientReturn) -> ()) -> (){
         Client.Movies("top_rated", api_key: api_key, page: nil, language: language){
             apiReturn in
             var aReturn = apiReturn
