@@ -168,6 +168,8 @@
 			children = (
 				5EDC8ECB1C6E47C70086B77B /* TVMDB.swift */,
 				5E01076D1C71A7B90042BE40 /* TVDetailedMDB.swift */,
+				5E774D211C7498D800783844 /* TVSeasonsMDB.swift */,
+				5E774D1F1C74979000783844 /* TVEpisodesMDB.swift */,
 			);
 			name = TV;
 			sourceTree = "<group>";
@@ -291,8 +293,6 @@
 				5E0107761C72D1D40042BE40 /* VideosMDB.swift */,
 				5EDC8ED71C6E51CE0086B77B /* ReviewMDB.swift */,
 				5E01076F1C71A7C10042BE40 /* TV */,
-				5E774D211C7498D800783844 /* TVSeasonsMDB.swift */,
-				5E774D1F1C74979000783844 /* TVEpisodesMDB.swift */,
 				5E774D181C738D3C00783844 /* Movies */,
 			);
 			path = Models;

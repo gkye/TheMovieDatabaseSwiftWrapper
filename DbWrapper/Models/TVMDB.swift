@@ -128,6 +128,19 @@ class TVMDB: DiscoverTV {
         }
     }
     
+    ///Get the plot keywords for a specific TV show id.
+    class func keywords(api_key: String, tvShowID: Int!, completion: (ClientReturn) -> ()) -> (){
+        Client.TV("\(tvShowID)/keywords", api_key: api_key, page: nil, language: nil, timezone: nil){
+            apiReturn in
+            var aReturn = apiReturn
+            if(aReturn.error == nil){
+                aReturn.MBDBReturn = KeywordsMDB.initialize_(aReturn.json!["results"])
+            }
+            completion(aReturn)
+        }
+    }
+    
+    
     ///Get the similar TV shows for a specific tv id.
     class func similar(api_key: String!, tvShowID: Int!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
         Client.TV("\(tvShowID)/similar", api_key: api_key, page: page, language: language, timezone: nil){

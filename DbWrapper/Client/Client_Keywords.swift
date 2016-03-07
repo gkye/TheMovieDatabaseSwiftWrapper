@@ -10,30 +10,34 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
+
 extension Client{
-    
-    class func keyword(api_key: String!, keywordId: Int!, page: Int?, movies: Bool?, completion: (ClientReturn) -> ()) -> (){
+    class func keyword(keywordType: String, api_key: String!, completion: (ClientReturn) -> ()) -> (){
         let parameters: [String : AnyObject] = ["api_key": api_key]
-        var url = "";
-        if(movies == false || movies == nil){
-            url = "https://api.themoviedb.org/3/keyword/\(keywordId)"
-        }else{
-            url = "http://api.themoviedb.org/3/keyword/\(keywordId)/movies"
-        }
+        let url = keywordType
         
         networkRequest(url, parameters: parameters, completion: {
             apiReturn in
-            var aReturn = apiReturn
-            if(apiReturn.error == nil){
-                if(movies == false || movies == nil){
-                    aReturn.MBDBReturn = KeywordsMDB.init(results: aReturn.json!)
-                }else{
-                    aReturn.MBDBReturn = MovieMDB.initialize(aReturn.json!["results"])
-                }
-            }
-            completion(aReturn)
+            completion(apiReturn)
         })
     }
+    
+    class func keyword_movies(keywordType: String, api_key: String!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
+        var parameters: [String : AnyObject] = ["api_key": api_key]
+        if(page != nil){
+        parameters["page"] = page
+        }
+        if(language != nil){
+        parameters["language"] = language
+        }
+        let url = keywordType
+        networkRequest(url, parameters: parameters, completion: {
+            apiReturn in
+           
+            completion(apiReturn)
+        })
+    }
+    
     
     
 }

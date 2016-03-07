@@ -21,32 +21,45 @@ class KeywordsMDB{
         name = results["name"].string
     }
     
-    ///Get the basic information for a specific keyword id.
-    class func keyword(api_key: String!, keywordId: Int!, completion: (ClientReturn) -> ()) -> (){
-        Client.keyword(api_key, keywordId: keywordId, page: nil, movies: false){
-            apiReturn in
-            completion(apiReturn)
+    //Init function to return array of KeywordsMDB objs
+   class func initialize_(json: JSON)->[KeywordsMDB] {
+        var discoverReturn = [KeywordsMDB]()
+        for(var i = 0; i < json.count; i++){
+            discoverReturn.append(KeywordsMDB(results: json[i]))
         }
+        return discoverReturn
     }
     
-    ///Get the plot keywords for a specific TV show id.
-    class func tv_keywords(api_key: String!, tvShowID: Int!, completion: (ClientReturn) -> ()) -> (){
-        Client.TV("\(tvShowID)/keywords", api_key: api_key, page: nil, language: nil, timezone: nil){
+    ///Get the basic information for a specific keyword id.
+    class func keyword(api_key: String!, keywordId: Int!, completion: (ClientReturn) -> ()) -> (){
+        let url = "https://api.themoviedb.org/3/keyword/\(keywordId)"
+        Client.keyword(url, api_key: apikey){
             apiReturn in
-            var aReturn = apiReturn
+            var aReturn = apiReturn;
             if(aReturn.error == nil){
-                let count = aReturn.json!["results"].count;
-                if(count > 0){
-                    var keywordsArray = [KeywordsMDB]()
-                    for(var i = 0; i < count; i++ ){
-                        keywordsArray.append(KeywordsMDB.init(results: aReturn.json!["results"][i]))
-                    }
-                    aReturn.MBDBReturn = keywordsArray
-                }
+                aReturn.MBDBReturn = KeywordsMDB.init(results: aReturn.json!)
+            }
+            completion(aReturn)
+        }
+    
+    }
+    
+    
+    
+    ///Get the list of movies for a particular keyword by id.
+    class func keyword_movies(api_key: String!, keywordId: Int!, page: Int, language: String?, completion: (ClientReturn) -> ()) -> (){
+        let url = "https://api.themoviedb.org/3/keyword/\(keywordId)/movies"
+        Client.keyword_movies(url, api_key: apikey, page: page, language: language){
+        apiReturn in
+            var aReturn = apiReturn;
+            if(aReturn.error == nil){
+                aReturn.MBDBReturn = MovieMDB.initialize(aReturn.json!["results"])
             }
             completion(aReturn)
         }
     }
+    
+    
     
 }
 

@@ -85,11 +85,39 @@ class Test: UIViewController{
         //            print(credit.person.name)
         //        }
         
-        KeywordsMDB.keyword(apikey, keywordId: 1721){
+        
+//        KeywordsMDB.keyword(apikey, keywordId: 1721){
+//            keyword in
+//            let keywords = keyword.MBDBReturn as! KeywordsMDB
+//            print(keywords.id)
+//            print(keywords.name)
+//        }
+//        
+//        KeywordsMDB.keyword_movies(apikey, keywordId: 1721, page: 1, language: "en"){
+//            apiReturn in
+//            let movie = apiReturn.MBDBReturn as! [MovieMDB]
+//            print(movie[0].title)
+//            print(movie[0].original_title)
+//            print(movie[0].release_date)
+//            print(movie[0].overview)
+//        }
+        
+//        MovieMDB.keywords(apikey, movieID: 1721){
+//            apiReturn in
+//            let keywords = apiReturn.MBDBReturn as! [KeywordsMDB]
+//            for keyword in keywords{
+//                print(keyword.id)
+//                print(keyword.name)
+//            }
+//        }
+        
+        TVMDB.keywords(apikey, tvShowID: 1396){
             apiReturn in
-            let keyword = apiReturn.MBDBReturn as! KeywordsMDB
-            print(keyword.id)
-            print(keyword.name)
+            let keywords = apiReturn.MBDBReturn as! [KeywordsMDB]
+            for keyword in keywords{
+                print(keyword.id)
+                print(keyword.name)
+            }
         }
     }
     

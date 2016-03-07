@@ -29,7 +29,7 @@ class GenresMDB: KeywordsMDB{
             apiReturn in
             var aReturn = apiReturn
             if(aReturn.error == nil){
-                aReturn.MBDBReturn = GenresMDB.initialize(aReturn.json!["genres"])
+                aReturn.MBDBReturn = GenresMDB.initialize(aReturn.json!)
             }
             completion(aReturn)
         }

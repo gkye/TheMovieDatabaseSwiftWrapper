@@ -86,12 +86,12 @@ class DiscoverMovie: Discover{
     }
     
     ///Get the list of movies for a particular keyword by id.
-    class func keyword(api_key: String!, keywordId: Int!, page: Int?, completion: (ClientReturn) -> ()) -> (){
-        Client.keyword(api_key, keywordId: keywordId, page: page, movies: true){
-            apiReturn in
-            completion(apiReturn)
-        }
-    }
+//    class func keyword(api_key: String!, keywordId: Int!, page: Int?, completion: (ClientReturn) -> ()) -> (){
+//        Client.keyword(api_key, api_key: keywordId, page: page, language: true){
+//            apiReturn in
+//            completion(apiReturn)
+//        }
+//    }
     
     ///Get the list of movies for a particular genre by id. By default, only movies with 10 or more votes are included.
     class func genreList(api_key: String!, genreId: Int, page: Double?, include_all_movies: Bool?, include_adult: Bool?, movieList: Bool?, completion: (ClientReturn) -> ()) -> (){

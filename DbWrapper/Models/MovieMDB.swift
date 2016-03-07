@@ -112,6 +112,20 @@ class MovieMDB:  DiscoverMovie {
         }
     }
     
+    ///Get the plot keywords for a specific movie id.
+    
+    class func keywords(api_key: String!, movieID: Int, completion: (ClientReturn) -> ()) -> (){
+        Client.Movies("\(movieID)/keywords", api_key: api_key, page: nil, language: nil){
+            apiReturn in
+            var aReturn = apiReturn
+            if(aReturn.error == nil){
+                aReturn.MBDBReturn = KeywordsMDB.initialize_(aReturn.json!["keywords"])
+            }
+            completion(aReturn)
+        }
+    
+    }
+    
     ///Get the videos (trailers, teasers, clips, etc...) for a specific movie id.
     class func videos(api_key: String!, movieID: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
         Client.Movies("\(movieID)/videos", api_key: api_key, page: nil, language: language){
