@@ -43,15 +43,15 @@ struct tv_seasons{
 class TVDetailedMDB: TVMDB{
     var createdBy: tv_created_By?
     var episode_run_time: [Int]!
-    var genres: KeywordMDB!
+    var genres: KeywordsMDB!
     var homepage: String?
     var in_production: Bool?
     var languages: [String]?
     var last_air_date: String!
-    var networks: KeywordMDB!
+    var networks: KeywordsMDB!
     var number_of_episodes: Int!
     var number_of_seasons: Int!
-    var production_companies = [KeywordMDB]()
+    var production_companies = [KeywordsMDB]()
     var seasons = [tv_seasons]()
     var status: String!
     var type: String!
@@ -63,7 +63,7 @@ class TVDetailedMDB: TVMDB{
         }
         
         episode_run_time = results["episode_run_time"].arrayObject as! [Int]
-        genres = KeywordMDB.init(results: results["genres"])
+        genres = KeywordsMDB.init(results: results["genres"])
         homepage = results["homepage"].string
         in_production = results["in_production"].bool
         languages = results["languages"].arrayObject as? [String]
@@ -74,13 +74,13 @@ class TVDetailedMDB: TVMDB{
             last_air_date = ""
         }
         
-        networks = KeywordMDB.init(results: results["networks"])
+        networks = KeywordsMDB.init(results: results["networks"])
         number_of_episodes = results["number_of_episodes"].int
         number_of_seasons = results["number_of_episodes"].int
         
         if(results["production_companies"] != nil){
             for(var i = 0; i < results["production_companies"].count; i++ ){
-                production_companies.append(KeywordMDB.init(results: results["networks"][i]))
+                production_companies.append(KeywordsMDB.init(results: results["networks"][i]))
             }
         }
         

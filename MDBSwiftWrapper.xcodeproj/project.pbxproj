@@ -20,7 +20,7 @@
 		5E06DAED1C8DD28200F6E0EE /* CreditsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E06DAEC1C8DD28200F6E0EE /* CreditsMDB.swift */; };
 		5E38A9CC1C6D54920037AB4B /* CompaniesMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38A9CB1C6D54920037AB4B /* CompaniesMDB.swift */; };
 		5E38A9CE1C6D56560037AB4B /* Client_Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38A9CD1C6D56560037AB4B /* Client_Company.swift */; };
-		5E38A9D01C6DAD6F0037AB4B /* KeywordMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38A9CF1C6DAD6F0037AB4B /* KeywordMDB.swift */; };
+		5E38A9D01C6DAD6F0037AB4B /* KeywordsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38A9CF1C6DAD6F0037AB4B /* KeywordsMDB.swift */; };
 		5E38A9D21C6DAE1A0037AB4B /* Client_Keywords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38A9D11C6DAE1A0037AB4B /* Client_Keywords.swift */; };
 		5E6C786B1C751C27009BA56F /* ExternalIdsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6C786A1C751C27009BA56F /* ExternalIdsMDB.swift */; };
 		5E774D1A1C738D9300783844 /* MovieDetailedMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E774D191C738D9300783844 /* MovieDetailedMDB.swift */; };
@@ -90,7 +90,7 @@
 		5E06DAEC1C8DD28200F6E0EE /* CreditsMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsMDB.swift; sourceTree = "<group>"; };
 		5E38A9CB1C6D54920037AB4B /* CompaniesMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompaniesMDB.swift; sourceTree = "<group>"; };
 		5E38A9CD1C6D56560037AB4B /* Client_Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client_Company.swift; path = DbWrapper/Models/Client_Company.swift; sourceTree = SOURCE_ROOT; };
-		5E38A9CF1C6DAD6F0037AB4B /* KeywordMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeywordMDB.swift; sourceTree = "<group>"; };
+		5E38A9CF1C6DAD6F0037AB4B /* KeywordsMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeywordsMDB.swift; sourceTree = "<group>"; };
 		5E38A9D11C6DAE1A0037AB4B /* Client_Keywords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_Keywords.swift; sourceTree = "<group>"; };
 		5E6C786A1C751C27009BA56F /* ExternalIdsMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalIdsMDB.swift; sourceTree = "<group>"; };
 		5E774D191C738D9300783844 /* MovieDetailedMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailedMDB.swift; sourceTree = "<group>"; };
@@ -281,7 +281,7 @@
 				5E38A9CB1C6D54920037AB4B /* CompaniesMDB.swift */,
 				5EFC2A2E1C6C6B460014FA45 /* Discover */,
 				5EDC8EC51C6DBF440086B77B /* GenresMDB.swift */,
-				5E38A9CF1C6DAD6F0037AB4B /* KeywordMDB.swift */,
+				5E38A9CF1C6DAD6F0037AB4B /* KeywordsMDB.swift */,
 				5EDC8ECD1C6E4A950086B77B /* NetworksMDB.swift */,
 				5E0107691C718E210042BE40 /* PageResultsMDB.swift */,
 				5EFC2A431C6C71FA0014FA45 /* ChangesMDB.swift */,
@@ -500,7 +500,7 @@
 				5E01076C1C7194410042BE40 /* Client_TV.swift in Sources */,
 				5E0107771C72D1D40042BE40 /* VideosMDB.swift in Sources */,
 				5E06DAEB1C8DD27700F6E0EE /* Client_Credits.swift in Sources */,
-				5E38A9D01C6DAD6F0037AB4B /* KeywordMDB.swift in Sources */,
+				5E38A9D01C6DAD6F0037AB4B /* KeywordsMDB.swift in Sources */,
 				5EFC2A461C6C720B0014FA45 /* Client_Changes.swift in Sources */,
 				5E774D1A1C738D9300783844 /* MovieDetailedMDB.swift in Sources */,
 				5E774D281C74C21300783844 /* Alternative_TitlesMDB.swift in Sources */,

@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class GenresMDB: KeywordMDB{
+class GenresMDB: KeywordsMDB{
     
     class func initialize(json: JSON)->[GenresMDB] {
         var genres = [GenresMDB]()

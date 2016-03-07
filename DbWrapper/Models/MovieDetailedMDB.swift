@@ -33,11 +33,11 @@ class MovieDetailedMDB: MovieMDB {
     }
     var belongs_to_collection: belongstocollectionMovieMDB!
     var budget: Int!
-    var genres = [KeywordMDB]()
+    var genres = [KeywordsMDB]()
     var homepage: String!
     var imdb_id: Int!
-    var production_companies = [KeywordMDB]()
-    var production_countries = [KeywordMDB]()
+    var production_companies = [KeywordsMDB]()
+    var production_countries = [KeywordsMDB]()
     var revenue : Int!
     var runtime: Int!
     var spoken_languages = [spokenLanguages]()
@@ -53,7 +53,7 @@ class MovieDetailedMDB: MovieMDB {
         
         if(results["genres"] != nil){
             for(var i = 0; i < results["genres"].count; i++ ){
-                genres.append(KeywordMDB.init(results: results["genres"][i]))
+                genres.append(KeywordsMDB.init(results: results["genres"][i]))
             }
         }
         if(results["homepage"] != nil){
@@ -65,13 +65,13 @@ class MovieDetailedMDB: MovieMDB {
         
         if(results["production_companies"] != nil){
             for(var i = 0; i < results["production_companies"].count; i++ ){
-                production_companies.append(KeywordMDB.init(results: results["production_companies"][i]))
+                production_companies.append(KeywordsMDB.init(results: results["production_companies"][i]))
             }
         }
         
         if(results["production_countries"] != nil){
             for(var i = 0; i < results["production_countries"].count; i++ ){
-                production_countries.append(KeywordMDB.init(results: results["production_countries"][i]))
+                production_countries.append(KeywordsMDB.init(results: results["production_countries"][i]))
             }
         }
         revenue = results["revenue"].int

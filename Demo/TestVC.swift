@@ -38,9 +38,9 @@ class Test: UIViewController{
         
         //
         //
-        //        KeywordMDB.tv_keywords(apikey, tvShowID: 1398){
+        //        KeywordsMDB.tv_keywords(apikey, tvShowID: 1398){
         //            apiReturn in
-        //            let keywords = apiReturn.MBDBReturn as! [KeywordMDB]
+        //            let keywords = apiReturn.MBDBReturn as! [KeywordsMDB]
         //            if(keywords.count > 0){
         //                for i in keywords {
         //                    print(i.name)
@@ -65,24 +65,31 @@ class Test: UIViewController{
         //            print(network.name)
         //        }
         
-        CreditsMDB.credits(apikey, creditID: "5256c98419c2956ff604fd2c", language: "en"){
-            credits in
-            let credit = credits.MBDBReturn as! CreditsMDB
-            if(credit.media.episodes.count > 0){
-                print(credit.media.episodes[0].overview)
-                print(credit.media.episodes[0].season_number)
-                print(credit.media.episodes[0].air_date)
-            }
-            if(credit.media.seasons.count > 0){
-                print(credit.media.seasons[0].season_number)
-                print(credit.media.seasons[0].poster_path)
-                print(credit.media.seasons[0].air_date)
-            }
-            print(credit.media_Type)
-            print(credit.department)
-            print(credit.job)
-            print(credit.id)
-            print(credit.person.name)
+        //        CreditsMDB.credits(apikey, creditID: "5256c98419c2956ff604fd2c", language: "en"){
+        //            credits in
+        //            let credit = credits.MBDBReturn as! CreditsMDB
+        //            if(credit.media.episodes.count > 0){
+        //                print(credit.media.episodes[0].overview)
+        //                print(credit.media.episodes[0].season_number)
+        //                print(credit.media.episodes[0].air_date)
+        //            }
+        //            if(credit.media.seasons.count > 0){
+        //                print(credit.media.seasons[0].season_number)
+        //                print(credit.media.seasons[0].poster_path)
+        //                print(credit.media.seasons[0].air_date)
+        //            }
+        //            print(credit.media_Type)
+        //            print(credit.department)
+        //            print(credit.job)
+        //            print(credit.id)
+        //            print(credit.person.name)
+        //        }
+        
+        KeywordsMDB.keyword(apikey, keywordId: 1721){
+            apiReturn in
+            let keyword = apiReturn.MBDBReturn as! KeywordsMDB
+            print(keyword.id)
+            print(keyword.name)
         }
     }
     

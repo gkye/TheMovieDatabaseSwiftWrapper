@@ -16,7 +16,7 @@ extension Client{
         let parameters: [String : AnyObject] = ["api_key": api_key]
         var url = "";
         if(movies == false || movies == nil){
-            url = "http://api.themoviedb.org/3/keyword/\(keywordId)"
+            url = "https://api.themoviedb.org/3/keyword/\(keywordId)"
         }else{
             url = "http://api.themoviedb.org/3/keyword/\(keywordId)/movies"
         }
@@ -26,7 +26,7 @@ extension Client{
             var aReturn = apiReturn
             if(apiReturn.error == nil){
                 if(movies == false || movies == nil){
-                    aReturn.MBDBReturn = KeywordMDB.init(results: aReturn.json!)
+                    aReturn.MBDBReturn = KeywordsMDB.init(results: aReturn.json!)
                 }else{
                     aReturn.MBDBReturn = MovieMDB.initialize(aReturn.json!["results"])
                 }

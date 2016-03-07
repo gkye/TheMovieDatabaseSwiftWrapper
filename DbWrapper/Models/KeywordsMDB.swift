@@ -11,7 +11,7 @@ import SwiftyJSON
 
 
 
-class KeywordMDB{
+class KeywordsMDB{
     
     var id: Int!
     var name: String!
@@ -37,9 +37,9 @@ class KeywordMDB{
             if(aReturn.error == nil){
                 let count = aReturn.json!["results"].count;
                 if(count > 0){
-                    var keywordsArray = [KeywordMDB]()
+                    var keywordsArray = [KeywordsMDB]()
                     for(var i = 0; i < count; i++ ){
-                        keywordsArray.append(KeywordMDB.init(results: aReturn.json!["results"][i]))
+                        keywordsArray.append(KeywordsMDB.init(results: aReturn.json!["results"][i]))
                     }
                     aReturn.MBDBReturn = keywordsArray
                 }
@@ -53,9 +53,9 @@ class KeywordMDB{
 class KeywordVC: UIViewController {
     
     override func viewDidLoad() {
-        //        KeywordMDB.keyword(apikey, keywordId: 9708){
+        //        KeywordsMDB.keyword(apikey, keywordId: 9708){
         //            apiReturn in
-        //            let keyword = apiReturn.MBDBReturn as! KeywordMDB
+        //            let keyword = apiReturn.MBDBReturn as! KeywordsMDB
         //            print(keyword.id)
         //            print(keyword.name)
         //        }
