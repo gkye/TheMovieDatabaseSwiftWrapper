@@ -22,6 +22,7 @@
 * Networks
 * Reviews 
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TV">TV</a>
+* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Movie">Movie</a>
 
 ## TODO
 ---------
