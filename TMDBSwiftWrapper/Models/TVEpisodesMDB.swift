@@ -14,7 +14,7 @@ class TVEpisodesMDB {
     
     var air_date: String!
     var crew = [CrewMDB]()
-    var guest_stars = [CastMDB]()
+    var guest_stars = [TVCastMDB]()
     var number: Int!
     var name: String!
     var overview: String!
@@ -30,14 +30,14 @@ class TVEpisodesMDB {
         
         if(results["crew"] != nil){
             for(var i = 0; i < results["crew"].count; i++ ){
-                crew.append(CrewMDB.init(results: results["crew"][i]))
+                crew.append(CrewMDB.init(crew: results["crew"][i]))
             }
         }
         number = results["number"].int
         
         if(results["guest_stars"] != nil){
             for(var i = 0; i < results["guest_stars"].count; i++ ){
-                guest_stars.append(CastMDB.init(results: results["guest_stars"][i]))
+                guest_stars.append(TVCastMDB.init(cast: results["guest_stars"][i]))
             }
         }
         name = results["name"].string
@@ -79,7 +79,7 @@ class TVEpisodesMDB {
             apiReturn in
             var aReturn = apiReturn
             if(aReturn.error == nil){
-                aReturn.MBDBReturn = CastCrewMDB.init(results: aReturn.json!)
+                aReturn.MBDBReturn = TVCreditsMDB.init(results: aReturn.json!)
             }
             completion(aReturn)
         }

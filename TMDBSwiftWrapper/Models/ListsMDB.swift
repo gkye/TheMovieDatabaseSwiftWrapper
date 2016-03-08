@@ -35,6 +35,8 @@ class ListsMDB{
         poster_path = results["poster_path"].string
     }
     
+    ///MARK: Lists
+    ///TODO: List item status
     ///Get a list by id.
     class func lists(api_key: String!, listId: String!, completion: (ClientReturn) -> ()) -> (){
         let url  = "http://api.themoviedb.org/3/list/\(listId)"

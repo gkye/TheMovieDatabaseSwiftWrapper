@@ -51,7 +51,7 @@ class TVSeasonsMDB{
             apiReturn in
             var aReturn = apiReturn
             if(aReturn.error == nil){
-                aReturn.MBDBReturn = CastCrewMDB.init(results: aReturn.json!)
+                aReturn.MBDBReturn = TVCreditsMDB.init(results: aReturn.json!)
             }
             completion(aReturn)
         }

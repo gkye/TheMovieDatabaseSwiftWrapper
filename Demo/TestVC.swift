@@ -171,38 +171,96 @@ class Test: UIViewController{
         //            }
         //        }
         
-//        MovieMDB.release_dates(apikey, movieID: 11){
+        //        MovieMDB.release_dates(apikey, movieID: 11){
+        //            apiReturn in
+        //            let releaseDates = apiReturn.MBDBReturn as! [MovieReleaseDatesMDB]
+        //            for releaseDate in releaseDates{
+        //                print(releaseDate.iso_3166_1)
+        //                print(releaseDate.release_dates[0].certification)
+        //                print(releaseDate.release_dates[0].iso_639_1!) //possible nil value
+        //                print(releaseDate.release_dates[0].note!) //possible nil value
+        //                print(releaseDate.release_dates[0].release_date)
+        //                print(releaseDate.release_dates[0].type)
+        //            }
+        //        }
+        
+        //        TVSeasonsMDB.season_number(apikey, tvShowId: 60735, seasonNumber: 1, language: "en"){
+        //            apiReturn in
+        //            let season = apiReturn.MBDBReturn as! TVSeasonsMDB
+        //            print(season.name)
+        //            print(season.overview)
+        //            print(season.episodes[0].name)
+        //        }
+        
+        //        ListsMDB.lists(apikey, listId: "5316bbcd92514158d20015b5"){
+        //            apiReturn in
+        //            let list = apiReturn.MBDBReturn as! ListsMDB
+        //            print(list.name)
+        //            print(list.favorite_count)
+        //            print(list.created_by)
+        //            print(list.description)
+        //            print(list.items[0].overview)
+        //            print(list.items[0].title)
+        //        }
+        
+        //        TVMDB.credits(apikey, tvShowID: 871){
+        //            apiReturn in
+        //            let credits = apiReturn.MBDBReturn as! CastCrewMDB
+        //            for i in credits.cast {
+        //                print(i.name)
+        //                print(i.character)
+        //                print(i.order)
+        //            }
+        //            for i1 in credits.crew {
+        //                print(i1.job)
+        //                print(i1.job)
+        //                print(i1.department)
+        //                print(i1.credit_id)
+        //            }
+        //        }
+        //
+        //
+        //        MovieMDB.credits(apikey, movieID: 871){
+        //            apiReturn in
+        //            let credits = apiReturn.MBDBReturn as! CastCrewMDB
+        //            for i in credits.cast {
+        //                print(i.cast_id)
+        //            }
+        //            for i1 in credits.crew {
+        //                print(i1.job)
+        //            }
+        //        }
+        
+//        
+//        MovieMDB.credits(apikey, movieID: 871){
 //            apiReturn in
-//            let releaseDates = apiReturn.MBDBReturn as! [MovieReleaseDatesMDB]
-//            for releaseDate in releaseDates{
-//                print(releaseDate.iso_3166_1)
-//                print(releaseDate.release_dates[0].certification)
-//                print(releaseDate.release_dates[0].iso_639_1!) //possible nil value
-//                print(releaseDate.release_dates[0].note!) //possible nil value
-//                print(releaseDate.release_dates[0].release_date)
-//                print(releaseDate.release_dates[0].type)
+//            let credits = apiReturn.MBDBReturn as! MovieCreditsMDB
+//            for crew in credits.crew{
+//                print(crew.job)
+//                print(crew.name)
+//                print(crew.department)
+//            }
+//            for cast in credits.cast{
+//                print(cast.character)
+//                print(cast.name)
+//                print(cast.order)
 //            }
 //        }
         
-//        TVSeasonsMDB.season_number(apikey, tvShowId: 60735, seasonNumber: 1, language: "en"){
-//            apiReturn in
-//            let season = apiReturn.MBDBReturn as! TVSeasonsMDB
-//            print(season.name)
-//            print(season.overview)
-//            print(season.episodes[0].name)
-//        }
-        
-        ListsMDB.lists(apikey, listId: "5316bbcd92514158d20015b5"){
+        TVEpisodesMDB.credits(apikey, tvShowId: 1396, seasonNumber: 1, episodeNumber: 1){
             apiReturn in
-            let list = apiReturn.MBDBReturn as! ListsMDB
-            print(list.name)
-            print(list.favorite_count)
-            print(list.created_by)
-            print(list.description)
-            print(list.items[0].overview)
-            print(list.items[0].title)
+            let castCrew = apiReturn.MBDBReturn as! TVCreditsMDB
+            for crew in castCrew.crew{
+                print(crew.job)
+                print(crew.name)
+                print(crew.department)
+            }
+            for cast in castCrew.cast{
+                print(cast.character)
+                print(cast.name)
+                print(cast.order)
+            }
         }
-        
     }
     
     
