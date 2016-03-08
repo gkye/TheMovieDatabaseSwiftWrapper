@@ -31,7 +31,7 @@
 		5E774D1E1C73939000783844 /* MovieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E774D1D1C73939000783844 /* MovieVC.swift */; };
 		5E774D201C74979000783844 /* TVEpisodesMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E774D1F1C74979000783844 /* TVEpisodesMDB.swift */; };
 		5E774D221C7498D800783844 /* TVSeasonsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E774D211C7498D800783844 /* TVSeasonsMDB.swift */; };
-		5E774D241C749ECC00783844 /* Client_SeasonsEpisodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E774D231C749ECC00783844 /* Client_SeasonsEpisodes.swift */; };
+		5E774D241C749ECC00783844 /* Client_TVSeasonsEpisodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E774D231C749ECC00783844 /* Client_TVSeasonsEpisodes.swift */; };
 		5E774D281C74C21300783844 /* Alternative_TitlesMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E774D271C74C21300783844 /* Alternative_TitlesMDB.swift */; };
 		5E9C58DE1C8F41AB00EADD8A /* MovieListMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C58DD1C8F41AB00EADD8A /* MovieListMDB.swift */; };
 		5E9C58E01C8F47C500EADD8A /* MovieReviewMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C58DF1C8F47C500EADD8A /* MovieReviewMDB.swift */; };
@@ -105,7 +105,7 @@
 		5E774D1D1C73939000783844 /* MovieVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieVC.swift; sourceTree = "<group>"; };
 		5E774D1F1C74979000783844 /* TVEpisodesMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVEpisodesMDB.swift; sourceTree = "<group>"; };
 		5E774D211C7498D800783844 /* TVSeasonsMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVSeasonsMDB.swift; sourceTree = "<group>"; };
-		5E774D231C749ECC00783844 /* Client_SeasonsEpisodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Client_SeasonsEpisodes.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		5E774D231C749ECC00783844 /* Client_TVSeasonsEpisodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Client_TVSeasonsEpisodes.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5E774D271C74C21300783844 /* Alternative_TitlesMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alternative_TitlesMDB.swift; sourceTree = "<group>"; };
 		5E9C58DD1C8F41AB00EADD8A /* MovieListMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListMDB.swift; sourceTree = "<group>"; };
 		5E9C58DF1C8F47C500EADD8A /* MovieReviewMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieReviewMDB.swift; sourceTree = "<group>"; };
@@ -291,7 +291,7 @@
 				5EFC2A2A1C6C6B460014FA45 /* Client_Lists.swift */,
 				5E01076B1C7194410042BE40 /* Client_TV.swift */,
 				5E774D1B1C7391E300783844 /* Client_Movies.swift */,
-				5E774D231C749ECC00783844 /* Client_SeasonsEpisodes.swift */,
+				5E774D231C749ECC00783844 /* Client_TVSeasonsEpisodes.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -516,7 +516,7 @@
 				5EFC2A391C6C6B460014FA45 /* DiscoverTV.swift in Sources */,
 				5EDC8EC81C6DBF7F0086B77B /* Client_Genres.swift in Sources */,
 				5EFC2A401C6C6B620014FA45 /* DiscoverTVVC.swift in Sources */,
-				5E774D241C749ECC00783844 /* Client_SeasonsEpisodes.swift in Sources */,
+				5E774D241C749ECC00783844 /* Client_TVSeasonsEpisodes.swift in Sources */,
 				5EFC2A051C6C6A2A0014FA45 /* AppDelegate.swift in Sources */,
 				5EFC2A381C6C6B460014FA45 /* DiscoverMovie.swift in Sources */,
 				5E9C58E01C8F47C500EADD8A /* MovieReviewMDB.swift in Sources */,

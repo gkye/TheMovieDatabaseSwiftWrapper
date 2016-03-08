@@ -9,10 +9,7 @@
 import Foundation
 extension Client{
     class func Seasons(urlType: String!, api_key: String!, language: String?, completion: (ClientReturn) -> ()) -> (){
-        
         var parameters: [String : AnyObject] = ["api_key": api_key]
-    
-        
         if(language != nil){
             parameters["language"] = language
         }
