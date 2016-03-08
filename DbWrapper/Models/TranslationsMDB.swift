@@ -23,10 +23,10 @@ class TranslationsMDB{
     
     ///Return an array of `TranslationsMDB`
     class func initialize(json: JSON)->[TranslationsMDB] {
-        var discoverReturn = [TranslationsMDB]()
+        var translationsArray = [TranslationsMDB]()
         for(var i = 0; i < json.count; i++){
-            discoverReturn.append(TranslationsMDB(translations: json[i]))
+            translationsArray.append(TranslationsMDB(translations: json[i]))
         }
-        return discoverReturn
+        return translationsArray
     }
 }

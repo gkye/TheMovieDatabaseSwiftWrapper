@@ -140,35 +140,56 @@ class Test: UIViewController{
         //            }
         //        }
         
-//        MovieMDB.translations(apikey, movieID: 1396){
+        //        MovieMDB.translations(apikey, movieID: 1396){
+        //            apiReturn in
+        //            let translations = apiReturn.MBDBReturn as! [TranslationsMDB]
+        //            for translation in translations{
+        //                print(translation.iso_639_1)
+        //                print(translation.english_name)
+        //                print(translation.name)
+        //            }
+        //        }
+        
+        //        MovieMDB.list(apikey, movieID: 1396, page: 1, language: "en"){
+        //            apiReturn in
+        //            let lists  = apiReturn.MBDBReturn as! [MovieListMDB]
+        //            for list in lists{
+        //                print(list.name!)
+        //                print(list.description)
+        //                print(list.item_count)
+        //            }
+        //        }
+        
+        //        MovieMDB.reviews(apikey, movieID: 83542, page: 1, language: "en"){
+        //            apiReturn in
+        //            let reviews = apiReturn.MBDBReturn as! [MovieReviewsMDB]
+        //            for review in reviews{
+        //                print(review.author)
+        //                print(review.content)
+        //                print(review.url)
+        //                 print(review.id)
+        //            }
+        //        }
+        
+//        MovieMDB.release_dates(apikey, movieID: 11){
 //            apiReturn in
-//            let translations = apiReturn.MBDBReturn as! [TranslationsMDB]
-//            for translation in translations{
-//                print(translation.iso_639_1)
-//                print(translation.english_name)
-//                print(translation.name)
+//            let releaseDates = apiReturn.MBDBReturn as! [MovieReleaseDatesMDB]
+//            for releaseDate in releaseDates{
+//                print(releaseDate.iso_3166_1)
+//                print(releaseDate.release_dates[0].certification)
+//                print(releaseDate.release_dates[0].iso_639_1!) //possible nil value
+//                print(releaseDate.release_dates[0].note!) //possible nil value
+//                print(releaseDate.release_dates[0].release_date)
+//                print(releaseDate.release_dates[0].type)
 //            }
 //        }
         
-//        MovieMDB.list(apikey, movieID: 1396, page: 1, language: "en"){
-//            apiReturn in
-//            let lists  = apiReturn.MBDBReturn as! [MovieListMDB]
-//            for list in lists{
-//                print(list.name!)
-//                print(list.description)
-//                print(list.item_count)
-//            }
-//        }
-        
-        MovieMDB.reviews(apikey, movieID: 83542, page: 1, language: "en"){
+        TVSeasonsMDB.season_number(apikey, tvShowId: 60735, seasonNumber: 1, language: "en"){
             apiReturn in
-            let reviews = apiReturn.MBDBReturn as! [MovieReviewsMDB]
-            for review in reviews{
-                print(review.author)
-                print(review.content)
-                print(review.url)
-                 print(review.id)
-            }
+            let season = apiReturn.MBDBReturn as! TVSeasonsMDB
+            print(season.name)
+            print(season.overview)
+            print(season.episodes[0].name)
         }
         
         

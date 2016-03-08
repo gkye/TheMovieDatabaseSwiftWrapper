@@ -29,10 +29,10 @@ class VideosMDB{
     }
     
     class func initialize(json: JSON)->[VideosMDB] {
-        var discoverReturn = [VideosMDB]()
+        var videoArray = [VideosMDB]()
         for(var i = 0; i < json.count; i++){
-            discoverReturn.append(VideosMDB(results: json[i]))
+            videoArray.append(VideosMDB(results: json[i]))
         }
-        return discoverReturn
+        return videoArray
     }
 }

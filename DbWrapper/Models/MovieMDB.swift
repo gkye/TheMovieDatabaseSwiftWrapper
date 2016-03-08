@@ -12,14 +12,7 @@ import SwiftyJSON
 
 extension MovieMDB{
     
-    //Init function to return array of MovieMDB objs
-    class func initialize(json: JSON)->[MovieMDB] {
-        var discoverReturn = [MovieMDB]()
-        for(var i = 0; i < json.count; i++){
-            discoverReturn.append(MovieMDB(results: json[i]))
-        }
-        return discoverReturn
-    }
+  
     
     ///Get the basic movie information for a specific movie id.
     class func movie(api_key: String!, movieID: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
@@ -77,6 +70,19 @@ extension MovieMDB{
             var aReturn = apiReturn
             if(aReturn.error == nil){
                 aReturn.MBDBReturn = KeywordsMDB.initialize_(aReturn.json!["keywords"])
+            }
+            completion(aReturn)
+        }
+        
+    }
+    
+    ///Get the release dates, certifications and related information by country for a specific movie id.
+    class func release_dates(api_key: String!, movieID: Int, completion: (ClientReturn) -> ()) -> (){
+        Client.Movies("\(movieID)/release_dates", api_key: api_key, page: nil, language: nil){
+            apiReturn in
+            var aReturn = apiReturn
+            if(aReturn.error == nil){
+                aReturn.MBDBReturn = MovieReleaseDatesMDB.initialize(aReturn.json!["results"])
             }
             completion(aReturn)
         }

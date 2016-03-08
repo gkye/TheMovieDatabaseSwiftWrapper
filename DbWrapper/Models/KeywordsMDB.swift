@@ -23,11 +23,11 @@ class KeywordsMDB{
     
     //Init function to return array of KeywordsMDB objs
    class func initialize_(json: JSON)->[KeywordsMDB] {
-        var discoverReturn = [KeywordsMDB]()
+        var keywordsArray = [KeywordsMDB]()
         for(var i = 0; i < json.count; i++){
-            discoverReturn.append(KeywordsMDB(results: json[i]))
+            keywordsArray.append(KeywordsMDB(results: json[i]))
         }
-        return discoverReturn
+        return keywordsArray
     }
     
     ///Get the basic information for a specific keyword id.

@@ -33,7 +33,6 @@ class TVEpisodesMDB {
                 crew.append(CrewMDB.init(results: results["crew"][i]))
             }
         }
-        
         number = results["number"].int
         
         if(results["guest_stars"] != nil){
@@ -41,7 +40,6 @@ class TVEpisodesMDB {
                 guest_stars.append(CastMDB.init(results: results["guest_stars"][i]))
             }
         }
-        
         name = results["name"].string
         overview = results["overview"].string
         id = results["id"].int
@@ -51,16 +49,17 @@ class TVEpisodesMDB {
         vote_average = results["vote_average"].int
         vote_count  = results[" vote_count"].int
     }
+    
     class func returnArrayOf(json: JSON) -> [TVEpisodesMDB] {
-        var changes = [TVEpisodesMDB]()
+        var episodeArray = [TVEpisodesMDB]()
         for(var i = 0; i < json.count; i++){
-            changes.append(TVEpisodesMDB(results: json[i]))
+            episodeArray.append(TVEpisodesMDB(results: json[i]))
         }
-        return changes
+        return episodeArray
     }
     
     ///Get the primary information about a TV episode by combination of a season and episode number.
-    class func number(api_key: String, tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
+    class func episode_number(api_key: String, tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
         let urltype = "\(tvShowId)/season/\(seasonNumber)/episode/\(episodeNumber)"
         Client.Seasons(urltype, api_key: apikey, language: language){
             apiReturn in
@@ -114,6 +113,7 @@ class TVEpisodesMDB {
         }
     }
     
+    ///Get the videos that have been added to a TV episode (teasers, clips, etc...)
     class func videos(api_key: String, tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
         let urltype = "\(tvShowId)/season/\(seasonNumber)/episode/\(episodeNumber)/videos"
         Client.Seasons(urltype, api_key: apikey, language: language){

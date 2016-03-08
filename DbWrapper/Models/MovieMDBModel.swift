@@ -51,4 +51,14 @@ class MovieMDB:  DiscoverMovie {
             original_title = nil
         }
     }
+    
+    //Init function to return array of MovieMDB objs
+    class func initialize(json: JSON)->[MovieMDB] {
+        var movieArray = [MovieMDB]()
+        for(var i = 0; i < json.count; i++){
+            movieArray.append(MovieMDB(results: json[i]))
+        }
+        return movieArray
+    }
+    
 }

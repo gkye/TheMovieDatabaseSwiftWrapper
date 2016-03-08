@@ -30,7 +30,7 @@ class TVSeasonsMDB{
     }
     
     ///Get the primary information about a TV season by its season number.
-    class func number(api_key: String, tvShowId: Int!, seasonNumber: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
+    class func season_number(api_key: String, tvShowId: Int!, seasonNumber: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
         //     [/tv/11/season/1]
         let urltype = "\(tvShowId)/season/\(seasonNumber)"
         Client.Seasons(urltype, api_key: apikey, language: language){
@@ -40,7 +40,6 @@ class TVSeasonsMDB{
                 aReturn.MBDBReturn = TVSeasonsMDB(results: apiReturn.json!)
             }
             completion(aReturn)
-            
         }
     }
    
@@ -67,7 +66,6 @@ class TVSeasonsMDB{
             if(aReturn.error == nil){
                 aReturn.MBDBReturn = ExternalIdsMDB.init(results: aReturn.json!)
             }
-            
             completion(aReturn)
         }
     }

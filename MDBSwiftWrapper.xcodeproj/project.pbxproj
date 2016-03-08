@@ -18,6 +18,8 @@
 		5E01077B1C72DDB00042BE40 /* Client_Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E01077A1C72DDB00042BE40 /* Client_Configuration.swift */; };
 		5E06DAEB1C8DD27700F6E0EE /* Client_Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E06DAEA1C8DD27700F6E0EE /* Client_Credits.swift */; };
 		5E06DAED1C8DD28200F6E0EE /* CreditsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E06DAEC1C8DD28200F6E0EE /* CreditsMDB.swift */; };
+		5E1449531C8F55E5001F7CE3 /* TVMDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1449521C8F55E5001F7CE3 /* TVMDBModel.swift */; };
+		5E1449551C8F5C35001F7CE3 /* ListMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1449541C8F5C35001F7CE3 /* ListMDB.swift */; };
 		5E38A9CC1C6D54920037AB4B /* CompaniesMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38A9CB1C6D54920037AB4B /* CompaniesMDB.swift */; };
 		5E38A9CE1C6D56560037AB4B /* Client_Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38A9CD1C6D56560037AB4B /* Client_Company.swift */; };
 		5E38A9D01C6DAD6F0037AB4B /* KeywordsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38A9CF1C6DAD6F0037AB4B /* KeywordsMDB.swift */; };
@@ -34,6 +36,7 @@
 		5E9C58DE1C8F41AB00EADD8A /* MovieListMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C58DD1C8F41AB00EADD8A /* MovieListMDB.swift */; };
 		5E9C58E01C8F47C500EADD8A /* MovieReviewMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C58DF1C8F47C500EADD8A /* MovieReviewMDB.swift */; };
 		5E9C58E21C8F485500EADD8A /* MovieMDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C58E11C8F485500EADD8A /* MovieMDBModel.swift */; };
+		5E9C58E41C8F4B8300EADD8A /* MovieReleaseDatesMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C58E31C8F4B8300EADD8A /* MovieReleaseDatesMDB.swift */; };
 		5EDC8EC61C6DBF440086B77B /* GenresMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC8EC51C6DBF440086B77B /* GenresMDB.swift */; };
 		5EDC8EC81C6DBF7F0086B77B /* Client_Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC8EC71C6DBF7F0086B77B /* Client_Genres.swift */; };
 		5EDC8ECA1C6E460C0086B77B /* MovieMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC8EC91C6E460C0086B77B /* MovieMDB.swift */; };
@@ -89,6 +92,8 @@
 		5E01077A1C72DDB00042BE40 /* Client_Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Client_Configuration.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5E06DAEA1C8DD27700F6E0EE /* Client_Credits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Client_Credits.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5E06DAEC1C8DD28200F6E0EE /* CreditsMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsMDB.swift; sourceTree = "<group>"; };
+		5E1449521C8F55E5001F7CE3 /* TVMDBModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVMDBModel.swift; sourceTree = "<group>"; };
+		5E1449541C8F5C35001F7CE3 /* ListMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListMDB.swift; sourceTree = "<group>"; };
 		5E38A9CB1C6D54920037AB4B /* CompaniesMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompaniesMDB.swift; sourceTree = "<group>"; };
 		5E38A9CD1C6D56560037AB4B /* Client_Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = Client_Company.swift; path = DbWrapper/Models/Client_Company.swift; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5E38A9CF1C6DAD6F0037AB4B /* KeywordsMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeywordsMDB.swift; sourceTree = "<group>"; };
@@ -105,6 +110,7 @@
 		5E9C58DD1C8F41AB00EADD8A /* MovieListMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListMDB.swift; sourceTree = "<group>"; };
 		5E9C58DF1C8F47C500EADD8A /* MovieReviewMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieReviewMDB.swift; sourceTree = "<group>"; };
 		5E9C58E11C8F485500EADD8A /* MovieMDBModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieMDBModel.swift; sourceTree = "<group>"; };
+		5E9C58E31C8F4B8300EADD8A /* MovieReleaseDatesMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieReleaseDatesMDB.swift; sourceTree = "<group>"; };
 		5EDC8EC51C6DBF440086B77B /* GenresMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresMDB.swift; sourceTree = "<group>"; };
 		5EDC8EC71C6DBF7F0086B77B /* Client_Genres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Client_Genres.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5EDC8EC91C6E460C0086B77B /* MovieMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieMDB.swift; sourceTree = "<group>"; };
@@ -168,6 +174,7 @@
 		5E01076F1C71A7C10042BE40 /* TV */ = {
 			isa = PBXGroup;
 			children = (
+				5E1449521C8F55E5001F7CE3 /* TVMDBModel.swift */,
 				5EDC8ECB1C6E47C70086B77B /* TVMDB.swift */,
 				5E01076D1C71A7B90042BE40 /* TVDetailedMDB.swift */,
 				5E774D211C7498D800783844 /* TVSeasonsMDB.swift */,
@@ -197,6 +204,7 @@
 				5E774D191C738D9300783844 /* MovieDetailedMDB.swift */,
 				5E9C58DD1C8F41AB00EADD8A /* MovieListMDB.swift */,
 				5E9C58DF1C8F47C500EADD8A /* MovieReviewMDB.swift */,
+				5E9C58E31C8F4B8300EADD8A /* MovieReleaseDatesMDB.swift */,
 			);
 			name = Movies;
 			sourceTree = "<group>";
@@ -291,6 +299,7 @@
 		5EFC2A2B1C6C6B460014FA45 /* Models & Funcs */ = {
 			isa = PBXGroup;
 			children = (
+				5E0107691C718E210042BE40 /* PageResultsMDB.swift */,
 				5E4E35F81C8E07E7005798CB /* Shared */,
 				5E0107781C72DCF30042BE40 /* ConfigurationMDB.swift */,
 				5E38A9CF1C6DAD6F0037AB4B /* KeywordsMDB.swift */,
@@ -300,9 +309,9 @@
 				5EFC2A2E1C6C6B460014FA45 /* Discover */,
 				5EDC8EC51C6DBF440086B77B /* GenresMDB.swift */,
 				5EDC8ECD1C6E4A950086B77B /* NetworksMDB.swift */,
-				5E0107691C718E210042BE40 /* PageResultsMDB.swift */,
 				5E0107761C72D1D40042BE40 /* VideosMDB.swift */,
 				5EDC8ED71C6E51CE0086B77B /* ReviewMDB.swift */,
+				5E1449541C8F5C35001F7CE3 /* ListMDB.swift */,
 				5E01076F1C71A7C10042BE40 /* TV */,
 				5E774D181C738D3C00783844 /* Movies */,
 			);
@@ -488,8 +497,10 @@
 				5E06DAED1C8DD28200F6E0EE /* CreditsMDB.swift in Sources */,
 				5E4E35FA1C8E08EB005798CB /* TranslationsMDB.swift in Sources */,
 				5E774D221C7498D800783844 /* TVSeasonsMDB.swift in Sources */,
+				5E1449551C8F5C35001F7CE3 /* ListMDB.swift in Sources */,
 				5EFC2A371C6C6B460014FA45 /* Discover.swift in Sources */,
 				5E774D1E1C73939000783844 /* MovieVC.swift in Sources */,
+				5E9C58E41C8F4B8300EADD8A /* MovieReleaseDatesMDB.swift in Sources */,
 				5EDC8ED81C6E51CE0086B77B /* ReviewMDB.swift in Sources */,
 				5EFC2A321C6C6B460014FA45 /* Clent_Discover.swift in Sources */,
 				5EFC2A351C6C6B460014FA45 /* Client_List.swift in Sources */,
@@ -515,6 +526,7 @@
 				5E06DAEB1C8DD27700F6E0EE /* Client_Credits.swift in Sources */,
 				5E9C58DE1C8F41AB00EADD8A /* MovieListMDB.swift in Sources */,
 				5E38A9D01C6DAD6F0037AB4B /* KeywordsMDB.swift in Sources */,
+				5E1449531C8F55E5001F7CE3 /* TVMDBModel.swift in Sources */,
 				5EFC2A461C6C720B0014FA45 /* Client_Changes.swift in Sources */,
 				5E774D1A1C738D9300783844 /* MovieDetailedMDB.swift in Sources */,
 				5E774D281C74C21300783844 /* Alternative_TitlesMDB.swift in Sources */,

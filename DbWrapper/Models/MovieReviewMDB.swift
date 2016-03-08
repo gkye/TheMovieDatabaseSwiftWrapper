@@ -24,10 +24,10 @@ class MovieReviewsMDB{
     }
     ///Return an array of `MovieReviewsMDB`s
     class func initialize(json: JSON)->[MovieReviewsMDB] {
-        var discoverReturn = [MovieReviewsMDB]()
+        var moveReviewArray = [MovieReviewsMDB]()
         for(var i = 0; i < json.count; i++){
-            discoverReturn.append(MovieReviewsMDB(results: json[i]))
+            moveReviewArray.append(MovieReviewsMDB(results: json[i]))
         }
-        return discoverReturn
+        return moveReviewArray
     }
 }
