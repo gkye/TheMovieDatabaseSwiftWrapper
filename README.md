@@ -14,9 +14,8 @@
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Collections"> Collections </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Companies"> Companies </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Credits"> Credits </a>
-* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Discover"> Discover </a>
-* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/DiscoverTV"> DiscoverTV </a> 
-* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/DiscoverMovie"> DiscoverMovie</a>
+* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Discover"> Discover </a> | <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/DiscoverTV"> DiscoverTV </a> |  <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/DiscoverMovie"> DiscoverMovie</a>
+
 * Certifications *
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Keywords"> Keywords </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Genres"> Genres </a>
