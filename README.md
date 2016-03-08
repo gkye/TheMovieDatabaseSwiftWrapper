@@ -17,6 +17,7 @@
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Discover"> Discover </a> | <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/DiscoverTV"> DiscoverTV </a> |  <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/DiscoverMovie"> DiscoverMovie</a>
 * Certifications *
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Keywords"> Keywords </a>
+* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Lists"> List </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Genres"> Genres </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Networks"> Networks </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Reviews"> Reviews </a> 
@@ -28,7 +29,6 @@
 ## TODO
 ---------
 * Find 
-* List 
 * People 
 * Search 
 
