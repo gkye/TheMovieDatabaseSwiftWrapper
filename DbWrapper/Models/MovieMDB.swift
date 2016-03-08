@@ -10,49 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-//Sublass and inherit all related methods and variables here**
-class MovieMDB:  DiscoverMovie {
-    
-    var adult: Bool!
-    var title: String!
-    var video: Bool!
-    var release_date: String!
-    var original_title: String!
-    
-    override init(results: JSON) {
-        super.init(results: results)
-        
-        if(results["title"] != nil){
-            title = results["title"].string
-        }else{
-            title = nil
-        }
-        
-        if(results["video"] != nil){
-            video = results["video"].bool
-        }else{
-            video = nil
-        }
-        
-        if(results["adult"] != nil){
-            adult = results["adult"].bool
-        }else{
-            adult = nil
-        }
-        
-        if(results["release_date"] != nil){
-            release_date = results["release_date"].string
-        }else{
-            release_date = nil
-        }
-        
-        if(results["original_title"] != nil){
-            original_title = results["original_title"].string
-        }else{
-            original_title = nil
-        }
-    }
-    
+extension MovieMDB{
     
     //Init function to return array of MovieMDB objs
     class func initialize(json: JSON)->[MovieMDB] {
@@ -87,9 +45,7 @@ class MovieMDB:  DiscoverMovie {
             completion(aReturn)
         }
     }
-    
-    
-    
+   
     ///Get the cast and crew information for a specific movie id.
     class func credits(api_key: String!, movieID: Int!, completion: (ClientReturn) -> ()) -> (){
         Client.Movies("\(movieID)/credits", api_key: api_key, page: nil, language: nil){
@@ -115,7 +71,6 @@ class MovieMDB:  DiscoverMovie {
     }
     
     ///Get the plot keywords for a specific movie id.
-    
     class func keywords(api_key: String!, movieID: Int, completion: (ClientReturn) -> ()) -> (){
         Client.Movies("\(movieID)/keywords", api_key: api_key, page: nil, language: nil){
             apiReturn in
@@ -165,6 +120,21 @@ class MovieMDB:  DiscoverMovie {
             }
             completion(aReturn)
         }
+    }
+    
+    ///Get the reviews for a particular movie id.
+    class func reviews(api_key: String!, movieID: Int!, page: Int?, language: String, completion: (ClientReturn) -> ()) -> (){
+        Client.Movies("\(movieID)/reviews", api_key: api_key, page: page, language: language){
+            apiReturn in
+            var aReturn = apiReturn
+            if(aReturn.error == nil){
+                if(apiReturn.json!["results"].count > 0){
+                    aReturn.MBDBReturn = MovieReviewsMDB.initialize(aReturn.json!["results"])
+                }
+            }
+            completion(aReturn)
+        }
+        
     }
     
     ///Get the lists that the movie belongs to.

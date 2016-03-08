@@ -32,6 +32,8 @@
 		5E774D241C749ECC00783844 /* Client_SeasonsEpisodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E774D231C749ECC00783844 /* Client_SeasonsEpisodes.swift */; };
 		5E774D281C74C21300783844 /* Alternative_TitlesMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E774D271C74C21300783844 /* Alternative_TitlesMDB.swift */; };
 		5E9C58DE1C8F41AB00EADD8A /* MovieListMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C58DD1C8F41AB00EADD8A /* MovieListMDB.swift */; };
+		5E9C58E01C8F47C500EADD8A /* MovieReviewMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C58DF1C8F47C500EADD8A /* MovieReviewMDB.swift */; };
+		5E9C58E21C8F485500EADD8A /* MovieMDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C58E11C8F485500EADD8A /* MovieMDBModel.swift */; };
 		5EDC8EC61C6DBF440086B77B /* GenresMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC8EC51C6DBF440086B77B /* GenresMDB.swift */; };
 		5EDC8EC81C6DBF7F0086B77B /* Client_Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC8EC71C6DBF7F0086B77B /* Client_Genres.swift */; };
 		5EDC8ECA1C6E460C0086B77B /* MovieMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC8EC91C6E460C0086B77B /* MovieMDB.swift */; };
@@ -101,6 +103,8 @@
 		5E774D231C749ECC00783844 /* Client_SeasonsEpisodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Client_SeasonsEpisodes.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5E774D271C74C21300783844 /* Alternative_TitlesMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alternative_TitlesMDB.swift; sourceTree = "<group>"; };
 		5E9C58DD1C8F41AB00EADD8A /* MovieListMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListMDB.swift; sourceTree = "<group>"; };
+		5E9C58DF1C8F47C500EADD8A /* MovieReviewMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieReviewMDB.swift; sourceTree = "<group>"; };
+		5E9C58E11C8F485500EADD8A /* MovieMDBModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieMDBModel.swift; sourceTree = "<group>"; };
 		5EDC8EC51C6DBF440086B77B /* GenresMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresMDB.swift; sourceTree = "<group>"; };
 		5EDC8EC71C6DBF7F0086B77B /* Client_Genres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Client_Genres.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5EDC8EC91C6E460C0086B77B /* MovieMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieMDB.swift; sourceTree = "<group>"; };
@@ -189,8 +193,10 @@
 			isa = PBXGroup;
 			children = (
 				5EDC8EC91C6E460C0086B77B /* MovieMDB.swift */,
+				5E9C58E11C8F485500EADD8A /* MovieMDBModel.swift */,
 				5E774D191C738D9300783844 /* MovieDetailedMDB.swift */,
 				5E9C58DD1C8F41AB00EADD8A /* MovieListMDB.swift */,
+				5E9C58DF1C8F47C500EADD8A /* MovieReviewMDB.swift */,
 			);
 			name = Movies;
 			sourceTree = "<group>";
@@ -254,7 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				5EFC2A261C6C6B460014FA45 /* Client */,
-				5EFC2A2B1C6C6B460014FA45 /* Models */,
+				5EFC2A2B1C6C6B460014FA45 /* Models & Funcs */,
 			);
 			path = DbWrapper;
 			sourceTree = "<group>";
@@ -282,7 +288,7 @@
 			path = Client;
 			sourceTree = "<group>";
 		};
-		5EFC2A2B1C6C6B460014FA45 /* Models */ = {
+		5EFC2A2B1C6C6B460014FA45 /* Models & Funcs */ = {
 			isa = PBXGroup;
 			children = (
 				5E4E35F81C8E07E7005798CB /* Shared */,
@@ -300,6 +306,7 @@
 				5E01076F1C71A7C10042BE40 /* TV */,
 				5E774D181C738D3C00783844 /* Movies */,
 			);
+			name = "Models & Funcs";
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -501,6 +508,8 @@
 				5E774D241C749ECC00783844 /* Client_SeasonsEpisodes.swift in Sources */,
 				5EFC2A051C6C6A2A0014FA45 /* AppDelegate.swift in Sources */,
 				5EFC2A381C6C6B460014FA45 /* DiscoverMovie.swift in Sources */,
+				5E9C58E01C8F47C500EADD8A /* MovieReviewMDB.swift in Sources */,
+				5E9C58E21C8F485500EADD8A /* MovieMDBModel.swift in Sources */,
 				5E01076C1C7194410042BE40 /* Client_TV.swift in Sources */,
 				5E0107771C72D1D40042BE40 /* VideosMDB.swift in Sources */,
 				5E06DAEB1C8DD27700F6E0EE /* Client_Credits.swift in Sources */,

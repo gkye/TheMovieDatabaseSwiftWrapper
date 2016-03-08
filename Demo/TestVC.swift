@@ -150,15 +150,27 @@ class Test: UIViewController{
 //            }
 //        }
         
-        MovieMDB.list(apikey, movieID: 1396, page: 1, language: "en"){
+//        MovieMDB.list(apikey, movieID: 1396, page: 1, language: "en"){
+//            apiReturn in
+//            let lists  = apiReturn.MBDBReturn as! [MovieListMDB]
+//            for list in lists{
+//                print(list.name!)
+//                print(list.description)
+//                print(list.item_count)
+//            }
+//        }
+        
+        MovieMDB.reviews(apikey, movieID: 83542, page: 1, language: "en"){
             apiReturn in
-            let lists  = apiReturn.MBDBReturn as! [MovieListMDB]
-            for list in lists{
-                print(list.name!)
-                print(list.description)
-                print(list.item_count)
+            let reviews = apiReturn.MBDBReturn as! [MovieReviewsMDB]
+            for review in reviews{
+                print(review.author)
+                print(review.content)
+                print(review.url)
+                 print(review.id)
             }
         }
+        
         
         
     }
