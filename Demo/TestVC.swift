@@ -86,49 +86,80 @@ class Test: UIViewController{
         //        }
         
         
-//        KeywordsMDB.keyword(apikey, keywordId: 1721){
-//            keyword in
-//            let keywords = keyword.MBDBReturn as! KeywordsMDB
-//            print(keywords.id)
-//            print(keywords.name)
-//        }
-//        
-//        KeywordsMDB.keyword_movies(apikey, keywordId: 1721, page: 1, language: "en"){
-//            apiReturn in
-//            let movie = apiReturn.MBDBReturn as! [MovieMDB]
-//            print(movie[0].title)
-//            print(movie[0].original_title)
-//            print(movie[0].release_date)
-//            print(movie[0].overview)
-//        }
+        //        KeywordsMDB.keyword(apikey, keywordId: 1721){
+        //            keyword in
+        //            let keywords = keyword.MBDBReturn as! KeywordsMDB
+        //            print(keywords.id)
+        //            print(keywords.name)
+        //        }
+        //
+        //        KeywordsMDB.keyword_movies(apikey, keywordId: 1721, page: 1, language: "en"){
+        //            apiReturn in
+        //            let movie = apiReturn.MBDBReturn as! [MovieMDB]
+        //            print(movie[0].title)
+        //            print(movie[0].original_title)
+        //            print(movie[0].release_date)
+        //            print(movie[0].overview)
+        //        }
         
-//        MovieMDB.keywords(apikey, movieID: 1721){
+        //        MovieMDB.keywords(apikey, movieID: 1721){
+        //            apiReturn in
+        //            let keywords = apiReturn.MBDBReturn as! [KeywordsMDB]
+        //            for keyword in keywords{
+        //                print(keyword.id)
+        //                print(keyword.name)
+        //            }
+        //        }
+        
+        //        TVMDB.keywords(apikey, tvShowID: 1396){
+        //            apiReturn in
+        //            let keywords = apiReturn.MBDBReturn as! [KeywordsMDB]
+        //            for keyword in keywords{
+        //                print(keyword.id)
+        //                print(keyword.name)
+        //            }
+        //        }
+        
+        
+        //        TVMDB.content_ratings(apikey, tvShowID: 1396){
+        //            apiReturn in
+        //            let ratings = apiReturn.MBDBReturn as! [Content_RatingsMDB]
+        //            for rating in ratings {
+        //                print(rating.iso_3166_1)
+        //                print(rating.rating)
+        //            }
+        //        }
+        
+        //        TVMDB.translations(apikey, tvShowID: 1396){
+        //            apiReturn in
+        //            let translations = apiReturn.MBDBReturn as! [TranslationsMDB]
+        //            for translation in translations{
+        //                print(translation.iso_639_1)
+        //                print(translation.english_name)
+        //                print(translation.name)
+        //            }
+        //        }
+        
+//        MovieMDB.translations(apikey, movieID: 1396){
 //            apiReturn in
-//            let keywords = apiReturn.MBDBReturn as! [KeywordsMDB]
-//            for keyword in keywords{
-//                print(keyword.id)
-//                print(keyword.name)
+//            let translations = apiReturn.MBDBReturn as! [TranslationsMDB]
+//            for translation in translations{
+//                print(translation.iso_639_1)
+//                print(translation.english_name)
+//                print(translation.name)
 //            }
 //        }
         
-//        TVMDB.keywords(apikey, tvShowID: 1396){
-//            apiReturn in
-//            let keywords = apiReturn.MBDBReturn as! [KeywordsMDB]
-//            for keyword in keywords{
-//                print(keyword.id)
-//                print(keyword.name)
-//            }
-//        }
-        
-        
-        TVMDB.content_ratings(apikey, tvShowID: 1396){
+        MovieMDB.list(apikey, movieID: 1396, page: 1, language: "en"){
             apiReturn in
-            let ratings = apiReturn.MBDBReturn as! [Content_RatingsMDB]
-            for rating in ratings {
-                print(rating.iso_3166_1)
-                print(rating.rating)
+            let lists  = apiReturn.MBDBReturn as! [MovieListMDB]
+            for list in lists{
+                print(list.name!)
+                print(list.description)
+                print(list.item_count)
             }
         }
+        
         
     }
     

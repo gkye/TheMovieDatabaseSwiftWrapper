@@ -178,6 +178,18 @@ class TVMDB: DiscoverTV {
             completion(aReturn)
         }
     }
+    ///Get the list of translations that exist for a TV series. These translations cascade down to the episode level.
+    class func translations(api_key: String!, tvShowID: Int!, completion: (ClientReturn) -> ()) -> (){
+        Client.TV("\(tvShowID)/translations", api_key: api_key, page: nil, language: nil, timezone: nil){
+            apiReturn in
+            var aReturn = apiReturn
+            if(aReturn.error == nil){
+                aReturn.MBDBReturn = TranslationsMDB.initialize(aReturn.json!["translations"])
+            }
+            completion(aReturn)
+        }
+        
+    }
     
     ///Get the videos that have been added to a TV series (trailers, opening credits, etc...)
     class func videos(api_key: String!, tvShowID: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){

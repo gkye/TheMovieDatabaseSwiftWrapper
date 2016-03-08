@@ -77,7 +77,7 @@ class MovieMDB:  DiscoverMovie {
     
     ///Get the alternative titles for a specific movie id.
     class func alternativeTitles(api_key: String!, movieID: Int!, country: String?, completion: (ClientReturn) -> ()) -> (){
-        //language changed to country to avoid modifiying multiple defined functions. 
+        //language changed to country to avoid modifiying multiple defined functions.
         Client.Movies("\(movieID)/alternative_titles", api_key: api_key, page: nil, language: country){
             apiReturn in
             var aReturn = apiReturn
@@ -87,6 +87,8 @@ class MovieMDB:  DiscoverMovie {
             completion(aReturn)
         }
     }
+    
+    
     
     ///Get the cast and crew information for a specific movie id.
     class func credits(api_key: String!, movieID: Int!, completion: (ClientReturn) -> ()) -> (){
@@ -123,7 +125,7 @@ class MovieMDB:  DiscoverMovie {
             }
             completion(aReturn)
         }
-    
+        
     }
     
     ///Get the videos (trailers, teasers, clips, etc...) for a specific movie id.
@@ -138,6 +140,19 @@ class MovieMDB:  DiscoverMovie {
         }
     }
     
+    ///Get the translations for a specific movie id.
+    class func translations(api_key: String!, movieID: Int!, completion: (ClientReturn) -> ()) -> (){
+        Client.Movies("\(movieID)/translations", api_key: api_key, page: nil, language: nil){
+            apiReturn in
+            var aReturn = apiReturn
+            if(aReturn.error == nil){
+                aReturn.MBDBReturn = TranslationsMDB.initialize(aReturn.json!["translations"])
+            }
+            completion(aReturn)
+        }
+        
+    }
+    
     ///Get the similar movies for a specific movie id.
     class func similar(api_key: String!, movieID: Int!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
         Client.Movies("\(movieID)/similar", api_key: api_key, page: page, language: language){
@@ -150,6 +165,21 @@ class MovieMDB:  DiscoverMovie {
             }
             completion(aReturn)
         }
+    }
+    
+    ///Get the lists that the movie belongs to.
+    class func list(api_key: String!, movieID: Int!, page: Int?, language: String, completion: (ClientReturn) -> ()) -> (){
+        Client.Movies("\(movieID)/lists", api_key: api_key, page: page, language: language){
+            apiReturn in
+            var aReturn = apiReturn
+            if(aReturn.error == nil){
+                if(apiReturn.json!["results"].count > 0){
+                    aReturn.MBDBReturn = MovieListMDB.initialize(aReturn.json!["results"])
+                }
+            }
+            completion(aReturn)
+        }
+        
     }
     ///Get the latest movie id.
     class func latest(api_key: String!, completion: (ClientReturn) -> ()) -> (){
