@@ -11,6 +11,11 @@ import SwiftyJSON
 
 class GenresMDB: KeywordsMDB{
     
+    
+    override init(results: JSON){
+        super.init(results: results)
+    }
+    
     class func initialize(json: JSON)->[GenresMDB] {
         var genres = [GenresMDB]()
         for(var i = 0; i < json.count; i++){
@@ -19,9 +24,6 @@ class GenresMDB: KeywordsMDB{
         return genres
     }
     
-    override init(results: JSON){
-        super.init(results: results)
-    }
     
     ///Get the list of tv or movie genres.
     class func genres(api_key: String!, listType: String, language: String?, completion: (ClientReturn) -> ()) -> (){

@@ -9,7 +9,9 @@
 import Foundation
 import SwiftyJSON
 
-class ListMDB{
+///TODO: ListItem status 
+
+class ListsMDB{
     
     var created_by: String!
     var description: String?
@@ -31,5 +33,19 @@ class ListMDB{
         iso_639_1 = results["iso_639_1"].string
         name = results["name"].string
         poster_path = results["poster_path"].string
+    }
+    
+    ///Get a list by id.
+    class func lists(api_key: String!, listId: String!, completion: (ClientReturn) -> ()) -> (){
+        let url  = "http://api.themoviedb.org/3/list/\(listId)"
+        Client.Lists(url, api_key: api_key, listId: listId!){
+            apiReturn in
+            var aReturn = apiReturn
+            if(apiReturn.error == nil){
+                aReturn.MBDBReturn = ListsMDB.init(results: aReturn.json!)
+            }
+            completion(aReturn)
+        }
+        
     }
 }

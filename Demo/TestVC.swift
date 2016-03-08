@@ -184,15 +184,24 @@ class Test: UIViewController{
 //            }
 //        }
         
-        TVSeasonsMDB.season_number(apikey, tvShowId: 60735, seasonNumber: 1, language: "en"){
+//        TVSeasonsMDB.season_number(apikey, tvShowId: 60735, seasonNumber: 1, language: "en"){
+//            apiReturn in
+//            let season = apiReturn.MBDBReturn as! TVSeasonsMDB
+//            print(season.name)
+//            print(season.overview)
+//            print(season.episodes[0].name)
+//        }
+        
+        ListsMDB.lists(apikey, listId: "5316bbcd92514158d20015b5"){
             apiReturn in
-            let season = apiReturn.MBDBReturn as! TVSeasonsMDB
-            print(season.name)
-            print(season.overview)
-            print(season.episodes[0].name)
+            let list = apiReturn.MBDBReturn as! ListsMDB
+            print(list.name)
+            print(list.favorite_count)
+            print(list.created_by)
+            print(list.description)
+            print(list.items[0].overview)
+            print(list.items[0].title)
         }
-        
-        
         
     }
     
