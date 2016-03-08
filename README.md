@@ -21,7 +21,7 @@
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Keywords"> Keywords </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Genres"> Genres </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Networks"> Networks </a>
-* Reviews 
+* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Reviews"> Reviews </a> 
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TV">TV</a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TVSeasons">TVSeasons</a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TVEpisodes">TVEpisodes</a>
