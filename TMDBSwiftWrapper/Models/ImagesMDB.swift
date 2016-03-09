@@ -27,6 +27,15 @@ class Images_MDB {
         vote_count = results["vote_count"].int
         width = results["width"].int
     }
+    
+    ///Return array of Images_MDB
+    class func initialize(json: JSON)->[Images_MDB] {
+        var images = [Images_MDB]()
+        for(var i = 0; i < json.count; i++){
+            images.append(Images_MDB(results: json[i]))
+        }
+        return images
+    }
 }
 
 
