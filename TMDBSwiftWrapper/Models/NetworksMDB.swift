@@ -14,7 +14,6 @@ class NetworksMDB{
     var id: Double!
     var name: String!
     init(results: JSON){
-        
         if(results["id"] != nil){
             id = results["id"].double
         }
@@ -24,14 +23,14 @@ class NetworksMDB{
     }
     
     ///This method is used to retrieve the basic information about a TV network. You can use this ID to search for TV shows with the discover.
-    class func networks(api_key: String, networkId: Int!, completion: (ClientReturn) -> ()) -> (){
+    class func networks(api_key: String, networkId: Int!, completion: (clientReturn: ClientReturn, data:NetworksMDB?) -> ()) -> (){
         Client.networks(api_key, networkId: networkId){
             apiReturn in
-            var aReturn = apiReturn;
-            if(aReturn.error == nil){
-                aReturn.MBDBReturn = NetworksMDB(results: aReturn.json!)
+            if(apiReturn.error == nil){
+                completion(clientReturn: apiReturn, data: NetworksMDB.init(results: apiReturn.json!))
+            }else{
+                completion(clientReturn: apiReturn, data: nil)
             }
-            completion(aReturn)
         }
     }
     

@@ -12,8 +12,6 @@ import SwiftyJSON
 
 extension MovieMDB{
     
-  
-    
     ///Get the basic movie information for a specific movie id.
     class func movie(api_key: String!, movieID: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
         Client.Movies("\(movieID)", api_key: api_key, page: nil, language: language){

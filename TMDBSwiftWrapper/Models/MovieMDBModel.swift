@@ -59,14 +59,4 @@ class MovieMDB:  DiscoverMovieMDB {
         }
         return movieArray
     }
-    
-    
-}
-struct MovieMDBReturn{
-    let clientReturn: ClientReturn
-    let movieMDBData: [MovieMDB]?
-    init(client: ClientReturn){
-        clientReturn = client
-        movieMDBData = MovieMDB.initialize(client.json!["results"])
-    }
 }
