@@ -28,7 +28,7 @@ class Content_RatingsMDB{
     }
 }
 
-class TVMDB: DiscoverTV {
+class TVMDB: DiscoverTVMDB {
     
     var name: String!
     var origin_country: String!

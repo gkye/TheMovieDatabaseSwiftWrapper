@@ -19,10 +19,10 @@ class CollectionMDB{
     var backdrop_path: String?
     var overview: String?
     var collectionItems = [MovieMDB]()
-    var i = 0;
+    
     
     init(results: JSON) {
-        for(i = 0; i < results["parts"].count; i++){
+        for(var i = 0; i < results["parts"].count; i++){
             collectionItems.append(MovieMDB(results: results["parts"][i]))
         }
         id = results["id"].double
@@ -32,28 +32,45 @@ class CollectionMDB{
         overview = results["overview"].string
     }
     
+    
+    struct collectionMDBReturn{
+        let clientReturn: ClientReturn!
+        let collectionMDBData: CollectionMDB?
+        init(client: ClientReturn){
+            clientReturn = client
+            collectionMDBData = CollectionMDB(results: client.json!)
+        }
+    }
+    
+    struct collectionMDBImageReturn{
+        let clientReturn: ClientReturn!
+        let collectionImagesMDBData: ImagesMDB?
+        init(client: ClientReturn){
+            clientReturn = client
+            collectionImagesMDBData = ImagesMDB.init(results: client.json!)
+        }
+    }
+    
     ///Get the basic collection information for a specific collection id.
-    class func Collection(api_key: String!, collectionId: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
+    class func Collection(api_key: String!, collectionId: Int!, language: String?, completion: (collectionMDBReturn) -> ()) -> (){
         Client.Collection(api_key, collectionId: "\(collectionId)", language: language){
             apiReturn in
-            var aReturn = apiReturn;
             if(apiReturn.error == nil){
-                aReturn.MBDBReturn = CollectionMDB(results: apiReturn.json!)
+                completion(collectionMDBReturn.init(client: apiReturn))
             }
-            completion(aReturn)
         }
     }
     
     ///Get all of the images for a particular collection by collection id.
-    class func CollectionImages(api_key: String!, collectionId: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
+    class func CollectionImages(api_key: String!, collectionId: Int!, language: String?, completion: (collectionMDBImageReturn) -> ()) -> (){
         let modId =  "\(collectionId)/images"
         Client.Collection(api_key, collectionId: modId, language: language){
             apiReturn in
-            var aReturn = apiReturn;
             if(apiReturn.error == nil){
-                aReturn.MBDBReturn = ImagesMDB.init(results: aReturn.json!)
+                completion(collectionMDBImageReturn.init(client: apiReturn))
+            }else{
+                
             }
-            completion(aReturn)
         }
     }
 }

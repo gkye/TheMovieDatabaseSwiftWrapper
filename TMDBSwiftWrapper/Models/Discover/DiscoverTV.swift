@@ -30,9 +30,8 @@ enum TVGenres: String{
     
 }
 
-class DiscoverTV: Discover {
+class DiscoverTVMDB: DiscoverMDB {
     
-
     
     //    ///DiscoverTV query.  Language must be an ISO 639-1 code. Page must be greater than one. sort_by expected values can be found in DiscoverSortBy() and DiscoverSortByTV class variables. ALL parameters are optional
     class func discoverTV(api_key: String, language: String?, sort_by: String?, page: Double?, completionHandler: (ClientReturn) -> ()) -> (){

@@ -79,7 +79,7 @@ class KeywordVC: UIViewController {
         //            print(movie[0].release_date)
         //            print(movie[0].overview)
         //        }
-        DiscoverMovie.genreList(apikey, genreId: 28, page: nil, include_all_movies: nil, include_adult: nil, movieList: nil){
+        DiscoverMovieMDB.genreList(apikey, genreId: 28, page: nil, include_all_movies: nil, include_adult: nil, movieList: nil){
             apiReturn in
             var movie = apiReturn.MBDBReturn as! [MovieMDB]
             print(movie[0].title)

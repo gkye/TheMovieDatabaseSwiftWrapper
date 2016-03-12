@@ -10,9 +10,8 @@ import Foundation
 import SwiftyJSON
 
 //Sublass and inherit all related methods and variables here**
-class MovieMDB:  DiscoverMovie {
+class MovieMDB:  DiscoverMovieMDB {
     
-    var adult: Bool!
     var title: String!
     var video: Bool!
     var release_date: String!

@@ -32,7 +32,7 @@ enum MovieGenres: String{
     case Western = "37";
 }
 
-class DiscoverMovie: Discover{
+class DiscoverMovieMDB: DiscoverMDB{
 
 
     

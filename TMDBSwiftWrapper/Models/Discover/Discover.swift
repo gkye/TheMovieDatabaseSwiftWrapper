@@ -36,16 +36,27 @@ class DiscoverSortByTV: DiscoverSortBy {
 }
 
 
-class Discover {
-    var poster_path: String?
+class DiscoverMDB {
+    var adult: Bool!
+    var overview: String?
     var popularity: Double?
     var id: Double?
     var backdrop_path: NSString?
     var vote_average: Double?
-    var overview: String?
     var original_language: String?
     var vote_count: Double?
+    var poster_path: String!
+
     static var baseURL = ""
+    
+//    id
+//    popularity
+//    backdrop_path
+//    vote_count
+//    vote_average
+//    overview
+//    genre_id[]
+//    original_language
     
     //make all init variables non optinal (except ones which return `<NULL>`. ** Xcode bug?
    init(results: JSON){

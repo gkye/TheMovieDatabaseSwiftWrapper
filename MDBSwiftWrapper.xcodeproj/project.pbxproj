@@ -25,6 +25,8 @@
 		5E38A9D21C6DAE1A0037AB4B /* Client_Keywords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38A9D11C6DAE1A0037AB4B /* Client_Keywords.swift */; };
 		5E4E35FA1C8E08EB005798CB /* TranslationsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4E35F91C8E08EB005798CB /* TranslationsMDB.swift */; };
 		5E6C786B1C751C27009BA56F /* ExternalIdsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6C786A1C751C27009BA56F /* ExternalIdsMDB.swift */; };
+		5E745D871C9096EC00EB9DCC /* FindMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E745D861C9096EC00EB9DCC /* FindMDB.swift */; };
+		5E745D891C9096F800EB9DCC /* Client_Find.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E745D881C9096F800EB9DCC /* Client_Find.swift */; };
 		5E7607E71C8F725B00F21A21 /* MovieCreditsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7607E61C8F725B00F21A21 /* MovieCreditsMDB.swift */; };
 		5E7607E91C8FCCC200F21A21 /* Client_People.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7607E81C8FCCC200F21A21 /* Client_People.swift */; };
 		5E7607EB1C8FCE1C00F21A21 /* PeopleMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7607EA1C8FCE1C00F21A21 /* PeopleMDB.swift */; };
@@ -48,6 +50,7 @@
 		5EDC8ED41C6E4E6C0086B77B /* Client_Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC8ED31C6E4E6C0086B77B /* Client_Review.swift */; };
 		5EDC8ED81C6E51CE0086B77B /* ReviewsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC8ED71C6E51CE0086B77B /* ReviewsMDB.swift */; };
 		5EDD5B5B1C8F6A1A00C75D94 /* TVCreditsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDD5B5A1C8F6A1A00C75D94 /* TVCreditsMDB.swift */; };
+		5EEC2E7D1C934B9500B63BA1 /* PersonResultsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEC2E7C1C934B9500B63BA1 /* PersonResultsMDB.swift */; };
 		5EFC2A051C6C6A2A0014FA45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC2A041C6C6A2A0014FA45 /* AppDelegate.swift */; };
 		5EFC2A0A1C6C6A2A0014FA45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EFC2A081C6C6A2A0014FA45 /* Main.storyboard */; };
 		5EFC2A0C1C6C6A2A0014FA45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EFC2A0B1C6C6A2A0014FA45 /* Assets.xcassets */; };
@@ -99,6 +102,8 @@
 		5E38A9D11C6DAE1A0037AB4B /* Client_Keywords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_Keywords.swift; sourceTree = "<group>"; };
 		5E4E35F91C8E08EB005798CB /* TranslationsMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationsMDB.swift; sourceTree = "<group>"; };
 		5E6C786A1C751C27009BA56F /* ExternalIdsMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalIdsMDB.swift; sourceTree = "<group>"; };
+		5E745D861C9096EC00EB9DCC /* FindMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindMDB.swift; sourceTree = "<group>"; };
+		5E745D881C9096F800EB9DCC /* Client_Find.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_Find.swift; sourceTree = "<group>"; };
 		5E7607E61C8F725B00F21A21 /* MovieCreditsMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCreditsMDB.swift; sourceTree = "<group>"; };
 		5E7607E81C8FCCC200F21A21 /* Client_People.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_People.swift; sourceTree = "<group>"; };
 		5E7607EA1C8FCE1C00F21A21 /* PeopleMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleMDB.swift; sourceTree = "<group>"; };
@@ -122,6 +127,7 @@
 		5EDC8ED31C6E4E6C0086B77B /* Client_Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Client_Review.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5EDC8ED71C6E51CE0086B77B /* ReviewsMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsMDB.swift; sourceTree = "<group>"; };
 		5EDD5B5A1C8F6A1A00C75D94 /* TVCreditsMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVCreditsMDB.swift; sourceTree = "<group>"; };
+		5EEC2E7C1C934B9500B63BA1 /* PersonResultsMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonResultsMDB.swift; sourceTree = "<group>"; };
 		5EFC2A011C6C6A2A0014FA45 /* MDBSwiftWrapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDBSwiftWrapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EFC2A041C6C6A2A0014FA45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EFC2A091C6C6A2A0014FA45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -213,6 +219,15 @@
 			name = Movies;
 			sourceTree = "<group>";
 		};
+		5EEC2E7B1C934B7D00B63BA1 /* People */ = {
+			isa = PBXGroup;
+			children = (
+				5E7607EA1C8FCE1C00F21A21 /* PeopleMDB.swift */,
+				5EEC2E7C1C934B9500B63BA1 /* PersonResultsMDB.swift */,
+			);
+			name = People;
+			sourceTree = "<group>";
+		};
 		5EFC29F81C6C6A2A0014FA45 = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +308,7 @@
 				5EDC8ED31C6E4E6C0086B77B /* Client_Review.swift */,
 				5E01076B1C7194410042BE40 /* Client_TV.swift */,
 				5E774D231C749ECC00783844 /* Client_TVSeasonsEpisodes.swift */,
+				5E745D881C9096F800EB9DCC /* Client_Find.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -300,6 +316,7 @@
 		5EFC2A2B1C6C6B460014FA45 /* Models & Funcs */ = {
 			isa = PBXGroup;
 			children = (
+				5EEC2E7B1C934B7D00B63BA1 /* People */,
 				5E4E35F81C8E07E7005798CB /* Shared */,
 				5E0107781C72DCF30042BE40 /* ConfigurationMDB.swift */,
 				5EFC2A2D1C6C6B460014FA45 /* CollectionsMDB.swift */,
@@ -311,8 +328,8 @@
 				5E1449541C8F5C35001F7CE3 /* ListsMDB.swift */,
 				5E774D181C738D3C00783844 /* Movies */,
 				5EDC8ECD1C6E4A950086B77B /* NetworksMDB.swift */,
-				5E7607EA1C8FCE1C00F21A21 /* PeopleMDB.swift */,
 				5EDC8ED71C6E51CE0086B77B /* ReviewsMDB.swift */,
+				5E745D861C9096EC00EB9DCC /* FindMDB.swift */,
 				5E01076F1C71A7C10042BE40 /* TV */,
 			);
 			name = "Models & Funcs";
@@ -510,6 +527,7 @@
 				5EDC8EC61C6DBF440086B77B /* GenresMDB.swift in Sources */,
 				5E38A9CE1C6D56560037AB4B /* Client_Companies.swift in Sources */,
 				5E774D201C74979000783844 /* TVEpisodesMDB.swift in Sources */,
+				5E745D871C9096EC00EB9DCC /* FindMDB.swift in Sources */,
 				5EFC2A441C6C71FA0014FA45 /* ChangesMDB.swift in Sources */,
 				5EDC8ECA1C6E460C0086B77B /* MovieMDB.swift in Sources */,
 				5EFC2A391C6C6B460014FA45 /* DiscoverTV.swift in Sources */,
@@ -528,6 +546,7 @@
 				5E1449531C8F55E5001F7CE3 /* TVMDBModel.swift in Sources */,
 				5EFC2A461C6C720B0014FA45 /* Client_Changes.swift in Sources */,
 				5E7607E71C8F725B00F21A21 /* MovieCreditsMDB.swift in Sources */,
+				5EEC2E7D1C934B9500B63BA1 /* PersonResultsMDB.swift in Sources */,
 				5E774D1A1C738D9300783844 /* MovieDetailedMDB.swift in Sources */,
 				5E774D281C74C21300783844 /* Alternative_TitlesMDB.swift in Sources */,
 				5EDC8ED01C6E4AB20086B77B /* Client_Networks.swift in Sources */,
@@ -539,6 +558,7 @@
 				5EFC2A341C6C6B460014FA45 /* Client_Collections.swift in Sources */,
 				5E38A9CC1C6D54920037AB4B /* CompaniesMDB.swift in Sources */,
 				5E6C786B1C751C27009BA56F /* ExternalIdsMDB.swift in Sources */,
+				5E745D891C9096F800EB9DCC /* Client_Find.swift in Sources */,
 				5EDC8ED41C6E4E6C0086B77B /* Client_Review.swift in Sources */,
 				5E0107751C72CED70042BE40 /* ImagesMDB.swift in Sources */,
 				5E01077B1C72DDB00042BE40 /* Client_Configuration.swift in Sources */,

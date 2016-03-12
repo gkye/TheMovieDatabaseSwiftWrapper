@@ -29,6 +29,14 @@ class TVSeasonsMDB{
         season_number = results["season_number"].int
     }
     
+    class func initialize(json: JSON)->[TVSeasonsMDB] {
+        var tvSeasonsArray = [TVSeasonsMDB]()
+        for(var i = 0; i < json.count; i++){
+            tvSeasonsArray.append(TVSeasonsMDB(results: json[i]))
+        }
+        return tvSeasonsArray
+    }
+    
     ///Get the primary information about a TV season by its season number.
     class func season_number(api_key: String, tvShowId: Int!, seasonNumber: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
         //     [/tv/11/season/1]
