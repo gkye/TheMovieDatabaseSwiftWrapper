@@ -9,16 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-struct parent_companymdb{
-    var name: String!
-    var id: Double!
-    var logo_path: String!
-    init(results: JSON){
-        name = results["name"].string
-        id = results["id"].double
-        logo_path = results["logo_path"].string
-    }
-}
+
 
 class CompanyMDB {
     var description: String?
@@ -28,6 +19,26 @@ class CompanyMDB {
     var logo_path: String!
     var name: String!
     var parent_company: parent_companymdb?
+    
+    struct parent_companymdb{
+        var name: String!
+        var id: Double!
+        var logo_path: String!
+        init(results: JSON){
+            name = results["name"].string
+            id = results["id"].double
+            logo_path = results["logo_path"].string
+        }
+    }
+    struct CompanyMDBReturn{
+        let clientReturn: ClientReturn!
+        let companyMDBData: CompanyMDB?
+        
+        init(client: ClientReturn){
+            clientReturn = client
+            companyMDBData = CompanyMDB(results: client.json!)
+        }
+    }
     
     init(results: JSON){
         description = results["description"].string
@@ -40,26 +51,26 @@ class CompanyMDB {
         }
     }
     ///This method is used to retrieve all of the basic information about a company.
-    class func companyInfo(api_key: String!, companyId: Int!, completion: (ClientReturn) -> ()) -> (){
+    class func companyInfo(api_key: String!, companyId: Int!, completion: (clientReturn: ClientReturn, data:CompanyMDB?) -> ()) -> (){
         Client.Company(api_key, companyId: companyId){
             apiReturn in
-            var aReturn = apiReturn;
             if(apiReturn.error == nil){
-                aReturn.MBDBReturn = CompanyMDB(results: aReturn.json!)
+              completion(clientReturn: apiReturn, data: CompanyMDB(results: apiReturn.json!))
+            }else{
+                completion(clientReturn: apiReturn, data: nil)
             }
-            completion(aReturn)
         }
     }
     
     ///Get the list of movies associated with a particular company.
-    class func companyMovies(api_key: String!, companyId: Int!, language: String?, page: Int?, completion: (ClientReturn) -> ()) -> (){
+    class func companyMovies(api_key: String!, companyId: Int!, language: String?, page: Int?, completion: (clientReturn: ClientReturn, data: [MovieMDB]?) -> ()) -> (){
         Client.Company(api_key, companyId: companyId, language: language, page: page){
             apiReturn in
-            var aReturn = apiReturn;
             if(apiReturn.error == nil){
-                aReturn.MBDBReturn = MovieMDB.initialize(apiReturn.json!["results"])
+                completion(clientReturn: apiReturn, data: MovieMDB.initialize(apiReturn.json!["results"]))
+            }else{
+                completion(clientReturn: apiReturn, data: nil)
             }
-            completion(aReturn)
         }
     }
 }
