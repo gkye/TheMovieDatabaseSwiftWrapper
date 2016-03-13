@@ -38,15 +38,15 @@ class ListsMDB{
     ///MARK: Lists
     ///TODO: List item status
     ///Get a list by id.
-    class func lists(api_key: String!, listId: String!, completion: (ClientReturn) -> ()) -> (){
+    class func lists(api_key: String!, listId: String!, completion: (clientReturn: ClientReturn, data: ListsMDB?) -> ()) -> (){
         let url  = "http://api.themoviedb.org/3/list/\(listId)"
         Client.Lists(url, api_key: api_key, listId: listId!){
             apiReturn in
-            var aReturn = apiReturn
             if(apiReturn.error == nil){
-                aReturn.MBDBReturn = ListsMDB.init(results: aReturn.json!)
+                completion(clientReturn: apiReturn, data: ListsMDB.init(results: apiReturn.json!))
+            }else{
+                completion(clientReturn: apiReturn, data: nil)
             }
-            completion(aReturn)
         }
         
     }

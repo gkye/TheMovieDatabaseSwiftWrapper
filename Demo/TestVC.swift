@@ -13,21 +13,15 @@ class Test: UIViewController{
     
     override func viewDidLoad() {
         
-        GenresMDB.genres(apikey, listType: "tv", language: "en"){
+        ListsMDB.lists(apikey, listId: "5316bbcd92514158d20015b5"){
             apiReturn in
-            let genres = apiReturn.data!
-            for i in genres {
-                print(i.name)
-            }
-        }
-        
-        GenresMDB.genre_movies(apikey, genreId: 37, include_all_movies: true, include_adult_movies: false, language: "EN"){
-            apiReturn in
-            let movie = apiReturn.data!
-            print(movie[0].title)
-            print(movie[0].original_title)
-            print(movie[0].release_date)
-            print(movie[0].overview)
+            let list = apiReturn.data!
+            print(list.name)
+            print(list.favorite_count)
+            print(list.created_by)
+            print(list.description)
+            print(list.items[0].overview)
+            print(list.items[0].title)
         }
     }
     
