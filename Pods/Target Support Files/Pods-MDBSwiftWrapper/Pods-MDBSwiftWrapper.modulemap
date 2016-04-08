@@ -1,6 +1,0 @@
-framework module Pods_MDBSwiftWrapper {
-  umbrella header "Pods-MDBSwiftWrapper-umbrella.h"
-
-  export *
-  module * { export * }
-}
