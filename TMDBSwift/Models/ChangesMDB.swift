@@ -22,20 +22,20 @@ public class ChangesMDB{
     
     class func initReturn(json: JSON)->[ChangesMDB]{
         var changes = [ChangesMDB]()
-        for(var i = 0; i < json.count; i++){
+        for i in 0 ..< json.count {
             changes.append(ChangesMDB(results: json[i]))
         }
         return changes
     }
     
-    public class func changes(api_key: String!, changeType: String, page: Double?, startDate: String?, endDate:String?,completionHandler: (ClientReturn) -> ()) -> (){
+    public class func changes(api_key: String!, changeType: String, page: Double?, startDate: String?, endDate:String?,completionHandler: (clientReturn: ClientReturn, data: [ChangesMDB]?) -> ()) -> (){
         Client.Changes(api_key, changeType: "movie", page: 1, startDate: nil, endDate: nil){
             apiReturn in
-            var aReturn = apiReturn;
+            var changes: [ChangesMDB]?
             if(apiReturn.error == nil){
-                aReturn.MBDBReturn = ChangesMDB.initReturn(apiReturn.json!["results"])
+                changes = ChangesMDB.initReturn(apiReturn.json!["results"])
             }
-            completionHandler(aReturn)
+            completionHandler(clientReturn: apiReturn, data: changes)
         }
     }
 }

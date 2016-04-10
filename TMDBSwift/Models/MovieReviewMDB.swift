@@ -25,7 +25,7 @@ public class MovieReviewsMDB{
     ///Return an array of `MovieReviewsMDB`s
     class func initialize(json: JSON)->[MovieReviewsMDB] {
         var moveReviewArray = [MovieReviewsMDB]()
-        for(var i = 0; i < json.count; i++){
+        for i in 0 ..< json.count {
             moveReviewArray.append(MovieReviewsMDB(results: json[i]))
         }
         return moveReviewArray

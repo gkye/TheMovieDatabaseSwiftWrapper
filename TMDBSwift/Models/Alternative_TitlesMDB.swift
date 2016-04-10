@@ -26,11 +26,11 @@ public class Alternative_TitlesMDB {
     init(results: JSON){
         id = results["id"].int
         if(results["results"] != nil){ //TV Changes
-            for(var i = 0;i < results["results"].count; i++ ){
+            for i in 0 ..< results["results"].count {
                 titles.append(Alt_TitlesMDB.init(result: results["results"][i]))
             }
         }else if (results["titles"] != nil){ //Movie Changes
-            for(var i = 0;i < results["titles"].count; i++ ){
+            for i in 0 ..< results["titles"].count {
                 titles.append(Alt_TitlesMDB.init(result: results["titles"][i]))
             }
         }

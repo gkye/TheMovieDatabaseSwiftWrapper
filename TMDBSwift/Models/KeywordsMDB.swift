@@ -11,8 +11,8 @@ import Foundation
 
 public class KeywordsMDB{
     
-    public var id: Int!
-    public var name: String!
+    public var id: Int?
+    public var name: String?
     
     init(results: JSON){
         id = results["id"].int

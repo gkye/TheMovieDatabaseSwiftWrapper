@@ -24,7 +24,7 @@ public class TranslationsMDB{
     ///Return an array of `TranslationsMDB`
     class func initialize(json: JSON)->[TranslationsMDB] {
         var translationsArray = [TranslationsMDB]()
-        for(var i = 0; i < json.count; i++){
+        for i in 0 ..< json.count {
             translationsArray.append(TranslationsMDB(translations: json[i]))
         }
         return translationsArray

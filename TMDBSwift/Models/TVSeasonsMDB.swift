@@ -37,75 +37,71 @@ public class TVSeasonsMDB{
     }
     
     ///Get the primary information about a TV season by its season number.
-    public class func season_number(api_key: String, tvShowId: Int!, seasonNumber: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
+    public class func season_number(api_key: String, tvShowId: Int!, seasonNumber: Int!, language: String?, completion: (clientReturn: ClientReturn, data: TVSeasonsMDB?) -> ()) -> (){
         //     [/tv/11/season/1]
         let urltype = "\(tvShowId)/season/\(seasonNumber)"
         Client.Seasons(urltype, api_key: api_key, language: language){
             apiReturn in
-            var aReturn = apiReturn
+            var data: TVSeasonsMDB?
             if(apiReturn.error == nil){
-                aReturn.MBDBReturn = TVSeasonsMDB(results: apiReturn.json!)
+                data = TVSeasonsMDB(results: apiReturn.json!)
             }
-            completion(aReturn)
+            completion(clientReturn: apiReturn, data: data)
         }
     }
-   
+    
     ///Get the cast & crew credits for a TV season by season number.
-    public class func credits(api_key: String, tvShowId: Int!, seasonNumber: Int!, language: String?, completion: (ClientReturn) -> ()) -> (){
+    public class func credits(api_key: String, tvShowId: Int!, seasonNumber: Int!, language: String?, completion: (clientReturn: ClientReturn, data: TVCreditsMDB?) -> ()) -> (){
         //     [/tv/11/season/1/credits]
         let urltype = "\(tvShowId)/season/\(seasonNumber)/credits"
         Client.Seasons(urltype, api_key: api_key, language: language){
             apiReturn in
-             var aReturn = apiReturn
-            if(aReturn.error == nil){
-                aReturn.MBDBReturn = TVCreditsMDB.init(results: aReturn.json!)
+            var data: TVCreditsMDB?
+            if(apiReturn.error == nil){
+                data = TVCreditsMDB.init(results: apiReturn.json!)
             }
-            completion(aReturn)
+            completion(clientReturn: apiReturn, data: data)
         }
     }
     
     ///Get the external ids that we have stored for a TV season by season number.
-    public class func externalIDS(api_key: String, tvShowId: Int!, seasonNumber: Int!, language: String, completion: (ClientReturn) -> ()) -> (){
+    public class func externalIDS(api_key: String, tvShowId: Int!, seasonNumber: Int!, language: String, completion: (clientReturn: ClientReturn, data: ExternalIdsMDB?) -> ()) -> (){
         let urltype = "\(tvShowId)/season/\(seasonNumber)/external_ids"
         Client.Seasons(urltype, api_key: api_key, language: language){
             apiReturn in
-           var aReturn = apiReturn
-            if(aReturn.error == nil){
-                aReturn.MBDBReturn = ExternalIdsMDB.init(results: aReturn.json!)
+            var data: ExternalIdsMDB?
+            if(apiReturn.error == nil){
+                data = ExternalIdsMDB.init(results: apiReturn.json!)
             }
-            completion(aReturn)
+            completion(clientReturn: apiReturn, data: data)
         }
     }
     
     ///Get the images (posters) that we have stored for a TV season by season number. **[backdrops] returned in ImagesMDB will be `nil`
-    public class func images(api_key: String, tvShowId: Int!, seasonNumber: Int!, language: String, completion: (ClientReturn) -> ()) -> (){
+    public class func images(api_key: String, tvShowId: Int!, seasonNumber: Int!, language: String, completion: (clientReturn: ClientReturn, data: ImagesMDB?) -> ()) -> (){
         let urltype = "\(tvShowId)/season/\(seasonNumber)/images"
         Client.Seasons(urltype, api_key: api_key, language: language){
             apiReturn in
-            var aReturn = apiReturn
-            if(aReturn.error == nil){
-                aReturn.MBDBReturn = ImagesMDB.init(results: apiReturn.json!)
+            var data: ImagesMDB?
+            if(apiReturn.error == nil){
+                data = ImagesMDB.init(results: apiReturn.json!)
             }
-
-            completion(aReturn)
+            completion(clientReturn: apiReturn, data: data)
         }
     }
     
     ///Get the videos that have been added to a TV season (trailers, teasers, etc...)
-    public class func videos(api_key: String, tvShowId: Int!, seasonNumber: Int!, language: String, completion: (ClientReturn) -> ()) -> (){
+    public class func videos(api_key: String, tvShowId: Int!, seasonNumber: Int!, language: String, completion: (clientReturn: ClientReturn, data: [VideosMDB]?)-> ()) -> (){
         //     [/tv/11/season/1/credits]
         let urltype = "\(tvShowId)/season/\(seasonNumber)/videos"
         Client.Seasons(urltype, api_key: api_key, language: language){
             apiReturn in
-           var aReturn = apiReturn
-            if(aReturn.error == nil){
-                aReturn.MBDBReturn = VideosMDB.initialize(apiReturn.json!["results"])
+            var data: [VideosMDB]?
+            if(apiReturn.error == nil){
+                data = VideosMDB.initialize(apiReturn.json!["results"])
             }
-            completion(aReturn)
+            completion(clientReturn: apiReturn, data: data)
         }
     }
-    
-    
-    
     
 }

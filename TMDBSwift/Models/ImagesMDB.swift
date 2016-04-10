@@ -10,13 +10,13 @@ import Foundation
 
 
 public class Images_MDB {
-    public var aspect_ratio: String!
-    public var file_path: String!
-    public var height: Int!
+    public var aspect_ratio: String?
+    public var file_path: String?
+    public var height: Int?
     public var iso_639_1: String?
-    public var vote_average: Int!
-    public var vote_count: Int!
-    public var width: Int!
+    public var vote_average: Int?
+    public var vote_count: Int?
+    public var width: Int?
     
     init(results: JSON){
         aspect_ratio = results["aspect_ratio"].string
@@ -62,8 +62,6 @@ public class ImagesMDB {
                 stills.append(Images_MDB(results: results["stills"][i]))
             }
         }
-        
-        
     }
     
 }

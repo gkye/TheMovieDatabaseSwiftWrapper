@@ -23,7 +23,6 @@ public class MovieCreditsMDB{
             self.crew.append(CrewMDB.init(crew: crew.1))
         }
     }
-    
 }
 
 public class MovieCastMDB: CastCrewCommonMDB{

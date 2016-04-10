@@ -8,9 +8,9 @@
 
 import Foundation
 
-class TVCreditsMDB{
-    var cast = [TVCastMDB]()
-    var crew = [CrewMDB]()
+public class TVCreditsMDB{
+   public var cast = [TVCastMDB]()
+   public var crew = [CrewMDB]()
     
     init(results: JSON){
         
@@ -27,9 +27,9 @@ class TVCreditsMDB{
 }
 
 
-class TVCastMDB: CastCrewCommonMDB{
-    var character: String!
-    var order: Int!
+public class TVCastMDB: CastCrewCommonMDB{
+    public var character: String!
+    public var order: Int!
     init(cast: JSON){
         super.init(results: cast)
         character = cast["character"].string

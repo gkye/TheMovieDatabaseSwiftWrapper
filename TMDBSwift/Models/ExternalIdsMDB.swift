@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class ExternalIdsMDB{
+public class ExternalIdsMDB{
     
     public var  imdb_id: String?
     public var  freebase_mid: String?
@@ -15,7 +15,6 @@ class ExternalIdsMDB{
     public var  freebase_id: String?
     public var  tvdb_id: Int?
     public var  tvrage_id: Int?
-    
     
     //TV(S/EP) MV
     init(results: JSON){

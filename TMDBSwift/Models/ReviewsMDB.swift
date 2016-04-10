@@ -29,14 +29,14 @@ class ReviewsMDB{
     }
     
     ///Get the full details of a review by ID.
-    class func review(api_key: String!, reviewId: String!, completion: (ClientReturn) -> ()) -> (){
+    class func review(api_key: String!, reviewId: String!, completion: (clientReturn: ClientReturn, data: ReviewsMDB?) -> ()) -> (){
         Client.review(api_key, reviewId: reviewId){
             apiReturn in
-            var aReturn = apiReturn
+            var data: ReviewsMDB?
             if(apiReturn.error == nil){
-                aReturn.MBDBReturn = ReviewsMDB(results: aReturn.json!)
+                data = ReviewsMDB(results: apiReturn.json!)
             }
-            completion(aReturn)
+            completion(clientReturn: apiReturn, data: data)
         }
     }
 }

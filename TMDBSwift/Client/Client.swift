@@ -13,41 +13,11 @@ import Foundation
 public struct ClientReturn{
    public var error: NSError?
    public var json: JSON?
-   public var MBDBReturn: AnyObject?
+ //  public var MBDBReturn: AnyObject?
    public var pageResults: PageResultsMDB?
 }
 
 class Client{
-//    class final func networkRequest(url: String, parameters: [String : AnyObject], completion: (ClientReturn) -> ()) -> (){
-//        
-//        Alamofire.request(.GET, url, parameters: parameters).validate().responseJSON { response in
-//            var cReturn = ClientReturn()
-//            switch response.result {
-//            case .Success:
-//                if let value = response.result.value {
-//                    let json = JSON(value)
-//                    cReturn.error = nil
-//                    cReturn.json = json
-//                    cReturn.MBDBReturn = json.object
-//                    if(json["page"] != nil){
-//                        cReturn.pageResults = PageResultsMDB.init(results: json)
-//                    }else{
-//                        cReturn.pageResults = nil
-//                    }
-//                    
-//                    completion(cReturn)
-//                }
-//            case .Failure(let error):
-//                print(error)
-//                cReturn.error = error
-//                cReturn.json = nil
-//                cReturn.MBDBReturn = nil
-//                cReturn.pageResults = nil
-//                completion(cReturn)
-//            }
-//        }
-//    }
-    
    class final func networkRequest(url url: String, parameters: [String : AnyObject], completion: (ClientReturn) -> ()) -> (){
         var cReturn = ClientReturn()
         HTTPRequest.request(url, parameters: parameters){
@@ -56,7 +26,6 @@ class Client{
                 let json = JSON(data: rtn.data!)
                 cReturn.error = nil
                 cReturn.json = json
-                cReturn.MBDBReturn = json.object
                 if(json["page"] != nil){
                     cReturn.pageResults = PageResultsMDB.init(results: json)
                 }else{
@@ -68,7 +37,6 @@ class Client{
                 print(rtn.error)
                 cReturn.error = rtn.error
                 cReturn.json = nil
-                cReturn.MBDBReturn = nil
                 cReturn.pageResults = nil
                 completion(cReturn)
             }

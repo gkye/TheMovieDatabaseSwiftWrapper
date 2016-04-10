@@ -9,17 +9,17 @@
 import Foundation
 
 
-struct tv_created_By{
-    var id: Int!
-    var name: String!
-    var profile_path: String!
+public struct tv_created_By{
+    public var id: Int!
+    public var name: String!
+    public var profile_path: String!
 }
-struct tv_seasons{
-    var air_date: String!
-    var episode_count: Int!
-    var id: Int!
-    var poster_path: String!
-    var season_number: Int!
+public struct tv_seasons{
+    public var air_date: String!
+    public var episode_count: Int!
+    public var id: Int!
+    public var poster_path: String!
+    public var season_number: Int!
     
     init(results: JSON){
         if(results["air_date"] != nil){
@@ -40,21 +40,21 @@ struct tv_seasons{
     
 }
 
-class TVDetailedMDB: TVMDB{
-    var createdBy: tv_created_By?
-    var episode_run_time: [Int]!
-    var genres: KeywordsMDB!
-    var homepage: String?
-    var in_production: Bool?
-    var languages: [String]?
-    var last_air_date: String!
-    var networks: KeywordsMDB!
-    var number_of_episodes: Int!
-    var number_of_seasons: Int!
-    var production_companies = [KeywordsMDB]()
-    var seasons = [tv_seasons]()
-    var status: String!
-    var type: String!
+public class TVDetailedMDB: TVMDB{
+    public var createdBy: tv_created_By?
+    public var episode_run_time: [Int]!
+    public var genres: KeywordsMDB!
+    public var homepage: String?
+    public var in_production: Bool?
+    public var languages: [String]?
+    public var last_air_date: String!
+    public var networks: KeywordsMDB!
+    public var number_of_episodes: Int!
+    public var number_of_seasons: Int!
+    public var production_companies = [KeywordsMDB]()
+    public var seasons = [tv_seasons]()
+    public var status: String!
+    public var type: String!
     
     override init(results: JSON) {
         super.init(results: results)

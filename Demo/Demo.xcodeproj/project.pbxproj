@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E9259671CB76FFC003082AB /* TMDBSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9259661CB76FFC003082AB /* TMDBSwift.framework */; };
-		5E9259681CB76FFC003082AB /* TMDBSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9259661CB76FFC003082AB /* TMDBSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5EC416CF1CBA08E600124712 /* TMDBSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC416CC1CBA08D800124712 /* TMDBSwift.framework */; };
+		5EC416D01CBA08E600124712 /* TMDBSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC416CC1CBA08D800124712 /* TMDBSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5EF1B2B61CB72E5F00B49F4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B2B51CB72E5F00B49F4E /* AppDelegate.swift */; };
 		5EF1B2B81CB72E5F00B49F4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B2B71CB72E5F00B49F4E /* ViewController.swift */; };
 		5EF1B2BB1CB72E5F00B49F4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EF1B2B91CB72E5F00B49F4E /* Main.storyboard */; };
@@ -18,6 +18,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5EC416CB1CBA08D800124712 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5EC416C61CBA08D800124712 /* TMDBSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5EF1B26B1CB72DBF00B49F4E;
+			remoteInfo = TMDBSwift;
+		};
+		5EC416CD1CBA08D800124712 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5EC416C61CBA08D800124712 /* TMDBSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5EF1B2751CB72DC000B49F4E;
+			remoteInfo = TMDBSwiftTests;
+		};
+		5EC416D11CBA08E600124712 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5EC416C61CBA08D800124712 /* TMDBSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5EF1B26A1CB72DBF00B49F4E;
+			remoteInfo = TMDBSwift;
+		};
 		5EF1B2C71CB72E6000B49F4E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5EF1B2AA1CB72E5F00B49F4E /* Project object */;
@@ -34,7 +55,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5E9259681CB76FFC003082AB /* TMDBSwift.framework in Embed Frameworks */,
+				5EC416D01CBA08E600124712 /* TMDBSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,7 +63,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5E9259661CB76FFC003082AB /* TMDBSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = TMDBSwift.framework; path = "/Users/george/Library/Developer/Xcode/DerivedData/TMDBSwift-dsirqfzalrmohnfwkfzgyofknhnm/Build/Products/Debug-iphonesimulator/TMDBSwift.framework"; sourceTree = "<absolute>"; };
+		5EC416C61CBA08D800124712 /* TMDBSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TMDBSwift.xcodeproj; path = ../TMDBSwift.xcodeproj; sourceTree = "<group>"; };
 		5EF1B2B21CB72E5F00B49F4E /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF1B2B51CB72E5F00B49F4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EF1B2B71CB72E5F00B49F4E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E9259671CB76FFC003082AB /* TMDBSwift.framework in Frameworks */,
+				5EC416CF1CBA08E600124712 /* TMDBSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,10 +95,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5EC416C71CBA08D800124712 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5EC416CC1CBA08D800124712 /* TMDBSwift.framework */,
+				5EC416CE1CBA08D800124712 /* TMDBSwiftTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5EF1B2A91CB72E5F00B49F4E = {
 			isa = PBXGroup;
 			children = (
-				5E9259661CB76FFC003082AB /* TMDBSwift.framework */,
+				5EC416C61CBA08D800124712 /* TMDBSwift.xcodeproj */,
 				5EF1B2B41CB72E5F00B49F4E /* Demo */,
 				5EF1B2C91CB72E6000B49F4E /* DemoTests */,
 				5EF1B2B31CB72E5F00B49F4E /* Products */,
@@ -130,6 +160,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				5EC416D21CBA08E600124712 /* PBXTargetDependency */,
 			);
 			name = Demo;
 			productName = Demo;
@@ -184,6 +215,12 @@
 			mainGroup = 5EF1B2A91CB72E5F00B49F4E;
 			productRefGroup = 5EF1B2B31CB72E5F00B49F4E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5EC416C71CBA08D800124712 /* Products */;
+					ProjectRef = 5EC416C61CBA08D800124712 /* TMDBSwift.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				5EF1B2B11CB72E5F00B49F4E /* Demo */,
@@ -191,6 +228,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5EC416CC1CBA08D800124712 /* TMDBSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TMDBSwift.framework;
+			remoteRef = 5EC416CB1CBA08D800124712 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5EC416CE1CBA08D800124712 /* TMDBSwiftTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TMDBSwiftTests.xctest;
+			remoteRef = 5EC416CD1CBA08D800124712 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5EF1B2B01CB72E5F00B49F4E /* Resources */ = {
@@ -233,6 +287,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5EC416D21CBA08E600124712 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TMDBSwift;
+			targetProxy = 5EC416D11CBA08E600124712 /* PBXContainerItemProxy */;
+		};
 		5EF1B2C81CB72E6000B49F4E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5EF1B2B11CB72E5F00B49F4E /* Demo */;
@@ -347,6 +406,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GeorgeKye.Demo;
@@ -358,6 +418,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GeorgeKye.Demo;

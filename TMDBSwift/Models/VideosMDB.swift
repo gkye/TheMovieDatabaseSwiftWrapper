@@ -11,10 +11,10 @@ import Foundation
 
 public class VideosMDB{
     public var id: String!
-    public var iso_639_1: String!
+    public var iso_639_1: String?
     public var key: String!
     public var name: String!
-    public var site: String!
+    public var site: String?
     public var size: Int!
     public var  type: String!
     

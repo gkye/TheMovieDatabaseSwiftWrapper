@@ -145,19 +145,11 @@ extension Client{
         
         networkRequest(url: url, parameters: parameters){
             apiReturn in
-            var aReturn = apiReturn;
             if(apiReturn.error == nil){
-                if(baseURL == "tv"){
-                    aReturn.MBDBReturn = TVMDB.initialize(aReturn.json!["results"])
-                }else{
-                    aReturn.MBDBReturn = MovieMDB.initialize(aReturn.json!["results"])
-                }
-            }else{
-                aReturn.MBDBReturn = nil;
+                completion(apiReturn)
             }
-            completion(aReturn)
         }
     }
     
-    
+        
 }

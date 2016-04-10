@@ -50,15 +50,15 @@ class FindMDB{
         
     }
 //  https://api.themoviedb.org/3/find/m/0kfv9?external_source=freebase_mid&api_key=8a7a49369d1af6a70ec5a6787bbfcf79
-    class func find(apikey: String, id: String, external_source: ExternalIdTypes!,completion: (ClientReturn) -> ()) -> (){
+    class func find(apikey: String, id: String, external_source: ExternalIdTypes!,completion: (clientReturn: ClientReturn, data: FindMDB?) -> ()) -> (){
         
         Client.Find(apikey, external_id: id, external_source: external_source.rawValue){
             apiReturn in
-            var aReturn = apiReturn
+            var data: FindMDB?
             if(apiReturn.error == nil){
-                aReturn.MBDBReturn = FindMDB.init(find: aReturn.json!)
+                data = FindMDB.init(find: apiReturn.json!)
             }
-            completion(aReturn)
+            completion(clientReturn: apiReturn, data: data)
         }
     }
     

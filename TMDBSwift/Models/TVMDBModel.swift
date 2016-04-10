@@ -9,8 +9,8 @@
 import Foundation
 
 public class Content_RatingsMDB{
-    public  var iso_3166_1: String!
-    public var rating: String!
+    public  var iso_3166_1: String?
+    public var rating: String?
     
     init(results: JSON){
         iso_3166_1 = results["iso_3166_1"].string

@@ -22,7 +22,7 @@ public class CollectionMDB{
     
     
     init(results: JSON) {
-        for(var i = 0; i < results["parts"].count; i++){
+        for i in 0 ..< results["parts"].count {
             collectionItems.append(MovieMDB(results: results["parts"][i]))
         }
         id = results["id"].double

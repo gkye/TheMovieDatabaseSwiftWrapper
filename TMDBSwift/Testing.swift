@@ -9,10 +9,9 @@
 import Foundation
 
 
-public class Tester{
+public class ShowUP{
     
-    
-    public class func testing1(){
-        print("1111")
+    public func abt(){
+        
     }
 }
