@@ -52,7 +52,7 @@ public  class TVEpisodesMDB {
     
     class func returnArrayOf(json: JSON) -> [TVEpisodesMDB] {
         var episodeArray = [TVEpisodesMDB]()
-        for i in 0...json.count{
+        for i in 0..<json.count{
             episodeArray.append(TVEpisodesMDB(results: json[i]))
         }
         return episodeArray

@@ -18,7 +18,7 @@ public class Content_RatingsMDB{
     }
     class func initialize(json: JSON)->[Content_RatingsMDB] {
         var contentRatings = [Content_RatingsMDB]()
-        for i in 0...json.count {
+        for i in 0..<json.count {
             contentRatings.append(Content_RatingsMDB(results: json[i]))
         }
         return contentRatings
@@ -68,7 +68,7 @@ public class TVMDB: DiscoverTVMDB {
     
     class func initialize(json: JSON)->[TVMDB] {
         var tvArray = [TVMDB]()
-        for i in 0...json.count{
+        for i in 0..<json.count{
             tvArray.append(TVMDB(results: json[i]))
         }
         return tvArray

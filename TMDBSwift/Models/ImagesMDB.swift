@@ -31,7 +31,7 @@ public class Images_MDB {
     ///Return array of Images_MDB
     class func initialize(json: JSON)->[Images_MDB] {
         var images = [Images_MDB]()
-        for i in 0...json.count{
+        for i in 0..<json.count{
             images.append(Images_MDB(results: json[i]))
         }
         return images

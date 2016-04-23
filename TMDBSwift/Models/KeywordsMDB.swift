@@ -22,7 +22,7 @@ public class KeywordsMDB{
     //Init function to return array of KeywordsMDB objs
    class func initialize_(json: JSON)->[KeywordsMDB] {
         var keywordsArray = [KeywordsMDB]()
-        for i in 0...json.count{
+        for i in 0..<json.count{
             keywordsArray.append(KeywordsMDB(results: json[i]))
         }
         return keywordsArray

@@ -30,7 +30,7 @@ public class VideosMDB{
     
     class func initialize(json: JSON)->[VideosMDB] {
         var videoArray = [VideosMDB]()
-        for i in 0...json.count{
+        for i in 0..<json.count{
             videoArray.append(VideosMDB(results: json[i]))
         }
         return videoArray

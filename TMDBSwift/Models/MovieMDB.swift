@@ -194,8 +194,8 @@ extension MovieMDB{
     }
     
     ///Get the list of top rated movies. By default, this list will only include movies that have 50 or more votes. This list refreshes every day.
-    public class func toprated(api_key: String!,language: String?, completion: (clientReturn: ClientReturn, movie: [MovieMDB]?) -> ()) -> (){
-        Client.Movies("top_rated", api_key: api_key, page: nil, language: language){
+    public class func toprated(api_key: String!,language: String?, page: Int?, completion: (clientReturn: ClientReturn, movie: [MovieMDB]?) -> ()) -> (){
+        Client.Movies("top_rated", api_key: api_key, page: page, language: language){
             apiReturn in
             var movie = [MovieMDB]?()
             if(apiReturn.error == nil){

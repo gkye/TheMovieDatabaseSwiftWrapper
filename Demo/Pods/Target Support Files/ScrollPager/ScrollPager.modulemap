@@ -1,0 +1,6 @@
+framework module ScrollPager {
+  umbrella header "ScrollPager-umbrella.h"
+
+  export *
+  module * { export * }
+}

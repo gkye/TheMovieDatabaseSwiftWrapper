@@ -16,10 +16,9 @@ public class GenresMDB: KeywordsMDB{
     
     class func initialize(json: JSON)->[GenresMDB] {
         var genres = [GenresMDB]()
-        for i in 0...json.count {
+        for i in 0..<json.count {
             genres.append(GenresMDB(results: json[i]))
         }
-        
         return genres
     }
     

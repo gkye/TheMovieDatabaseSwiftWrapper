@@ -30,7 +30,7 @@ public class TVSeasonsMDB{
     
     class func initialize(json: JSON)->[TVSeasonsMDB] {
         var tvSeasonsArray = [TVSeasonsMDB]()
-        for i in 0...json.count {
+        for i in 0..<json.count {
             tvSeasonsArray.append(TVSeasonsMDB(results: json[i]))
         }
         return tvSeasonsArray

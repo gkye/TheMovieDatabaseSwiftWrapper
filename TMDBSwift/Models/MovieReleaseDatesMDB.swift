@@ -21,7 +21,7 @@ public class MovieReleaseDatesMDB{
     ///Return an array of `MovieReleaseDatesMDB`
     class func initialize(json: JSON)->[MovieReleaseDatesMDB] {
         var releaseDatesArray = [MovieReleaseDatesMDB]()
-        for i in 0...json.count{
+        for i in 0..<json.count{
             releaseDatesArray.append(MovieReleaseDatesMDB(results: json[i]))
         }
         return releaseDatesArray
@@ -49,7 +49,7 @@ public struct Release_Dates{
     }
     static func initialize(json: JSON)->[Release_Dates] {
         var releaseDatesArray = [Release_Dates]()
-        for i in 0...json.count{
+        for i in 0..<json.count{
             releaseDatesArray.append(Release_Dates(release_date: json[i]))
         }
         return releaseDatesArray
