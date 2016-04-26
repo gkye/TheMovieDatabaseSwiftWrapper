@@ -17,8 +17,7 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = "Swift wrapper for themoviedb.org api v3"
-
+  s.description      = "Wrapper for themoviedb.org api v.3 written in Swift"
 
   s.homepage         = "https://github.com/gkye/TheMovieDatabaseSwiftWrapper"
   s.license          = 'MIT'
