@@ -1,3 +1,6 @@
+[![GitHub issues](https://img.shields.io/github/issues/gkye/TheMovieDatabaseSwiftWrapper.svg)](https://github.com/gkye/TheMovieDatabaseSwiftWrapper/issues)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/gkye/TheMovieDatabaseSwiftWrapper/master/LICENSE)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/gkye/TheMovieDatabaseSwiftWrapper.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
 
 ##Usage
 
