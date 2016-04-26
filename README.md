@@ -8,7 +8,7 @@
 2. View <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki">Wikis</a> for examples 
 <br>
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, clone the repo, and run `pod install` from the Demo directory first.
 
 ## Installation
 
