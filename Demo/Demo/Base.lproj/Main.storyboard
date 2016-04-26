@@ -58,10 +58,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zzq-ZV-C9R">
-                                <rect key="frame" x="0.0" y="114" width="414" height="619"/>
+                                <rect key="frame" x="0.0" y="114" width="414" height="622"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="619" id="uuh-AH-7aF"/>
+                                    <constraint firstAttribute="height" constant="622" id="OIa-P8-Ato"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="0rN-E5-mqu">
                                     <size key="itemSize" width="120" height="120"/>
@@ -103,13 +103,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Ptt-nB-kaT" secondAttribute="trailing" id="4Ks-gf-0mT"/>
-                            <constraint firstItem="zzq-ZV-C9R" firstAttribute="trailing" secondItem="Ptt-nB-kaT" secondAttribute="trailing" id="Fsz-Sy-hDg"/>
-                            <constraint firstItem="zzq-ZV-C9R" firstAttribute="leading" secondItem="Ptt-nB-kaT" secondAttribute="leading" id="L1U-fG-kDH"/>
-                            <constraint firstItem="7BI-6g-wyl" firstAttribute="top" secondItem="zzq-ZV-C9R" secondAttribute="bottom" constant="3" id="S5P-5s-AE0"/>
-                            <constraint firstItem="zzq-ZV-C9R" firstAttribute="top" secondItem="Ptt-nB-kaT" secondAttribute="bottom" id="bmA-5m-sWo"/>
-                            <constraint firstItem="Ptt-nB-kaT" firstAttribute="leading" secondItem="RPS-F0-e2J" secondAttribute="leading" id="ddQ-Ci-Ssf"/>
-                            <constraint firstItem="Ptt-nB-kaT" firstAttribute="top" secondItem="ghH-wq-6B4" secondAttribute="bottom" id="qic-JW-Igg"/>
+                            <constraint firstItem="Ptt-nB-kaT" firstAttribute="trailing" secondItem="zzq-ZV-C9R" secondAttribute="trailing" id="1PU-q7-UvX"/>
+                            <constraint firstAttribute="trailing" secondItem="Ptt-nB-kaT" secondAttribute="trailing" id="H74-OU-rh0"/>
+                            <constraint firstItem="Ptt-nB-kaT" firstAttribute="leading" secondItem="zzq-ZV-C9R" secondAttribute="leading" id="Jbn-a0-icM"/>
+                            <constraint firstItem="Ptt-nB-kaT" firstAttribute="top" secondItem="ghH-wq-6B4" secondAttribute="bottom" id="RiL-nE-uZT"/>
+                            <constraint firstItem="zzq-ZV-C9R" firstAttribute="top" secondItem="Ptt-nB-kaT" secondAttribute="bottom" id="Rkf-t4-Wqb"/>
+                            <constraint firstItem="zzq-ZV-C9R" firstAttribute="bottom" secondItem="7BI-6g-wyl" secondAttribute="top" id="YsG-qp-ex3"/>
+                            <constraint firstItem="Ptt-nB-kaT" firstAttribute="leading" secondItem="RPS-F0-e2J" secondAttribute="leading" id="fDQ-g2-Fvb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="TMDb Swift" id="Wdd-TK-2b5"/>
