@@ -11,6 +11,7 @@
 		5E1C5BEA1CBB67C3005E1738 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C5BE91CBB67C3005E1738 /* MainViewController.swift */; };
 		5EC416CF1CBA08E600124712 /* TMDBSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC416CC1CBA08D800124712 /* TMDBSwift.framework */; };
 		5EC416D01CBA08E600124712 /* TMDBSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC416CC1CBA08D800124712 /* TMDBSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5EE17C541CD1A57E00AC1351 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE17C531CD1A57E00AC1351 /* Test.swift */; };
 		5EED2CFD1CBB6A6800FD7E4E /* MainCollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EED2CFC1CBB6A6800FD7E4E /* MainCollectionViewCells.swift */; };
 		5EF1B2B61CB72E5F00B49F4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B2B51CB72E5F00B49F4E /* AppDelegate.swift */; };
 		5EF1B2B81CB72E5F00B49F4E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B2B71CB72E5F00B49F4E /* MainVC.swift */; };
@@ -72,6 +73,7 @@
 		5CDE49AADE6CD5C1E7009782 /* Pods-DemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoTests/Pods-DemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		5E1C5BE91CBB67C3005E1738 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5EC416C61CBA08D800124712 /* TMDBSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TMDBSwift.xcodeproj; path = ../TMDBSwift.xcodeproj; sourceTree = "<group>"; };
+		5EE17C531CD1A57E00AC1351 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		5EED2CFC1CBB6A6800FD7E4E /* MainCollectionViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCells.swift; sourceTree = "<group>"; };
 		5EF1B2B21CB72E5F00B49F4E /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF1B2B51CB72E5F00B49F4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				5EF1B2B51CB72E5F00B49F4E /* AppDelegate.swift */,
 				5EF1B2B71CB72E5F00B49F4E /* MainVC.swift */,
 				5E1C5BE91CBB67C3005E1738 /* MainViewController.swift */,
+				5EE17C531CD1A57E00AC1351 /* Test.swift */,
 				5EF1B2B91CB72E5F00B49F4E /* Main.storyboard */,
 				5EF1B2BC1CB72E5F00B49F4E /* Assets.xcassets */,
 				5EF1B2BE1CB72E5F00B49F4E /* LaunchScreen.storyboard */,
@@ -418,6 +421,7 @@
 			files = (
 				5E1C5BEA1CBB67C3005E1738 /* MainViewController.swift in Sources */,
 				5EF1B2B81CB72E5F00B49F4E /* MainVC.swift in Sources */,
+				5EE17C541CD1A57E00AC1351 /* Test.swift in Sources */,
 				5EF1B2B61CB72E5F00B49F4E /* AppDelegate.swift in Sources */,
 				5EED2CFD1CBB6A6800FD7E4E /* MainCollectionViewCells.swift in Sources */,
 			);

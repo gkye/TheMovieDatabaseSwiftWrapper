@@ -39,7 +39,7 @@ public class DiscoverTVMDB: DiscoverMDB {
             apiReturn in
             var data: [TVMDB]?
             if(apiReturn.error == nil){
-                data = TVMDB.initialize(apiReturn.json!)
+                data = TVMDB.initialize(apiReturn.json!["results"])
             }
             completionHandler(clientReturn: apiReturn, data: data)
         }
@@ -52,7 +52,7 @@ public class DiscoverTVMDB: DiscoverMDB {
             apiReturn in
             var data: [TVMDB]?
             if(apiReturn.error == nil){
-                data = TVMDB.initialize(apiReturn.json!)
+                data = TVMDB.initialize(apiReturn.json!["results"])
             }
             completionHandler(clientReturn: apiReturn, data: data)
         }
@@ -65,7 +65,7 @@ public class DiscoverTVMDB: DiscoverMDB {
             apiReturn in
             var data: [TVMDB]?
             if(apiReturn.error == nil){
-                data = TVMDB.initialize(apiReturn.json!)
+                data = TVMDB.initialize(apiReturn.json!["results"])
             }
             completionHandler(clientReturn: apiReturn, data: data)
         }
@@ -78,7 +78,7 @@ public class DiscoverTVMDB: DiscoverMDB {
             apiReturn in
             var data: [TVMDB]?
             if(apiReturn.error == nil){
-                data = TVMDB.initialize(apiReturn.json!)
+                data = TVMDB.initialize(apiReturn.json!["results"])
             }
             completionHandler(clientReturn: apiReturn, data: data)
         }
