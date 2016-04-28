@@ -1,3 +1,6 @@
+[![GitHub issues](https://img.shields.io/github/issues/gkye/TheMovieDatabaseSwiftWrapper.svg)](https://github.com/gkye/TheMovieDatabaseSwiftWrapper/issues)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/gkye/TheMovieDatabaseSwiftWrapper/master/LICENSE)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/gkye/TheMovieDatabaseSwiftWrapper.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
 
 ##Usage
 
@@ -8,6 +11,15 @@
 2. View <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki">Wikis</a> for examples 
 <br>
 
+To run the example project, clone the repo, and run `pod install` from the Demo directory first.
+
+## Installation
+
+TMDBSwift is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+```ruby
+pod "TMDBSwift"
+```
 
 ## ENDPOINTS
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Changes">Changes</a>
@@ -37,4 +49,12 @@ iOS 8.0 +
 
 ##Dependencies
 * SwiftyJSON
+
+
+## Author
+George Kye
+
+## License
+TMDBSwift is available under the MIT license. See the LICENSE file for more info.
+
 
