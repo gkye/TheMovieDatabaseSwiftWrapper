@@ -20,5 +20,4 @@ public class TranslationsMDB: ArrayObject{
         name = results["name"].string
         english_name = results["english_name"].string
     }
-    
 }

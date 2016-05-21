@@ -87,7 +87,6 @@ public class FindMDB{
     
     /// MARK: FindMDB all results returned are optional (Most results will return one section only
     
-    
     public var movie_results = [MovieMDB]()
     public var person_results: [PersonResults]?
     public var tv_results =  [TVMDB]()
@@ -114,7 +113,9 @@ public class FindMDB{
         }
         
     }
-    //The find method makes it easy to search for objects in our database by an external id. For instance, an IMDB ID. This will search all objects (movies, TV shows and people) and return the results in a single response.
+    /**
+     The find method makes it easy to search for objects in our database by an external id. For instance, an IMDB ID. This will search all objects (movies, TV shows and people) and return the results in a single response.
+     */
     
     public class func find(apikey: String, id: String, external_source: ExternalIdTypes!,completion: (clientReturn: ClientReturn, data: FindMDB?) -> ()) -> (){
         

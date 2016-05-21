@@ -42,7 +42,7 @@ public class CollectionMDB{
             }
         }
     }
-    
+
     ///Get all of the images for a particular collection by collection id.
     public class func CollectionImages(api_key: String!, collectionId: Int!, language: String?, completion:  (clientReturn: ClientReturn, data: ImagesMDB?) -> ()) -> (){
         let modId =  "\(collectionId)/images"

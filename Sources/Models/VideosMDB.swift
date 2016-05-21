@@ -27,5 +27,4 @@ public class VideosMDB: ArrayObject{
         size = results["size"].int
         type = results["type"].string
     }
-    
 }
