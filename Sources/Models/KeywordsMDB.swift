@@ -38,7 +38,7 @@ public class KeywordsMDB: ArrayObject{
         Client.keyword_movies(url, api_key: api_key, page: page, language: language){
             apiReturn in
             if(apiReturn.error == nil){
-                completion(clientReturn: apiReturn, data: MovieMDB.initialize(apiReturn.json!["results"]))
+                completion(clientReturn: apiReturn, data: MovieMDB.initialize(json: apiReturn.json!["results"]))
             }else{
                 completion(clientReturn: apiReturn, data: nil)
             }

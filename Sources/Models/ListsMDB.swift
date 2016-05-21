@@ -28,7 +28,7 @@ public class ListsMDB{
         description = results["description"].string
         favorite_count = results["favorite_count"].int
         id = results["id"].string
-        items = MovieMDB.initialize(results["items"])
+        items = MovieMDB.initialize(json: results["items"])
         item_count = results["items_count"].int
         iso_639_1 = results["iso_639_1"].string
         name = results["name"].string

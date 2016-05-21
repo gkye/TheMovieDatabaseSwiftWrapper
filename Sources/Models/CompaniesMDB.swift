@@ -65,7 +65,7 @@ public class CompanyMDB {
         Client.Company(api_key, companyId: companyId, language: language, page: page){
             apiReturn in
             if(apiReturn.error == nil){
-                completion(clientReturn: apiReturn, data: MovieMDB.initialize(apiReturn.json!["results"]))
+                completion(clientReturn: apiReturn, data: MovieMDB.initialize(json: apiReturn.json!["results"]))
             }else{
                 completion(clientReturn: apiReturn, data: nil)
             }

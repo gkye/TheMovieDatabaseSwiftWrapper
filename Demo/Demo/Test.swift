@@ -11,18 +11,15 @@ import TMDBSwift
 import UIKit
 
 class All: UIViewController {
-    
+
     override func viewDidLoad() {
-        
-        FindMDB.find(apikey, id: "nm0644022", external_source: .imdb_id){
-            rlts in
-            print(rlts.data?.movie_results.count)
-            print(rlts.data?.person_results?.count)
-            print(rlts.data?.tv_episode_results.count)
-            print(rlts.data?.tv_results.count)
-            print(rlts.data?.tv_season_results.count)
-            
+
+        MovieMDB.popular(apikey, language: "en", page: 1){
+            popularMovies in
+            let movie = popularMovies.movie!
+            print(movie[0].title)
+            print(movie[0].genre_ids)
         }
     }
-    
+
 }

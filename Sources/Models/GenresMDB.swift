@@ -28,7 +28,7 @@ public class GenresMDB: KeywordsMDB{
         Client.Genres(api_key, listType: "movies", language: language, genreId: genreId, page: nil, include_all_movies: true, include_adult: nil, movieList: true){
             apiReturn in
             if(apiReturn.error == nil){
-                completion(clientReturn: apiReturn, data: MovieMDB.initialize(apiReturn.json!["results"]))
+                completion(clientReturn: apiReturn, data: MovieMDB.initialize(json: apiReturn.json!["results"]))
             }else{
                 completion(clientReturn: apiReturn, data: nil)
             }
