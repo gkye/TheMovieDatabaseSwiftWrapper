@@ -110,14 +110,11 @@ public class PersonMDB{
             apiReturn in
             var images: [Images_MDB]?
             if(apiReturn.error == nil){
-               images = Images_MDB.initialize(apiReturn.json!["profiles"])
+               images = Images_MDB.initialize(json: apiReturn.json!["profiles"])
             }
             completion(client: apiReturn, data: images)
             
         }
     }
-    
-    
-    
     
 }

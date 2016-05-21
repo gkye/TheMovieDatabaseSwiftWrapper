@@ -9,8 +9,6 @@
 import Foundation
 
 
-
-
 public class CompanyMDB {
     public var description: String?
     public var headquarters: String?

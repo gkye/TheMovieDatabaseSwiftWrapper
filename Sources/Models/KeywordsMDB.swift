@@ -9,23 +9,14 @@
 import Foundation
 
 
-public class KeywordsMDB{
+public class KeywordsMDB: ArrayObject{
     
     public var id: Int?
     public var name: String?
     
-    init(results: JSON){
+    required public init(results: JSON){
         id = results["id"].int
         name = results["name"].string
-    }
-    
-    //Init function to return array of KeywordsMDB objs
-   class func initialize_(json: JSON)->[KeywordsMDB] {
-        var keywordsArray = [KeywordsMDB]()
-        for i in 0..<json.count{
-            keywordsArray.append(KeywordsMDB(results: json[i]))
-        }
-        return keywordsArray
     }
     
     ///Get the basic information for a specific keyword id.

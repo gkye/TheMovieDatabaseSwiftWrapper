@@ -14,8 +14,9 @@ public struct tv_created_By{
     public var name: String!
     public var profile_path: String!
 }
+
 public struct tv_seasons{
-    public var air_date: String!
+    public var air_date: String?
     public var episode_count: Int!
     public var id: Int!
     public var poster_path: String!
@@ -43,7 +44,6 @@ public struct tv_seasons{
 public class TVDetailedMDB: TVMDB{
     public var createdBy: tv_created_By?
     public var episode_run_time: [Int]!
-    public var genres: KeywordsMDB!
     public var homepage: String?
     public var in_production: Bool?
     public var languages: [String]?
@@ -56,14 +56,14 @@ public class TVDetailedMDB: TVMDB{
     public var status: String!
     public var type: String!
     
-    override init(results: JSON) {
+    required public init(results: JSON) {
         super.init(results: results)
         if(results["created_by"].count > 0 && results["created_by"][0] != nil ){
             createdBy = tv_created_By.init(id: results["created_by"][0]["id"].int, name: results["created_by"][0]["name"].string, profile_path: results["created_by"][0]["profile_path"].string)
         }
         
         episode_run_time = results["episode_run_time"].arrayObject as! [Int]
-        genres = KeywordsMDB.init(results: results["genres"])
+//        genres = KeywordsMDB.init(results: results["genres"])
         homepage = results["homepage"].string
         in_production = results["in_production"].bool
         languages = results["languages"].arrayObject as? [String]

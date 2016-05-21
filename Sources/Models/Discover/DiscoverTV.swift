@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 public enum TVGenres: String{
     case Action_Adventure = "10759";
     case Animation = "16";
@@ -39,7 +37,7 @@ public class DiscoverTVMDB: DiscoverMDB {
             apiReturn in
             var data: [TVMDB]?
             if(apiReturn.error == nil){
-                data = TVMDB.initialize(apiReturn.json!["results"])
+                data = TVMDB.initialize(json: apiReturn.json!["results"])
             }
             completionHandler(clientReturn: apiReturn, data: data)
         }
@@ -52,7 +50,7 @@ public class DiscoverTVMDB: DiscoverMDB {
             apiReturn in
             var data: [TVMDB]?
             if(apiReturn.error == nil){
-                data = TVMDB.initialize(apiReturn.json!["results"])
+                data = TVMDB.initialize(json: apiReturn.json!["results"])
             }
             completionHandler(clientReturn: apiReturn, data: data)
         }
@@ -65,7 +63,7 @@ public class DiscoverTVMDB: DiscoverMDB {
             apiReturn in
             var data: [TVMDB]?
             if(apiReturn.error == nil){
-                data = TVMDB.initialize(apiReturn.json!["results"])
+                data = TVMDB.initialize(json: apiReturn.json!["results"])
             }
             completionHandler(clientReturn: apiReturn, data: data)
         }
@@ -78,7 +76,7 @@ public class DiscoverTVMDB: DiscoverMDB {
             apiReturn in
             var data: [TVMDB]?
             if(apiReturn.error == nil){
-                data = TVMDB.initialize(apiReturn.json!["results"])
+                data = TVMDB.initialize(json: apiReturn.json!["results"])
             }
             completionHandler(clientReturn: apiReturn, data: data)
         }

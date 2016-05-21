@@ -20,7 +20,6 @@ public class CollectionMDB{
    public var overview: String?
    public var collectionItems = [MovieMDB]()
     
-    
     init(results: JSON) {
         for i in 0 ..< results["parts"].count {
             collectionItems.append(MovieMDB(results: results["parts"][i]))

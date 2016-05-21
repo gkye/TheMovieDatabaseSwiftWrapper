@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 public class MovieCreditsMDB{
     
     public  var cast = [MovieCastMDB]()

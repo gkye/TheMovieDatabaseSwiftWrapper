@@ -13,7 +13,6 @@ public class TVCreditsMDB{
    public var crew = [CrewMDB]()
     
     init(results: JSON){
-        
         //tv cast
         for castResult in results["cast"]{
             cast.append(TVCastMDB.init(cast: castResult.1))
@@ -23,7 +22,6 @@ public class TVCreditsMDB{
             crew.append(CrewMDB.init(crew: crewResults.1))
         }
     }
-    
 }
 
 

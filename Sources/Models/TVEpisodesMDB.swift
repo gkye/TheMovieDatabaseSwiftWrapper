@@ -10,7 +10,7 @@ import Foundation
 
 
 
-public  class TVEpisodesMDB {
+public  class TVEpisodesMDB: ArrayObject {
     
     var air_date: String!
     var crew = [CrewMDB]()
@@ -25,7 +25,7 @@ public  class TVEpisodesMDB {
     var vote_average: Int!
     var vote_count: Int!
     
-    init(results: JSON){
+    required public init(results: JSON){
         air_date = results["air_date"].string
         
         if(results["crew"] != nil){
@@ -50,14 +50,7 @@ public  class TVEpisodesMDB {
         vote_count  = results[" vote_count"].int
     }
     
-    class func returnArrayOf(json: JSON) -> [TVEpisodesMDB] {
-        var episodeArray = [TVEpisodesMDB]()
-        for i in 0..<json.count{
-            episodeArray.append(TVEpisodesMDB(results: json[i]))
-        }
-        return episodeArray
-    }
-    
+
     ///Get the primary information about a TV episode by combination of a season and episode number.
     class func episode_number(api_key: String, tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, language: String?, completion: (clientReturn: ClientReturn, data: TVEpisodesMDB) -> ()) -> (){
         let urltype = "\(tvShowId)/season/\(seasonNumber)/episode/\(episodeNumber)"
@@ -114,7 +107,7 @@ public  class TVEpisodesMDB {
             apiReturn in
             var data: [VideosMDB]?
             if(apiReturn.error == nil){
-                data = VideosMDB.initialize(apiReturn.json!["results"])
+                data = VideosMDB.initialize(json: apiReturn.json!["results"])
             }
             completion(clientReturn: apiReturn, data: data)
         }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5E7643B91CB76D560095A4C1 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7643B81CB76D560095A4C1 /* SwiftyJSON.swift */; };
+		5EF143621CF0A3FB009C620D /* ArrayObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF143611CF0A3FB009C620D /* ArrayObjectProtocol.swift */; };
 		5EF1B26F1CB72DC000B49F4E /* TMDBSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EF1B26E1CB72DC000B49F4E /* TMDBSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5EF1B2761CB72DC000B49F4E /* TMDBSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EF1B26B1CB72DBF00B49F4E /* TMDBSwift.framework */; };
 		5EF1B27B1CB72DC000B49F4E /* TMDBSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B27A1CB72DC000B49F4E /* TMDBSwiftTests.swift */; };
@@ -79,6 +80,7 @@
 
 /* Begin PBXFileReference section */
 		5E7643B81CB76D560095A4C1 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		5EF143611CF0A3FB009C620D /* ArrayObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayObjectProtocol.swift; path = Protocols/ArrayObjectProtocol.swift; sourceTree = "<group>"; };
 		5EF1B26B1CB72DBF00B49F4E /* TMDBSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TMDBSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF1B26E1CB72DC000B49F4E /* TMDBSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMDBSwift.h; sourceTree = "<group>"; };
 		5EF1B2701CB72DC000B49F4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -196,14 +198,22 @@
 		5E92596B1CB774C1003082AB /* TV */ = {
 			isa = PBXGroup;
 			children = (
+				5EF1B33E1CB732C900B49F4E /* TVMDB.swift */,
 				5EF1B33F1CB732C900B49F4E /* TVMDBModel.swift */,
 				5EF1B33B1CB732C900B49F4E /* TVCreditsMDB.swift */,
 				5EF1B33C1CB732C900B49F4E /* TVDetailedMDB.swift */,
 				5EF1B33D1CB732C900B49F4E /* TVEpisodesMDB.swift */,
-				5EF1B33E1CB732C900B49F4E /* TVMDB.swift */,
 				5EF1B3401CB732C900B49F4E /* TVSeasonsMDB.swift */,
 			);
 			name = TV;
+			sourceTree = "<group>";
+		};
+		5EF143601CF0A351009C620D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				5EF143611CF0A3FB009C620D /* ArrayObjectProtocol.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		5EF1B2611CB72DBF00B49F4E = {
@@ -228,6 +238,7 @@
 		5EF1B26D1CB72DC000B49F4E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				5EF143601CF0A351009C620D /* Protocols */,
 				5E7643B71CB76D480095A4C1 /* Open Source */,
 				5EF1B3091CB732C900B49F4E /* Client */,
 				5EF1B31C1CB732C900B49F4E /* Models */,
@@ -249,8 +260,8 @@
 		5EF1B3091CB732C900B49F4E /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				5EF1B30A1CB732C900B49F4E /* Clent_Discover.swift */,
 				5EF1B30B1CB732C900B49F4E /* Client.swift */,
+				5EF1B30A1CB732C900B49F4E /* Clent_Discover.swift */,
 				5EF1B30C1CB732C900B49F4E /* Client_Certifications.swift */,
 				5EF1B30D1CB732C900B49F4E /* Client_Changes.swift */,
 				5EF1B30E1CB732C900B49F4E /* Client_Collections.swift */,
@@ -515,6 +526,7 @@
 				5EF1B3751CB732C900B49F4E /* TVMDBModel.swift in Sources */,
 				5EF1B35B1CB732C900B49F4E /* Discover.swift in Sources */,
 				5EF1B3731CB732C900B49F4E /* TVEpisodesMDB.swift in Sources */,
+				5EF143621CF0A3FB009C620D /* ArrayObjectProtocol.swift in Sources */,
 				5EF1B3701CB732C900B49F4E /* TranslationsMDB.swift in Sources */,
 				5EF1B3421CB732C900B49F4E /* Clent_Discover.swift in Sources */,
 				5EF1B3511CB732C900B49F4E /* Client_Review.swift in Sources */,
