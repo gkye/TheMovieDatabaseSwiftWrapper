@@ -41,7 +41,6 @@ pod "TMDBSwift"
 
 ## TODO
 ---------
-* Find 
 * People 
 * Search 
 * Certifications 
