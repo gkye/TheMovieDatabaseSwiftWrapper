@@ -208,8 +208,8 @@ extension MovieMDB{
     }
     
     ///Get the list of upcoming movies by release date. This list refreshes every day.
-    public class func upcoming(api_key: String!,language: String?, completion: (clientReturn: ClientReturn, movie: [MovieMDB]?) -> ()) -> (){
-        Client.Movies("upcoming", api_key: api_key, page: nil, language: language){
+    public class func upcoming(api_key: String!, page: Int?, language: String?, completion: (clientReturn: ClientReturn, movie: [MovieMDB]?) -> ()) -> (){
+        Client.Movies("upcoming", api_key: api_key, page: page, language: language){
             apiReturn in
             var movie = [MovieMDB]?()
             if(apiReturn.error == nil){

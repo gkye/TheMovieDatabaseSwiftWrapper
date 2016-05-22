@@ -72,10 +72,8 @@ public struct PersonResults: ArrayObject{
         
         for i in 0..<json["known_for"].count{
             if json["known_for"][i]["media_type"] == "tv"{
-                print("int tv")
                 tvShows.append(KnownForTV.init(results: json["known_for"][i]))
             }else{
-                print("init movie")
                 movies.append(KnownForMovie.init(results: json["known_for"][i]))
             }
         }
