@@ -19,11 +19,11 @@ Pod::Spec.new do |s|
 
   s.description      = "Wrapper for themoviedb.org api v.3 written in Swift"
 
-  s.homepage         = "https://github.com/piars777/TheMovieDatabaseSwiftWrapper"
+  s.homepage         = "https://github.com/gkye/TheMovieDatabaseSwiftWrapper"
   s.license          = 'MIT'
-  s.author           = { "Samuel PAUL" => "samuelpaul54@hotmail.com" }
-  s.source           = { :git => "https://github.com/piars777/TheMovieDatabaseSwiftWrapper.git", :tag => s.version.to_s }
-  s.social_media_url = ''
+  s.author           = { "George Kye" => "gkye@live.ca" }
+  s.source           = { :git => "https://github.com/gkye/TheMovieDatabaseSwiftWrapper.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/kyegeorge'
 
   s.ios.deployment_target = '8.0'
 
