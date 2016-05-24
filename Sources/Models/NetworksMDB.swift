@@ -14,12 +14,8 @@ class NetworksMDB{
     var id: Double!
     var name: String!
     init(results: JSON){
-        if(results["id"] != nil){
-            id = results["id"].double
-        }
-        if(results["name"] != nil){
-            name = results["name"].string
-        }
+        id = results["id"].double
+        name = results["name"].string
     }
     
     ///This method is used to retrieve the basic information about a TV network. You can use this ID to search for TV shows with the discover.

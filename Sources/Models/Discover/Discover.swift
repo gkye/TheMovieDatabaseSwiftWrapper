@@ -48,39 +48,28 @@ public enum DiscoverSortByTV: String {
 }
 
 
-public class DiscoverMDB {
+public class DiscoverMDB: ArrayObject {
     public var adult: Bool!
     public var overview: String?
     public var popularity: Double?
     public var id: Double?
-    public var backdrop_path: NSString?
+    public var backdrop_path: String?
     public var vote_average: Double?
     public var original_language: String?
     public var vote_count: Double?
-    public var poster_path: String!
+    public var poster_path: String?
+    public var genre_ids: [Int]?
     
-    static var baseURL = ""
-    
-    init(results: JSON){
-        
-        if(results["poster_path"].string != nil){
-            poster_path = results["poster_path"].string
-        }else{
-            poster_path = nil
-        }
-        
+    required public init(results: JSON){
+        poster_path = results["poster_path"].string
         popularity = results["popularity"].double
         id = results["id"].double
-        if(results["backdrop_path"].string != nil){
-            backdrop_path = nil
-        }else{
-            backdrop_path = results["backdrop_path"].string
-        }
-        
+        backdrop_path = results["backdrop_path"].string
         vote_average = results["vote_average"].double
         overview = results["overview"].string
         original_language = results["original_language"].string
         vote_count = results["vote_count"].double
+        genre_ids = results["genre_ids"].arrayObject as? [Int]
         
     }
     

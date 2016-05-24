@@ -9,8 +9,8 @@
 import Foundation
 
 public struct Alt_TitlesMDB{
-    public var title: String!
-    public var iso_3166_1: String!
+    public var title: String?
+    public var iso_3166_1: String?
     init(result: JSON){
         title = result["title"].string
         iso_3166_1 = result["iso_3166_1"].string

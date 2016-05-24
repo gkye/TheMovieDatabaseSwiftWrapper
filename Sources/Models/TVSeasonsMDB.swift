@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class TVSeasonsMDB{
+public class TVSeasonsMDB: ArrayObject{
     
     public var air_date: String!
     public var episodes = [TVEpisodesMDB]()
@@ -18,22 +18,14 @@ public class TVSeasonsMDB{
     public var poster_path: String!
     public var season_number: Int!
     
-    init(results: JSON){
+    required public init(results: JSON){
         air_date = results["air_date"].string
-        episodes = TVEpisodesMDB.returnArrayOf(results["episodes"])
+        episodes = TVEpisodesMDB.initialize(json: results["episodes"])
         name = results["name"].string
         overview = results["overview"].string
         id = results["id"].int
         poster_path = results["poster_path"].string
         season_number = results["season_number"].int
-    }
-    
-    class func initialize(json: JSON)->[TVSeasonsMDB] {
-        var tvSeasonsArray = [TVSeasonsMDB]()
-        for i in 0..<json.count {
-            tvSeasonsArray.append(TVSeasonsMDB(results: json[i]))
-        }
-        return tvSeasonsArray
     }
     
     ///Get the primary information about a TV season by its season number.
@@ -98,7 +90,7 @@ public class TVSeasonsMDB{
             apiReturn in
             var data: [VideosMDB]?
             if(apiReturn.error == nil){
-                data = VideosMDB.initialize(apiReturn.json!["results"])
+                data = VideosMDB.initialize(json: apiReturn.json!["results"])
             }
             completion(clientReturn: apiReturn, data: data)
         }

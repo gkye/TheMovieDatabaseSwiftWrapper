@@ -9,7 +9,7 @@
 import Foundation
 
 
-public class Images_MDB {
+public class Images_MDB: ArrayObject {
     public var aspect_ratio: String?
     public var file_path: String?
     public var height: Int?
@@ -18,7 +18,7 @@ public class Images_MDB {
     public var vote_count: Int?
     public var width: Int?
     
-    init(results: JSON){
+    required public init(results: JSON){
         aspect_ratio = results["aspect_ratio"].string
         file_path = results["file_path"].string
         height = results["height"].int
@@ -27,15 +27,7 @@ public class Images_MDB {
         vote_count = results["vote_count"].int
         width = results["width"].int
     }
-    
-    ///Return array of Images_MDB
-    class func initialize(json: JSON)->[Images_MDB] {
-        var images = [Images_MDB]()
-        for i in 0..<json.count{
-            images.append(Images_MDB(results: json[i]))
-        }
-        return images
-    }
+
 }
 
 

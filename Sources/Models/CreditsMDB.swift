@@ -8,9 +8,6 @@
 
 import Foundation
 
-
-
-
 public struct Credits_Episodes{
     public var air_date: String!
     public var episode_number: Int!

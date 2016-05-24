@@ -44,7 +44,7 @@ extension TVMDB{
             apiReturn in
             var data: [Content_RatingsMDB]?
             if(apiReturn.error == nil){
-                data = Content_RatingsMDB.initialize(apiReturn.json!["results"])
+                data = Content_RatingsMDB.initialize(json: apiReturn.json!["results"])
             }
             completion(clientReturn: apiReturn, data: data)
         }
@@ -92,7 +92,7 @@ extension TVMDB{
             apiReturn in
             var data: [KeywordsMDB]?
             if(apiReturn.error == nil){
-                data = KeywordsMDB.initialize_(apiReturn.json!["results"])
+                data = KeywordsMDB.initialize(json: apiReturn.json!["results"])
             }
             completion(clientResult: apiReturn, data: data)
         }
@@ -105,7 +105,7 @@ extension TVMDB{
             var data: [TVMDB]?
             if(apiReturn.error == nil){
                 if(apiReturn.json!["results"].count > 0){
-                    data = TVMDB.initialize(apiReturn.json!["results"])
+                    data = TVMDB.initialize(json: apiReturn.json!["results"])
                 }
             }
             completion(clientResult: apiReturn, data: data)
@@ -117,7 +117,7 @@ extension TVMDB{
             apiReturn in
             var data: [TranslationsMDB]?
             if(apiReturn.error == nil){
-                data = TranslationsMDB.initialize(apiReturn.json!["translations"])
+                data = TranslationsMDB.initialize(json: apiReturn.json!["translations"])
             }
             completion(clientReturn: apiReturn, data: data)
         }
@@ -130,7 +130,7 @@ extension TVMDB{
             apiReturn in
             var data: [VideosMDB]?
             if(apiReturn.error == nil){
-                data = VideosMDB.initialize(apiReturn.json!["results"])
+                data = VideosMDB.initialize(json: apiReturn.json!["results"])
             }
             completion(clientReturn: apiReturn, data: data)
         }
@@ -155,7 +155,7 @@ extension TVMDB{
             var data: [TVMDB]?
             if(apiReturn.error == nil){
                 if(apiReturn.json!["results"].count > 0){
-                    data = TVMDB.initialize(apiReturn.json!["results"])
+                    data = TVMDB.initialize(json: apiReturn.json!["results"])
                 }
             }
             completion(clientResult: apiReturn, data: data)
@@ -169,7 +169,7 @@ extension TVMDB{
             var data: [TVMDB]?
             if(apiReturn.error == nil){
                 if(apiReturn.json!["results"].count > 0){
-                    data = TVMDB.initialize(apiReturn.json!["results"])
+                    data = TVMDB.initialize(json: apiReturn.json!["results"])
                 }
             }
             completion(clientResult: apiReturn, data: data)
@@ -183,7 +183,7 @@ extension TVMDB{
             var data: [TVMDB]?
             if(apiReturn.error == nil){
                 if(apiReturn.json!["results"].count > 0){
-                    data = TVMDB.initialize(apiReturn.json!["results"])
+                    data = TVMDB.initialize(json: apiReturn.json!["results"])
                 }
             }
             completion(clientResult: apiReturn, data: data)
@@ -197,7 +197,7 @@ extension TVMDB{
             var data: [TVMDB]?
             if(apiReturn.error == nil){
                 if(apiReturn.json!["results"].count > 0){
-                    data = TVMDB.initialize(apiReturn.json!["results"])
+                    data = TVMDB.initialize(json: apiReturn.json!["results"])
                 }
             }
             completion(clientResult: apiReturn, data: data)

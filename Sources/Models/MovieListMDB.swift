@@ -9,7 +9,7 @@
 import Foundation
 
 
-public class MovieListMDB{
+public class MovieListMDB: ArrayObject{
    public var description: String?
    public var favorite_count: Int?
    public var item_count: Int!
@@ -17,7 +17,7 @@ public class MovieListMDB{
    public var name: String!
    public var poster_path: String?
     
-    init(results: JSON){
+    required public init(results: JSON){
         description = results["description"].string
         favorite_count = results["favorite_count"].int
         item_count = results["item_count"].int
@@ -26,12 +26,4 @@ public class MovieListMDB{
         poster_path = results["poster_path"].string
     }
     
-    ///Return an array of `MovieListMDB` items
-    class func initialize(json: JSON)->[MovieListMDB] {
-        var movieListArray = [MovieListMDB]()
-        for i in 0 ..< json.count {
-            movieListArray.append(MovieListMDB(results: json[i]))
-        }
-        return movieListArray
-    }
 }

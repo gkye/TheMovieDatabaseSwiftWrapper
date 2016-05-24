@@ -69,7 +69,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! MainCollectionViewCell
         let source = dataSource[indexPath.row].poster_path
         if(source != nil){
-            let url = "http://image.tmdb.org/t/p/w300"+source
+            let url = "http://image.tmdb.org/t/p/w300"+source!
             cell.image.af_setImageWithURL(NSURL(string: url)!)
         }else{
             cell.image.image = UIImage(named: "placeholder")

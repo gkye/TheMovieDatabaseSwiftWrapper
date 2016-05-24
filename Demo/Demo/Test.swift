@@ -13,14 +13,8 @@ import UIKit
 class All: UIViewController {
 
     override func viewDidLoad() {
-        GenresMDB.genre_movies(apikey, genreId: 37, include_all_movies: true, include_adult_movies: false, language: "EN"){
-            apiReturn in
-            let movie = apiReturn.data!
-            print(movie[0].title)
-            print(movie[0].original_title)
-            print(movie[0].release_date)
-            print(movie[0].overview)
-        }
+        
+
     }
 
 }

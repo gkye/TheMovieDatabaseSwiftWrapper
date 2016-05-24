@@ -17,7 +17,5 @@ extension Client{
             apiReturn in
             completion(apiReturn)
         })
-    }
-    
-    
+    }    
 }

@@ -9,25 +9,17 @@
 import Foundation
 
 
-public class MovieReviewsMDB{
+public class MovieReviewsMDB: ArrayObject{
     
-   public var id: String!
-   public var author: String!
-   public var content: String!
-   public var url: String!
+    public var id: String!
+    public var author: String!
+    public var content: String!
+    public var url: String!
     
-    init(results: JSON){
+    required public init(results: JSON){
         id = results["id"].string
         author = results["author"].string
         content = results["content"].string
         url = results["url"].string
-    }
-    ///Return an array of `MovieReviewsMDB`s
-    class func initialize(json: JSON)->[MovieReviewsMDB] {
-        var moveReviewArray = [MovieReviewsMDB]()
-        for i in 0 ..< json.count {
-            moveReviewArray.append(MovieReviewsMDB(results: json[i]))
-        }
-        return moveReviewArray
     }
 }

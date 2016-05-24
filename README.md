@@ -26,11 +26,14 @@ pod "TMDBSwift"
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Collections"> Collections </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Companies"> Companies </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Credits"> Credits </a>
-* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Discover"> Discover </a> | <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/DiscoverTV"> DiscoverTV </a> |  <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/DiscoverMovie"> DiscoverMovie</a>
+* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Discover"> Discover </a> | <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/DiscoverTV"> DiscoverTV </a> | 
+* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/DiscoverMovie"> DiscoverMovie</a>
+*  <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Find"> Find</a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Keywords"> Keywords </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Lists"> List </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Genres"> Genres </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Networks"> Networks </a>
+* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/People"> People </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Reviews"> Reviews </a> 
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TV">TV</a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TVSeasons">TVSeasons</a>
@@ -39,8 +42,6 @@ pod "TMDBSwift"
 
 ## TODO
 ---------
-* Find 
-* People 
 * Search 
 * Certifications 
 

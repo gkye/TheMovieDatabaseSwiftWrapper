@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 public class CastCrewCommonMDB{
     public var credit_id: String!
     public var id: Int!
@@ -34,4 +33,33 @@ public class CrewMDB: CastCrewCommonMDB{
         job = crew["job"].string
     }
 }
+
+public class TVCastMDB: CastCrewCommonMDB{
+    public var character: String!
+    public var order: Int!
+    init(cast: JSON){
+        super.init(results: cast)
+        character = cast["character"].string
+        order = cast["order"].int
+    }
+}
+
+
+public class TVCreditsMDB{
+    public var cast = [TVCastMDB]()
+    public var crew = [CrewMDB]()
+    
+    init(results: JSON){
+        //tv cast
+        for castResult in results["cast"]{
+            cast.append(TVCastMDB.init(cast: castResult.1))
+        }
+        //crew -- common
+        for crewResults in results["crew"]{
+            crew.append(CrewMDB.init(crew: crewResults.1))
+        }
+    }
+}
+
+
 
