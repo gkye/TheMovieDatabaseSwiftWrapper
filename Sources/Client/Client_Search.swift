@@ -47,7 +47,7 @@ extension Client{
             }
         }
         
-        let url = "https://api.themoviedb.org/3/movie/\(urlType)"
+        let url = "https://api.themoviedb.org/3/search/\(urlType)"
         networkRequest(url: url, parameters: parameters, completion: {
             apiReturn in
             completion(apiReturn)
