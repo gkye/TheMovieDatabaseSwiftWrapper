@@ -11,7 +11,7 @@ import Foundation
 
 //** CHECK LISt-> may contain collection or tv object.
 
-public class CollectionMDB{
+public class CollectionMDB: ArrayObject{
     
    public var id: Double?
    public var name: String?
@@ -20,7 +20,7 @@ public class CollectionMDB{
    public var overview: String?
    public var collectionItems = [MovieMDB]()
     
-    init(results: JSON) {
+    required public init(results: JSON) {
         for i in 0 ..< results["parts"].count {
             collectionItems.append(MovieMDB(results: results["parts"][i]))
         }

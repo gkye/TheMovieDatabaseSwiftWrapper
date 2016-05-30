@@ -11,7 +11,7 @@ import Foundation
 
 ///TODO: ListItem status
 
-public class ListsMDB{
+public class ListsMDB: ArrayObject{
     
     public  var created_by: String!
     public  var description: String?
@@ -23,7 +23,7 @@ public class ListsMDB{
     public  var name:  String!
     public  var poster_path:  String?
     
-    init(results: JSON){
+    required public init(results: JSON){
         created_by = results["created_by"].string
         description = results["description"].string
         favorite_count = results["favorite_count"].int
@@ -36,8 +36,6 @@ public class ListsMDB{
     }
     
     ///MARK: Lists
-    ///TODO: List item status
-    ///Get a list by id.
     public  class func lists(api_key: String!, listId: String!, completion: (clientReturn: ClientReturn, data: ListsMDB?) -> ()) -> (){
         let url  = "http://api.themoviedb.org/3/list/\(listId)"
         Client.Lists(url, api_key: api_key, listId: listId!){

@@ -212,7 +212,7 @@ public struct TaggedImages{
 
 //MARK: Person
 
-public class PersonMDB{
+public class PersonMDB: ArrayObject{
     
     public var adult: Bool!
     public var also_known_as = [String]?()
@@ -226,20 +226,20 @@ public class PersonMDB{
     public var place_of_birth: String?
     public var popularity: Int!
     public var profile_path: String?
-    
-    init(person: JSON){
-        adult = person["adult"].bool
-        also_known_as = person["also_known_as"].arrayObject as? [String]
-        biography = person["biography"].string
-        birthday = person["birthday"].string
-        deathday = person["deathday"].string
-        homepage = person["homepage"].string
-        id = person["id"].int
-        imdb_id = person["imdb_id"].string
-        name = person["name"].string
-        place_of_birth = person["place_of_birth"].string
-        popularity = person["popularity"].int
-        profile_path = person["profile_path"].string
+  
+    required public init(results: JSON){
+        adult = results["adult"].bool
+        also_known_as = results["also_known_as"].arrayObject as? [String]
+        biography = results["biography"].string
+        birthday = results["birthday"].string
+        deathday = results["deathday"].string
+        homepage = results["homepage"].string
+        id = results["id"].int
+        imdb_id = results["imdb_id"].string
+        name = results["name"].string
+        place_of_birth = results["place_of_birth"].string
+        popularity = results["popularity"].int
+        profile_path = results["profile_path"].string
     }
     
     ///Get the general person information for a specific id.
@@ -249,7 +249,7 @@ public class PersonMDB{
             apiReturn in
             var data: PersonMDB?
             if(apiReturn.error == nil){
-                data = PersonMDB.init(person: apiReturn.json!)
+                data = PersonMDB.init(results: apiReturn.json!)
             }
             completion(clientReturn: apiReturn, data: data)
         }
@@ -337,7 +337,7 @@ public class PersonMDB{
             apiReturn in
             var data: PersonMDB?
             if(apiReturn.error == nil){
-                data = PersonMDB.init(person: apiReturn.json!)
+                data = PersonMDB.init(results: apiReturn.json!)
             }
             completion(clientReturn: apiReturn, data: data)
         }
