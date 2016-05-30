@@ -35,6 +35,7 @@ pod "TMDBSwift"
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Networks"> Networks </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/People"> People </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Reviews"> Reviews </a> 
+* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Search"> Search </a> 
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TV">TV</a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TVSeasons">TVSeasons</a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TVEpisodes">TVEpisodes</a>
@@ -42,7 +43,7 @@ pod "TMDBSwift"
 
 ## TODO
 ---------
-* Search 
+* Search (multi)
 * Certifications 
 
 ##Compatibility
