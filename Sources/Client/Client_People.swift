@@ -10,7 +10,7 @@ import Foundation
 
 extension Client{
     
-    class func Person(urlType: String!, api_key: String!, language: String?, page: Int?, completion: (ClientReturn) -> ()) -> (){
+    static func Person(urlType: String!, api_key: String!, language: String?, page: Int?, completion: (ClientReturn) -> ()) -> (){
         let url = "http://api.themoviedb.org/3/person/\(urlType)"
         var parameters: [String : AnyObject] = ["api_key": api_key]
         if(language != nil){ parameters["language"] = language }

@@ -212,7 +212,7 @@ public struct TaggedImages{
 
 //MARK: Person
 
-public class PersonMDB: ArrayObject{
+public struct PersonMDB: ArrayObject{
     
     public var adult: Bool!
     public var also_known_as = [String]?()
@@ -227,7 +227,7 @@ public class PersonMDB: ArrayObject{
     public var popularity: Int!
     public var profile_path: String?
   
-    required public init(results: JSON){
+    public init(results: JSON){
         adult = results["adult"].bool
         also_known_as = results["also_known_as"].arrayObject as? [String]
         biography = results["biography"].string
@@ -243,7 +243,7 @@ public class PersonMDB: ArrayObject{
     }
     
     ///Get the general person information for a specific id.
-    public class func person_id(api_key: String!, personID: Int!, completion: (clientReturn: ClientReturn, data: PersonMDB?) ->()) ->(){
+    public static func person_id(api_key: String!, personID: Int!, completion: (clientReturn: ClientReturn, data: PersonMDB?) ->()) ->(){
         let urlType = "\(personID)"
         Client.Person(urlType, api_key: api_key, language: nil, page: nil){
             apiReturn in
@@ -257,7 +257,7 @@ public class PersonMDB: ArrayObject{
     
     
     ///Get the movie credits for a specific person id.
-    public class func movie_credits(api_key: String!, personID: Int!, language: String?, completion: (clientReturn: ClientReturn, data: PersonMovieCredits?) -> ()) ->(){
+    public static func movie_credits(api_key: String!, personID: Int!, language: String?, completion: (clientReturn: ClientReturn, data: PersonMovieCredits?) -> ()) ->(){
         let urlType = "\(personID)/movie_credits"
         Client.Person(urlType, api_key: api_key, language: language, page: nil){
             apiReturn in
@@ -269,7 +269,7 @@ public class PersonMDB: ArrayObject{
         }
     }
     ///Get the TV credits for a specific person id.
-    public class func tv_credits(api_key: String!, personID: Int!, language: String?, completion: (clientReturn: ClientReturn, data: PersonTVCredits?) -> ()) ->(){
+    public static func tv_credits(api_key: String!, personID: Int!, language: String?, completion: (clientReturn: ClientReturn, data: PersonTVCredits?) -> ()) ->(){
         let urlType = "\(personID)/tv_credits"
         Client.Person(urlType, api_key: api_key, language: language, page: nil){
             apiReturn in
@@ -282,7 +282,7 @@ public class PersonMDB: ArrayObject{
     }
     
     ///Get the combined (movie and TV) credits for a specific person id.
-    public class func combined_credits(api_key: String!, personID: Int!, language: String?, completion: (clientReturn: ClientReturn, data: PersonCreditsCombined?) -> ()) ->(){
+    public static func combined_credits(api_key: String!, personID: Int!, language: String?, completion: (clientReturn: ClientReturn, data: PersonCreditsCombined?) -> ()) ->(){
         let urlType = "\(personID)/combined_credits"
         Client.Person(urlType, api_key: api_key, language: language, page: nil){
             apiReturn in
@@ -296,7 +296,7 @@ public class PersonMDB: ArrayObject{
     
     
     ///Get the external ids for a specific person id.
-    public class func externalIDS(api_key: String!, personID: Int!, completion: (clientReturn: ClientReturn, data: ExternalIdsMDB?) -> ()) -> (){
+    public static func externalIDS(api_key: String!, personID: Int!, completion: (clientReturn: ClientReturn, data: ExternalIdsMDB?) -> ()) -> (){
         Client.Person("\(personID)/external_ids", api_key: api_key, language: nil, page: nil){
             apiReturn in
             var data: ExternalIdsMDB?
@@ -308,7 +308,7 @@ public class PersonMDB: ArrayObject{
     }
     
     ///Get the images for a specific person id.
-    public class func images(api_key: String!, personID: Int!, completion: (client: ClientReturn, data: [Images_MDB]?) -> ()) -> (){
+    public static func images(api_key: String!, personID: Int!, completion: (client: ClientReturn, data: [Images_MDB]?) -> ()) -> (){
         Client.Person("\(personID)/images", api_key: api_key, language: nil, page: nil){
             apiReturn in
             var images: [Images_MDB]?
@@ -320,7 +320,7 @@ public class PersonMDB: ArrayObject{
         }
     }
     ///Get the images that have been tagged with a specific person id. Will return all of the image results with a media object mapped for each image.
-    public class func tagged_images(api_key: String!, personID: Int!, page: Int?, completion: (client: ClientReturn, data: TaggedImages?) -> ()) -> (){
+    public static func tagged_images(api_key: String!, personID: Int!, page: Int?, completion: (client: ClientReturn, data: TaggedImages?) -> ()) -> (){
         Client.Person("\(personID)/tagged_images", api_key: api_key, language: nil, page: page){
             apiReturn in
             var images: TaggedImages?
@@ -332,7 +332,7 @@ public class PersonMDB: ArrayObject{
     }
     
     ///Get the latest person id.
-    public class func latest(api_key: String!, completion: (clientReturn: ClientReturn, data: PersonMDB?) -> ()) -> (){
+    public static func latest(api_key: String!, completion: (clientReturn: ClientReturn, data: PersonMDB?) -> ()) -> (){
         Client.Person("latest", api_key: api_key, language: nil, page: nil){
             apiReturn in
             var data: PersonMDB?
@@ -344,7 +344,7 @@ public class PersonMDB: ArrayObject{
     }
     
     ///Get the list of popular people on The Movie Database. This list refreshes every day.
-    public class func popular(api_key: String!, page: Int?, completion: (clientReturn: ClientReturn, data: [PersonResults]?) -> ()) -> (){
+    public static func popular(api_key: String!, page: Int?, completion: (clientReturn: ClientReturn, data: [PersonResults]?) -> ()) -> (){
         Client.Person("popular", api_key: api_key, language: nil, page: page){
             apiReturn in
             var data: [PersonResults]?

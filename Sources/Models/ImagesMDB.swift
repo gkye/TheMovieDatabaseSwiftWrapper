@@ -31,7 +31,7 @@ public class Images_MDB: ArrayObject {
 }
 
 
-public class ImagesMDB {
+public struct ImagesMDB {
     public var backdrops = [Images_MDB]()
     public var posters = [Images_MDB]()
     public var stills = [Images_MDB]()

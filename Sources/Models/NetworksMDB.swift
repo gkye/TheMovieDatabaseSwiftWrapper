@@ -9,7 +9,7 @@
 import Foundation
 
 
-class NetworksMDB{
+public struct NetworksMDB{
     
     var id: Double!
     var name: String!
@@ -19,7 +19,7 @@ class NetworksMDB{
     }
     
     ///This method is used to retrieve the basic information about a TV network. You can use this ID to search for TV shows with the discover.
-    class func networks(api_key: String, networkId: Int!, completion: (clientReturn: ClientReturn, data:NetworksMDB?) -> ()) -> (){
+    public static func networks(api_key: String, networkId: Int!, completion: (clientReturn: ClientReturn, data:NetworksMDB?) -> ()) -> (){
         Client.networks(api_key, networkId: networkId){
             apiReturn in
             if(apiReturn.error == nil){
@@ -28,7 +28,5 @@ class NetworksMDB{
                 completion(clientReturn: apiReturn, data: nil)
             }
         }
-    }
-    
-    
+    }    
 }

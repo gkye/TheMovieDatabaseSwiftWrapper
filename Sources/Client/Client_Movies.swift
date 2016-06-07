@@ -8,7 +8,7 @@
 
 import Foundation
 extension Client{
-    class func Movies(urlType: String!, api_key: String!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
+    static func Movies(urlType: String!, api_key: String!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
         
         var parameters: [String : AnyObject] = ["api_key": api_key]
         

@@ -9,7 +9,7 @@
 import Foundation
 
 
-public class VideosMDB: ArrayObject{
+public struct VideosMDB: ArrayObject{
     public var id: String!
     public var iso_639_1: String?
     public var key: String!
@@ -18,7 +18,7 @@ public class VideosMDB: ArrayObject{
     public var size: Int!
     public var  type: String!
     
-    required public init(results: JSON){
+    public init(results: JSON){
         id = results["id"].string
         iso_639_1 = results["iso_639_1"].string
         key = results["key"].string

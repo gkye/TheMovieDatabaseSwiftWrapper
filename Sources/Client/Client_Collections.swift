@@ -9,7 +9,7 @@
 import Foundation
 extension Client{
     
-    class func Collection(api_key: String!, collectionId: String!, language: String?, completion: (ClientReturn) -> ()) -> (){
+    static func Collection(api_key: String!, collectionId: String!, language: String?, completion: (ClientReturn) -> ()) -> (){
         var parameters: [String : AnyObject] = ["api_key": api_key]
         if(language != nil){
             parameters["language"] = language

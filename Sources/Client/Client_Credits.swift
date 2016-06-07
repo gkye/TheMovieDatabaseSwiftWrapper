@@ -12,7 +12,7 @@ import Foundation
 extension Client{
     
     
-    class func Credits(api_key: String, creditID: String, language: String, completion: (ClientReturn) -> ()) -> (){
+    static func Credits(api_key: String, creditID: String, language: String, completion: (ClientReturn) -> ()) -> (){
         var parameters: [String : AnyObject] = ["api_key": api_key]
         parameters["language"] = language
         let url = "https://api.themoviedb.org/3/credit/\(creditID)"
