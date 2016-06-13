@@ -11,7 +11,7 @@ import Foundation
 
 //** CHECK LISt-> may contain collection or tv object.
 
-public class CollectionMDB{
+public struct CollectionMDB: ArrayObject{
     
    public var id: Double?
    public var name: String?
@@ -20,7 +20,7 @@ public class CollectionMDB{
    public var overview: String?
    public var collectionItems = [MovieMDB]()
     
-    init(results: JSON) {
+   public init(results: JSON) {
         for i in 0 ..< results["parts"].count {
             collectionItems.append(MovieMDB(results: results["parts"][i]))
         }
@@ -32,7 +32,7 @@ public class CollectionMDB{
     }
     
     ///Get the basic collection information for a specific collection id.
-    public class func Collection(api_key: String!, collectionId: Int!, language: String?, completion: (clientReturn: ClientReturn, data: CollectionMDB?) -> ()) -> (){
+    public static func Collection(api_key: String!, collectionId: Int!, language: String?, completion: (clientReturn: ClientReturn, data: CollectionMDB?) -> ()) -> (){
         Client.Collection(api_key, collectionId: "\(collectionId)", language: language){
             apiReturn in
             if(apiReturn.error == nil){
@@ -44,7 +44,7 @@ public class CollectionMDB{
     }
 
     ///Get all of the images for a particular collection by collection id.
-    public class func CollectionImages(api_key: String!, collectionId: Int!, language: String?, completion:  (clientReturn: ClientReturn, data: ImagesMDB?) -> ()) -> (){
+    public static func CollectionImages(api_key: String!, collectionId: Int!, language: String?, completion:  (clientReturn: ClientReturn, data: ImagesMDB?) -> ()) -> (){
         let modId =  "\(collectionId)/images"
         Client.Collection(api_key, collectionId: modId, language: language){
             apiReturn in

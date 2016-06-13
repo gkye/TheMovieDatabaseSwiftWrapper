@@ -12,7 +12,7 @@ import Foundation
 
 
 extension Client{
-    class func keyword(keywordType: String, api_key: String!, completion: (ClientReturn) -> ()) -> (){
+    static func keyword(keywordType: String, api_key: String!, completion: (ClientReturn) -> ()) -> (){
         let parameters: [String : AnyObject] = ["api_key": api_key]
         let url = keywordType
         
@@ -22,7 +22,7 @@ extension Client{
         })
     }
     
-    class func keyword_movies(keywordType: String, api_key: String!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
+    static func keyword_movies(keywordType: String, api_key: String!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
         var parameters: [String : AnyObject] = ["api_key": api_key]
         if(page != nil){
         parameters["page"] = page

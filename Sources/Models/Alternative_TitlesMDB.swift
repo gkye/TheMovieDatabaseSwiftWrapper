@@ -17,7 +17,7 @@ public struct Alt_TitlesMDB{
         
     }
 }
-public class Alternative_TitlesMDB {
+public struct Alternative_TitlesMDB {
     
     
     public var id: Int!

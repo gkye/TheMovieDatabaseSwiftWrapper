@@ -1,3 +1,4 @@
+[![codebeat badge](https://codebeat.co/badges/7a5d93bf-b630-4f1a-a968-4c17903d3906)](https://codebeat.co/projects/github-com-gkye-themoviedatabaseswiftwrapper)
 [![GitHub issues](https://img.shields.io/github/issues/gkye/TheMovieDatabaseSwiftWrapper.svg)](https://github.com/gkye/TheMovieDatabaseSwiftWrapper/issues)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/gkye/TheMovieDatabaseSwiftWrapper/master/LICENSE)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/gkye/TheMovieDatabaseSwiftWrapper.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
@@ -35,6 +36,7 @@ pod "TMDBSwift"
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Networks"> Networks </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/People"> People </a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Reviews"> Reviews </a> 
+* <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Search"> Search </a> 
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TV">TV</a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TVSeasons">TVSeasons</a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TVEpisodes">TVEpisodes</a>
@@ -42,7 +44,7 @@ pod "TMDBSwift"
 
 ## TODO
 ---------
-* Search 
+* Multi Search
 * Certifications 
 
 ##Compatibility

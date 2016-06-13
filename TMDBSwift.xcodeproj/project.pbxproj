@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5774C0D71CF751B40045F0CE /* Client_Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774C0D61CF751B40045F0CE /* Client_Search.swift */; };
 		5774C0D91CF757120045F0CE /* SearchMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774C0D81CF757120045F0CE /* SearchMDB.swift */; };
+		5E56F3251D0781A500CAED06 /* CertificationMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E56F3241D0781A500CAED06 /* CertificationMDB.swift */; };
 		5E7643B91CB76D560095A4C1 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7643B81CB76D560095A4C1 /* SwiftyJSON.swift */; };
 		5EF143621CF0A3FB009C620D /* ArrayObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF143611CF0A3FB009C620D /* ArrayObjectProtocol.swift */; };
 		5EF1B26F1CB72DC000B49F4E /* TMDBSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EF1B26E1CB72DC000B49F4E /* TMDBSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -82,6 +83,7 @@
 /* Begin PBXFileReference section */
 		5774C0D61CF751B40045F0CE /* Client_Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_Search.swift; sourceTree = "<group>"; };
 		5774C0D81CF757120045F0CE /* SearchMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMDB.swift; sourceTree = "<group>"; };
+		5E56F3241D0781A500CAED06 /* CertificationMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CertificationMDB.swift; sourceTree = "<group>"; };
 		5E7643B81CB76D560095A4C1 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		5EF143611CF0A3FB009C620D /* ArrayObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayObjectProtocol.swift; path = Protocols/ArrayObjectProtocol.swift; sourceTree = "<group>"; };
 		5EF1B26B1CB72DBF00B49F4E /* TMDBSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TMDBSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -290,6 +292,7 @@
 			children = (
 				5EF1B31D1CB732C900B49F4E /* Alternative_TitlesMDB.swift */,
 				5EF1B31E1CB732C900B49F4E /* CastCrewMDB.swift */,
+				5E56F3241D0781A500CAED06 /* CertificationMDB.swift */,
 				5EF1B31F1CB732C900B49F4E /* ChangesMDB.swift */,
 				5EF1B3201CB732C900B49F4E /* CollectionsMDB.swift */,
 				5EF1B3211CB732C900B49F4E /* CompaniesMDB.swift */,
@@ -519,6 +522,7 @@
 				5EF1B34A1CB732C900B49F4E /* Client_Find.swift in Sources */,
 				5EF1B3531CB732C900B49F4E /* Client_TVSeasonsEpisodes.swift in Sources */,
 				5EF1B3461CB732C900B49F4E /* Client_Collections.swift in Sources */,
+				5E56F3251D0781A500CAED06 /* CertificationMDB.swift in Sources */,
 				5EF1B35F1CB732C900B49F4E /* FindMDB.swift in Sources */,
 				5EF1B36B1CB732C900B49F4E /* NetworksMDB.swift in Sources */,
 				5EF1B3681CB732C900B49F4E /* MovieMDBModel.swift in Sources */,

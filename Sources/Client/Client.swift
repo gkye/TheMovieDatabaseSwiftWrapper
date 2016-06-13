@@ -17,8 +17,8 @@ public struct ClientReturn{
    public var pageResults: PageResultsMDB?
 }
 
-class Client{
-   class final func networkRequest(url url: String, parameters: [String : AnyObject], completion: (ClientReturn) -> ()) -> (){
+struct Client{
+   static func networkRequest(url url: String, parameters: [String : AnyObject], completion: (ClientReturn) -> ()) -> (){
         var cReturn = ClientReturn()
         HTTPRequest.request(url, parameters: parameters){
             rtn in

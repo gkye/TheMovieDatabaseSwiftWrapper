@@ -11,10 +11,10 @@ import TMDBSwift
 import UIKit
 
 class All: UIViewController {
-
-    override func viewDidLoad() {
-        
-
-    }
-
+  
+  override func viewDidLoad() {
+  
+         
+  }
+  
 }

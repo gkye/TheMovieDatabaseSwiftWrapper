@@ -8,6 +8,16 @@
 
 import Foundation
 
+public struct parent_companymdb: ArrayObject{
+  public  var name: String!
+  public  var id: Double!
+  public  var logo_path: String!
+  init(results: JSON){
+    name = results["name"].string
+    id = results["id"].double
+    logo_path = results["logo_path"].string
+  }
+}
 
 public class CompanyMDB {
     public var description: String?
@@ -17,17 +27,7 @@ public class CompanyMDB {
     public var logo_path: String!
     public var name: String!
     public var parent_company: parent_companymdb?
-    
-    public struct parent_companymdb{
-       public  var name: String!
-       public  var id: Double!
-       public  var logo_path: String!
-        init(results: JSON){
-            name = results["name"].string
-            id = results["id"].double
-            logo_path = results["logo_path"].string
-        }
-    }
+  
     public struct CompanyMDBReturn{
        public let clientReturn: ClientReturn!
        public let companyMDBData: CompanyMDB?

@@ -11,7 +11,7 @@ import Foundation
 
 public typealias Changes1MDB = (id:Double, adult:Bool!)
 
-public class ChangesMDB{
+public struct ChangesMDB{
     public var id: Int64!
     public var adult: Bool!
     
@@ -20,7 +20,7 @@ public class ChangesMDB{
         adult = results["adult"].bool
     }
     
-    class func initReturn(json: JSON)->[ChangesMDB]{
+    static func initReturn(json: JSON)->[ChangesMDB]{
         var changes = [ChangesMDB]()
         for i in 0 ..< json.count {
             changes.append(ChangesMDB(results: json[i]))
@@ -28,7 +28,7 @@ public class ChangesMDB{
         return changes
     }
     
-    public class func changes(api_key: String!, changeType: String, page: Double?, startDate: String?, endDate:String?,completionHandler: (clientReturn: ClientReturn, data: [ChangesMDB]?) -> ()) -> (){
+    public static func changes(api_key: String!, changeType: String, page: Double?, startDate: String?, endDate:String?,completionHandler: (clientReturn: ClientReturn, data: [ChangesMDB]?) -> ()) -> (){
         Client.Changes(api_key, changeType: "movie", page: 1, startDate: nil, endDate: nil){
             apiReturn in
             var changes: [ChangesMDB]?

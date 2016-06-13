@@ -8,7 +8,7 @@
 import Foundation
 extension Client{
     
-    class func Changes(api_key: String!, changeType: String, page: Double?, startDate: String?, endDate:String?, completion: (ClientReturn) -> ()) -> (){
+    static func Changes(api_key: String!, changeType: String, page: Double?, startDate: String?, endDate:String?, completion: (ClientReturn) -> ()) -> (){
         
         var parameters: [String : AnyObject] = ["api_key": api_key]
         

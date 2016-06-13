@@ -8,7 +8,7 @@
 
 import Foundation
 extension Client{
-    class func Search(urlType: String!, api_key: String!, query: String, page: Int?, language: String?, include_adult: Bool?, year: Int?, primary_release_year: Int?, search_type: String?, first_air_date_year: String?, completion: (ClientReturn) -> ()) -> (){
+    static func Search(urlType: String!, api_key: String!, query: String, page: Int?, language: String?, include_adult: Bool?, year: Int?, primary_release_year: Int?, search_type: String?, first_air_date_year: String?, completion: (ClientReturn) -> ()) -> (){
         
         var parameters: [String : AnyObject] = ["api_key": api_key, "query": query]
         

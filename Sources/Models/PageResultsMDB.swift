@@ -9,7 +9,7 @@
 import Foundation
 
 
-public class PageResultsMDB{
+public struct PageResultsMDB{
     
    public var page: Int!
    public var total_results: Int!

@@ -9,7 +9,7 @@
 import Foundation
 
 extension Client{
-    class func TV(urlType: String!, api_key: String!, page: Int?, language: String?, timezone: String?, completion: (ClientReturn) -> ()) -> (){
+    static func TV(urlType: String!, api_key: String!, page: Int?, language: String?, timezone: String?, completion: (ClientReturn) -> ()) -> (){
         
         var parameters: [String : AnyObject] = ["api_key": api_key]
         if(page != nil){
