@@ -12,18 +12,18 @@ import Foundation
 
 public  class TVEpisodesMDB: ArrayObject {
     
-    var air_date: String!
-    var crew = [CrewMDB]()
-    var guest_stars = [TVCastMDB]()
-    var number: Int!
-    var name: String!
-    var overview: String!
-    var id: Int!
-    var production_code: Int!
-    var season_number: Int!
-    var still_path: String!
-    var vote_average: Int!
-    var vote_count: Int!
+    public var air_date: String!
+    public var crew = [CrewMDB]()
+    public var guest_stars = [TVCastMDB]()
+    public var number: Int!
+    public var name: String!
+    public var overview: String!
+    public var id: Int!
+    public var production_code: Int!
+    public var season_number: Int!
+    public var still_path: String!
+    public var vote_average: Int!
+    public var vote_count: Int!
     
     required public init(results: JSON){
         air_date = results["air_date"].string
