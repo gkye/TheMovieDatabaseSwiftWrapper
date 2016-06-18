@@ -29,14 +29,14 @@ public struct tv_seasons{
             air_date = "";
         }
         episode_count = results["episode_count"].int
-        id = results["episode_count"].int
+        id = results["id"].int
         
         if(results["poster_path"] != nil){
             poster_path = results["poster_path"].string
         }else{
             poster_path = "";
         }
-        season_number = results["episode_count"].int
+        season_number = results["season_number"].int
     }
     
 }
