@@ -13,8 +13,14 @@ import UIKit
 class All: UIViewController {
   
   override func viewDidLoad() {
-  
-         
+    MovieMDB.movie(apikey, movieID: 7984, language: "en"){
+      apiReturn in
+      let movie = apiReturn.data!
+      print(movie.title)
+      print(movie.revenue)
+      print(movie.genres[0].name)
+    }
+    
   }
   
 }
