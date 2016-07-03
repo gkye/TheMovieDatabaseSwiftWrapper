@@ -76,7 +76,7 @@ public class TVDetailedMDB: TVMDB{
         
         networks = KeywordsMDB.init(results: results["networks"])
         number_of_episodes = results["number_of_episodes"].int
-        number_of_seasons = results["number_of_episodes"].int
+        number_of_seasons = results["number_of_seasons"].int
         
         if(results["production_companies"] != nil){
             for i in 0...results["production_companies"].count{
