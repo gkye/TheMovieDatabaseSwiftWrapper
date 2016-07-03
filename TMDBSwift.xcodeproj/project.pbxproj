@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5774C0D71CF751B40045F0CE /* Client_Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774C0D61CF751B40045F0CE /* Client_Search.swift */; };
 		5774C0D91CF757120045F0CE /* SearchMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774C0D81CF757120045F0CE /* SearchMDB.swift */; };
+		5E4CC87B1D295BC700101495 /* MovieMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4CC87A1D295BC700101495 /* MovieMDBTests.swift */; };
 		5E56F3251D0781A500CAED06 /* CertificationMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E56F3241D0781A500CAED06 /* CertificationMDB.swift */; };
 		5E7643B91CB76D560095A4C1 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7643B81CB76D560095A4C1 /* SwiftyJSON.swift */; };
 		5EF143621CF0A3FB009C620D /* ArrayObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF143611CF0A3FB009C620D /* ArrayObjectProtocol.swift */; };
@@ -83,6 +84,7 @@
 /* Begin PBXFileReference section */
 		5774C0D61CF751B40045F0CE /* Client_Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_Search.swift; sourceTree = "<group>"; };
 		5774C0D81CF757120045F0CE /* SearchMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMDB.swift; sourceTree = "<group>"; };
+		5E4CC87A1D295BC700101495 /* MovieMDBTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieMDBTests.swift; sourceTree = "<group>"; };
 		5E56F3241D0781A500CAED06 /* CertificationMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CertificationMDB.swift; sourceTree = "<group>"; };
 		5E7643B81CB76D560095A4C1 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		5EF143611CF0A3FB009C620D /* ArrayObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayObjectProtocol.swift; path = Protocols/ArrayObjectProtocol.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			children = (
 				5EF1B27A1CB72DC000B49F4E /* TMDBSwiftTests.swift */,
 				5EF1B27C1CB72DC000B49F4E /* Info.plist */,
+				5E4CC87A1D295BC700101495 /* MovieMDBTests.swift */,
 			);
 			path = TMDBSwiftTests;
 			sourceTree = "<group>";
@@ -364,12 +367,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EF1B2821CB72DC000B49F4E /* Build configuration list for PBXNativeTarget "TMDBSwiftTests" */;
 			buildPhases = (
-				AD8E8726EA4B1AB8D0BF3E05 /* 📦 Check Pods Manifest.lock */,
 				5EF1B2711CB72DC000B49F4E /* Sources */,
 				5EF1B2721CB72DC000B49F4E /* Frameworks */,
 				5EF1B2731CB72DC000B49F4E /* Resources */,
-				A752650EE3C332E6DC34DEC1 /* 📦 Embed Pods Frameworks */,
-				6708BD95F8456E71E23FBCFA /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -434,54 +434,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		6708BD95F8456E71E23FBCFA /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TMDBSwiftTests/Pods-TMDBSwiftTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A752650EE3C332E6DC34DEC1 /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TMDBSwiftTests/Pods-TMDBSwiftTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AD8E8726EA4B1AB8D0BF3E05 /* 📦 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5EF1B2661CB72DBF00B49F4E /* Sources */ = {
@@ -553,6 +505,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E4CC87B1D295BC700101495 /* MovieMDBTests.swift in Sources */,
 				5EF1B27B1CB72DC000B49F4E /* TMDBSwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

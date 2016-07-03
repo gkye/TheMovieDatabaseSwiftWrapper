@@ -13,12 +13,17 @@ import UIKit
 class All: UIViewController {
   
   override func viewDidLoad() {
-    MovieMDB.movie(apikey, movieID: 7984, language: "en"){
-      apiReturn in
-      let movie = apiReturn.data!
-      print(movie.title)
-      print(movie.revenue)
-      print(movie.genres[0].name)
+
+    var videos: [VideosMDB]?
+    var reviews: [MovieReviewsMDB]?
+    MovieMDB.movieAppendTo(apikey, movieID: 49026, append_to: ["videos", "reviews"]){
+      data in
+      if let json = data.json{
+        videos = VideosMDB.initialize(json: json["videos"]["results"])
+        reviews = MovieReviewsMDB.initialize(json: json["reviews"]["results"])
+      }
+      print(videos)
+      print(reviews)
     }
     
   }

@@ -27,7 +27,7 @@ public struct Release_Dates: ArrayObject{
     public var release_date: String? //change to formatted NSDate later??
     public var type: Int?
     
-    init(results release_date: JSON){
+    public init(results release_date: JSON){
         certification = release_date["certification"].string
         iso_639_1 = release_date["iso_639_1"].string
         note = release_date["note"].string

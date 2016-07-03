@@ -61,7 +61,7 @@ public struct PersonResults: ArrayObject{
     public var popularity: Double?
     public var profile_path: String?
     
-    init(results json: JSON){
+    public init(results json: JSON){
         adult = json["adult"].bool
         id = json["id"].int
         name = json["name"].string

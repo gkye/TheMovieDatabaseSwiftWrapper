@@ -8,32 +8,27 @@
 
 import Foundation
 
-public struct Alt_TitlesMDB{
-    public var title: String?
-    public var iso_3166_1: String?
-    init(result: JSON){
-        title = result["title"].string
-        iso_3166_1 = result["iso_3166_1"].string
-        
-    }
+public struct Alt_TitlesMDB: ArrayObject{
+  public var title: String?
+  public var iso_3166_1: String?
+  public init(results: JSON){
+    title = results["title"].string
+    iso_3166_1 = results["iso_3166_1"].string
+    
+  }
 }
 public struct Alternative_TitlesMDB {
+  
+  public var id: Int!
+  public var titles = [Alt_TitlesMDB]()
+  
+  init(results: JSON){
+    id = results["id"].int
+    if(results["results"] != nil){ //TV Changes
+    titles = Alt_TitlesMDB.initialize(json: results["results"])
     
-    
-    public var id: Int!
-    public var titles = [Alt_TitlesMDB]()
-    
-    init(results: JSON){
-        id = results["id"].int
-        if(results["results"] != nil){ //TV Changes
-            for i in 0 ..< results["results"].count {
-                titles.append(Alt_TitlesMDB.init(result: results["results"][i]))
-            }
-        }else if (results["titles"] != nil){ //Movie Changes
-            for i in 0 ..< results["titles"].count {
-                titles.append(Alt_TitlesMDB.init(result: results["titles"][i]))
-            }
-        }
-        
+    }else if (results["titles"] != nil){
+      titles = Alt_TitlesMDB.initialize(json: results["titles"])
     }
+  }
 }
