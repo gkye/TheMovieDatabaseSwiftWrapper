@@ -22,11 +22,11 @@ public struct Alternative_TitlesMDB {
   public var id: Int!
   public var titles = [Alt_TitlesMDB]()
   
-  init(results: JSON){
+  public init(results: JSON){
     id = results["id"].int
     if(results["results"] != nil){ //TV Changes
-    titles = Alt_TitlesMDB.initialize(json: results["results"])
-    
+      titles = Alt_TitlesMDB.initialize(json: results["results"])
+      
     }else if (results["titles"] != nil){
       titles = Alt_TitlesMDB.initialize(json: results["titles"])
     }

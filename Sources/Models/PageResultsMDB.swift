@@ -10,14 +10,14 @@ import Foundation
 
 
 public struct PageResultsMDB{
-    
-   public var page: Int!
-   public var total_results: Int!
-   public var total_pages: Int!
-    
-    init(results: JSON){
-        page = results["page"].int!
-        total_results = results["total_results"].int!
-        total_pages = results["total_pages"].int!
-    }
+  
+  public var page: Int!
+  public var total_results: Int!
+  public var total_pages: Int!
+  
+  public init(results: JSON){
+    page = results["page"].int!
+    total_results = results["total_results"].int!
+    total_pages = results["total_pages"].int!
+  }
 }

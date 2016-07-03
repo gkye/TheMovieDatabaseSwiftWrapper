@@ -36,7 +36,8 @@ public struct ImagesMDB {
   public var posters = [Images_MDB]()
   public var stills = [Images_MDB]()
   public var id: Int!
-  init(results: JSON){
+  
+  public init(results: JSON){
     id = results["id"].int
     if(results["backdrops"].count > 0){
       backdrops = Images_MDB.initialize(json: results["backdrops"])

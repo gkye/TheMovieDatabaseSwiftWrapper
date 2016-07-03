@@ -17,7 +17,7 @@ public struct ReviewsMDB{
   var media_id: Double!
   var media_title: String!
   var url: String!
-  init(results: JSON){
+  public init(results: JSON){
     id = results["id"].string
     author = results["author"].string
     content = results["content"].string

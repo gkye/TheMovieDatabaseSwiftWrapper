@@ -10,23 +10,23 @@ import Foundation
 
 
 public struct NetworksMDB{
-    
-    var id: Double!
-    var name: String!
-    init(results: JSON){
-        id = results["id"].double
-        name = results["name"].string
+  
+  var id: Double!
+  var name: String!
+  public init(results: JSON){
+    id = results["id"].double
+    name = results["name"].string
+  }
+  
+  ///This method is used to retrieve the basic information about a TV network. You can use this ID to search for TV shows with the discover.
+  public static func networks(api_key: String, networkId: Int!, completion: (clientReturn: ClientReturn, data:NetworksMDB?) -> ()) -> (){
+    Client.networks(api_key, networkId: networkId){
+      apiReturn in
+      if(apiReturn.error == nil){
+        completion(clientReturn: apiReturn, data: NetworksMDB.init(results: apiReturn.json!))
+      }else{
+        completion(clientReturn: apiReturn, data: nil)
+      }
     }
-    
-    ///This method is used to retrieve the basic information about a TV network. You can use this ID to search for TV shows with the discover.
-    public static func networks(api_key: String, networkId: Int!, completion: (clientReturn: ClientReturn, data:NetworksMDB?) -> ()) -> (){
-        Client.networks(api_key, networkId: networkId){
-            apiReturn in
-            if(apiReturn.error == nil){
-                completion(clientReturn: apiReturn, data: NetworksMDB.init(results: apiReturn.json!))
-            }else{
-                completion(clientReturn: apiReturn, data: nil)
-            }
-        }
-    }    
+  }
 }
