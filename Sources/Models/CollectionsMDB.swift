@@ -32,7 +32,7 @@ public struct CollectionMDB: ArrayObject{
   }
   
   ///Get the basic collection information for a specific collection id.
-  public static func Collection(api_key: String!, collectionId: Int!, language: String?, completion: (clientReturn: ClientReturn, data: CollectionMDB?) -> ()) -> (){
+  public static func collection(api_key: String!, collectionId: Int!, language: String? = nil, completion: (clientReturn: ClientReturn, data: CollectionMDB?) -> ()) -> (){
     Client.Collection(api_key, collectionId: "\(collectionId)", language: language){
       apiReturn in
       if(apiReturn.error == nil){
@@ -44,7 +44,7 @@ public struct CollectionMDB: ArrayObject{
   }
   
   ///Get all of the images for a particular collection by collection id.
-  public static func CollectionImages(api_key: String!, collectionId: Int!, language: String?, completion:  (clientReturn: ClientReturn, data: ImagesMDB?) -> ()) -> (){
+  public static func collectionImages(api_key: String!, collectionId: Int!, language: String?, completion:  (clientReturn: ClientReturn, data: ImagesMDB?) -> ()) -> (){
     let modId =  "\(collectionId)/images"
     Client.Collection(api_key, collectionId: modId, language: language){
       apiReturn in

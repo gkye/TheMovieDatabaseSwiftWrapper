@@ -27,20 +27,11 @@ public class CompanyMDB {
   public var logo_path: String!
   public var name: String!
   public var parent_company: parent_companymdb?
-  
-  public struct CompanyMDBReturn{
-    public let clientReturn: ClientReturn!
-    public let companyMDBData: CompanyMDB?
     
-    init(client: ClientReturn){
-      clientReturn = client
-      companyMDBData = CompanyMDB(results: client.json!)
-    }
-  }
-  
   init(results: JSON){
     description = results["description"].string
     headquarters = results["headquarters"].string
+    homepage = results["homepage"].string
     id = results["id"].double
     logo_path = results["logo_path"].string
     name = results["name"].string
