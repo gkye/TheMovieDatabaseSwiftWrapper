@@ -12,18 +12,20 @@ import UIKit
 
 class All: UIViewController {
   
+  
+  var videos: [VideosMDB]?
+  var images: ImagesMDB?
+  
   override func viewDidLoad() {
-
-    var videos: [VideosMDB]?
-    var reviews: [MovieReviewsMDB]?
-    MovieMDB.movieAppendTo(apikey, movieID: 49026, append_to: ["videos", "reviews"]){
+    
+    
+    TVMDB.tvAppendTo(apikey, tvShowID: 1396, append_to: ["images", "videos"]){
       data in
-      if let json = data.json{
-        videos = VideosMDB.initialize(json: json["videos"]["results"])
-        reviews = MovieReviewsMDB.initialize(json: json["reviews"]["results"])
-      }
-      print(videos)
-      print(reviews)
+      self.videos = VideosMDB.initialize(json: data.json!["videos"]["results"])
+      self.images = ImagesMDB.init(results: data.json!["images"])
+      print(self.videos?.count); print(self.images?.backdrops.count)
+      print(self.videos)
+
     }
     
   }

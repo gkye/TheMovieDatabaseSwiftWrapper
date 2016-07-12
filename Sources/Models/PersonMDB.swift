@@ -109,7 +109,8 @@ public struct PersonTVCredits{
   public var crew: [PersonTVCrew]
   public var cast: [PersonTVCast]
   public var id: Int!
-  init(json: JSON){
+ 
+  public init(json: JSON){
     crew = PersonTVCrew.initialize(json: json["crew"])
     cast = PersonTVCast.initialize(json: json["cast"])
     id = json["id"].int
@@ -134,7 +135,7 @@ public struct PersonCreditsCombined{
   public var movieCredits: (crew: [PersonMovieCrew]?, cast: [PersonMovieCast]?)
   public var id: Int?
   
-  init(json: JSON){
+  public init(json: JSON){
     var tvCrew = [PersonTVCrew]()
     var tvCast = [PersonTVCast]()
     var movieCrew = [PersonMovieCrew]()
@@ -196,7 +197,7 @@ public struct TaggedImages{
   public var id: Int!
   public var pageResults: PageResultsMDB!
   
-  init(json: JSON){
+  public init(json: JSON){
     id = json["id"].int
     pageResults = PageResultsMDB.init(results: json)
     json["results"].forEach(){

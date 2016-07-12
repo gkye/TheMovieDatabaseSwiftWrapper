@@ -203,4 +203,19 @@ extension TVMDB{
       completion(clientResult: apiReturn, data: data)
     }
   }
+  
+  /**
+   *  Retrive data by append multiple tv methods. Initlization of object have to be done manually. Exepect TVMDB
+   */
+  public class func tvAppendTo(api_key: String!, tvShowID: Int!, language: String? = nil, append_to: [String], completion: (clientReturn: ClientReturn, data: TVDetailedMDB?, json: JSON?) -> ()) -> (){
+    
+    Client.TV("\(tvShowID)", api_key: api_key, page: nil, language: language, timezone: nil, append_to: append_to){
+      apiReturn in
+      var data: TVDetailedMDB?
+      if(apiReturn.error == nil){
+        data = TVDetailedMDB.init(results: apiReturn.json!)
+      }
+      completion(clientReturn: apiReturn, data: data, json: apiReturn.json)
+    }
+  }
 }

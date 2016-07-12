@@ -28,7 +28,7 @@ public class CompanyMDB {
   public var name: String!
   public var parent_company: parent_companymdb?
     
-  init(results: JSON){
+  public init(results: JSON){
     description = results["description"].string
     headquarters = results["headquarters"].string
     homepage = results["homepage"].string

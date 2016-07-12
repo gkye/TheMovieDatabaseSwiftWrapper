@@ -19,7 +19,7 @@ public struct ConfigurationMDB {
   public var still_sizes: [String]!
   public var change_keys: [String]!
   
-  init(results: JSON){
+  public init(results: JSON){
     let images = results["images"]
     base_url = images["base_url"].string
     secure_base_url = images["secure_base_url"].string

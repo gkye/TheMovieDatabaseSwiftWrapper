@@ -15,7 +15,7 @@ public struct ChangesMDB{
   public var id: Int64!
   public var adult: Bool!
   
-  init(results: JSON){
+  public init(results: JSON){
     id = results["id"].int64
     adult = results["adult"].bool
   }
