@@ -52,7 +52,7 @@ public class DiscoverMDB: ArrayObject {
   public var adult: Bool!
   public var overview: String?
   public var popularity: Double?
-  public var id: Double?
+  public var id: Int?
   public var backdrop_path: String?
   public var vote_average: Double?
   public var original_language: String?
@@ -63,7 +63,7 @@ public class DiscoverMDB: ArrayObject {
   required public init(results: JSON){
     poster_path = results["poster_path"].string
     popularity = results["popularity"].double
-    id = results["id"].double
+    id = results["id"].int
     backdrop_path = results["backdrop_path"].string
     vote_average = results["vote_average"].double
     overview = results["overview"].string

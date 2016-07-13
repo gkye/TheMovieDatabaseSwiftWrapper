@@ -13,7 +13,7 @@ import Foundation
 
 public struct CollectionMDB: ArrayObject{
   
-  public var id: Double?
+  public var id: Int?
   public var name: String?
   public var poster_path: String?
   public var backdrop_path: String?
@@ -24,7 +24,7 @@ public struct CollectionMDB: ArrayObject{
     for i in 0 ..< results["parts"].count {
       collectionItems.append(MovieMDB(results: results["parts"][i]))
     }
-    id = results["id"].double
+    id = results["id"].int
     name = results["name"].string
     poster_path = results["poster_path"].string
     backdrop_path = results["backdrop_path"].string

@@ -10,11 +10,11 @@ import Foundation
 
 public struct parent_companymdb: ArrayObject{
   public  var name: String!
-  public  var id: Double!
+  public  var id: Int!
   public  var logo_path: String!
   public init(results: JSON){
     name = results["name"].string
-    id = results["id"].double
+    id = results["id"].int
     logo_path = results["logo_path"].string
   }
 }
@@ -23,7 +23,7 @@ public class CompanyMDB {
   public var description: String?
   public var headquarters: String?
   public var homepage: String!
-  public var id: Double!
+  public var id: Int!
   public var logo_path: String!
   public var name: String!
   public var parent_company: parent_companymdb?
@@ -32,7 +32,7 @@ public class CompanyMDB {
     description = results["description"].string
     headquarters = results["headquarters"].string
     homepage = results["homepage"].string
-    id = results["id"].double
+    id = results["id"].int
     logo_path = results["logo_path"].string
     name = results["name"].string
     if(results["parent_company"].count > 0){
