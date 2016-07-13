@@ -6,209 +6,6 @@
 //  Copyright © 2016 GeorgeKye. All rights reserved.
 //
 
-///TODO: popular, taggedImages, tv & movies credits
-import Foundation
-
-//MARK: Movie Crew & TV Crew common
-public class PersonCrewCommon: ArrayObject{
-  public var poster_path: String?
-  public var credit_id: String!
-  public var department: String!
-  public var id: Int!
-  public var job: String!
-  
-  required public init(results: JSON){
-    poster_path = results["poster_path"].string
-    credit_id = results["credit_id"].string
-    department = results["department"].string
-    id = results["id"].int
-    job = results["job"].string
-  }
-}
-
-//MARK: Movie Crew
-public class PersonMovieCrew: PersonCrewCommon{
-  public var adult: Bool!
-  public var original_title: String!
-  public var release_date: String!
-  public var title: String!
-  required public init(results: JSON){
-    super.init(results: results)
-    adult = results["adult"].bool
-    original_title = results["original_title"].string
-    release_date = results["release_date"].string
-    title = results["title"].string
-  }
-}
-
-//MARK: TV Crew
-public class PersonTVCrew: PersonCrewCommon{
-  public var episode_count: Int!
-  public var first_air_date: String!
-  public var name: String!
-  public var original_name: String!
-  
-  required public init(results: JSON) {
-    super.init(results: results)
-    episode_count = results["episode_count"].int
-    first_air_date = results["first_air_date"].string
-    name = results["name"].string
-    original_name = results["original_name"].string
-  }
-}
-
-
-public class PersonMovieTVCastCommon: ArrayObject{
-  public var poster_path: String?
-  public var credit_id: String!
-  public var id: Int!
-  public var character: String!
-  required public init(results: JSON){
-    poster_path = results["poster_path"].string
-    credit_id = results["credit_id"].string
-    id = results["id"].int
-    character = results["character"].string
-  }
-  
-}
-
-//MARK: TV CAST
-public class PersonTVCast: PersonMovieTVCastCommon{
-  
-  public var episode_count: Int!
-  public var first_air_date: String!
-  public var name: String!
-  public var original_name: String!
-  
-  required public init(results: JSON) {
-    super.init(results: results)
-    episode_count = results["episode_count"].int
-    first_air_date = results["first_air_date"].string
-    name = results["name"].string
-    original_name = results["original_name"].string
-  }
-}
-
-//MARK: Movie Cast
-public class PersonMovieCast: PersonMovieTVCastCommon{
-  public var adult: Bool!
-  public var original_title: String!
-  public var release_date: String!
-  public var title: String!
-  required public init(results: JSON){
-    super.init(results: results)
-    adult = results["adult"].bool
-    original_title = results["original_title"].string
-    release_date = results["release_date"].string
-    title = results["title"].string
-  }
-}
-
-public struct PersonTVCredits{
-  
-  public var crew: [PersonTVCrew]
-  public var cast: [PersonTVCast]
-  public var id: Int!
- 
-  public init(json: JSON){
-    crew = PersonTVCrew.initialize(json: json["crew"])
-    cast = PersonTVCast.initialize(json: json["cast"])
-    id = json["id"].int
-  }
-}
-
-public struct PersonMovieCredits{
-  
-  public var crew: [PersonMovieCrew]
-  public var cast: [PersonMovieCast]
-  public var id: Int!
-  init(json: JSON){
-    crew = PersonMovieCrew.initialize(json: json["crew"])
-    cast = PersonMovieCast.initialize(json: json["cast"])
-    id = json["id"].int
-  }
-}
-
-public struct PersonCreditsCombined{
-  
-  public var tvCredits: (crew: [PersonTVCrew]?, cast: [PersonTVCast]?)
-  public var movieCredits: (crew: [PersonMovieCrew]?, cast: [PersonMovieCast]?)
-  public var id: Int?
-  
-  public init(json: JSON){
-    var tvCrew = [PersonTVCrew]()
-    var tvCast = [PersonTVCast]()
-    var movieCrew = [PersonMovieCrew]()
-    var movieCast = [PersonMovieCast]()
-    json["crew"].forEach(){
-      if $0.1["media_type"] == "tv'"{
-        tvCrew.append(PersonTVCrew.init(results: $0.1))
-      }else{
-        movieCrew.append(PersonMovieCrew.init(results: $0.1))
-      }
-    }
-    json["cast"].forEach(){
-      if $0.1["media_type"] == "tv"{
-        tvCast.append(PersonTVCast.init(results: $0.1))
-      }else{
-        movieCast.append(PersonMovieCast.init(results: $0.1))
-      }
-    }
-    id = json["id"].int
-    tvCredits = (tvCrew, tvCast)
-    movieCredits = (movieCrew, movieCast)
-  }
-  
-}
-
-public class TaggedImagesCommon: Images_MDB{
-  
-  public var id: String!
-  public var image_type: String!
-  public var media_type: String!
-  required public init(results: JSON) {
-    super.init(results: results)
-    id = results["id"].string
-    image_type = results["image_type"].string
-    media_type = results["media_type"].string
-  }
-}
-
-public class TaggedImagesMovie: TaggedImagesCommon{
-  public var media: DiscoverMovieMDB!
-  public required init(results: JSON) {
-    super.init(results: results)
-    media = DiscoverMovieMDB.init(results: results["media"])
-  }
-}
-
-public class TaggedImagesTV: TaggedImagesCommon{
-  public var media: DiscoverTVMDB!
-  public required init(results: JSON) {
-    super.init(results: results)
-    media = DiscoverTVMDB.init(results: results["media"])
-  }
-}
-
-public struct TaggedImages{
-  
-  public var tvImages =  [TaggedImagesTV]()
-  public var movieImages =  [TaggedImagesMovie]()
-  public var id: Int!
-  public var pageResults: PageResultsMDB!
-  
-  public init(json: JSON){
-    id = json["id"].int
-    pageResults = PageResultsMDB.init(results: json)
-    json["results"].forEach(){
-      if $0.1["media_type"] == "movie"{
-        movieImages.append(TaggedImagesMovie.init(results: $0.1))
-      }else{
-        tvImages.append(TaggedImagesTV.init(results: $0.1))
-      }
-    }
-  }
-}
 
 
 //MARK: Person
@@ -356,6 +153,220 @@ public struct PersonMDB: ArrayObject{
     }
   }
   
+  ///Retrive data by append multiple person methods. Initlization of object has to be done manually. Exepect PersonMDB
+  public static func personAppendTo(api_key: String!, personID: Int!, append_to: [String], completion: (clientReturn: ClientReturn, data: PersonMDB?, json: JSON?) ->()) ->(){
+    let urlType = "\(personID)"
+    Client.Person(urlType, api_key: api_key, language: nil, page: nil, append_to: append_to){
+      apiReturn in
+      var data: PersonMDB?
+      if(apiReturn.error == nil){
+        data = PersonMDB.init(results: apiReturn.json!)
+      }
+      completion(clientReturn: apiReturn, data: data, json: apiReturn.json)
+    }
+  }
   
+}
+///TODO: popular, taggedImages, tv & movies credits
+import Foundation
+
+//MARK: Movie Crew & TV Crew common
+public class PersonCrewCommon: ArrayObject{
+  public var poster_path: String?
+  public var credit_id: String!
+  public var department: String!
+  public var id: Int!
+  public var job: String!
   
+  required public init(results: JSON){
+    poster_path = results["poster_path"].string
+    credit_id = results["credit_id"].string
+    department = results["department"].string
+    id = results["id"].int
+    job = results["job"].string
+  }
+}
+
+//MARK: Movie Crew
+public class PersonMovieCrew: PersonCrewCommon{
+  public var adult: Bool!
+  public var original_title: String!
+  public var release_date: String!
+  public var title: String!
+  required public init(results: JSON){
+    super.init(results: results)
+    adult = results["adult"].bool
+    original_title = results["original_title"].string
+    release_date = results["release_date"].string
+    title = results["title"].string
+  }
+}
+
+//MARK: TV Crew
+public class PersonTVCrew: PersonCrewCommon{
+  public var episode_count: Int!
+  public var first_air_date: String!
+  public var name: String!
+  public var original_name: String!
+  
+  required public init(results: JSON) {
+    super.init(results: results)
+    episode_count = results["episode_count"].int
+    first_air_date = results["first_air_date"].string
+    name = results["name"].string
+    original_name = results["original_name"].string
+  }
+}
+
+
+public class PersonMovieTVCastCommon: ArrayObject{
+  public var poster_path: String?
+  public var credit_id: String!
+  public var id: Int!
+  public var character: String!
+  required public init(results: JSON){
+    poster_path = results["poster_path"].string
+    credit_id = results["credit_id"].string
+    id = results["id"].int
+    character = results["character"].string
+  }
+  
+}
+
+//MARK: TV CAST
+public class PersonTVCast: PersonMovieTVCastCommon{
+  
+  public var episode_count: Int!
+  public var first_air_date: String!
+  public var name: String!
+  public var original_name: String!
+  
+  required public init(results: JSON) {
+    super.init(results: results)
+    episode_count = results["episode_count"].int
+    first_air_date = results["first_air_date"].string
+    name = results["name"].string
+    original_name = results["original_name"].string
+  }
+}
+
+//MARK: Movie Cast
+public class PersonMovieCast: PersonMovieTVCastCommon{
+  public var adult: Bool!
+  public var original_title: String!
+  public var release_date: String!
+  public var title: String!
+  required public init(results: JSON){
+    super.init(results: results)
+    adult = results["adult"].bool
+    original_title = results["original_title"].string
+    release_date = results["release_date"].string
+    title = results["title"].string
+  }
+}
+
+public struct PersonTVCredits{
+  
+  public var crew: [PersonTVCrew]
+  public var cast: [PersonTVCast]
+  public var id: Int!
+  
+  public init(json: JSON){
+    crew = PersonTVCrew.initialize(json: json["crew"])
+    cast = PersonTVCast.initialize(json: json["cast"])
+    id = json["id"].int
+  }
+}
+
+public struct PersonMovieCredits{
+  
+  public var crew: [PersonMovieCrew]
+  public var cast: [PersonMovieCast]
+  public var id: Int!
+  init(json: JSON){
+    crew = PersonMovieCrew.initialize(json: json["crew"])
+    cast = PersonMovieCast.initialize(json: json["cast"])
+    id = json["id"].int
+  }
+}
+
+public struct PersonCreditsCombined{
+  
+  public var tvCredits: (crew: [PersonTVCrew]?, cast: [PersonTVCast]?)
+  public var movieCredits: (crew: [PersonMovieCrew]?, cast: [PersonMovieCast]?)
+  public var id: Int?
+  
+  public init(json: JSON){
+    var tvCrew = [PersonTVCrew]()
+    var tvCast = [PersonTVCast]()
+    var movieCrew = [PersonMovieCrew]()
+    var movieCast = [PersonMovieCast]()
+    json["crew"].forEach(){
+      if $0.1["media_type"] == "tv'"{
+        tvCrew.append(PersonTVCrew.init(results: $0.1))
+      }else{
+        movieCrew.append(PersonMovieCrew.init(results: $0.1))
+      }
+    }
+    json["cast"].forEach(){
+      if $0.1["media_type"] == "tv"{
+        tvCast.append(PersonTVCast.init(results: $0.1))
+      }else{
+        movieCast.append(PersonMovieCast.init(results: $0.1))
+      }
+    }
+    id = json["id"].int
+    tvCredits = (tvCrew, tvCast)
+    movieCredits = (movieCrew, movieCast)
+  }
+  
+}
+
+public class TaggedImagesCommon: Images_MDB{
+  
+  public var id: String!
+  public var image_type: String!
+  public var media_type: String!
+  required public init(results: JSON) {
+    super.init(results: results)
+    id = results["id"].string
+    image_type = results["image_type"].string
+    media_type = results["media_type"].string
+  }
+}
+
+public class TaggedImagesMovie: TaggedImagesCommon{
+  public var media: DiscoverMovieMDB!
+  public required init(results: JSON) {
+    super.init(results: results)
+    media = DiscoverMovieMDB.init(results: results["media"])
+  }
+}
+
+public class TaggedImagesTV: TaggedImagesCommon{
+  public var media: DiscoverTVMDB!
+  public required init(results: JSON) {
+    super.init(results: results)
+    media = DiscoverTVMDB.init(results: results["media"])
+  }
+}
+
+public struct TaggedImages{
+  
+  public var tvImages =  [TaggedImagesTV]()
+  public var movieImages =  [TaggedImagesMovie]()
+  public var id: Int!
+  public var pageResults: PageResultsMDB!
+  
+  public init(json: JSON){
+    id = json["id"].int
+    pageResults = PageResultsMDB.init(results: json)
+    json["results"].forEach(){
+      if $0.1["media_type"] == "movie"{
+        movieImages.append(TaggedImagesMovie.init(results: $0.1))
+      }else{
+        tvImages.append(TaggedImagesTV.init(results: $0.1))
+      }
+    }
+  }
 }

@@ -13,19 +13,18 @@ import UIKit
 class All: UIViewController {
   
   
-  var videos: [VideosMDB]?
-  var images: ImagesMDB?
+  var images: [Images_MDB]?
+  var credits: PersonCreditsCombined!
   
   override func viewDidLoad() {
     
-    
-    TVMDB.tvAppendTo(apikey, tvShowID: 1396, append_to: ["images", "videos"]){
+    PersonMDB.personAppendTo(apikey, personID: 1245, append_to: ["images", "combined_credits"]){
       data in
-      self.videos = VideosMDB.initialize(json: data.json!["videos"]["results"])
-      self.images = ImagesMDB.init(results: data.json!["images"])
-      print(self.videos?.count); print(self.images?.backdrops.count)
-      print(self.videos)
-
+      self.images = Images_MDB.initialize(json: data.json!["images"]["profiles"])
+      print(self.images?.count)
+      self.credits = PersonCreditsCombined.init(json: data.json!["combined_credits"])
+      print(self.credits.tvCredits.cast?.count)
+      print(self.credits.movieCredits.cast?.count)
     }
     
   }
