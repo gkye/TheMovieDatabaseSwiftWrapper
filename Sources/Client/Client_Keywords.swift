@@ -12,32 +12,32 @@ import Foundation
 
 
 extension Client{
-    static func keyword(keywordType: String, api_key: String!, completion: (ClientReturn) -> ()) -> (){
-        let parameters: [String : AnyObject] = ["api_key": api_key]
-        let url = keywordType
-        
-        networkRequest(url: url, parameters: parameters, completion: {
-            apiReturn in
-            completion(apiReturn)
-        })
+  static func keyword(keywordType: String, api_key: String!, completion: (ClientReturn) -> ()) -> (){
+    let parameters: [String : AnyObject] = ["api_key": api_key]
+    let url = keywordType
+    
+    networkRequest(url: url, parameters: parameters, completion: {
+      apiReturn in
+      completion(apiReturn)
+    })
+  }
+  
+  static func keyword_movies(keywordType: String, api_key: String!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
+    var parameters: [String : AnyObject] = ["api_key": api_key]
+    if(page != nil){
+      parameters["page"] = page
     }
-    
-    static func keyword_movies(keywordType: String, api_key: String!, page: Int?, language: String?, completion: (ClientReturn) -> ()) -> (){
-        var parameters: [String : AnyObject] = ["api_key": api_key]
-        if(page != nil){
-        parameters["page"] = page
-        }
-        if(language != nil){
-        parameters["language"] = language
-        }
-        let url = keywordType
-        networkRequest(url: url, parameters: parameters, completion: {
-            apiReturn in
-           
-            completion(apiReturn)
-        })
+    if(language != nil){
+      parameters["language"] = language
     }
-    
-    
-    
+    let url = keywordType
+    networkRequest(url: url, parameters: parameters, completion: {
+      apiReturn in
+      
+      completion(apiReturn)
+    })
+  }
+  
+  
+  
 }

@@ -10,13 +10,13 @@ import Foundation
 
 
 extension Client{
-       
-    static func Lists(url: String!, api_key: String!, listId: String!, completion: (ClientReturn) -> ()) -> (){
-        let parameters: [String : AnyObject] = ["api_key": api_key]
-        networkRequest(url: url, parameters: parameters, completion: {
-            apiReturn in
-            
-            completion(apiReturn)
-        })
-    }
+  
+  static func Lists(url: String!, api_key: String!, listId: String!, completion: (ClientReturn) -> ()) -> (){
+    let parameters: [String : AnyObject] = ["api_key": api_key]
+    networkRequest(url: url, parameters: parameters, completion: {
+      apiReturn in
+      
+      completion(apiReturn)
+    })
+  }
 }

@@ -28,7 +28,7 @@ public struct ChangesMDB{
     return changes
   }
   
-  public static func changes(api_key: String!, changeType: String, page: Double?, startDate: String?, endDate:String?,completionHandler: (clientReturn: ClientReturn, data: [ChangesMDB]?) -> ()) -> (){
+  public static func changes(api_key: String!, changeType: String, page: Double?, startDate: String? = nil, endDate:String? = nil, completionHandler: (clientReturn: ClientReturn, data: [ChangesMDB]?) -> ()) -> (){
     Client.Changes(api_key, changeType: "movie", page: 1, startDate: nil, endDate: nil){
       apiReturn in
       var changes: [ChangesMDB]?
