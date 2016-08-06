@@ -12,6 +12,7 @@ public enum TVGenres: String{
   case Action_Adventure = "10759";
   case Animation = "16";
   case Comedy = "35";
+  case Crime = "80";
   case Documentary = "99";
   case Drama = "18";
   case Education = "10761";
