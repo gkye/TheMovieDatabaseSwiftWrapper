@@ -11,8 +11,8 @@ import Foundation
 
 extension Client{
   
-  static func Lists(url: String!, api_key: String!, listId: String!, completion: (ClientReturn) -> ()) -> (){
-    let parameters: [String : AnyObject] = ["api_key": api_key]
+  static func Lists(_ url: String!, api_key: String!, listId: String!, completion: @escaping (ClientReturn) -> ()) -> (){
+    let parameters: [String : AnyObject] = ["api_key": api_key as AnyObject]
     networkRequest(url: url, parameters: parameters, completion: {
       apiReturn in
       

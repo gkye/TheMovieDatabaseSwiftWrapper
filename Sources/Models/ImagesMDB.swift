@@ -9,14 +9,14 @@
 import Foundation
 
 
-public class Images_MDB: ArrayObject {
-  public var aspect_ratio: Double?
-  public var file_path: String?
-  public var height: Int?
-  public var iso_639_1: String?
-  public var vote_average: Double?
-  public var vote_count: Int?
-  public var width: Int?
+open class Images_MDB: ArrayObject {
+  open var aspect_ratio: Double?
+  open var file_path: String?
+  open var height: Int?
+  open var iso_639_1: String?
+  open var vote_average: Double?
+  open var vote_count: Int?
+  open var width: Int?
   
   required public init(results: JSON){
     aspect_ratio = results["aspect_ratio"].double

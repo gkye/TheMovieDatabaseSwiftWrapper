@@ -13,7 +13,7 @@
 public struct PersonMDB: ArrayObject{
   
   public var adult: Bool!
-  public var also_known_as = [String]?()
+  public var also_known_as: [String]?
   public var biography: String?
   public var birthday: String?
   public var deathday: String?
@@ -41,7 +41,7 @@ public struct PersonMDB: ArrayObject{
   }
   
   ///Get the general person information for a specific id.
-  public static func person_id(api_key: String!, personID: Int!, completion: (clientReturn: ClientReturn, data: PersonMDB?) ->()) ->(){
+  public static func person_id(_ api_key: String!, personID: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonMDB?) ->()) ->(){
     let urlType = "\(personID)"
     Client.Person(urlType, api_key: api_key, language: nil, page: nil){
       apiReturn in
@@ -49,13 +49,13 @@ public struct PersonMDB: ArrayObject{
       if(apiReturn.error == nil){
         data = PersonMDB.init(results: apiReturn.json!)
       }
-      completion(clientReturn: apiReturn, data: data)
+      completion(apiReturn, data)
     }
   }
   
   
   ///Get the movie credits for a specific person id.
-  public static func movie_credits(api_key: String!, personID: Int!, language: String?, completion: (clientReturn: ClientReturn, data: PersonMovieCredits?) -> ()) ->(){
+  public static func movie_credits(_ api_key: String!, personID: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonMovieCredits?) -> ()) ->(){
     let urlType = "\(personID)/movie_credits"
     Client.Person(urlType, api_key: api_key, language: language, page: nil){
       apiReturn in
@@ -63,11 +63,11 @@ public struct PersonMDB: ArrayObject{
       if(apiReturn.error == nil){
         data = PersonMovieCredits.init(json: apiReturn.json!)
       }
-      completion(clientReturn: apiReturn, data: data)
+      completion(apiReturn, data)
     }
   }
   ///Get the TV credits for a specific person id.
-  public static func tv_credits(api_key: String!, personID: Int!, language: String?, completion: (clientReturn: ClientReturn, data: PersonTVCredits?) -> ()) ->(){
+  public static func tv_credits(_ api_key: String!, personID: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonTVCredits?) -> ()) ->(){
     let urlType = "\(personID)/tv_credits"
     Client.Person(urlType, api_key: api_key, language: language, page: nil){
       apiReturn in
@@ -75,12 +75,12 @@ public struct PersonMDB: ArrayObject{
       if(apiReturn.error == nil){
         data = PersonTVCredits.init(json: apiReturn.json!)
       }
-      completion(clientReturn: apiReturn, data: data)
+      completion(apiReturn, data)
     }
   }
   
   ///Get the combined (movie and TV) credits for a specific person id.
-  public static func combined_credits(api_key: String!, personID: Int!, language: String?, completion: (clientReturn: ClientReturn, data: PersonCreditsCombined?) -> ()) ->(){
+  public static func combined_credits(_ api_key: String!, personID: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonCreditsCombined?) -> ()) ->(){
     let urlType = "\(personID)/combined_credits"
     Client.Person(urlType, api_key: api_key, language: language, page: nil){
       apiReturn in
@@ -88,73 +88,73 @@ public struct PersonMDB: ArrayObject{
       if(apiReturn.error == nil){
         data = PersonCreditsCombined.init(json: apiReturn.json!)
       }
-      completion(clientReturn: apiReturn, data: data)
+      completion(apiReturn, data)
     }
   }
   
   
   ///Get the external ids for a specific person id.
-  public static func externalIDS(api_key: String!, personID: Int!, completion: (clientReturn: ClientReturn, data: ExternalIdsMDB?) -> ()) -> (){
+  public static func externalIDS(_ api_key: String!, personID: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: ExternalIdsMDB?) -> ()) -> (){
     Client.Person("\(personID)/external_ids", api_key: api_key, language: nil, page: nil){
       apiReturn in
       var data: ExternalIdsMDB?
       if(apiReturn.error == nil){
         data = ExternalIdsMDB.init(results: apiReturn.json!)
       }
-      completion(clientReturn: apiReturn, data: data)
+      completion(apiReturn, data)
     }
   }
   
   ///Get the images for a specific person id.
-  public static func images(api_key: String!, personID: Int!, completion: (client: ClientReturn, data: [Images_MDB]?) -> ()) -> (){
+  public static func images(_ api_key: String!, personID: Int!, completion: @escaping (_ client: ClientReturn, _ data: [Images_MDB]?) -> ()) -> (){
     Client.Person("\(personID)/images", api_key: api_key, language: nil, page: nil){
       apiReturn in
       var images: [Images_MDB]?
       if(apiReturn.error == nil){
         images = Images_MDB.initialize(json: apiReturn.json!["profiles"])
       }
-      completion(client: apiReturn, data: images)
+      completion(apiReturn, images)
       
     }
   }
   ///Get the images that have been tagged with a specific person id. Will return all of the image results with a media object mapped for each image.
-  public static func tagged_images(api_key: String!, personID: Int!, page: Int?, completion: (client: ClientReturn, data: TaggedImages?) -> ()) -> (){
+  public static func tagged_images(_ api_key: String!, personID: Int!, page: Int?, completion: @escaping (_ client: ClientReturn, _ data: TaggedImages?) -> ()) -> (){
     Client.Person("\(personID)/tagged_images", api_key: api_key, language: nil, page: page){
       apiReturn in
       var images: TaggedImages?
       if(apiReturn.error == nil){
         images = TaggedImages.init(json: apiReturn.json!)
       }
-      completion(client: apiReturn, data: images)
+      completion(apiReturn, images)
     }
   }
   
   ///Get the latest person id.
-  public static func latest(api_key: String!, completion: (clientReturn: ClientReturn, data: PersonMDB?) -> ()) -> (){
+  public static func latest(_ api_key: String!, completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonMDB?) -> ()) -> (){
     Client.Person("latest", api_key: api_key, language: nil, page: nil){
       apiReturn in
       var data: PersonMDB?
       if(apiReturn.error == nil){
         data = PersonMDB.init(results: apiReturn.json!)
       }
-      completion(clientReturn: apiReturn, data: data)
+      completion(apiReturn, data)
     }
   }
   
   ///Get the list of popular people on The Movie Database. This list refreshes every day.
-  public static func popular(api_key: String!, page: Int?, completion: (clientReturn: ClientReturn, data: [PersonResults]?) -> ()) -> (){
+  public static func popular(_ api_key: String!, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [PersonResults]?) -> ()) -> (){
     Client.Person("popular", api_key: api_key, language: nil, page: page){
       apiReturn in
       var data: [PersonResults]?
       if(apiReturn.error == nil){
         data = PersonResults.initialize(json: apiReturn.json!["results"])
       }
-      completion(clientReturn: apiReturn, data: data)
+      completion(apiReturn, data)
     }
   }
   
   ///Retrive data by append multiple person methods. Initlization of object has to be done manually. Exepect PersonMDB
-  public static func personAppendTo(api_key: String!, personID: Int!, append_to: [String], completion: (clientReturn: ClientReturn, data: PersonMDB?, json: JSON?) ->()) ->(){
+  public static func personAppendTo(_ api_key: String!, personID: Int!, append_to: [String], completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonMDB?, _ json: JSON?) ->()) ->(){
     let urlType = "\(personID)"
     Client.Person(urlType, api_key: api_key, language: nil, page: nil, append_to: append_to){
       apiReturn in
@@ -162,7 +162,7 @@ public struct PersonMDB: ArrayObject{
       if(apiReturn.error == nil){
         data = PersonMDB.init(results: apiReturn.json!)
       }
-      completion(clientReturn: apiReturn, data: data, json: apiReturn.json)
+      completion(apiReturn, data, apiReturn.json)
     }
   }
   
@@ -171,12 +171,12 @@ public struct PersonMDB: ArrayObject{
 import Foundation
 
 //MARK: Movie Crew & TV Crew common
-public class PersonCrewCommon: ArrayObject{
-  public var poster_path: String?
-  public var credit_id: String!
-  public var department: String!
-  public var id: Int!
-  public var job: String!
+open class PersonCrewCommon: ArrayObject{
+  open var poster_path: String?
+  open var credit_id: String!
+  open var department: String!
+  open var id: Int!
+  open var job: String!
   
   required public init(results: JSON){
     poster_path = results["poster_path"].string
@@ -188,11 +188,11 @@ public class PersonCrewCommon: ArrayObject{
 }
 
 //MARK: Movie Crew
-public class PersonMovieCrew: PersonCrewCommon{
-  public var adult: Bool!
-  public var original_title: String!
-  public var release_date: String!
-  public var title: String!
+open class PersonMovieCrew: PersonCrewCommon{
+  open var adult: Bool!
+  open var original_title: String!
+  open var release_date: String!
+  open var title: String!
   required public init(results: JSON){
     super.init(results: results)
     adult = results["adult"].bool
@@ -203,11 +203,11 @@ public class PersonMovieCrew: PersonCrewCommon{
 }
 
 //MARK: TV Crew
-public class PersonTVCrew: PersonCrewCommon{
-  public var episode_count: Int!
-  public var first_air_date: String!
-  public var name: String!
-  public var original_name: String!
+open class PersonTVCrew: PersonCrewCommon{
+  open var episode_count: Int!
+  open var first_air_date: String!
+  open var name: String!
+  open var original_name: String!
   
   required public init(results: JSON) {
     super.init(results: results)
@@ -219,11 +219,11 @@ public class PersonTVCrew: PersonCrewCommon{
 }
 
 
-public class PersonMovieTVCastCommon: ArrayObject{
-  public var poster_path: String?
-  public var credit_id: String!
-  public var id: Int!
-  public var character: String!
+open class PersonMovieTVCastCommon: ArrayObject{
+  open var poster_path: String?
+  open var credit_id: String!
+  open var id: Int!
+  open var character: String!
   required public init(results: JSON){
     poster_path = results["poster_path"].string
     credit_id = results["credit_id"].string
@@ -234,12 +234,12 @@ public class PersonMovieTVCastCommon: ArrayObject{
 }
 
 //MARK: TV CAST
-public class PersonTVCast: PersonMovieTVCastCommon{
+open class PersonTVCast: PersonMovieTVCastCommon{
   
-  public var episode_count: Int!
-  public var first_air_date: String!
-  public var name: String!
-  public var original_name: String!
+  open var episode_count: Int!
+  open var first_air_date: String!
+  open var name: String!
+  open var original_name: String!
   
   required public init(results: JSON) {
     super.init(results: results)
@@ -251,11 +251,11 @@ public class PersonTVCast: PersonMovieTVCastCommon{
 }
 
 //MARK: Movie Cast
-public class PersonMovieCast: PersonMovieTVCastCommon{
-  public var adult: Bool!
-  public var original_title: String!
-  public var release_date: String!
-  public var title: String!
+open class PersonMovieCast: PersonMovieTVCastCommon{
+  open var adult: Bool!
+  open var original_title: String!
+  open var release_date: String!
+  open var title: String!
   required public init(results: JSON){
     super.init(results: results)
     adult = results["adult"].bool
@@ -322,11 +322,11 @@ public struct PersonCreditsCombined{
   
 }
 
-public class TaggedImagesCommon: Images_MDB{
+open class TaggedImagesCommon: Images_MDB{
   
-  public var id: String!
-  public var image_type: String!
-  public var media_type: String!
+  open var id: String!
+  open var image_type: String!
+  open var media_type: String!
   required public init(results: JSON) {
     super.init(results: results)
     id = results["id"].string
@@ -335,16 +335,16 @@ public class TaggedImagesCommon: Images_MDB{
   }
 }
 
-public class TaggedImagesMovie: TaggedImagesCommon{
-  public var media: DiscoverMovieMDB!
+open class TaggedImagesMovie: TaggedImagesCommon{
+  open var media: DiscoverMovieMDB!
   public required init(results: JSON) {
     super.init(results: results)
     media = DiscoverMovieMDB.init(results: results["media"])
   }
 }
 
-public class TaggedImagesTV: TaggedImagesCommon{
-  public var media: DiscoverTVMDB!
+open class TaggedImagesTV: TaggedImagesCommon{
+  open var media: DiscoverTVMDB!
   public required init(results: JSON) {
     super.init(results: results)
     media = DiscoverTVMDB.init(results: results["media"])

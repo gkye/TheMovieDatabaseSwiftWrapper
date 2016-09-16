@@ -8,10 +8,10 @@
 
 import Foundation
 
-public class MovieCreditsMDB{
+open class MovieCreditsMDB{
   
-  public  var cast = [MovieCastMDB]()
-  public  var crew = [CrewMDB]()
+  open  var cast = [MovieCastMDB]()
+  open  var crew = [CrewMDB]()
   
   public init(results: JSON){
     for cast in results["cast"]{
@@ -24,11 +24,11 @@ public class MovieCreditsMDB{
   }
 }
 
-public class MovieCastMDB: CastCrewCommonMDB{
+open class MovieCastMDB: CastCrewCommonMDB{
   
-  public var cast_id: Int!
-  public var character: String!
-  public var order: Int!
+  open var cast_id: Int!
+  open var character: String!
+  open var order: Int!
   
   init(cast: JSON){
     super.init(results: cast)

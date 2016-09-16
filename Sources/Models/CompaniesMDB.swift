@@ -19,14 +19,14 @@ public struct parent_companymdb: ArrayObject{
   }
 }
 
-public class CompanyMDB {
-  public var description: String?
-  public var headquarters: String?
-  public var homepage: String!
-  public var id: Int!
-  public var logo_path: String!
-  public var name: String!
-  public var parent_company: parent_companymdb?
+open class CompanyMDB {
+  open var description: String?
+  open var headquarters: String?
+  open var homepage: String!
+  open var id: Int!
+  open var logo_path: String!
+  open var name: String!
+  open var parent_company: parent_companymdb?
     
   public init(results: JSON){
     description = results["description"].string
@@ -40,25 +40,25 @@ public class CompanyMDB {
     }
   }
   ///This method is used to retrieve all of the basic information about a company.
-  public class func companyInfo(api_key: String!, companyId: Int!, completion: (clientReturn: ClientReturn, data:CompanyMDB?) -> ()) -> (){
+  open class func companyInfo(_ api_key: String!, companyId: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data:CompanyMDB?) -> ()) -> (){
     Client.Company(api_key, companyId: companyId){
       apiReturn in
       if(apiReturn.error == nil){
-        completion(clientReturn: apiReturn, data: CompanyMDB(results: apiReturn.json!))
+        completion(apiReturn, CompanyMDB(results: apiReturn.json!))
       }else{
-        completion(clientReturn: apiReturn, data: nil)
+        completion(apiReturn, nil)
       }
     }
   }
   
   ///Get the list of movies associated with a particular company.
-  public class func companyMovies(api_key: String!, companyId: Int!, language: String?, page: Int?, completion: (clientReturn: ClientReturn, data: [MovieMDB]?) -> ()) -> (){
+  open class func companyMovies(_ api_key: String!, companyId: Int!, language: String?, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> ()) -> (){
     Client.Company(api_key, companyId: companyId, language: language, page: page){
       apiReturn in
       if(apiReturn.error == nil){
-        completion(clientReturn: apiReturn, data: MovieMDB.initialize(json: apiReturn.json!["results"]))
+        completion(apiReturn, MovieMDB.initialize(json: apiReturn.json!["results"]))
       }else{
-        completion(clientReturn: apiReturn, data: nil)
+        completion(apiReturn, nil)
       }
     }
   }

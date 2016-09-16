@@ -9,10 +9,10 @@
 import Foundation
 
 
-public class MovieReleaseDatesMDB: ArrayObject{
+open class MovieReleaseDatesMDB: ArrayObject{
   
-  public var iso_3166_1: String?
-  public var release_dates = [Release_Dates]()
+  open var iso_3166_1: String?
+  open var release_dates = [Release_Dates]()
   required public init(results: JSON){
     iso_3166_1 = results["iso_3166_1"].string
     release_dates = Release_Dates.initialize(json: results["release_dates"])

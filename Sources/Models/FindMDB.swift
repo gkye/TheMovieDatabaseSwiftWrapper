@@ -19,12 +19,12 @@ public enum ExternalIdTypes: String{
   case id
 }
 
-public class KnownForMovie: DiscoverMDB{
-  public var original_title: String?
-  public var release_date: String?
-  public var title: String!
-  public var video: Bool!
-  public var media_type: String!
+open class KnownForMovie: DiscoverMDB{
+  open var original_title: String?
+  open var release_date: String?
+  open var title: String!
+  open var video: Bool!
+  open var media_type: String!
   
   required public init(results: JSON) {
     super.init(results: results)
@@ -35,12 +35,12 @@ public class KnownForMovie: DiscoverMDB{
   }
 }
 
-public class KnownForTV: DiscoverMDB{
-  public var original_name: String?
-  public var origin_country: [String]?
-  public var first_air_date: String?
-  public var name: String!
-  public var media_type: String!
+open class KnownForTV: DiscoverMDB{
+  open var original_name: String?
+  open var origin_country: [String]?
+  open var first_air_date: String?
+  open var name: String!
+  open var media_type: String!
   
   required public init(results: JSON) {
     super.init(results: results)
@@ -115,7 +115,7 @@ public struct FindMDB{
    The find method makes it easy to search for objects in our database by an external id. For instance, an IMDB ID. This will search all objects (movies, TV shows and people) and return the results in a single response.
    */
   
-  public static func find(apikey: String, id: String, external_source: ExternalIdTypes!,completion: (clientReturn: ClientReturn, data: FindMDB?) -> ()) -> (){
+  public static func find(_ apikey: String, id: String, external_source: ExternalIdTypes!,completion: @escaping (_ clientReturn: ClientReturn, _ data: FindMDB?) -> ()) -> (){
     
     Client.Find(apikey, external_id: id, external_source: external_source.rawValue){
       apiReturn in
@@ -123,7 +123,7 @@ public struct FindMDB{
       if(apiReturn.error == nil){
         data = FindMDB.init(json: apiReturn.json!)
       }
-      completion(clientReturn: apiReturn, data: data)
+      completion(apiReturn, data)
     }
   }
   

@@ -10,11 +10,11 @@ import Foundation
 extension Client{
   
   
-  static func Find(api_key: String!, external_id: String!, external_source: String!, completion: (ClientReturn) -> ()) -> (){
-    var parameters: [String : AnyObject] = ["api_key": api_key]
-    parameters["external_source"] = external_source
+  static func Find(_ api_key: String!, external_id: String!, external_source: String!, completion: @escaping (ClientReturn) -> ()) -> (){
+    var parameters: [String : AnyObject] = ["api_key": api_key as AnyObject]
+    parameters["external_source"] = external_source as AnyObject?
     
-    let url = "https://api.themoviedb.org/3/find/\(external_id)"
+    let url = "https://api.themoviedb.org/3/find/" + external_id
     networkRequest(url: url, parameters: parameters, completion: {
       apiReturn in
       

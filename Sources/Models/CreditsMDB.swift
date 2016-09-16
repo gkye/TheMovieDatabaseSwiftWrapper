@@ -69,7 +69,7 @@ public struct CreditsMDB{
   public var media: Credits_Media!
   public var media_Type: String!
   public var id: String!
-  public var person: (name: String!, id: Int!)
+  public var person: (name: String?, id: Int?)
   public init(credits: JSON){
     credit_type = credits["credit_type"].string
     department = credits["department"].string
@@ -83,13 +83,13 @@ public struct CreditsMDB{
   }
   
   ///Get the detailed information about a particular credit record. This is currently only supported with the new credit model found in TV. These ids can be found from any TV credit response as well as the tv_credits and combined_credits methods for people. The episodes object returns a list of episodes and are generally going to be guest stars. The season array will return a list of season numbers.
-  public static func credits(apiKey: String, creditID: String, language: String, completion: (clientReturn: ClientReturn, data: CreditsMDB?) -> ()) -> (){
+  public static func credits(_ apiKey: String, creditID: String, language: String, completion: @escaping (_ clientReturn: ClientReturn, _ data: CreditsMDB?) -> ()) -> (){
     Client.Credits(apiKey, creditID: creditID, language: language){
       apiReturn in
       if(apiReturn.error == nil){
-        completion(clientReturn: apiReturn, data: CreditsMDB.init(credits: apiReturn.json!))
+        completion(apiReturn, CreditsMDB.init(credits: apiReturn.json!))
       }else{
-        completion(clientReturn: apiReturn, data: nil)
+        completion(apiReturn, nil)
       }
     }
   }

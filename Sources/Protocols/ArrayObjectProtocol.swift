@@ -14,7 +14,7 @@ public protocol ArrayObject {
 }
 
 extension ArrayObject {
-  public static func initialize<T:ArrayObject>(json json: JSON) -> [T] {
+  public static func initialize<T:ArrayObject>(json: JSON) -> [T] {
     var array = [T]()
     json.forEach(){
       array.append(T.init(results: $0.1))

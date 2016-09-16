@@ -8,6 +8,26 @@
 
 import XCTest
 @testable import TMDBSwift
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class TMDBSwiftTests: XCTestCase {
   var key = "8a7a49369d1af6a70ec5a6787bbfcf79"
@@ -17,16 +37,16 @@ class TMDBSwiftTests: XCTestCase {
   
   func testCollection() {
     var data: CollectionMDB?
-    let expectation = expectationWithDescription("Wait for data to load.")
+    let expectation = self.expectation(description: "Wait for data to load.")
     
     
     CollectionMDB.collection(key, collectionId: 10){
       coll in
-      data = coll.data
+      data = coll.1!
       expectation.fulfill()
     }
     
-    waitForExpectationsWithTimeout(5, handler: nil)
+    waitForExpectations(timeout: 30, handler: nil)
     XCTAssertNotNil(data)
     
     XCTAssertEqual(data?.id, 10)
@@ -36,23 +56,22 @@ class TMDBSwiftTests: XCTestCase {
     XCTAssertNotNil(data?.collectionItems)
     XCTAssertTrue(data?.collectionItems.count > 0)
     XCTAssertNotNil(data?.poster_path)
-    
   }
   
   //MARK: Configuration
   
   func testConfiguration() {
     var data: ConfigurationMDB?
-    let expectation = expectationWithDescription("Wait for data to load.")
+    let expectation = self.expectation(description: "Wait for data to load.")
     
     
     ConfigurationMDB.configuration(key){
       config in
-      data = config.data
+      data = config.1
       expectation.fulfill()
     }
     
-    waitForExpectationsWithTimeout(5, handler: nil)
+    waitForExpectations(timeout: 30, handler: nil)
     XCTAssertNotNil(data)
     XCTAssertTrue(data?.backdrop_sizes.count > 0)
     XCTAssertEqual(data?.base_url, "http://image.tmdb.org/t/p/")
@@ -70,15 +89,15 @@ class TMDBSwiftTests: XCTestCase {
   
   func testCompany() {
     var data: CompanyMDB?
-    let expectation = expectationWithDescription("Wait for data to load.")
+    let expectation = self.expectation(description: "Wait for data to load.")
     
     CompanyMDB.companyInfo(key, companyId: 5){
       company in
-      data = company.data
+      data = company.1
       expectation.fulfill()
     }
     
-    waitForExpectationsWithTimeout(5, handler: nil)
+    waitForExpectations(timeout: 5, handler: nil)
     XCTAssertNotNil(data)
     
     XCTAssertEqual(data?.id, 5)

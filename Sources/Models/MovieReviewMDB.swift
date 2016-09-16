@@ -9,12 +9,12 @@
 import Foundation
 
 
-public class MovieReviewsMDB: ArrayObject{
+open class MovieReviewsMDB: ArrayObject{
   
-  public var id: String!
-  public var author: String!
-  public var content: String!
-  public var url: String!
+  open var id: String!
+  open var author: String!
+  open var content: String!
+  open var url: String!
   
   required public init(results: JSON){
     id = results["id"].string

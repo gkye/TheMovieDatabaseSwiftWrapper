@@ -32,14 +32,14 @@ public struct ConfigurationMDB {
   }
   
   ///This method currently holds the data relevant to building image URLs as well as the change key map.To build an image URL, you will need 3 pieces of data. The base_url, size and file path; . Simply combine them all and you will have a fully qualified URL. Here’s an example URL: http://image.tmdb.org/t/p/w500/8uO0gUM8aNqYLs1OsTBQiXu0fEv.jpg
-  public static func configuration(api_key: String!, completion: (clientReturn: ClientReturn, data: ConfigurationMDB?) -> ()) -> (){
+  public static func configuration(_ api_key: String!, completion: @escaping (_ clientReturn: ClientReturn, _ data: ConfigurationMDB?) -> ()) -> (){
     Client.Configuration(api_key){
       apiReturn in
       //var aReturn = apiReturn
       if(apiReturn.error == nil){
-        completion(clientReturn: apiReturn, data: ConfigurationMDB.init(results: apiReturn.json!))
+        completion(apiReturn, ConfigurationMDB.init(results: apiReturn.json!))
       }else{
-        completion(clientReturn: apiReturn, data: nil)
+        completion(apiReturn, nil)
       }
     }
   }

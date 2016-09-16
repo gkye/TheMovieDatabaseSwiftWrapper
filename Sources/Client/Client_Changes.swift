@@ -8,23 +8,23 @@
 import Foundation
 extension Client{
     
-    static func Changes(api_key: String!, changeType: String, page: Double?, startDate: String?, endDate:String?, completion: (ClientReturn) -> ()) -> (){
+    static func Changes(_ api_key: String!, changeType: String, page: Double?, startDate: String?, endDate:String?, completion: @escaping (ClientReturn) -> ()) -> (){
         
-        var parameters: [String : AnyObject] = ["api_key": api_key]
+        var parameters: [String : AnyObject] = ["api_key": api_key as AnyObject]
         
         if(page != nil){
-           parameters["page"] = page
+           parameters["page"] = page as AnyObject?
         }
        
         if(startDate != nil){
-            parameters["start_date"] = startDate
+            parameters["start_date"] = startDate as AnyObject?
         }
         
         if(endDate != nil){
-            parameters["end_date"] = endDate
+            parameters["end_date"] = endDate as AnyObject?
         }
         
-        let url = "https://api.themoviedb.org/3/\(changeType)/changes"
+        let url = "https://api.themoviedb.org/3/" + changeType + "/changes"
         
         
         networkRequest(url: url, parameters: parameters){

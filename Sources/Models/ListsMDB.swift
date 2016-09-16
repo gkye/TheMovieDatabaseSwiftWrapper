@@ -36,14 +36,14 @@ public struct ListsMDB: ArrayObject{
   }
   
   ///MARK: Lists
-  public  static func lists(api_key: String!, listId: String!, completion: (clientReturn: ClientReturn, data: ListsMDB?) -> ()) -> (){
-    let url  = "http://api.themoviedb.org/3/list/\(listId)"
+  public  static func lists(_ api_key: String!, listId: String!, completion: @escaping (_ clientReturn: ClientReturn, _ data: ListsMDB?) -> ()) -> (){
+    let url  = "http://api.themoviedb.org/3/list/" + listId
     Client.Lists(url, api_key: api_key, listId: listId!){
       apiReturn in
       if(apiReturn.error == nil){
-        completion(clientReturn: apiReturn, data: ListsMDB.init(results: apiReturn.json!))
+        completion(apiReturn, ListsMDB.init(results: apiReturn.json!))
       }else{
-        completion(clientReturn: apiReturn, data: nil)
+        completion(apiReturn, nil)
       }
     }
     

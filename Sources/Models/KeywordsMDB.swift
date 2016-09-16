@@ -9,10 +9,10 @@
 import Foundation
 
 
-public class KeywordsMDB: ArrayObject{
+open class KeywordsMDB: ArrayObject{
   
-  public var id: Int?
-  public var name: String?
+  open var id: Int?
+  open var name: String?
   
   required public init(results: JSON){
     id = results["id"].int
@@ -20,27 +20,27 @@ public class KeywordsMDB: ArrayObject{
   }
   
   ///Get the basic information for a specific keyword id.
-  public class func keyword(api_key: String!, keywordId: Int!, completion: (clientReturn: ClientReturn, data: KeywordsMDB?) -> ()) -> (){
-    let url = "http://api.themoviedb.org/3/keyword/\(keywordId)"
+  open class func keyword(_ api_key: String!, keywordId: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: KeywordsMDB?) -> ()) -> (){
+    let url = "http://api.themoviedb.org/3/keyword/" + String(keywordId)
     Client.keyword(url, api_key: api_key){
       apiReturn in
       if(apiReturn.error == nil){
-        completion(clientReturn: apiReturn, data: KeywordsMDB.init(results: apiReturn.json!))
+        completion(apiReturn, KeywordsMDB.init(results: apiReturn.json!))
       }else{
-        completion(clientReturn: apiReturn, data: nil)
+        completion(apiReturn, nil)
       }
     }
   }
   
   ///Get the list of movies for a particular keyword by id.
-  public class func keyword_movies(api_key: String!, keywordId: Int!, page: Int, language: String?, completion: (clientReturn: ClientReturn, data: [MovieMDB]?) -> ()) -> (){
-    let url = "http://api.themoviedb.org/3/keyword/\(keywordId)/movies"
+  open class func keyword_movies(_ api_key: String!, keywordId: Int!, page: Int, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> ()) -> (){
+    let url = "http://api.themoviedb.org/3/keyword/" + String(keywordId) + "/movies"
     Client.keyword_movies(url, api_key: api_key, page: page, language: language){
       apiReturn in
       if(apiReturn.error == nil){
-        completion(clientReturn: apiReturn, data: MovieMDB.initialize(json: apiReturn.json!["results"]))
+        completion(apiReturn, MovieMDB.initialize(json: apiReturn.json!["results"]))
       }else{
-        completion(clientReturn: apiReturn, data: nil)
+        completion(apiReturn, nil)
       }
     }
   }
