@@ -3,6 +3,9 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/gkye/TheMovieDatabaseSwiftWrapper/master/LICENSE)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/gkye/TheMovieDatabaseSwiftWrapper.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
 
+
+# Swift3 branch work in progress
+
 ##Usage
 
 1. Get an API key-> <a href="themoviedb.org">themoviedb.org</a>
