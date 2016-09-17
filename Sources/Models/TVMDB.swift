@@ -28,7 +28,7 @@ extension TVMDB{
   
   ///Get the alternative titles for a specific show ID.
   public class func alternativeTitles(_ api_key: String!, tvShowID: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: Alternative_TitlesMDB?) -> ()) -> (){
-    Client.TV("\(tvShowID)/alternative_titles", api_key: api_key, page: nil, language: nil, timezone: nil){
+    Client.TV( String(tvShowID) + "/alternative_titles", api_key: api_key, page: nil, language: nil, timezone: nil){
       apiReturn in
       var data: Alternative_TitlesMDB?
       if(apiReturn.error == nil){
@@ -40,7 +40,7 @@ extension TVMDB{
   
   ///Get the content ratings for a specific TV show id.
   public class func content_ratings(_ api_key: String, tvShowID: Int,  completion: @escaping (_ clientReturn: ClientReturn, _ data: [Content_RatingsMDB]?) -> ()) -> (){
-    Client.TV("\(tvShowID)/content_ratings", api_key: api_key, page: nil, language: nil, timezone: nil){
+    Client.TV(String(tvShowID) + "/content_ratings", api_key: api_key, page: nil, language: nil, timezone: nil){
       apiReturn in
       var data: [Content_RatingsMDB]?
       if(apiReturn.error == nil){
@@ -52,7 +52,7 @@ extension TVMDB{
   
   ///Get the cast & crew information about a TV series. Just like the website, this information from the last season of the series.
   public class func credits(_ api_key: String!, tvShowID: Int!, completion: @escaping (_ clientResult: ClientReturn, _ data: TVCreditsMDB?) -> ()) -> (){
-    Client.TV("\(tvShowID)/credits", api_key: api_key, page: nil, language: nil, timezone: nil){
+    Client.TV(String(tvShowID) + "/credits", api_key: api_key, page: nil, language: nil, timezone: nil){
       apiReturn in
       var data: TVCreditsMDB?
       if(apiReturn.error == nil){
@@ -64,7 +64,7 @@ extension TVMDB{
   
   //Get the external ids that we have stored for a TV series.
   public class func externalIDS(_ api_key: String!, tvShowID: Int!, language: String, completion: @escaping (_ clientResult: ClientReturn, _ data: ExternalIdsMDB?) -> ()) -> (){
-    Client.TV("\(tvShowID)/external_ids", api_key: api_key, page: nil, language: language, timezone: nil){
+    Client.TV(String(tvShowID) + "/external_ids", api_key: api_key, page: nil, language: language, timezone: nil){
       apiReturn in
       var data: ExternalIdsMDB?
       if(apiReturn.error == nil){
@@ -76,7 +76,7 @@ extension TVMDB{
   
   ///Get the images (posters and backdrops) for a TV series.
   public class func images(_ api_key: String!, tvShowID: Int!, language: String?, completion: @escaping (_ clientResult: ClientReturn, _ data: ImagesMDB?) -> ()) -> (){
-    Client.TV("\(tvShowID)/images", api_key: api_key, page: nil, language: language, timezone: nil){
+    Client.TV(String(tvShowID) + "/images", api_key: api_key, page: nil, language: language, timezone: nil){
       apiReturn in
       var data: ImagesMDB?
       if(apiReturn.error == nil){
@@ -88,7 +88,7 @@ extension TVMDB{
   
   ///Get the plot keywords for a specific TV show id.
   public class func keywords(_ api_key: String, tvShowID: Int!, completion: @escaping (_ clientResult: ClientReturn, _ data: [KeywordsMDB]?) -> ()) -> (){
-    Client.TV("\(tvShowID)/keywords", api_key: api_key, page: nil, language: nil, timezone: nil){
+    Client.TV(String(tvShowID) + "/keywords", api_key: api_key, page: nil, language: nil, timezone: nil){
       apiReturn in
       var data: [KeywordsMDB]?
       if(apiReturn.error == nil){
@@ -100,7 +100,7 @@ extension TVMDB{
   
   ///Get the similar TV shows for a specific tv id.
   public  class func similar(_ api_key: String!, tvShowID: Int!, page: Int?, language: String?, completion: @escaping (_ clientResult: ClientReturn, _ data: [TVMDB]?) -> ()) -> (){
-    Client.TV("\(tvShowID)/similar", api_key: api_key, page: page, language: language, timezone: nil){
+    Client.TV(String(tvShowID) + "/similar", api_key: api_key, page: page, language: language, timezone: nil){
       apiReturn in
       var data: [TVMDB]?
       if(apiReturn.error == nil){
@@ -113,7 +113,7 @@ extension TVMDB{
   }
   ///Get the list of translations that exist for a TV series. These translations cascade down to the episode level.
   public class func translations(_ api_key: String!, tvShowID: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: [TranslationsMDB]?) -> ()) -> (){
-    Client.TV("\(tvShowID)/translations", api_key: api_key, page: nil, language: nil, timezone: nil){
+    Client.TV(String(tvShowID) + "/translations", api_key: api_key, page: nil, language: nil, timezone: nil){
       apiReturn in
       var data: [TranslationsMDB]?
       if(apiReturn.error == nil){
@@ -126,7 +126,7 @@ extension TVMDB{
   
   ///Get the videos that have been added to a TV series (trailers, opening credits, etc...)
   public class func videos(_ api_key: String!, tvShowID: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [VideosMDB]?) -> ()) -> (){
-    Client.TV("\(tvShowID)/videos", api_key: api_key, page: nil, language: language, timezone: nil){
+    Client.TV(String(tvShowID) + "/videos", api_key: api_key, page: nil, language: language, timezone: nil){
       apiReturn in
       var data: [VideosMDB]?
       if(apiReturn.error == nil){
@@ -209,7 +209,7 @@ extension TVMDB{
    */
   public class func tvAppendTo(_ api_key: String!, tvShowID: Int!, language: String? = nil, append_to: [String], completion: @escaping (_ clientReturn: ClientReturn, _ data: TVDetailedMDB?, _ json: JSON?) -> ()) -> (){
     
-    Client.TV("\(tvShowID)", api_key: api_key, page: nil, language: language, timezone: nil, append_to: append_to){
+    Client.TV(String(tvShowID), api_key: api_key, page: nil, language: language, timezone: nil, append_to: append_to){
       apiReturn in
       var data: TVDetailedMDB?
       if(apiReturn.error == nil){

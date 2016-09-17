@@ -32,12 +32,13 @@ struct Client{
           cReturn.pageResults = nil
         }
       }else{
-        print(rtn.2)
         cReturn.error = rtn.2 as NSError?
         cReturn.json = nil
         cReturn.pageResults = nil
-        completion(cReturn)
       }
+      
+      completion(cReturn)
+
     }
     
   }
@@ -48,11 +49,9 @@ class HTTPRequest{
   class func request(_ url: String!, parameters: [String: AnyObject],completionHandler: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> ()) -> (){
     
     let parameterString = parameters.stringFromHttpParameters()
-//    let url = URL(string: "\(url)?\(parameterString)")!
-    print("URRL --------", url)
     let urlString = url + "?" + parameterString
     let requestURL = URL(string: urlString)!
-    print("REQUEST URL IS ---- ", requestURL)
+//    print("REQUEST URL IS ---- ", requestURL)
     let request = NSMutableURLRequest(url: requestURL)
     request.httpMethod = "GET"
     request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
