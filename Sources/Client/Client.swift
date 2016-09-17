@@ -51,7 +51,7 @@ class HTTPRequest{
     let parameterString = parameters.stringFromHttpParameters()
     let urlString = url + "?" + parameterString
     let requestURL = URL(string: urlString)!
-//    print("REQUEST URL IS ---- ", requestURL)
+    print("REQUEST URL IS ---- ", requestURL)
     let request = NSMutableURLRequest(url: requestURL)
     request.httpMethod = "GET"
     request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")

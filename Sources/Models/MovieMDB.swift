@@ -172,6 +172,9 @@ extension MovieMDB{
       var movie: [MovieMDB]?
       if(apiReturn.error == nil){
         if(apiReturn.json!["results"].count > 0){
+          let results = apiReturn.json!["results"]
+          
+          
           movie = MovieMDB.initialize(json: apiReturn.json!["results"])
         }
       }

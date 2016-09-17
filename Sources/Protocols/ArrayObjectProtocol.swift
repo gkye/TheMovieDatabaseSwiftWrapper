@@ -17,6 +17,7 @@ extension ArrayObject {
   public static func initialize<T:ArrayObject>(json: JSON) -> [T] {
     var array = [T]()
     json.forEach(){
+      print($0.1)
       array.append(T.init(results: $0.1))
     }
     return array

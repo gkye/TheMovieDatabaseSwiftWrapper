@@ -25,8 +25,7 @@ extension Client{
       parameters["append_to_response"] = append_to?.joined(separator: ",") as AnyObject?
     }
     
-    let url = "https://api.themoviedb.org/3/tv/" + urlType
-    
+    let url = "https://api.themoviedb.org/3/tv/" + urlType    
     networkRequest(url: url, parameters: parameters, completion: {
       apiReturn in
       completion(apiReturn)
