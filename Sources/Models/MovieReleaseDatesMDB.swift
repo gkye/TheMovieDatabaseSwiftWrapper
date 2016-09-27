@@ -2,17 +2,17 @@
 //  MovieReleaseDatesMDB.swift
 //  MDBSwiftWrapper
 //
-//  Created by George on 2016-03-08.
-//  Copyright © 2016 GeorgeKye. All rights reserved.
+//  Created by George Kye on 2016-03-08.
+//  Copyright © 2016 George KyeKye. All rights reserved.
 //
 
 import Foundation
 
 
-public class MovieReleaseDatesMDB: ArrayObject{
+open class MovieReleaseDatesMDB: ArrayObject{
   
-  public var iso_3166_1: String?
-  public var release_dates = [Release_Dates]()
+  open var iso_3166_1: String?
+  open var release_dates = [Release_Dates]()
   required public init(results: JSON){
     iso_3166_1 = results["iso_3166_1"].string
     release_dates = Release_Dates.initialize(json: results["release_dates"])

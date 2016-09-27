@@ -2,8 +2,8 @@
 //  TVDetailedMDB.swift
 //  MDBSwiftWrapper
 //
-//  Created by George on 2016-02-15.
-//  Copyright © 2016 GeorgeKye. All rights reserved.
+//  Created by George Kye on 2016-02-15.
+//  Copyright © 2016 George KyeKye. All rights reserved.
 //
 
 import Foundation
@@ -41,20 +41,20 @@ public struct tv_seasons{
   
 }
 
-public class TVDetailedMDB: TVMDB{
-  public var createdBy: tv_created_By?
-  public var episode_run_time: [Int]!
-  public var homepage: String?
-  public var in_production: Bool?
-  public var languages: [String]?
-  public var last_air_date: String!
-  public var networks: KeywordsMDB!
-  public var number_of_episodes: Int!
-  public var number_of_seasons: Int!
-  public var production_companies = [KeywordsMDB]()
-  public var seasons = [tv_seasons]()
-  public var status: String!
-  public var type: String!
+open class TVDetailedMDB: TVMDB{
+  open var createdBy: tv_created_By?
+  open var episode_run_time: [Int]!
+  open var homepage: String?
+  open var in_production: Bool?
+  open var languages: [String]?
+  open var last_air_date: String!
+  open var networks: KeywordsMDB!
+  open var number_of_episodes: Int!
+  open var number_of_seasons: Int!
+  open var production_companies = [KeywordsMDB]()
+  open var seasons = [tv_seasons]()
+  open var status: String!
+  open var type: String!
   
   required public init(results: JSON) {
     super.init(results: results)

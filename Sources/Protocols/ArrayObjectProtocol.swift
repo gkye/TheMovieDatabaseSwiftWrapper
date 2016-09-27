@@ -2,19 +2,20 @@
 //  ArrayObjectProtocol.swift
 //  TMDBSwift
 //
-//  Created by George on 2016-05-21.
-//  Copyright © 2016 George. All rights reserved.
+//  Created by George Kye on 2016-05-21.
+//  Copyright © 2016 George Kye. All rights reserved.
 //
 
 import Foundation
 
 //MARK: Array protocol returns an array of types by initlizaing using the json passed
-public protocol ArrayObject {
+protocol ArrayObject {
   init(results: JSON)
 }
 
 extension ArrayObject {
-  public static func initialize<T:ArrayObject>(json json: JSON) -> [T] {
+  
+  static func initialize<T:ArrayObject>(json: JSON) -> [T] {
     var array = [T]()
     json.forEach(){
       array.append(T.init(results: $0.1))

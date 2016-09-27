@@ -2,17 +2,17 @@
 //  CastMDB.swift
 //  MDBSwiftWrapper
 //
-//  Created by George on 2016-02-15.
-//  Copyright © 2016 GeorgeKye. All rights reserved.
+//  Created by George Kye on 2016-02-15.
+//  Copyright © 2016 George KyeKye. All rights reserved.
 //
 
 import Foundation
 
-public class CastCrewCommonMDB{
-  public var credit_id: String!
-  public var id: Int!
-  public var name: String!
-  public var profile_path: String?
+open class CastCrewCommonMDB{
+  open var credit_id: String!
+  open var id: Int!
+  open var name: String!
+  open var profile_path: String?
   
   init(results: JSON){
     credit_id = results["credit_id"].string
@@ -24,9 +24,9 @@ public class CastCrewCommonMDB{
 }
 
 //Common obj between both TVCredits & MovieCredits
-public class CrewMDB: CastCrewCommonMDB{
-  public var department: String!
-  public var job: String!
+open class CrewMDB: CastCrewCommonMDB{
+  open var department: String!
+  open var job: String!
   public init(crew: JSON){
     super.init(results: crew)
     department = crew["department"].string
@@ -34,9 +34,9 @@ public class CrewMDB: CastCrewCommonMDB{
   }
 }
 
-public class TVCastMDB: CastCrewCommonMDB{
-  public var character: String!
-  public var order: Int!
+open class TVCastMDB: CastCrewCommonMDB{
+  open var character: String!
+  open var order: Int!
   public init(cast: JSON){
     super.init(results: cast)
     character = cast["character"].string
@@ -45,9 +45,9 @@ public class TVCastMDB: CastCrewCommonMDB{
 }
 
 
-public class TVCreditsMDB{
-  public var cast = [TVCastMDB]()
-  public var crew = [CrewMDB]()
+open class TVCreditsMDB{
+  open var cast = [TVCastMDB]()
+  open var crew = [CrewMDB]()
   
   public init(results: JSON){
     //tv cast

@@ -2,8 +2,8 @@
 //  Collection.swift
 //  TheMovieDBWrapperSwift
 //
-//  Created by George on 2016-02-08.
-//  Copyright © 2016 GeorgeKye. All rights reserved.
+//  Created by George Kye on 2016-02-08.
+//  Copyright © 2016 George KyeKye. All rights reserved.
 //
 
 import Foundation
@@ -32,26 +32,25 @@ public struct CollectionMDB: ArrayObject{
   }
   
   ///Get the basic collection information for a specific collection id.
-  public static func collection(api_key: String!, collectionId: Int!, language: String? = nil, completion: (clientReturn: ClientReturn, data: CollectionMDB?) -> ()) -> (){
-    Client.Collection(api_key, collectionId: "\(collectionId)", language: language){
+  public static func collection(_ api_key: String!, collectionId: Int!, language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: CollectionMDB?) -> ()) -> (){
+    Client.Collection(api_key, collectionId: String(collectionId), language: language){
       apiReturn in
       if(apiReturn.error == nil){
-        completion(clientReturn: apiReturn, data: CollectionMDB(results: apiReturn.json!))
+        completion(apiReturn, CollectionMDB(results: apiReturn.json!))
       }else{
-        completion(clientReturn: apiReturn, data: nil)
+        completion(apiReturn, nil)
       }
     }
   }
   
   ///Get all of the images for a particular collection by collection id.
-  public static func collectionImages(api_key: String!, collectionId: Int!, language: String?, completion:  (clientReturn: ClientReturn, data: ImagesMDB?) -> ()) -> (){
-    let modId =  "\(collectionId)/images"
-    Client.Collection(api_key, collectionId: modId, language: language){
+  public static func collectionImages(_ api_key: String!, collectionId: Int!, language: String?, completion:  @escaping (_ clientReturn: ClientReturn, _ data: ImagesMDB?) -> ()) -> (){
+    Client.Collection(api_key, collectionId:  String(collectionId) + "/images", language: language){
       apiReturn in
       if(apiReturn.error == nil){
-        completion(clientReturn: apiReturn, data: ImagesMDB.init(results: apiReturn.json!))
+        completion(apiReturn, ImagesMDB.init(results: apiReturn.json!))
       }else{
-        completion(clientReturn: apiReturn, data: nil)
+        completion(apiReturn, nil)
       }
     }
   }

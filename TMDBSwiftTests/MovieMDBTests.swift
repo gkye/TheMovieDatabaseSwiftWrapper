@@ -2,8 +2,8 @@
 //  MovieMDBTests.swift
 //  TMDBSwift
 //
-//  Created by George on 2016-07-03.
-//  Copyright © 2016 George. All rights reserved.
+//  Created by George Kye on 2016-07-03.
+//  Copyright © 2016 George Kye. All rights reserved.
 //
 
 import XCTest
@@ -26,14 +26,15 @@ class MovieMDBTests: XCTestCase {
   
   func testMovieById() {
     var data: MovieDetailedMDB?
-    let expectation = expectationWithDescription("Wait for data to load.")
+    let expectation = self.expectation(description: "Wait for data to load.")
     
     MovieMDB.movie(key, movieID: 7984){
       movie in
-      data = movie.data
+      data = movie.1
       expectation.fulfill()
     }
-    waitForExpectationsWithTimeout(5, handler: nil)
+    
+    waitForExpectations(timeout: 5, handler: nil)
     XCTAssertNotNil(data)
     XCTAssertEqual(data?.title, "In the Name of the Father")
     
@@ -43,14 +44,14 @@ class MovieMDBTests: XCTestCase {
   
   func testAlternateTitles(){
     var data: Alternative_TitlesMDB?
-    let expectation = expectationWithDescription("Wait for data to load.")
+    let expectation = self.expectation(description: "Wait for data to load.")
     
     MovieMDB.alternativeTitles(key, movieID: 7984){
       titles in
-      data = titles.altTitles
+      data = titles.1
       expectation.fulfill()
     }
-    waitForExpectationsWithTimeout(5, handler: nil)
+    waitForExpectations(timeout: 5, handler: nil)
     XCTAssertNotNil(data)
     XCTAssertEqual(data?.titles[0].title, "Au Nom du Père")
     XCTAssertEqual(data?.titles[0].iso_3166_1, "FR")
@@ -62,14 +63,14 @@ class MovieMDBTests: XCTestCase {
   
   func testCredits(){
     var data: MovieCreditsMDB?
-    let expectation = expectationWithDescription("Wait for data to load.")
+    let expectation = self.expectation(description: "Wait for data to load.")
     
     MovieMDB.credits(key, movieID: 7984){
       creds in
-      data = creds.credits
+      data = creds.1
       expectation.fulfill()
     }
-    waitForExpectationsWithTimeout(5, handler: nil)
+    waitForExpectations(timeout: 5, handler: nil)
     XCTAssertNotNil(data?.cast)
     XCTAssertNotNil(data?.crew)
     
@@ -79,15 +80,15 @@ class MovieMDBTests: XCTestCase {
     XCTAssertEqual(data?.cast[0].credit_id, "52fe448bc3a36847f809c0b5")
     XCTAssertEqual(data?.cast[0].id, 11856)
     XCTAssertEqual(data?.cast[0].order, 0)
-    XCTAssertEqual(data?.cast[0].profile_path, "/hknfCSSU6AMeKV9yn9NTtTzIEGc.jpg")
+//    XCTAssertEqual(data?.cast[0].profile_path, "/hknfCSSU6AMeKV9yn9NTtTzIEGc.jpg")
     
     //crew
-    XCTAssertEqual(data?.crew[0].credit_id, "539d9149c3a3683b50003a15")
-    XCTAssertEqual(data?.crew[0].department, "Crew")
-    XCTAssertEqual(data?.crew[0].id, 10717)
-    XCTAssertEqual(data?.crew[0].job, "Cinematography")
-    XCTAssertEqual(data?.crew[0].name, "Peter Biziou")
-    XCTAssertEqual(data?.crew[0].profile_path, nil)
+    XCTAssertEqual(data?.crew[0].credit_id, "52fe448bc3a36847f809c0a5")
+    XCTAssertEqual(data?.crew[0].department, "Directing")
+    XCTAssertEqual(data?.crew[0].id, 53334)
+    XCTAssertEqual(data?.crew[0].job, "Director")
+    XCTAssertEqual(data?.crew[0].name, "Jim Sheridan")
+//    XCTAssertEqual(data?.crew[0].profile_path, "/mfukw1JcUsXmUzt6IoaayMaescv.jpg")
     
   }
   
@@ -95,15 +96,15 @@ class MovieMDBTests: XCTestCase {
   
   func testImages(){
     var data: ImagesMDB?
-    let expectation = expectationWithDescription("Wait for data to load.")
+    let expectation = self.expectation(description: "Wait for data to load.")
     
     MovieMDB.images(key, movieID: 871){
       imgs in
-      data = imgs.images
+      data = imgs.1
       expectation.fulfill()
     }
     
-    waitForExpectationsWithTimeout(5, handler: nil)
+    waitForExpectations(timeout: 5, handler: nil)
     XCTAssertNotNil(data)
     XCTAssertNotNil(data?.backdrops)
     XCTAssertNotNil(data?.posters)
@@ -124,15 +125,15 @@ class MovieMDBTests: XCTestCase {
   
   func testKeywords(){
     var data: [KeywordsMDB]?
-    let expectation = expectationWithDescription("Wait for data to load.")
+    let expectation = self.expectation(description: "Wait for data to load.")
     
     MovieMDB.keywords(key, movieID: 871){
       kwords in
-      data = kwords.keywords
+      data = kwords.1
       expectation.fulfill()
     }
     
-    waitForExpectationsWithTimeout(5, handler: nil)
+    waitForExpectations(timeout: 5, handler: nil)
     XCTAssertNotNil(data)
     XCTAssertEqual(data?[0].name, "human evolution")
     XCTAssertEqual(data?[0].id, 311)
@@ -142,14 +143,14 @@ class MovieMDBTests: XCTestCase {
   
   func testReleaseDates(){
     var data: [MovieReleaseDatesMDB]?
-    let expectation = expectationWithDescription("Wait for data to load.")
+    let expectation = self.expectation(description: "Wait for data to load.")
     
     MovieMDB.release_dates(key, movieID: 871){
       dates in
-      data = dates.releatedDates
+      data = dates.1
       expectation.fulfill()
     }
-    waitForExpectationsWithTimeout(5, handler: nil)
+    waitForExpectations(timeout: 5, handler: nil)
     XCTAssertNotNil(data)
     let dates = data?[0].release_dates[0]
     XCTAssertEqual(data?[0].iso_3166_1, "FR")
@@ -165,14 +166,14 @@ class MovieMDBTests: XCTestCase {
   //Get the videos (trailers, teasers, clips, etc...) for a specific movie id.
   func testVideos(){
     var data: [VideosMDB]?
-    let expectation = expectationWithDescription("Wait for data to load.")
+    let expectation = self.expectation(description: "Wait for data to load.")
     
     MovieMDB.videos(key, movieID: 871){
       vids in
-      data = vids.videos
+      data = vids.1
       expectation.fulfill()
     }
-    waitForExpectationsWithTimeout(5, handler: nil)
+    waitForExpectations(timeout: 5, handler: nil)
     XCTAssertNotNil(data)
     let vids = data?[0]
     XCTAssertEqual(vids?.id, "533ec657c3a3685448000674")
@@ -187,14 +188,14 @@ class MovieMDBTests: XCTestCase {
   //Get the lists that the movie belongs to.
   func testList(){
     var data: [MovieListMDB]?
-    let expectation = expectationWithDescription("Wait for data to load.")
+    let expectation = self.expectation(description: "Wait for data to load.")
     
     MovieMDB.list(key, movieID: 871, page: 1){
       lists in
-      data = lists.list
+      data = lists.1
       expectation.fulfill()
     }
-    waitForExpectationsWithTimeout(5, handler: nil)
+    waitForExpectations(timeout: 5, handler: nil)
     XCTAssertNotNil(data)
     
     let list = data?[0]
@@ -211,28 +212,28 @@ class MovieMDBTests: XCTestCase {
   //TODO: improve tests
   func testSimilar(){
     var data: [MovieMDB]?
-    let expectation = expectationWithDescription("Wait for data to load.")
+    let expectation = self.expectation(description: "Wait for data to load.")
     
     MovieMDB.similar(key, movieID: 871, page: 1){
       movies in
-      data = movies.movie
+      data = movies.1
       expectation.fulfill()
     }
-    waitForExpectationsWithTimeout(5, handler: nil)
+    waitForExpectations(timeout: 5, handler: nil)
     XCTAssertNotNil(data)
   }
   
   //Get the reviews for a particular movie id.
   func testReviews(){
     var data: [MovieReviewsMDB]?
-    let expectation = expectationWithDescription("Wait for data to load.")
+    let expectation = self.expectation(description: "Wait for data to load.")
     
     MovieMDB.reviews(key, movieID: 49026, page: 1){
       rev in
-      data = rev.reviews
+      data = rev.1
       expectation.fulfill()
     }
-    waitForExpectationsWithTimeout(5, handler: nil)
+    waitForExpectations(timeout: 5, handler: nil)
     XCTAssertNotNil(data)
     let review = data?[0]
     
@@ -249,20 +250,20 @@ class MovieMDBTests: XCTestCase {
     var movieData: MovieDetailedMDB?
     var videos: [VideosMDB]?
     var reviews: [MovieReviewsMDB]?
-    let expectation = expectationWithDescription("Wait for data to load.")
+    let expectation = self.expectation(description: "Wait for data to load.")
 
     MovieMDB.movieAppendTo(key, movieID: 49026, append_to: ["videos", "reviews"]){
       data in
-      cReturn = data.clientReturn
-      movieData = data.data
-      if let json = data.json{
+      cReturn = data.0
+      movieData = data.1
+      if let json = data.0. {
         videos = VideosMDB.initialize(json: json["videos"]["results"])
         reviews = MovieReviewsMDB.initialize(json: json["reviews"]["results"])
       }
       expectation.fulfill()
     }
     
-    waitForExpectationsWithTimeout(5, handler: nil)
+    waitForExpectations(timeout: 5, handler: nil)
 
     XCTAssertNotNil(movieData)
     XCTAssertNotNil(cReturn?.json)

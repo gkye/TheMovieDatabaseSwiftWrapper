@@ -2,23 +2,23 @@
 //  MovieMDBModel.swift
 //  MDBSwiftWrapper
 //
-//  Created by George on 2016-03-08.
-//  Copyright © 2016 GeorgeKye. All rights reserved.
+//  Created by George Kye on 2016-03-08.
+//  Copyright © 2016 George KyeKye. All rights reserved.
 //
 
 import Foundation
 
 
-public class MovieMDB:  DiscoverMovieMDB{
+open class MovieMDB: DiscoverMovieMDB{
   
-  public var title: String?
-  public var video: Bool?
-  public var release_date: String?
-  public var original_title: String?
-  public var genres = [genresType]()
-  public typealias genresType = (id: Int!, name: String!)
+  open var title: String?
+  open var video: Bool?
+  open var release_date: String?
+  open var original_title: String?
+  open var genres = [genresType]()
+  public typealias genresType = (id: Int?, name: String?)
   
-  required public init(results: JSON) {
+  public required init(results: JSON) {
     super.init(results: results)
     title = results["title"].string
     video = results["video"].bool

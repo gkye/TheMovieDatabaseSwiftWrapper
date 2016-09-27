@@ -2,14 +2,14 @@
 //  Changes.swift
 //  MDBSwiftWrapper
 //
-//  Created by George on 2016-02-11.
-//  Copyright © 2016 GeorgeKye. All rights reserved.
+//  Created by George Kye on 2016-02-11.
+//  Copyright © 2016 George KyeKye. All rights reserved.
 //
 
 import Foundation
 
 
-public typealias Changes1MDB = (id:Double, adult:Bool!)
+public typealias Changes1MDB = (id:Double, adult:Bool?)
 
 public struct ChangesMDB{
   public var id: Int64!
@@ -20,7 +20,7 @@ public struct ChangesMDB{
     adult = results["adult"].bool
   }
   
-  static func initReturn(json: JSON)->[ChangesMDB]{
+  static func initReturn(_ json: JSON)->[ChangesMDB]{
     var changes = [ChangesMDB]()
     for i in 0 ..< json.count {
       changes.append(ChangesMDB(results: json[i]))
@@ -28,14 +28,14 @@ public struct ChangesMDB{
     return changes
   }
   
-  public static func changes(api_key: String!, changeType: String, page: Double?, startDate: String? = nil, endDate:String? = nil, completionHandler: (clientReturn: ClientReturn, data: [ChangesMDB]?) -> ()) -> (){
+  public static func changes(_ api_key: String!, changeType: String, page: Double?, startDate: String? = nil, endDate:String? = nil, completionHandler: @escaping (_ clientReturn: ClientReturn, _ data: [ChangesMDB]?) -> ()) -> (){
     Client.Changes(api_key, changeType: "movie", page: 1, startDate: nil, endDate: nil){
       apiReturn in
       var changes: [ChangesMDB]?
       if(apiReturn.error == nil){
         changes = ChangesMDB.initReturn(apiReturn.json!["results"])
       }
-      completionHandler(clientReturn: apiReturn, data: changes)
+      completionHandler(apiReturn, changes)
     }
   }
 }

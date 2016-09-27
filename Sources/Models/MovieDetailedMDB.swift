@@ -2,8 +2,8 @@
 //  MovieDetailedMDB.swift
 //  MDBSwiftWrapper
 //
-//  Created by George on 2016-02-16.
-//  Copyright © 2016 GeorgeKye. All rights reserved.
+//  Created by George Kye on 2016-02-16.
+//  Copyright © 2016 George KyeKye. All rights reserved.
 //
 
 import Foundation
@@ -20,6 +20,7 @@ public struct belongstocollectionMovieMDB{
     backdrop_path = results["backdrop_path"].string
     
   }
+  
 }
 public struct SpokenLanguages{
   public var iso_639_1: String!
@@ -30,19 +31,20 @@ public struct SpokenLanguages{
   }
 }
 
-public class MovieDetailedMDB: MovieMDB {
+open class MovieDetailedMDB: MovieMDB {
   
-  public var belongs_to_collection: belongstocollectionMovieMDB?
-  public var budget: Int?
-  public var homepage: String?
-  public var imdb_id: Int!
-  public var production_companies: [KeywordsMDB]?
-  public var production_countries: [KeywordsMDB]?
-  public var revenue : Int?
-  public var runtime: Int?
-  public var spoken_languages: [SpokenLanguages]?
-  public var status: String!
-  public var tagline: String!
+  open var belongs_to_collection: belongstocollectionMovieMDB?
+  open var budget: Int?
+  open var homepage: String?
+  open var imdb_id: Int!
+  open var production_companies: [KeywordsMDB]?
+  open var production_countries: [KeywordsMDB]?
+  open var revenue : Int?
+  open var runtime: Int?
+  open var spoken_languages: [SpokenLanguages]?
+  open var status: String!
+  open var tagline: String!
+  
   
   required public init(results: JSON) {
     super.init(results: results)

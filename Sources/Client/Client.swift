@@ -2,8 +2,8 @@
 //  Client.swift
 //  MDBSwiftWrapper
 //
-//  Created by George on 2016-02-11.
-//  Copyright © 2016 GeorgeKye. All rights reserved.
+//  Created by George Kye on 2016-02-11.
+//  Copyright © 2016 George KyeKye. All rights reserved.
 //
 
 import Foundation
@@ -18,12 +18,12 @@ public struct ClientReturn{
 }
 
 struct Client{
-  static func networkRequest(url url: String, parameters: [String : AnyObject], completion: (ClientReturn) -> ()) -> (){
+  static func networkRequest(url: String, parameters: [String : AnyObject], completion: @escaping (ClientReturn) -> ()) -> (){
     var cReturn = ClientReturn()
     HTTPRequest.request(url, parameters: parameters){
       rtn in
-      if(rtn.error == nil){
-        let json = JSON(data: rtn.data!)
+      if rtn.2 == nil{
+        let json = JSON(data: rtn.0!)
         cReturn.error = nil
         cReturn.json = json
         if(json["page"] != nil){
@@ -31,15 +31,14 @@ struct Client{
         }else{
           cReturn.pageResults = nil
         }
-        
-        completion(cReturn)
       }else{
-        print(rtn.error)
-        cReturn.error = rtn.error
+        cReturn.error = rtn.2 as NSError?
         cReturn.json = nil
         cReturn.pageResults = nil
-        completion(cReturn)
       }
+      
+      completion(cReturn)
+
     }
     
   }
@@ -47,25 +46,28 @@ struct Client{
 
 class HTTPRequest{
   
-  class func request(url: String, parameters: [String: AnyObject],completionHandler: (data: NSData?, response: NSURLResponse?, error: NSError?) -> ()) -> (){
+  class func request(_ url: String!, parameters: [String: AnyObject],completionHandler: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> ()) -> (){
     
     let parameterString = parameters.stringFromHttpParameters()
-    let url = NSURL(string: "\(url)?\(parameterString)")!
-    let request = NSMutableURLRequest(URL: url)
-    request.HTTPMethod = "GET"
+    let urlString = url + "?" + parameterString
+    let requestURL = URL(string: urlString)!
+    print("REQUEST URL IS ---- ", requestURL)
+    let request = NSMutableURLRequest(url: requestURL)
+    request.httpMethod = "GET"
     request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
     
-    let task = NSURLSession.sharedSession().dataTaskWithRequest(request){ data, response, error in
-      dispatch_async(dispatch_get_main_queue(), { () -> Void in
+    let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+      DispatchQueue.main.async(execute: { () -> Void in
         if error != nil{
           print("Error -> \(error)")
-          completionHandler(data: nil, response: nil, error: error)
+          completionHandler(nil, nil, error as Error?)
         }else{
-          completionHandler(data: data, response: response, error: nil)
+          completionHandler(data, response, nil)
         }
       })
       
-    }
+    })
+    
     
     task.resume()
   }
@@ -82,9 +84,9 @@ extension String {
   /// :returns: Returns percent-escaped string.
   
   func stringByAddingPercentEncodingForURLQueryValue() -> String? {
-    let allowedCharacters = NSCharacterSet(charactersInString: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~")
+    let allowedCharacters = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~")
     
-    return self.stringByAddingPercentEncodingWithAllowedCharacters(allowedCharacters)
+    return self.addingPercentEncoding(withAllowedCharacters: allowedCharacters)
   }
   
 }
@@ -102,10 +104,10 @@ extension Dictionary {
   func stringFromHttpParameters() -> String {
     let parameterArray = self.map { (key, value) -> String in
       let percentEscapedKey = (key as! String).stringByAddingPercentEncodingForURLQueryValue()!
-      let percentEscapedValue = (String(value)).stringByAddingPercentEncodingForURLQueryValue()!
+      let percentEscapedValue = (String(describing: value)).stringByAddingPercentEncodingForURLQueryValue()!
       return "\(percentEscapedKey)=\(percentEscapedValue)"
     }
     
-    return parameterArray.joinWithSeparator("&")
+    return parameterArray.joined(separator: "&")
   }
 }

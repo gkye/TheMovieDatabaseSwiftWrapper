@@ -2,8 +2,8 @@
 //  ReviewMDB.swift
 //  MDBSwiftWrapper
 //
-//  Created by George on 2016-02-12.
-//  Copyright © 2016 GeorgeKye. All rights reserved.
+//  Created by George Kye on 2016-02-12.
+//  Copyright © 2016 George KyeKye. All rights reserved.
 //
 
 import Foundation
@@ -28,14 +28,14 @@ public struct ReviewsMDB{
   }
   
   ///Get the full details of a review by ID.
-  public static func review(api_key: String!, reviewId: String!, completion: (clientReturn: ClientReturn, data: ReviewsMDB?) -> ()) -> (){
+  public static func review(_ api_key: String!, reviewId: String!, completion: @escaping (_ clientReturn: ClientReturn, _ data: ReviewsMDB?) -> ()) -> (){
     Client.review(api_key, reviewId: reviewId){
       apiReturn in
       var data: ReviewsMDB?
       if(apiReturn.error == nil){
         data = ReviewsMDB(results: apiReturn.json!)
       }
-      completion(clientReturn: apiReturn, data: data)
+      completion(apiReturn, data)
     }
   }
 }

@@ -2,19 +2,19 @@
 //  MovieReviewMDB.swift
 //  MDBSwiftWrapper
 //
-//  Created by George on 2016-03-08.
-//  Copyright © 2016 GeorgeKye. All rights reserved.
+//  Created by George Kye on 2016-03-08.
+//  Copyright © 2016 George KyeKye. All rights reserved.
 //
 
 import Foundation
 
 
-public class MovieReviewsMDB: ArrayObject{
+open class MovieReviewsMDB: ArrayObject{
   
-  public var id: String!
-  public var author: String!
-  public var content: String!
-  public var url: String!
+  open var id: String!
+  open var author: String!
+  open var content: String!
+  open var url: String!
   
   required public init(results: JSON){
     id = results["id"].string

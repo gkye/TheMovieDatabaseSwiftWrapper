@@ -2,19 +2,19 @@
 //  ExternalIdsMDB.swift
 //  MDBSwiftWrapper
 //
-//  Created by George on 2016-02-17.
-//  Copyright © 2016 GeorgeKye. All rights reserved.
+//  Created by George Kye on 2016-02-17.
+//  Copyright © 2016 George KyeKye. All rights reserved.
 //
 
 import Foundation
-public class ExternalIdsMDB{
+open class ExternalIdsMDB{
   
-  public var  imdb_id: String?
-  public var  freebase_mid: String?
-  public var  id: Int!
-  public var  freebase_id: String?
-  public var  tvdb_id: Int?
-  public var  tvrage_id: Int?
+  open var  imdb_id: String?
+  open var  freebase_mid: String?
+  open var  id: Int!
+  open var  freebase_id: String?
+  open var  tvdb_id: Int?
+  open var  tvrage_id: Int?
   
   //TV(S/EP) MV
   public init(results: JSON){
