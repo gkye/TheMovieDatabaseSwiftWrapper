@@ -3,7 +3,7 @@
 //  TMDBSwift
 //
 //  Created by piars777 on 26/05/2016.
-//  Copyright © 2016 George. All rights reserved.
+//  Copyright © 2016 George Kye. All rights reserved.
 //
 
 //TODO: Search/multi

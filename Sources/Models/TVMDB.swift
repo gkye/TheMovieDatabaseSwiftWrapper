@@ -2,8 +2,8 @@
 //  TVMDB.swift
 //  MDBSwiftWrapper
 //
-//  Created by George on 2016-02-12.
-//  Copyright © 2016 GeorgeKye. All rights reserved.
+//  Created by George Kye on 2016-02-12.
+//  Copyright © 2016 George KyeKye. All rights reserved.
 //
 //TODO: - tanslations
 //

@@ -2,8 +2,8 @@
 //  TMDBSwift.h
 //  TMDBSwift
 //
-//  Created by George on 2016-04-07.
-//  Copyright © 2016 George. All rights reserved.
+//  Created by George Kye on 2016-04-07.
+//  Copyright © 2016 George Kye. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

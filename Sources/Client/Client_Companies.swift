@@ -2,8 +2,8 @@
 //  Client_Companies.swift
 //  MDBSwiftWrapper
 //
-//  Created by George on 2016-02-11.
-//  Copyright © 2016 GeorgeKye. All rights reserved.
+//  Created by George Kye on 2016-02-11.
+//  Copyright © 2016 George KyeKye. All rights reserved.
 //
 
 import Foundation
@@ -12,7 +12,7 @@ extension Client{
   
   static func Company(_ api_key: String!, companyId: Int!, completion: @escaping (ClientReturn) -> ()) -> (){
     let parameters: [String : AnyObject] = ["api_key": api_key as AnyObject]
-    let url = "https://api.themoviedb.org/3/company/\(companyId)"
+    let url = "https://api.themoviedb.org/3/company/" + String(companyId)
     networkRequest(url: url, parameters: parameters, completion: {
       apiReturn in
       

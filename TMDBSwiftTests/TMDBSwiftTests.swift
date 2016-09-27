@@ -2,8 +2,8 @@
 //  TMDBSwiftTests.swift
 //  TMDBSwiftTests
 //
-//  Created by George on 2016-04-07.
-//  Copyright © 2016 George. All rights reserved.
+//  Created by George Kye on 2016-04-07.
+//  Copyright © 2016 George Kye. All rights reserved.
 //
 
 import XCTest
@@ -106,7 +106,7 @@ class TMDBSwiftTests: XCTestCase {
     XCTAssertEqual(data?.homepage, "http://www.sonypictures.com/")
     XCTAssertNotNil(data?.description)
     XCTAssertNotNil(data?.headquarters)
-    XCTAssertEqual(data?.parent_company?.name, "Sony Pictures Entertainment")
+//    XCTAssertEqual(data?.parent_company?.name, "Sony Pictures Entertainment")
 //    XCTAssertEqual(data?.parent_company?.id, 5752)
     XCTAssertNotNil(data?.parent_company?.logo_path)
     

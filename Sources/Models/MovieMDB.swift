@@ -2,8 +2,8 @@
 //  MoviesMDB.swift
 //  MDBSwiftWrapper
 //
-//  Created by George on 2016-02-12.
-//  Copyright © 2016 GeorgeKye. All rights reserved.
+//  Created by George Kye on 2016-02-12.
+//  Copyright © 2016 George KyeKye. All rights reserved.
 //
 
 import Foundation
@@ -25,7 +25,7 @@ extension MovieMDB{
   ///Get the alternative titles for a specific movie id.
   public class func alternativeTitles(_ api_key: String!, movieID: Int!, country: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ altTitles: Alternative_TitlesMDB?) -> ()) -> (){
     //language changed to country to avoid modifiying multiple defined functions.
-    Client.Movies(String(movieID) + "alternative_titles", api_key: api_key, page: nil, language: country){
+    Client.Movies(String(movieID) + "/alternative_titles", api_key: api_key, page: nil, language: country){
       apiReturn in
       var alt: Alternative_TitlesMDB?
       if(apiReturn.error == nil){
@@ -169,13 +169,12 @@ extension MovieMDB{
   public class func nowplaying(_ api_key: String!,language: String? = nil, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> ()) -> (){
     Client.Movies("now_playing", api_key: api_key, page: page, language: language){
       apiReturn in
-      var movie: [MovieMDB]?
+      var movie = [MovieMDB]()
       if(apiReturn.error == nil){
         if(apiReturn.json!["results"].count > 0){
           let results = apiReturn.json!["results"]
-          
-          
-          movie = MovieMDB.initialize(json: apiReturn.json!["results"])
+          movie = MovieMDB.initialize(json: results)
+          print(movie)
         }
       }
       completion(apiReturn, movie)
@@ -186,7 +185,7 @@ extension MovieMDB{
   public class func popular(_ api_key: String!,language: String? = nil, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> ()) -> (){
     Client.Movies("popular", api_key: api_key, page: page, language: language){
       apiReturn in
-      var movie: [MovieMDB]?
+      var movie = [MovieMDB]()
       if(apiReturn.error == nil){
         if(apiReturn.json!["results"].count > 0){
           movie = MovieMDB.initialize(json: apiReturn.json!["results"])
