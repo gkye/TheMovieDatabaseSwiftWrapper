@@ -11,7 +11,7 @@
 <blockquote>
 <p>"A TMDb user account is required to request an API key."*</p>
 </blockquote>
-2.View <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki">Wikis</a> for examples 
+2. View <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki">Wikis</a> for examples 
 <br>
 
 To run the example project, clone the repo, and run `pod install` from the Demo directory first.
