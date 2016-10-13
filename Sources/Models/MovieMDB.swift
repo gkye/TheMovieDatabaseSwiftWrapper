@@ -174,7 +174,6 @@ extension MovieMDB{
         if(apiReturn.json!["results"].count > 0){
           let results = apiReturn.json!["results"]
           movie = MovieMDB.initialize(json: results)
-          print(movie)
         }
       }
       completion(apiReturn, movie)
