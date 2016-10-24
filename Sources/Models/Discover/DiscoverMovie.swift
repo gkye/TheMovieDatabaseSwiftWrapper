@@ -34,36 +34,59 @@ public enum MovieGenres: String{
 open class DiscoverMovieMDB: DiscoverMDB{
   
   
-  ////DiscoverMovie query.  Language must be an ISO 639-1 code. Page must be greater than one. sort_by expected values can be found in DiscoverSortBy() and DiscoverSortByMovie. ALL parameters are optional.
-  open class func discoverMovies(_ api_key: String, language: String?, page: Double?, sort_by: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> ()) -> (){
-    
-    Client.discover(api_key, baseURL:"movie", sort_by: sort_by, certification_country: nil, certification: nil, certification_lte: nil, include_adult: nil, include_video: nil, primary_release_year: nil, primary_release_date_gte: nil, primary_release_date_lte: nil, release_date_gte: nil, release_date_lte: nil, air_date_gte: nil, air_date_lte: nil, first_air_date_gte: nil, first_air_date_lte: nil, first_air_date_year: nil, language: language, page: page, timezone: nil, vote_average_gte: nil, vote_average_lte: nil, vote_count_gte: nil, vote_count_lte: nil, with_genres: nil, with_cast: nil, with_crew: nil, with_companies: nil, with_keywords: nil, with_people: nil, with_networks: nil, year: nil, certification_gte: nil){
-      apiReturn in
-      var data: [MovieMDB]?
-      if(apiReturn.error == nil){ data = MovieMDB.initialize(json: apiReturn.json!["results"]) }
-      completion(apiReturn, data)
-    }
-    
-  }
-  ///DiscoverMovie query.  Language must be an ISO 639-1 code. Page must be greater than one. sort_by expected values can be found in DiscoverSortBy() and DiscoverSortByMovie. You must specify a valid 'certification_country' and a valid certification for the specified value. all `_with` values-> comma separated indicates an 'AND' query, while a pipe (|) separated value indicates an 'OR'. ALL parameters are optional.
-  open class func discoverMovies(_ api_key: String, sort_by: String? = nil, certification_country: String? = nil, certification: String? = nil, certification_lte: String? = nil, certification_gte: String? = nil, include_adult: Bool?, include_video: Bool? = nil, primary_release_year: String? = nil, primary_release_date_gte: String? = nil, primary_release_date_lte: String? = nil, release_date_gte: String? = nil, release_date_lte: String? = nil, language: String?, page: Double?, vote_average_gte: Double? = nil, vote_average_lte: Double? = nil, vote_count_gte: Double? = nil, vote_count_lte: Double? = nil, with_cast: String? = nil, with_crew: String? = nil, with_companies: String? = nil, with_genres: String?, with_keywords: String?, with_people: String?, with_networks: String?, year: Float?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> ()) -> (){
-    
-    Client.discover(api_key, baseURL:"movie", sort_by: sort_by, certification_country: certification_country, certification: certification, certification_lte: certification_lte, include_adult: include_adult, include_video: include_video, primary_release_year: primary_release_year, primary_release_date_gte: primary_release_date_gte, primary_release_date_lte: primary_release_date_lte, release_date_gte: release_date_gte, release_date_lte: release_date_lte, air_date_gte: nil, air_date_lte: nil, first_air_date_gte: nil, first_air_date_lte: nil, first_air_date_year: nil, language: language, page: page,  timezone: nil, vote_average_gte: vote_average_gte, vote_average_lte: vote_average_lte, vote_count_gte: vote_count_gte, vote_count_lte: vote_count_lte, with_genres: with_genres, with_cast: with_cast, with_crew: with_crew, with_companies: with_companies , with_keywords: with_keywords, with_people: with_people, with_networks: with_networks , year: year, certification_gte: certification_gte){
-      apiReturn in
-      var data: [MovieMDB]?
-      if(apiReturn.error == nil){ data = MovieMDB.initialize(json: apiReturn.json!["results"]) }
-      completion(apiReturn, data)
-    }
-  }
   
-  ///Expected date format = "YYYY-MM-DD -> 2015-01-8". ALL parameters are optional
-  open class func discoverMovies(_ api_key: String, primary_release_date_gte: String? = nil, primary_release_date_lte: String? = nil, language: String? = nil, page: Double? = nil, sort_by: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> ()) -> (){
-    Client.discover(api_key, baseURL:"movie", sort_by: sort_by, certification_country: nil, certification: nil, certification_lte: nil, include_adult: nil, include_video: nil, primary_release_year: nil, primary_release_date_gte: primary_release_date_gte, primary_release_date_lte: primary_release_date_lte, release_date_gte: nil, release_date_lte: nil, air_date_gte: nil, air_date_lte: nil, first_air_date_gte: nil, first_air_date_lte: nil, first_air_date_year: nil, language: language, page: page, timezone: nil, vote_average_gte: nil, vote_average_lte: nil, vote_count_gte: nil, vote_count_lte: nil, with_genres: nil, with_cast: nil, with_crew: nil, with_companies: nil, with_keywords: nil, with_people: nil, with_networks: nil, year: nil, certification_gte: nil){
+  /// Discover movies by different types of data like average rating, number of votes, genres and certifications. You can get a valid list of certifications from the /certifications method. Please note, when using certification \ certification.lte you must also specify certification_country. These two parameters work together in order to filter the results.
+  
+  ///
+  /// - parameter apikey:                   <#apikey description#>
+  /// - parameter language:                 Specify a language to query translatable fields with.
+  /// - parameter page:                     Specify the page of results to query.
+  /// - parameter sort_by:                  Choose from one of the many available sort options
+  /// - parameter year:                     <#year description#>
+  
+  /// - parameter certification_country:    Used in conjunction with the certification filter, use this to specify a country with a valid certification.
+  
+  /// - parameter certification:            Filter results with a valid certification from the 'certification_country' field.
+  /// - parameter certification_lte:        Filter and only include movies that have a certification that is less than or equal to the specified value.
+  /// - parameter include_adult:            A filter and include or exclude adult movies.
+  /// - parameter include_video:            A filter to include or exclude videos.
+  /// - parameter timezone:                 <#timezone description#>
+  /// - parameter primary_release_year:     A filter to limit the results to a specific primary release year.
+  
+  /// - parameter primary_release_date_gte: Filter and only include movies that have a primary release date that is greater or equal to the specified value.
+  
+  /// - parameter primary_release_date_lte: Filter and only include movies that have a primary release date that is less than or equal to the specified value.
+  
+  /// - parameter release_date_gte:         Filter and only include movies that have a release date (looking at all release dates) that is greater or equal to the specified value.
+  
+  /// - parameter release_date_lte:         Filter and only include movies that have a release date (looking at all release dates) that is less than or equal to the specified value.
+  /// - parameter vote_average_gte:         Filter and only include movies that have a rating that is greater or equal to the specified value.
+  /// - parameter vote_average_lte:         Filter and only include movies that have a rating that is less than or equal to the specified value.
+  
+  /// - parameter vote_count_gte:           Filter and only include movies that have a vote count that is greater or equal to the specified value.
+  
+  /// - parameter vote_count_lte:           Filter and only include movies that have a vote count that is less than or equal to the specified value.
+  /// - parameter with_genres:              Comma separated value of genre ids that you want to include in the results.
+  /// - parameter with_cast:                A comma separated list of person ID's. Only include movies that have one of the ID's added as an actor.
+  /// - parameter with_crew:                A comma separated list of person ID's. Only include movies that have one of the ID's added as a crew member.
+  
+  /// - parameter with_companies:           A comma separated list of production company ID's. Only include movies that have one of the ID's added as a production company.
+  
+  /// - parameter with_keywords:            A comma separated list of keyword ID's. Only include movies that have one of the ID's added as a keyword.
+  
+  /// - parameter with_people:              A comma separated list of person ID's. Only include movies that have one of the ID's added as a either a actor or a crew member.
+  
+  /// - parameter completion:               Returns pageResults, the json and array of MovieMDB
+  
+  
+  open class func discoverMovies(apikey: String, language: String? = nil, page: Double, sort_by: String? = nil, year: Float? = nil, certification_country: String? = nil, certification: String? = nil, certification_lte: String? = nil, include_adult: Bool? = nil, include_video: Bool? = nil, timezone: String? = nil, primary_release_year: String? = nil, primary_release_date_gte: String? = nil, primary_release_date_lte: String? = nil, release_date_gte: String? = nil, release_date_lte: String? = nil,vote_average_gte: Double? = nil, vote_average_lte: Double? = nil, vote_count_gte: Double? = nil, vote_count_lte: Double? = nil, with_genres: String? = nil, with_cast: String? = nil, with_crew: String? = nil, with_companies: String? = nil, with_keywords: String? = nil, with_people: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> ()) -> (){
+    
+    Client.discover(apikey, baseURL: "movie", sort_by: sort_by, certification_country: certification_country, certification: certification, certification_lte: certification_lte, include_adult: include_adult, include_video: include_video, primary_release_year: primary_release_year, primary_release_date_gte: primary_release_date_gte, primary_release_date_lte: primary_release_date_lte, release_date_gte: release_date_gte, release_date_lte: release_date_lte, air_date_gte: nil, air_date_lte: nil, first_air_date_gte: nil, first_air_date_lte: nil, first_air_date_year: nil, language: language, page: page, timezone: timezone, vote_average_gte: vote_count_gte, vote_average_lte: vote_average_lte, vote_count_gte: vote_count_gte, vote_count_lte: vote_count_lte, with_genres: with_genres, with_cast: with_cast, with_crew: with_crew, with_companies: with_companies, with_keywords: with_keywords, with_people: with_people, with_networks: nil, year: year, certification_gte: nil, completion: {
       apiReturn in
       var data: [MovieMDB]?
       if(apiReturn.error == nil){ data = MovieMDB.initialize(json: apiReturn.json!["results"]) }
       completion(apiReturn, data)
-    }
+    })
   }
   
   
