@@ -16,35 +16,8 @@ public enum DiscoverSortBy: String  {
   case vote_average_desc = "vote_average.desc";
 }
 
-public enum DiscoverSortByMovie: String {
-  //FIND WAY TO INHERIT FROM MAIN
-  case popularity_asc = "popularity.asc";
-  case  popularity_desc = "popularity_desc";
-  case vote_average_asc = "vote_average.asc";
-  case vote_average_desc = "vote_average.desc";
-  
-  case release_date_asc = "release_date.asc";
-  case release_date_desc = "release_date.desc";
-  case revenue_asc = "revenue.asc";
-  case revenue_desc = "revenue.desc";
-  case primary_release_date_asc = "primary_release_date.asc";
-  case primary_release_date_desc = "primary_release_date.desc";
-  case original_title_asc = "original_title.asc";
-  case original_title_desc = "original_title.desc";
-  case vote_count_asc = "vote_count.asc";
-  case vote_count_desc = "vote_count.desc";
-  
-}
-
-public enum DiscoverSortByTV: String {
-  
-  case popularity_asc = "popularity.asc";
-  case  popularity_desc = "popularity_desc";
-  case vote_average_asc = "vote_average.asc";
-  case vote_average_desc = "vote_average.desc";
-  
-  case first_air_date_desc = "first_air_date.desc";
-  case first_air_date_asc = "first_air_date.asc";
+public enum DiscoverType: String{
+  case tv, movie
 }
 
 
@@ -73,46 +46,25 @@ open class DiscoverMDB: ArrayObject {
     
   }
   
-  ///Simple discover query. Discover type = "tv" or "movie". Language must be an ISO 639-1 code.
-  open class func discover(_ api_key: String, discoverType: String!, language: String?,completionHandler: @escaping (ClientReturn) -> ()) -> (){
-    Client.discover(api_key, baseURL: discoverType, sort_by: nil, certification_country: nil, certification: nil, certification_lte: nil, include_adult: nil, include_video: nil, primary_release_year: nil, primary_release_date_gte: nil, primary_release_date_lte: nil, release_date_gte: nil, release_date_lte: nil, air_date_gte: nil, air_date_lte: nil, first_air_date_gte: nil, first_air_date_lte: nil, first_air_date_year: nil, language: language, page: nil,  timezone: nil, vote_average_gte: nil, vote_average_lte: nil, vote_count_gte: nil, vote_count_lte: nil, with_genres: nil, with_cast: nil, with_crew: nil, with_companies: nil, with_keywords: nil, with_people: nil, with_networks: nil, year: nil,  certification_gte: nil){
-      apiReturn in
-      completionHandler(apiReturn)
+  
+  public class func discover(apikey: String, discoverType: DiscoverType, language: String? = nil, page: Double, sort_by: String? = nil, year: Float? = nil, certification_country: String? = nil, certification: String? = nil, certification_gte: String? = nil, certification_lte: String? = nil, include_adult: Bool? = nil, include_video: Bool? = nil, timezone: String? = nil, primary_release_year: String? = nil, primary_release_date_gte: String? = nil, primary_release_date_lte: String? = nil, release_date_gte: String? = nil, release_date_lte: String? = nil,vote_average_gte: Double? = nil, vote_average_lte: Double? = nil, vote_count_gte: Double? = nil, vote_count_lte: Double? = nil, with_genres: String? = nil, with_cast: String? = nil, with_crew: String? = nil, with_companies: String? = nil, with_keywords: String? = nil, with_people: String? = nil, air_date_gte: String? = nil, air_date_lte: String? = nil, first_air_date_year: String? = nil, first_air_date_lte: String? = nil, first_air_date_gte: String? = nil, with_networks: String? = nil, completionHandler: @escaping (ClientReturn, _ movieData: [MovieMDB]?, _ tvData: [TVMDB]?) -> ()) -> (){
+    
+    Client.discover(apikey, baseURL: discoverType.rawValue, sort_by: sort_by, certification_country: certification_country, certification: certification, certification_lte: certification_lte, include_adult: include_adult, include_video: include_video, primary_release_year: primary_release_year, primary_release_date_gte: primary_release_date_gte, primary_release_date_lte: primary_release_date_lte, release_date_gte: release_date_gte, release_date_lte: release_date_lte, air_date_gte: air_date_gte, air_date_lte: air_date_lte, first_air_date_gte: first_air_date_gte, first_air_date_lte: first_air_date_gte, first_air_date_year: first_air_date_year, language: language, page: page, timezone: timezone, vote_average_gte: vote_count_gte, vote_average_lte: vote_average_lte, vote_count_gte: vote_count_gte, vote_count_lte: vote_count_lte, with_genres: with_genres, with_cast: with_cast, with_crew: with_crew, with_companies: with_companies, with_keywords: with_keywords, with_people: with_people, with_networks: with_networks, year: year, certification_gte: certification_gte){
+      
+      let data = $0
+      let type = discoverType.rawValue.lowercased()
+      if type == "tv"{
+        completionHandler(data, nil, TVMDB.initialize(json: (data.json?["results"])!))
+      }else{
+        completionHandler(data, MovieMDB.initialize(json: (data.json?["results"])!), nil)
+      }
     }
   }
   
-  ///Discover query. Discover type = "tv" or "movie".  Language must be an ISO 639-1 code. Page must be greater than one. sort_by expected values can be found in DiscoverSortBy(), DiscoverSortByTV and DiscoverSortByMovie.
-  open  class func discover(_ api_key: String, discoverType: String!, language: String?, sort_by: String? = nil, page: Double?,completionHandler: @escaping (ClientReturn) -> ()) -> (){
-    
-    Client.discover(api_key, baseURL: discoverType, sort_by: sort_by, certification_country: nil, certification: nil, certification_lte: nil, include_adult: nil, include_video: nil, primary_release_year: nil, primary_release_date_gte: nil, primary_release_date_lte: nil, release_date_gte: nil, release_date_lte: nil, air_date_gte: nil, air_date_lte: nil, first_air_date_gte: nil, first_air_date_lte: nil, first_air_date_year: nil, language: language, page: page,  timezone: nil, vote_average_gte: nil, vote_average_lte: nil, vote_count_gte: nil, vote_count_lte: nil, with_genres: nil, with_cast: nil, with_crew: nil, with_companies: nil, with_keywords: nil, with_people: nil, with_networks: nil, year: nil, certification_gte: nil){
-      apiReturn in
-      completionHandler(apiReturn)
-      
-    }
-    
-  }
-  ///Discover query. Discover type = "tv" or "movie".  Language must be an ISO 639-1 code. Page must be greater than one. sort_by expected values can be found in DiscoverSortBy(), DiscoverSortByTV and DiscoverSortByMovie. With_genres expected value is an integer (the id of a genre). Multiple values can be specified. Comma separated indicates an 'AND' query, while a pipe (|) separated value indicates an 'OR'.
-  open class func discover(_ api_key: String, discoverType: String!, language: String?, sort_by: String? = nil, page: Double?, with_genres: String? = nil, completionHandler: @escaping (ClientReturn) -> ()) -> (){
-    Client.discover(api_key, baseURL: discoverType, sort_by: sort_by, certification_country: nil, certification: nil, certification_lte: nil, include_adult: nil, include_video: nil, primary_release_year: nil, primary_release_date_gte: nil, primary_release_date_lte: nil, release_date_gte: nil, release_date_lte: nil, air_date_gte: nil, air_date_lte: nil, first_air_date_gte: nil, first_air_date_lte: nil, first_air_date_year: nil, language: language, page: page,  timezone: nil, vote_average_gte: nil, vote_average_lte: nil, vote_count_gte: nil, vote_count_lte: nil, with_genres: with_genres, with_cast: nil, with_crew: nil, with_companies: nil, with_keywords: nil, with_people: nil, with_networks: nil, year: nil, certification_gte: nil){
-      apiReturn in
-      completionHandler(apiReturn)
-      
-    }
-  }
-  ///Discover query. Discover type = "tv" or "movie".  Language must be an ISO 639-1 code. Page must be greater than one. sort_by expected values can be found in DiscoverSortBy(), DiscoverSortByTV and DiscoverSortByMovie. With_genres expected value is an integer (the id of a genre). Multiple values can be specified. Comma separated indicates an 'AND' query, while a pipe (|) separated value indicates an 'OR'. `gte` =  Only include TV shows OR Movies that are equal to, or have a higher average rating than this value.
-  open class func discover(_ api_key: String, discoverType: String!, language: String?, sort_by: String? = nil,  page: Double?, with_genres: String? = nil, vote_average_gte: Double?, vote_count_gte: Double?, completionHandler: @escaping (ClientReturn) -> ()) -> (){
-    
-    Client.discover(api_key, baseURL: discoverType, sort_by: sort_by, certification_country: nil, certification: nil, certification_lte: nil, include_adult: nil, include_video: nil, primary_release_year: nil, primary_release_date_gte: nil, primary_release_date_lte: nil, release_date_gte: nil, release_date_lte: nil, air_date_gte: nil, air_date_lte: nil, first_air_date_gte: nil, first_air_date_lte: nil, first_air_date_year: nil, language: nil, page: page,  timezone: nil, vote_average_gte: vote_average_gte, vote_average_lte: nil, vote_count_gte: vote_count_gte, vote_count_lte: nil, with_genres: with_genres!, with_cast: nil, with_crew: nil, with_companies: nil, with_keywords: nil, with_people: nil, with_networks: nil, year: nil,  certification_gte: nil){
-      apiReturn in
-      completionHandler(apiReturn)
-      
-    }
-    
-  }
   
-  ///Discover movie by rating
-  open class func discoverByRating(_ api_key: String, discoverType: String, certification: String, certification_country: String, ceritfication_lte: String? = nil, ceritfication_gte: String? = nil,  sort_by: String? = nil, page: Double?,  language: String?,  completionHandler: @escaping (ClientReturn) -> ()) -> (){
-    Client.discover(api_key, baseURL: discoverType, sort_by: sort_by, certification_country: certification_country, certification: certification, certification_lte: ceritfication_lte, include_adult: nil, include_video: nil, primary_release_year: nil, primary_release_date_gte: nil, primary_release_date_lte: nil, release_date_gte: nil, release_date_lte: nil, air_date_gte: nil, air_date_lte: nil, first_air_date_gte: nil, first_air_date_lte: nil, first_air_date_year: nil, language: language, page: page,  timezone: nil, vote_average_gte: nil, vote_average_lte: nil, vote_count_gte: nil, vote_count_lte: nil, with_genres: nil, with_cast: nil, with_crew: nil, with_companies: nil, with_keywords: nil, with_people: nil, with_networks: nil, year: nil, certification_gte: ceritfication_gte){
+  /// Discover movie by rating
+  public class func discoverByRating(_ api_key: String, discoverType: DiscoverType, certification: String, certification_country: String, ceritfication_lte: String? = nil, ceritfication_gte: String? = nil,  sort_by: String? = nil, page: Double?,  language: String?,  completionHandler: @escaping (ClientReturn) -> ()) -> (){
+    Client.discover(api_key, baseURL: discoverType.rawValue, sort_by: sort_by, certification_country: certification_country, certification: certification, certification_lte: ceritfication_lte, include_adult: nil, include_video: nil, primary_release_year: nil, primary_release_date_gte: nil, primary_release_date_lte: nil, release_date_gte: nil, release_date_lte: nil, air_date_gte: nil, air_date_lte: nil, first_air_date_gte: nil, first_air_date_lte: nil, first_air_date_year: nil, language: language, page: page,  timezone: nil, vote_average_gte: nil, vote_average_lte: nil, vote_count_gte: nil, vote_count_lte: nil, with_genres: nil, with_cast: nil, with_crew: nil, with_companies: nil, with_keywords: nil, with_people: nil, with_networks: nil, year: nil, certification_gte: ceritfication_gte){
       apiReturn in
       completionHandler(apiReturn)
     }

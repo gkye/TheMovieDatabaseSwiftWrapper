@@ -29,46 +29,32 @@ public enum TVGenres: String{
   
 }
 
+public enum DiscoverSortByTV: String {
+  
+  case popularity_asc = "popularity.asc";
+  case  popularity_desc = "popularity_desc";
+  case vote_average_asc = "vote_average.asc";
+  case vote_average_desc = "vote_average.desc";
+  
+  case first_air_date_desc = "first_air_date.desc";
+  case first_air_date_asc = "first_air_date.asc";
+}
+
 open class DiscoverTVMDB: DiscoverMDB {
   
   
-  //    ///DiscoverTV query.  Language must be an ISO 639-1 code. Page must be greater than one. sort_by expected values can be found in DiscoverSortBy() and DiscoverSortByTV class variables. ALL parameters are optional
-  open class func discoverTV(_ api_key: String, language: String?, sort_by: String? = nil, page: Double?, completionHandler: @escaping (_ clientReturn: ClientReturn, _ data: [TVMDB]?) -> ()) -> (){
-    Client.discover(api_key, baseURL: "tv", sort_by: sort_by, certification_country: nil, certification: nil, certification_lte: nil, include_adult: nil, include_video: nil, primary_release_year: nil, primary_release_date_gte: nil, primary_release_date_lte: nil, release_date_gte: nil, release_date_lte: nil, air_date_gte: nil, air_date_lte: nil, first_air_date_gte: nil, first_air_date_lte: nil, first_air_date_year: nil, language: language, page: page, timezone: nil, vote_average_gte: nil, vote_average_lte: nil, vote_count_gte: nil, vote_count_lte: nil, with_genres: nil, with_cast: nil, with_crew: nil, with_companies: nil, with_keywords: nil, with_people: nil, with_networks: nil, year: nil, certification_gte: nil){
+  open class func discoverTV(_ api_key: String, language: String?, sort_by: DiscoverSortByTV? = nil, page: Double?, timezone: String? = nil, year: Float? = nil, first_air_date_year: String? = nil, first_air_date_gte: String? = nil, first_air_date_lte: String? = nil, air_date_gte: String? = nil, air_date_lte: String? = nil, certification_country: String? = nil, certification: String? = nil, certification_lte: String? = nil, include_adult: Bool? = nil, include_video: Bool? = nil, primary_release_year: String? = nil, primary_release_date_gte: String? = nil, primary_release_date_lte: String? = nil, release_date_gte: String? = nil, release_date_lte: String? = nil, vote_average_gte: Double? = nil, vote_average_lte: Double? = nil, vote_count_gte: Double? = nil, vote_count_lte: Double? = nil, with_genres: String? = nil, with_cast: String? = nil, with_crew: String? = nil, with_companies: String? = nil, with_keywords: String? = nil, with_people: String? = nil, with_networks: String? = nil, certification_gte: String? = nil, completionHandler: @escaping (_ clientReturn: ClientReturn, _ data: [TVMDB]?) -> ()) -> (){
+    
+    Client.discover(api_key, baseURL: "tv", sort_by: sort_by?.rawValue, certification_country: certification_country, certification: certification, certification_lte: certification_lte, include_adult: include_adult, include_video: include_video, primary_release_year: primary_release_year, primary_release_date_gte: primary_release_date_gte, primary_release_date_lte: primary_release_date_lte, release_date_gte: release_date_gte, release_date_lte: release_date_lte, air_date_gte: air_date_gte, air_date_lte: air_date_lte, first_air_date_gte: first_air_date_gte, first_air_date_lte: first_air_date_lte, first_air_date_year: first_air_date_year, language: language, page: page, timezone: timezone, vote_average_gte: vote_average_gte, vote_average_lte: vote_average_lte, vote_count_gte: vote_count_gte, vote_count_lte: vote_count_lte, with_genres: with_genres, with_cast: with_cast, with_crew: with_crew, with_companies: with_companies, with_keywords: with_keywords, with_people: with_people, with_networks: with_networks, year: year, certification_gte: certification_gte, completion: {
       apiReturn in
       var data: [TVMDB]?
       if(apiReturn.error == nil){
         data = TVMDB.initialize(json: apiReturn.json!["results"])
       }
       completionHandler(apiReturn, data)
-    }
+    })
   }
   
-  ///lte = The minimum. gte = maximum. Expected date format is YYYY-MM-DD. Excpected year format is (####) ie.2010. ALL parameters are optional
-  open class func discoverTV(_ api_key: String, first_air_date_year: String? = nil, first_air_date_gte: String? = nil, first_air_date_lte: String? = nil, air_date_gte: String? = nil, air_date_lte: String? = nil, language: String?, sort_by: String? = nil, page: Double?, timezone: String? = nil, completionHandler: @escaping (_ clientReturn: ClientReturn, _ data: [TVMDB]?) -> ()) -> (){
-    
-    Client.discover(api_key, baseURL: "tv", sort_by: sort_by, certification_country: nil, certification: nil, certification_lte: nil, include_adult: nil, include_video: nil, primary_release_year: nil, primary_release_date_gte: nil, primary_release_date_lte: nil, release_date_gte: nil, release_date_lte: nil, air_date_gte: air_date_gte, air_date_lte: air_date_lte, first_air_date_gte: first_air_date_gte, first_air_date_lte: first_air_date_lte, first_air_date_year: first_air_date_year, language: language, page: page, timezone: timezone, vote_average_gte: nil, vote_average_lte: nil, vote_count_gte: nil, vote_count_lte: nil, with_genres: nil, with_cast: nil, with_crew: nil, with_companies: nil, with_keywords: nil, with_people: nil, with_networks: nil, year: nil, certification_gte: nil){
-      apiReturn in
-      var data: [TVMDB]?
-      if(apiReturn.error == nil){
-        data = TVMDB.initialize(json: apiReturn.json!["results"])
-      }
-      completionHandler(apiReturn, data)
-    }
-  }
-  
-  ////DiscoverTV query.  Language must be an ISO 639-1 code. Page must be greater than one. sort_by expected values can be found in DiscoverSortBy() and DiscoverSortByTV class variables. lte = The minimum. gte = maximum. Expected date format is YYYY-MM-DD. Excpected year format is (####) ie.2010. ALL parameters are optional
-  open class func discoverTV(_ api_key: String, language: String?, sort_by: String? = nil, page: Double?, first_air_date_year: String? = nil, first_air_date_gte: String? = nil, first_air_date_lte: String? = nil, air_date_gte: String? = nil, air_date_lte: String? = nil, timezone: String? = nil, vote_average_gte: Double?, vote_count_gte: Double?, with_genres: String? = nil, with_networks: String? = nil, completionHandler: @escaping (_ clientReturn: ClientReturn, _ data: [TVMDB]?) -> ()) -> (){
-    
-    Client.discover(api_key, baseURL: "tv", sort_by: sort_by, certification_country: nil, certification: nil, certification_lte: nil, include_adult: nil, include_video: nil, primary_release_year: nil, primary_release_date_gte: nil, primary_release_date_lte: nil, release_date_gte: nil, release_date_lte: nil, air_date_gte: air_date_gte, air_date_lte: air_date_lte, first_air_date_gte: first_air_date_gte, first_air_date_lte: first_air_date_lte, first_air_date_year: first_air_date_year, language: language, page: page, timezone: timezone, vote_average_gte: vote_average_gte, vote_average_lte: nil, vote_count_gte: vote_count_gte, vote_count_lte: nil, with_genres: with_genres, with_cast: nil, with_crew: nil, with_companies: nil, with_keywords: nil, with_people: nil, with_networks: with_networks, year: nil, certification_gte: nil){
-      apiReturn in
-      var data: [TVMDB]?
-      if(apiReturn.error == nil){
-        data = TVMDB.initialize(json: apiReturn.json!["results"])
-      }
-      completionHandler(apiReturn, data)
-    }
-  }
   
   //Discover tv shows with
   open class func discoverTVWith(_ api_key: String, with_genres: String? = nil, with_networks: String? = nil, sort_by: String? = nil, language: String?, page: Double?, completionHandler: @escaping (_ clientReturn: ClientReturn, _ data: [TVMDB]?) -> ()) -> (){

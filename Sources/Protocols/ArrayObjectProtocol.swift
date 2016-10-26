@@ -9,11 +9,11 @@
 import Foundation
 
 //MARK: Array protocol returns an array of types by initlizaing using the json passed
-protocol ArrayObject {
+public protocol ArrayObject {
   init(results: JSON)
 }
 
-extension ArrayObject {
+public extension ArrayObject {
   
   static func initialize<T:ArrayObject>(json: JSON) -> [T] {
     var array = [T]()

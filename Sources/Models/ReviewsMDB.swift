@@ -10,13 +10,13 @@ import Foundation
 
 
 public struct ReviewsMDB{
-  var id: String!
-  var author: String!
-  var content: String!
-  var iso_639_1: String!
-  var media_id: Double!
-  var media_title: String!
-  var url: String!
+  public var id: String!
+  public var author: String!
+  public var content: String!
+  public var iso_639_1: String!
+  public var media_id: Double!
+  public var media_title: String!
+  public var url: String!
   public init(results: JSON){
     id = results["id"].string
     author = results["author"].string
