@@ -11,8 +11,8 @@ import Foundation
 
 public struct NetworksMDB{
   
-  var id: Double!
-  var name: String!
+  public var id: Double!
+  public var name: String!
   public init(results: JSON){
     id = results["id"].double
     name = results["name"].string

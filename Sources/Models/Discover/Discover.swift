@@ -17,7 +17,6 @@ public enum DiscoverSortBy: String  {
 }
 
 public enum DiscoverType: String{
-  
   case tv, movie
 }
 
