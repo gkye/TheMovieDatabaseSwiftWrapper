@@ -88,7 +88,7 @@ extension Client{
     
     //Available options in `DiscoverSortBy, DiscoverSortByTv and DiscoverSortByMovie claases
     if (sort_by != nil){
-      parameters["sort_by"] = sort_by as AnyObject?
+      parameters["sort_by"] = sort_by! as AnyObject?
     }
     
     //edit timezones
