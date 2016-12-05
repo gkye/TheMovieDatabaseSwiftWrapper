@@ -1,16 +1,4 @@
-//
-//  SearchMDB.swift
-//  TMDBSwift
-//
-//  Created by piars777 on 26/05/2016.
-//  Copyright © 2016 George Kye. All rights reserved.
-//
-
-//TODO: Search/multi
-
-import Foundation
 public struct SearchMDB{
-  
   
   ///Search for companies by name.
   public static func company(_ api_key: String!, query: String, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ company: [parent_companymdb]? ) -> ()) -> (){
@@ -117,6 +105,32 @@ public struct SearchMDB{
         }
       }
       completion(apiReturn, person)
+    }
+  }
+  
+  ///Search multiple models in a single request. Multi search currently supports searching for movies, tv shows and people in a single request.
+  public static func multiSearch(_ api_key: String!, query: String, page: Int?, includeAdult: Bool?, language: String?, region: String?, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB],_ tv: [TVMDB], _ person: [PersonResults]) -> ()) -> (){
+    
+    Client.Search("multi", api_key: api_key, query: query, page: page, language: language, include_adult: includeAdult, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil){ apiReturn in
+      var person = [PersonResults]()
+      var tv = [TVMDB]()
+      var movie = [MovieMDB]()
+      
+      apiReturn.json?["results"].forEach({
+        switch $0.1["media_type"].string!{
+        case "tv":
+          tv.append(TVMDB(results: $0.1))
+        case "movie":
+          movie.append(MovieMDB(results: $0.1))
+        case "person":
+          person.append(PersonResults(results: $0.1))
+        default:
+          break
+        }
+      })
+      
+      completion(apiReturn, movie, tv, person)
+      
     }
   }
   
