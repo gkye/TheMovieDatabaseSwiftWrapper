@@ -48,7 +48,7 @@ open class TVDetailedMDB: TVMDB{
   open var in_production: Bool?
   open var languages: [String]?
   open var last_air_date: String!
-  open var networks: KeywordsMDB!
+  open var networks = [KeywordsMDB]()
   open var number_of_episodes: Int!
   open var number_of_seasons: Int!
   open var production_companies = [KeywordsMDB]()
@@ -74,7 +74,12 @@ open class TVDetailedMDB: TVMDB{
       last_air_date = ""
     }
     
-    networks = KeywordsMDB.init(results: results["networks"])
+    if(results["networks"] != nil){
+        for i in 0...results["networks"].count{
+            networks.append(KeywordsMDB.init(results: results["networks"][i]))
+        }
+    }
+
     number_of_episodes = results["number_of_episodes"].int
     number_of_seasons = results["number_of_seasons"].int
     
