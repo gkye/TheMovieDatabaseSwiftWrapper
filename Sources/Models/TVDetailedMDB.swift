@@ -75,22 +75,22 @@ open class TVDetailedMDB: TVMDB{
     }
     
     if(results["networks"] != nil){
-        for i in 0...results["networks"].count{
-            networks.append(KeywordsMDB.init(results: results["networks"][i]))
-        }
+      networks = results["networks"].map{
+        KeywordsMDB.init(results: $0.1)
+      }
     }
 
     number_of_episodes = results["number_of_episodes"].int
     number_of_seasons = results["number_of_seasons"].int
     
     if(results["production_companies"] != nil){
-      for i in 0...results["production_companies"].count{
-        production_companies.append(KeywordsMDB.init(results: results["networks"][i]))
+      production_companies = results["production_companies"].map{
+        KeywordsMDB.init(results: $0.1)
       }
     }
     
-    for i in 0...results["seasons"].count{
-      seasons.append(tv_seasons.init(results: results["seasons"][i]))
+    seasons = results["seasons"].map{
+      tv_seasons.init(results: $0.1)
     }
     
     status = results["status"].string

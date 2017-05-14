@@ -21,9 +21,11 @@ public struct CollectionMDB: ArrayObject{
   public var collectionItems = [MovieMDB]()
   
   public init(results: JSON) {
-    for i in 0 ..< results["parts"].count {
-      collectionItems.append(MovieMDB(results: results["parts"][i]))
+    
+    collectionItems = results["parts"].map{
+      MovieMDB(results: $0.1)
     }
+    
     id = results["id"].int
     name = results["name"].string
     poster_path = results["poster_path"].string

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		185D4CAB1EC924DA0083D85A /* FindMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D4CAA1EC924DA0083D85A /* FindMDBTests.swift */; };
 		5774C0D71CF751B40045F0CE /* Client_Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774C0D61CF751B40045F0CE /* Client_Search.swift */; };
 		5774C0D91CF757120045F0CE /* SearchMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774C0D81CF757120045F0CE /* SearchMDB.swift */; };
 		5E4CC87B1D295BC700101495 /* MovieMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4CC87A1D295BC700101495 /* MovieMDBTests.swift */; };
@@ -82,6 +83,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		185D4CAA1EC924DA0083D85A /* FindMDBTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindMDBTests.swift; sourceTree = "<group>"; };
 		5774C0D61CF751B40045F0CE /* Client_Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_Search.swift; sourceTree = "<group>"; };
 		5774C0D81CF757120045F0CE /* SearchMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMDB.swift; sourceTree = "<group>"; };
 		5E4CC87A1D295BC700101495 /* MovieMDBTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieMDBTests.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 			children = (
 				5EF1B27A1CB72DC000B49F4E /* TMDBSwiftTests.swift */,
 				5EF1B27C1CB72DC000B49F4E /* Info.plist */,
+				185D4CAA1EC924DA0083D85A /* FindMDBTests.swift */,
 				5E4CC87A1D295BC700101495 /* MovieMDBTests.swift */,
 			);
 			path = TMDBSwiftTests;
@@ -397,7 +400,7 @@
 					};
 					5EF1B2741CB72DC000B49F4E = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -507,6 +510,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185D4CAB1EC924DA0083D85A /* FindMDBTests.swift in Sources */,
 				5E4CC87B1D295BC700101495 /* MovieMDBTests.swift in Sources */,
 				5EF1B27B1CB72DC000B49F4E /* TMDBSwiftTests.swift in Sources */,
 			);
@@ -665,10 +669,12 @@
 		5EF1B2831CB72DC000B49F4E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TMDBSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GeorgeKye.TMDBSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -676,6 +682,7 @@
 		5EF1B2841CB72DC000B49F4E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TMDBSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GeorgeKye.TMDBSwiftTests;

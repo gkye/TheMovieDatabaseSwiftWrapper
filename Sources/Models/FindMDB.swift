@@ -70,11 +70,11 @@ public struct PersonResults: ArrayObject{
     var tvShows =  [KnownForTV]()
     var movies = [KnownForMovie]()
     
-    for i in 0..<json["known_for"].count{
-      if json["known_for"][i]["media_type"] == "tv"{
-        tvShows.append(KnownForTV.init(results: json["known_for"][i]))
+    for knownFor in json["known_for"]{
+      if knownFor.1["media_type"] == "tv"{
+        tvShows.append(KnownForTV.init(results: knownFor.1))
       }else{
-        movies.append(KnownForMovie.init(results: json["known_for"][i]))
+        movies.append(KnownForMovie.init(results: knownFor.1))
       }
     }
     known_for = (tvShows, movies)

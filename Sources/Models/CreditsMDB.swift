@@ -54,8 +54,8 @@ public struct Credits_Media{
     }
     
     if(media["seasons"].count > 0){
-      for i in 0...media["seasons"].count {
-        seasons.append(Credits_Seasons.init(seasons: media["seasons"][i]))
+      seasons = media["seasons"].map{
+        Credits_Seasons.init(seasons: $0.1)
       }
     }
   }

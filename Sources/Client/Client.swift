@@ -58,7 +58,7 @@ class HTTPRequest{
     let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
       DispatchQueue.main.async(execute: { () -> Void in
         if error != nil{
-          print("Error -> \(error)")
+          print("Error -> \(String(describing: error))")
           completionHandler(nil, nil, error as Error?)
         }else{
           completionHandler(data, response, nil)
