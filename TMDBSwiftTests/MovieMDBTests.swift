@@ -256,7 +256,7 @@ class MovieMDBTests: XCTestCase {
       data in
       cReturn = data.0
       movieData = data.1
-      if let json = data.0. {
+      if let json = data.2 {
         videos = VideosMDB.initialize(json: json["videos"]["results"])
         reviews = MovieReviewsMDB.initialize(json: json["reviews"]["results"])
       }

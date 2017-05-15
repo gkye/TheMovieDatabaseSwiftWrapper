@@ -24,10 +24,10 @@ public struct Alternative_TitlesMDB {
   
   public init(results: JSON){
     id = results["id"].int
-    if(results["results"] != nil){ //TV Changes
+    if(results["results"].exists()){ //TV Changes
       titles = Alt_TitlesMDB.initialize(json: results["results"])
       
-    }else if (results["titles"] != nil){
+    }else if (results["titles"].exists()){
       titles = Alt_TitlesMDB.initialize(json: results["titles"])
     }
   }

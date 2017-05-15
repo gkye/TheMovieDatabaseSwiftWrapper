@@ -26,14 +26,14 @@ public struct TVEpisodesMDB: ArrayObject {
   public init(results: JSON){
     air_date = results["air_date"].string
     
-    if(results["crew"] != nil){
+    if(results["crew"].exists()){
       for i in 0...results["crew"].count{
         crew.append(CrewMDB.init(crew: results["crew"][i]))
       }
     }
     number = results["number"].int
     
-    if(results["guest_stars"] != nil){
+    if(results["guest_stars"].exists()){
       for i in 0 ..< results["guest_stars"].count {
         guest_stars.append(TVCastMDB.init(cast: results["guest_stars"][i]))
       }

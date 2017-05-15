@@ -92,21 +92,21 @@ public struct FindMDB{
   public var tv_season_results =  [TVSeasonsMDB]()
   
   public init(json: JSON){
-    if(json["movie_results"] != nil){
+    if(json["movie_results"].exists()){
       movie_results = MovieMDB.initialize(json: json["movie_results"])
     }
     
-    if(json["tv_results"] != nil){
+    if(json["tv_results"].exists()){
       tv_results = TVMDB.initialize(json: json["tv_results"])
     }
-    if(json["person_results"] != nil){
+    if(json["person_results"].exists()){
       person_results = PersonResults.initialize(json: json["person_results"])
     }
     
-    if(json["tv_episode_results"] != nil){
+    if(json["tv_episode_results"].exists()){
       tv_episode_results = TVEpisodesMDB.initialize(json: json["tv_episode_results"])
     }
-    if(json["tv_season_results"] != nil){
+    if(json["tv_season_results"].exists()){
       tv_season_results = TVSeasonsMDB.initialize(json: json["tv_seasons_results"])
     }
     
