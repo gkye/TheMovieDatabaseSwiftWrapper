@@ -23,7 +23,7 @@ public struct tv_seasons{
   public var season_number: Int!
   
   init(results: JSON){
-    if(results["air_date"] != nil){
+    if(results["air_date"].exists()){
       air_date = results["air_date"].string
     }else{
       air_date = "";
@@ -31,7 +31,7 @@ public struct tv_seasons{
     episode_count = results["episode_count"].int
     id = results["id"].int
     
-    if(results["poster_path"] != nil){
+    if(results["poster_path"].exists()){
       poster_path = results["poster_path"].string
     }else{
       poster_path = "";
@@ -58,7 +58,7 @@ open class TVDetailedMDB: TVMDB{
   
   required public init(results: JSON) {
     super.init(results: results)
-    if(results["created_by"].count > 0 && results["created_by"][0] != nil ){
+    if(results["created_by"].count > 0 && results["created_by"][0].exists()){
       createdBy = tv_created_By.init(id: results["created_by"][0]["id"].int, name: results["created_by"][0]["name"].string, profile_path: results["created_by"][0]["profile_path"].string)
     }
     
@@ -68,13 +68,13 @@ open class TVDetailedMDB: TVMDB{
     in_production = results["in_production"].bool
     languages = results["languages"].arrayObject as? [String]
     
-    if(results["last_air_date"] != nil){
+    if(results["last_air_date"].exists()){
       last_air_date = results["last_air_date"].string
     }else{
       last_air_date = ""
     }
     
-    if(results["networks"] != nil){
+    if(results["networks"].exists()){
       networks = results["networks"].map{
         KeywordsMDB.init(results: $0.1)
       }
@@ -83,7 +83,7 @@ open class TVDetailedMDB: TVMDB{
     number_of_episodes = results["number_of_episodes"].int
     number_of_seasons = results["number_of_seasons"].int
     
-    if(results["production_companies"] != nil){
+    if(results["production_companies"].exists()){
       production_companies = results["production_companies"].map{
         KeywordsMDB.init(results: $0.1)
       }

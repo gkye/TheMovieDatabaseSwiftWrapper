@@ -23,10 +23,10 @@ struct Client{
     HTTPRequest.request(url, parameters: parameters){
       rtn in
       if rtn.2 == nil{
-        let json = JSON(data: rtn.0!)
+        let json = try! JSON(data: rtn.0!)
         cReturn.error = nil
         cReturn.json = json
-        if(json["page"] != nil){
+        if(json["page"].exists()){
           cReturn.pageResults = PageResultsMDB.init(results: json)
         }else{
           cReturn.pageResults = nil
