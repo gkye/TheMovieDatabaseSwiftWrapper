@@ -34,6 +34,7 @@ class MovieMDBTests: XCTestCase {
       expectation.fulfill()
     }
     
+    
     waitForExpectations(timeout: 5, handler: nil)
     XCTAssertNotNil(data)
     XCTAssertEqual(data?.title, "In the Name of the Father")
