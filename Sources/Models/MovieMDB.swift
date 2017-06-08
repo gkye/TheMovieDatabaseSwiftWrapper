@@ -8,6 +8,15 @@
 
 import Foundation
 
+public enum MovieQueryType: String{
+	
+	case nowplaying = "now_playing"
+	case toprated = "toprated"
+	case upcoming = "upcoming"
+	case popular = "popular"
+	
+}
+
 extension MovieMDB{
   
   ///Get the basic movie information for a specific movie id.
@@ -221,7 +230,22 @@ extension MovieMDB{
       completion(apiReturn, movie)
     }
   }
-  
+	
+	
+	/// Retrive a list of movies using the `MovieQueryType`
+	public class func query(_ api_key: String!, queryType: MovieQueryType, language: String? = nil, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> ()) -> (){
+		Client.Movies(queryType.rawValue, api_key: api_key, page: page, language: language){
+			apiReturn in
+			var movie = [MovieMDB]()
+			if(apiReturn.error == nil){
+				if(apiReturn.json!["results"].count > 0){
+					movie = MovieMDB.initialize(json: apiReturn.json!["results"])
+				}
+			}
+			completion(apiReturn, movie)
+		}
+	}
+	
   /**
    *  Retrive data by append multiple movie methods. Initlization of object have to be done manually. Exepect MovieDetailedMDB
    */
