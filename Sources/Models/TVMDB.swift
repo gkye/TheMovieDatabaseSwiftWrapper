@@ -10,6 +10,13 @@
 
 import Foundation
 
+public enum TVQueryType: String{
+  case latest, popular
+  case airingtoday = "airing_today"
+  case ontheair = "on_the_air"
+  case toprated = "top_rated"
+}
+
 
 extension TVMDB{
   
@@ -203,6 +210,22 @@ extension TVMDB{
       completion(apiReturn, data)
     }
   }
+  
+  
+///Get data using TVQueryType Enum for popular, toprated, airing today and on air queries
+  public class func query(_ api_key: String!, queryType: TVQueryType, page: Int?, language: String?, completion: @escaping (_ clientResult: ClientReturn, _ data: [TVMDB]?) -> ()) -> (){
+    Client.TV(queryType.rawValue, api_key: api_key, page: page, language: language, timezone: nil){
+      apiReturn in
+      var data: [TVMDB]?
+      if(apiReturn.error == nil){
+        if(apiReturn.json!["results"].count > 0){
+          data = TVMDB.initialize(json: apiReturn.json!["results"])
+        }
+      }
+      completion(apiReturn, data)
+    }
+  }
+  
   
   /**
    *  Retrive data by append multiple tv methods. Initlization of object have to be done manually. Exepect TVMDB
