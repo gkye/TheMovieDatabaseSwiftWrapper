@@ -233,8 +233,12 @@ extension MovieMDB{
 	
 	
 	/// Retrive a list of movies using the `MovieQueryType`
-	public class func query(_ api_key: String!, queryType: MovieQueryType, language: String? = nil, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> ()) -> (){
-		Client.Movies(queryType.rawValue, api_key: api_key, page: page, language: language){
+  public class func query(_ api_key: String!, queryType: MovieQueryType, language: String? = nil, page: Int?, region: String?, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> ()) -> (){
+    var reg = region
+    if queryType == .upcoming && region == nil{
+      reg = Locale.current.regionCode!
+    }
+    Client.Movies(queryType.rawValue, api_key: api_key, page: page, language: language, region: reg){
 			apiReturn in
 			var movie = [MovieMDB]()
 			if(apiReturn.error == nil){

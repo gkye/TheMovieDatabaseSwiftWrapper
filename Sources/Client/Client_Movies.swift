@@ -9,12 +9,12 @@
 import Foundation
 extension Client{
   
-  static func Movies(_ urlType: String!, api_key: String!, page: Int?, language: String?, append_to: [String]? = nil, completion: @escaping (ClientReturn) -> ()) -> (){
+  static func Movies(_ urlType: String!, api_key: String!, page: Int?, language: String?, region: String? = nil, append_to: [String]? = nil, completion: @escaping (ClientReturn) -> ()) -> (){
     
     var parameters: [String : AnyObject] = ["api_key": api_key as AnyObject]
     
-    if(page != nil){
-      parameters["page"] = page as AnyObject?
+    if let pg = page{
+      parameters["page"] = pg as AnyObject?
     }
     
     if(language != nil){
@@ -26,6 +26,11 @@ extension Client{
       if(language != nil){
         parameters["country"] = language as AnyObject?
       }
+    }
+    
+    
+    if let reg = region{
+      parameters["region"] = reg as AnyObject
     }
     
     if append_to != nil{
