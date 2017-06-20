@@ -296,26 +296,26 @@ public struct PersonCreditsCombined{
   public var movieCredits: (crew: [PersonMovieCrew]?, cast: [PersonMovieCast]?)
   public var id: Int?
   
-  public init(json: JSON){
-    var tvCrew = [PersonTVCrew]()
-    var tvCast = [PersonTVCast]()
-    var movieCrew = [PersonMovieCrew]()
-    var movieCast = [PersonMovieCast]()
-    json["crew"].forEach(){
-			let crewData = $0.1
-			tvCrew = crewData.filter{$0.1["media_type"] == "tv"}.map{PersonTVCrew.init(results: $0.1)}
-			movieCrew = crewData.filter{$0.1["media_type"] == "movie"}.map{PersonMovieCrew.init(results: $0.1)}
-		}
-    json["cast"].forEach(){
-			let castData = $0.1
-			tvCast = castData.filter{$0.1["media_type"] == "tv"}.map{PersonTVCast.init(results: $0.1)}
-			movieCast = castData.filter{$0.1["media_type"] == "movie"}.map{PersonMovieCast.init(results: $0.1)}
-    }
-    id = json["id"].int
-    tvCredits = (tvCrew, tvCast)
-    movieCredits = (movieCrew, movieCast)
-  }
-  
+	public init(json: JSON){
+		var tvCrew = [PersonTVCrew]()
+		var tvCast = [PersonTVCast]()
+		var movieCrew = [PersonMovieCrew]()
+		var movieCast = [PersonMovieCast]()
+		
+		//Set TV and Movie crew data
+		tvCrew = json["crew"].filter{$0.1["media_type"] == "tv"}.map{PersonTVCrew.init(results: $0.1)}
+		
+		movieCrew = json["crew"].filter{$0.1["media_type"] == "movie"}.map{PersonMovieCrew.init(results: $0.1)}
+		
+		//Set TV and Movie cast Data
+		tvCast = json["cast"].filter{$0.1["media_type"] == "tv"}.map{PersonTVCast.init(results: $0.1)}
+		movieCast = json["cast"].filter{$0.1["media_type"] == "movie"}.map{PersonMovieCast.init(results: $0.1)}
+		
+		id = json["id"].int
+		tvCredits = (tvCrew, tvCast)
+		movieCredits = (movieCrew, movieCast)
+	}
+	
 }
 
 open class TaggedImagesCommon: Images_MDB{
