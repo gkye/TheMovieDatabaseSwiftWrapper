@@ -302,18 +302,14 @@ public struct PersonCreditsCombined{
     var movieCrew = [PersonMovieCrew]()
     var movieCast = [PersonMovieCast]()
     json["crew"].forEach(){
-      if $0.1["media_type"] == "tv'"{
-        tvCrew.append(PersonTVCrew.init(results: $0.1))
-      }else{
-        movieCrew.append(PersonMovieCrew.init(results: $0.1))
-      }
-    }
+			let crewData = $0.1
+			tvCrew = crewData.filter{$0.1["media_type"] == "tv"}.map{PersonTVCrew.init(results: $0.1)}
+			movieCrew = crewData.filter{$0.1["media_type"] == "movie"}.map{PersonMovieCrew.init(results: $0.1)}
+		}
     json["cast"].forEach(){
-      if $0.1["media_type"] == "tv"{
-        tvCast.append(PersonTVCast.init(results: $0.1))
-      }else{
-        movieCast.append(PersonMovieCast.init(results: $0.1))
-      }
+			let castData = $0.1
+			tvCast = castData.filter{$0.1["media_type"] == "tv"}.map{PersonTVCast.init(results: $0.1)}
+			movieCast = castData.filter{$0.1["media_type"] == "movie"}.map{PersonMovieCast.init(results: $0.1)}
     }
     id = json["id"].int
     tvCredits = (tvCrew, tvCast)
