@@ -3,7 +3,7 @@
 //  TheMovieDBWrapperSwift
 //
 //  Created by George Kye on 2016-02-05.
-//  Copyright © 2016 George KyeKye. All rights reserved.
+//  Copyright © 2016 George Kye. All rights reserved.
 //
 
 import Foundation
@@ -34,7 +34,7 @@ public enum MovieGenres: String{
 public enum DiscoverSortByMovie: String {
   //FIND WAY TO INHERIT FROM MAIN
   case popularity_asc = "popularity.asc";
-  case  popularity_desc = "popularity_desc";
+  case  popularity_desc = "popularity.desc";
   case vote_average_asc = "vote_average.asc";
   case vote_average_desc = "vote_average.desc";
   
