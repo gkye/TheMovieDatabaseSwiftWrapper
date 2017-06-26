@@ -3,7 +3,7 @@
 //  MDBSwiftWrapper
 //
 //  Created by George Kye on 2016-02-12.
-//  Copyright © 2016 George KyeKye. All rights reserved.
+//  Copyright © 2016 George Kye. All rights reserved.
 //
 
 import Foundation
@@ -14,7 +14,6 @@ public enum MovieQueryType: String{
 	case toprated = "toprated"
 	case upcoming = "upcoming"
 	case popular = "popular"
-	
 }
 
 extension MovieMDB{

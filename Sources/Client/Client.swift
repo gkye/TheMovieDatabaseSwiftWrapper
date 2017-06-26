@@ -3,18 +3,29 @@
 //  MDBSwiftWrapper
 //
 //  Created by George Kye on 2016-02-11.
-//  Copyright © 2016 George KyeKye. All rights reserved.
+//  Copyright © 2016 George Kye. All rights reserved.
 //
 
 import Foundation
-
-
 
 public struct ClientReturn{
   public var error: NSError?
   public var json: JSON?
   //  public var MBDBReturn: AnyObject?
   public var pageResults: PageResultsMDB?
+}
+
+public struct MDBReturn{
+	public var error: Error?
+	public var data: Data?
+	public var response: URLResponse?
+//	public var pageResults: PageResultsMDB
+	
+	init(err: Error?, data: Data?, reponse: URLResponse?) {
+		error = err
+		self.data = data
+		self.response = reponse
+	}
 }
 
 struct Client{
@@ -36,12 +47,18 @@ struct Client{
         cReturn.json = nil
         cReturn.pageResults = nil
       }
-      
       completion(cReturn)
 
     }
-    
   }
+	
+	static func apiRequest(url: String, parameters: [String : AnyObject], completion: @escaping (MDBReturn) -> ()) -> (){
+		HTTPRequest.request(url, parameters: parameters){
+			(data, response, error) in
+			let apiReturn = MDBReturn(err: error, data: data, reponse: response)
+			completion(apiReturn)
+		}
+	}
 }
 
 class HTTPRequest{
@@ -101,7 +118,9 @@ extension Dictionary {
   /// :returns: String representation in the form of key1=value1&key2=value2 where the keys and values are percent escaped
   
   func stringFromHttpParameters() -> String {
-    let parameterArray = self.map { (key, value) -> String in
+    let parameterArray = self.map { arr -> String in
+			let key = arr.key
+			let value = arr.value
       let percentEscapedKey = (key as! String).stringByAddingPercentEncodingForURLQueryValue()!
       let percentEscapedValue = (String(describing: value)).stringByAddingPercentEncodingForURLQueryValue()!
       return "\(percentEscapedKey)=\(percentEscapedValue)"
