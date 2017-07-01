@@ -8,9 +8,6 @@
 
 import Foundation
 
-
-
-
 extension Client{
   static func keyword(_ keywordType: String, api_key: String!, completion: @escaping (ClientReturn) -> ()) -> (){
     let parameters: [String : AnyObject] = ["api_key": api_key as AnyObject]

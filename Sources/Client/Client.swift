@@ -32,9 +32,9 @@ struct Client{
   static func networkRequest(url: String, parameters: [String : AnyObject], completion: @escaping (ClientReturn) -> ()) -> (){
     var cReturn = ClientReturn()
     HTTPRequest.request(url, parameters: parameters){
-      rtn in
-      if rtn.2 == nil{
-        let json = try! JSON(data: rtn.0!)
+      (data, response, error) in
+      if error == nil{
+        let json = try! JSON(data: data!)
         cReturn.error = nil
         cReturn.json = json
         if(json["page"].exists()){
@@ -43,7 +43,7 @@ struct Client{
           cReturn.pageResults = nil
         }
       }else{
-        cReturn.error = rtn.2 as NSError?
+        cReturn.error = error as NSError?
         cReturn.json = nil
         cReturn.pageResults = nil
       }
