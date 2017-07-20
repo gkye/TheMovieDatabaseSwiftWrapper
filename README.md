@@ -46,7 +46,6 @@ pod "TMDBSwift"
 
 ## TODO
 ---------
-* Multi Search
 * Certifications 
 
 ##Compatibility
