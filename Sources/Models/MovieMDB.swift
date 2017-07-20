@@ -11,7 +11,7 @@ import Foundation
 public enum MovieQueryType: String{
 	
 	case nowplaying = "now_playing"
-	case toprated = "toprated"
+	case toprated = "top_rated"
 	case upcoming = "upcoming"
 	case popular = "popular"
 }
