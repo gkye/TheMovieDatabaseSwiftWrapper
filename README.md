@@ -4,6 +4,9 @@
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/gkye/TheMovieDatabaseSwiftWrapper.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
 
 
+## TODO
+---------
+Replace SwiftyJSON with swift4's Codeable
 
 ##Usage
 
@@ -44,8 +47,6 @@ pod "TMDBSwift"
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/TVEpisodes">TVEpisodes</a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Movies">Movie</a>
 
-## TODO
----------
 * Certifications 
 
 ##Compatibility
