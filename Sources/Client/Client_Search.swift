@@ -8,9 +8,9 @@
 
 import Foundation
 extension Client{
-  static func Search(_ urlType: String!, api_key: String!, query: String, page: Int?, language: String?, include_adult: Bool?, year: Int?, primary_release_year: Int?, search_type: String?, first_air_date_year: String?, completion: @escaping (ClientReturn) -> ()) -> (){
+  static func Search(_ urlType: String!, query: String, page: Int?, language: String?, include_adult: Bool?, year: Int?, primary_release_year: Int?, search_type: String?, first_air_date_year: String?, completion: @escaping (ClientReturn) -> ()) -> (){
     
-    var parameters: [String : AnyObject] = ["api_key": api_key as AnyObject, "query": query as AnyObject]
+    var parameters: [String : AnyObject] = ["query": query as AnyObject]
     
     if(page != nil){
       parameters["page"] = page as AnyObject?

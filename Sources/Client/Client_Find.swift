@@ -10,7 +10,7 @@ import Foundation
 extension Client{
   
   
-  static func Find(_ api_key: String!, external_id: String!, external_source: String!, completion: @escaping (ClientReturn) -> ()) -> (){
+  static func Find(external_id: String!, external_source: String!, completion: @escaping (ClientReturn) -> ()) -> (){
     var parameters: [String : AnyObject] = [:]
     parameters["external_source"] = external_source as AnyObject?
     

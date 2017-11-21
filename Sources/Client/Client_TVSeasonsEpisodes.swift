@@ -8,7 +8,7 @@
 
 import Foundation
 extension Client{
-  static func Seasons(_ urlType: String!, api_key: String!, language: String?, completion: @escaping (ClientReturn) -> ()) -> (){
+  static func Seasons(_ urlType: String!, language: String?, completion: @escaping (ClientReturn) -> ()) -> (){
     var parameters: [String : AnyObject] = [:]
     if(language != nil){
       parameters["language"] = language as AnyObject?

@@ -115,9 +115,8 @@ public struct FindMDB{
    The find method makes it easy to search for objects in our database by an external id. For instance, an IMDB ID. This will search all objects (movies, TV shows and people) and return the results in a single response.
    */
   
-  public static func find(_ apikey: String, id: String, external_source: ExternalIdTypes, completion: @escaping (_ clientReturn: ClientReturn, _ data: FindMDB?) -> ()) -> (){
-    
-    Client.Find(apikey, external_id: id, external_source: external_source.rawValue){
+  public static func find(id: String, external_source: ExternalIdTypes, completion: @escaping (_ clientReturn: ClientReturn, _ data: FindMDB?) -> ()) -> (){
+    Client.Find(external_id: id, external_source: external_source.rawValue){
       apiReturn in
       var data: FindMDB?
       if(apiReturn.error == nil){

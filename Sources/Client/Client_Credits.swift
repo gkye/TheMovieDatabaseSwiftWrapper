@@ -15,7 +15,6 @@ extension Client{
     var parameters: [String : AnyObject] = [:]
     parameters["language"] = language as AnyObject?
     let url = "https://api.themoviedb.org/3/credit/"+creditID
-    
     networkRequest(url: url, parameters: parameters, completion: {
       apiReturn in
       

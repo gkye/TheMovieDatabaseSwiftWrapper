@@ -20,7 +20,7 @@ public struct NetworksMDB{
   
   ///This method is used to retrieve the basic information about a TV network. You can use this ID to search for TV shows with the discover.
   public static func networks(networkId: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data:NetworksMDB?) -> ()) -> (){
-    Client.networks(api_key, networkId: networkId){
+    Client.networks(networkId: networkId){
       apiReturn in
       if(apiReturn.error == nil){
         completion(apiReturn, NetworksMDB.init(results: apiReturn.json!))

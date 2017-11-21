@@ -40,8 +40,8 @@ open class CompanyMDB {
     }
   }
   ///This method is used to retrieve all of the basic information about a company.
-  open class func companyInfo(_ api_key: String!, companyId: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data:CompanyMDB?) -> ()) -> (){
-    Client.Company(api_key, companyId: companyId){
+  open class func companyInfo(companyId: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data:CompanyMDB?) -> ()) -> (){
+    Client.Company(companyId: companyId){
       apiReturn in
       if(apiReturn.error == nil){
         completion(apiReturn, CompanyMDB(results: apiReturn.json!))
@@ -52,8 +52,8 @@ open class CompanyMDB {
   }
   
   ///Get the list of movies associated with a particular company.
-  open class func companyMovies(_ api_key: String!, companyId: Int!, language: String?, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> ()) -> (){
-    Client.Company(api_key, companyId: companyId, language: language, page: page){
+  open class func companyMovies(companyId: Int!, language: String?, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> ()) -> (){
+    Client.Company(companyId: companyId, language: language, page: page){
       apiReturn in
       if(apiReturn.error == nil){
         completion(apiReturn, MovieMDB.initialize(json: apiReturn.json!["results"]))

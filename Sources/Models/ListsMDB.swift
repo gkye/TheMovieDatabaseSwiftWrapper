@@ -36,9 +36,9 @@ public struct ListsMDB: ArrayObject{
   }
   
   ///MARK: Lists
-  public  static func lists(_ api_key: String!, listId: String!, completion: @escaping (_ clientReturn: ClientReturn, _ data: ListsMDB?) -> ()) -> (){
+  public  static func lists(listId: String!, completion: @escaping (_ clientReturn: ClientReturn, _ data: ListsMDB?) -> ()) -> (){
     let url  = "https://api.themoviedb.org/3/list/" + listId
-    Client.Lists(url, api_key: api_key, listId: listId!){
+    Client.Lists(url, listId: listId!){
       apiReturn in
       if(apiReturn.error == nil){
         completion(apiReturn, ListsMDB.init(results: apiReturn.json!))

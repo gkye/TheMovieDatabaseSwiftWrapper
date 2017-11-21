@@ -10,7 +10,7 @@ import Foundation
 extension Client{
     //http://image.tmdb.org/t/p/w500/8uO0gUM8aNqYLs1OsTBQiXu0fEv.jpg
 
-    static func Configuration(_ api_key: String!, completion: @escaping (ClientReturn) -> ()) -> (){
+    static func Configuration(completion: @escaping (ClientReturn) -> ()) -> (){
         let parameters: [String : AnyObject] = [:]
         let url = "https://api.themoviedb.org/3/configuration"
         networkRequest(url: url, parameters: parameters, completion: {

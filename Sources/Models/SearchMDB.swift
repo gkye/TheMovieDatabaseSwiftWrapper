@@ -1,9 +1,9 @@
 public struct SearchMDB{
   
   ///Search for companies by name.
-  public static func company(_ api_key: String!, query: String, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ company: [parent_companymdb]? ) -> ()) -> (){
+  public static func company(query: String, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ company: [parent_companymdb]? ) -> ()) -> (){
     
-    Client.Search("company", api_key: api_key, query: query, page: page, language: nil, include_adult: nil, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil){
+    Client.Search("company",  query: query, page: page, language: nil, include_adult: nil, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil){
       apiReturn in
       
       var company = [parent_companymdb]()
@@ -18,9 +18,9 @@ public struct SearchMDB{
   
   
   ///Search for collections by name. Overview and collectionItems will return nil
-  public static func collection(_ api_key: String!, query: String, page: Int?, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ collection: [CollectionMDB]? ) -> ()) -> (){
+  public static func collection(query: String, page: Int?, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ collection: [CollectionMDB]? ) -> ()) -> (){
     
-    Client.Search("collection", api_key: api_key, query: query, page: page, language: language, include_adult: nil, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil){
+    Client.Search("collection", query: query, page: page, language: language, include_adult: nil, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil){
       apiReturn in
       
       var collection = [CollectionMDB]()
@@ -34,9 +34,9 @@ public struct SearchMDB{
   }
   
   ///Search for keywords by name.
-  public static func keyword(_ api_key: String!, query: String, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ keyword: [KeywordsMDB]? ) -> ()) -> (){
+  public static func keyword(query: String, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ keyword: [KeywordsMDB]? ) -> ()) -> (){
     
-    Client.Search("keyword", api_key: api_key, query: query, page: page, language: nil, include_adult: nil, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil){
+    Client.Search("keyword",  query: query, page: page, language: nil, include_adult: nil, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil){
       apiReturn in
       
       var keyword = [KeywordsMDB]()
@@ -50,9 +50,9 @@ public struct SearchMDB{
   }
   
   ///Search for lists by name and description.
-  public static func list(_ api_key: String!, query: String, page: Int?, include_adult: Bool?, completion: @escaping (_ clientReturn: ClientReturn, _ list: [ListsMDB]? ) -> ()) -> (){
+  public static func list(query: String, page: Int?, include_adult: Bool?, completion: @escaping (_ clientReturn: ClientReturn, _ list: [ListsMDB]? ) -> ()) -> (){
     
-    Client.Search("list", api_key: api_key, query: query, page: page, language: nil, include_adult: include_adult, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil){
+    Client.Search("list",  query: query, page: page, language: nil, include_adult: include_adult, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil){
       apiReturn in
       
       var list: [ListsMDB]?
@@ -67,9 +67,9 @@ public struct SearchMDB{
   
   
   ///Search for movies by title.
-  public static func movie(_ api_key: String!, query: String, language: String?, page: Int?, includeAdult: Bool?, year: Int?, primaryReleaseYear: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> ()) -> (){
+  public static func movie(query: String, language: String?, page: Int?, includeAdult: Bool?, year: Int?, primaryReleaseYear: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> ()) -> (){
     
-    Client.Search("movie", api_key: api_key, query: query, page: page, language: language, include_adult: includeAdult, year: year, primary_release_year: primaryReleaseYear, search_type: nil, first_air_date_year: nil) { apiReturn in
+    Client.Search("movie",  query: query, page: page, language: language, include_adult: includeAdult, year: year, primary_release_year: primaryReleaseYear, search_type: nil, first_air_date_year: nil) { apiReturn in
       var movie: [MovieMDB]?
       if(apiReturn.error == nil){
         if(apiReturn.json!["results"].count > 0){
@@ -81,9 +81,9 @@ public struct SearchMDB{
   }
   
   ///Search for people by name.
-  public static func person(_ api_key: String!, query: String, page: Int?, includeAdult: Bool?, completion: @escaping (_ clientReturn: ClientReturn, _ person: [PersonResults]?) -> ()) -> (){
+  public static func person(query: String, page: Int?, includeAdult: Bool?, completion: @escaping (_ clientReturn: ClientReturn, _ person: [PersonResults]?) -> ()) -> (){
     
-    Client.Search("person", api_key: api_key, query: query, page: page, language: nil, include_adult: includeAdult, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil) { apiReturn in
+    Client.Search("person",  query: query, page: page, language: nil, include_adult: includeAdult, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil) { apiReturn in
       var person: [PersonResults]?
       if(apiReturn.error == nil){
         if(apiReturn.json!["results"].count > 0){
@@ -95,9 +95,9 @@ public struct SearchMDB{
   }
   
   ///Search for TV shows by title.
-  public static func tv(_ api_key: String!, query: String, page: Int?, language: String?, first_air_date_year: String?, completion: @escaping (_ clientReturn: ClientReturn, _ tvShows: [TVMDB]?) -> ()) -> (){
+  public static func tv(query: String, page: Int?, language: String?, first_air_date_year: String?, completion: @escaping (_ clientReturn: ClientReturn, _ tvShows: [TVMDB]?) -> ()) -> (){
     
-    Client.Search("tv", api_key: api_key, query: query, page: page, language: language, include_adult: nil, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: first_air_date_year) { apiReturn in
+    Client.Search("tv",  query: query, page: page, language: language, include_adult: nil, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: first_air_date_year) { apiReturn in
       var person: [TVMDB]?
       if(apiReturn.error == nil){
         if(apiReturn.json!["results"].count > 0){
@@ -109,9 +109,9 @@ public struct SearchMDB{
   }
   
   ///Search multiple models in a single request. Multi search currently supports searching for movies, tv shows and people in a single request.
-  public static func multiSearch(_ api_key: String!, query: String, page: Int?, includeAdult: Bool?, language: String?, region: String?, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB],_ tv: [TVMDB], _ person: [PersonResults]) -> ()) -> (){
+  public static func multiSearch(query: String, page: Int?, includeAdult: Bool?, language: String?, region: String?, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB],_ tv: [TVMDB], _ person: [PersonResults]) -> ()) -> (){
     
-    Client.Search("multi", api_key: api_key, query: query, page: page, language: language, include_adult: includeAdult, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil){ apiReturn in
+    Client.Search("multi",  query: query, page: page, language: language, include_adult: includeAdult, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil){ apiReturn in
       var person = [PersonResults]()
       var tv = [TVMDB]()
       var movie = [MovieMDB]()

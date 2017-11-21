@@ -9,7 +9,7 @@
 import Foundation
 extension Client{
   
-  static func review(_ api_key: String!, reviewId: String!, completion: @escaping (ClientReturn) -> ()) -> (){
+  static func review(reviewId: String!, completion: @escaping (ClientReturn) -> ()) -> (){
     let parameters: [String : AnyObject] = [:]
     let url = "https://api.themoviedb.org/3/review/"+reviewId
     

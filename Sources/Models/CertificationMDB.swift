@@ -86,8 +86,8 @@
 ////  Get the list of supported certifications for movies. These can be used in conjunction with the certification_country and certification.lte parameters when using discover.
 //  
 //  ///Get the list of supported certifications for tv shows.
-//  public static func tv(apiKey: String, completionHandler: (clientReturn: ClientReturn, data: TVCertifications) -> ()) -> Void{
-//    Client.Certification(apiKey, listType: "tv"){
+//  public static func tv(completionHandler: (clientReturn: ClientReturn, data: TVCertifications) -> ()) -> Void{
+//    Client.Certification(listType: "tv"){
 //      data in
 //      let certs = TVCertifications.init(json: "certifications")
 //      completionHandler(clientReturn: data, data: certs)

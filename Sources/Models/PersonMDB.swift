@@ -41,9 +41,9 @@ public struct PersonMDB: ArrayObject{
   }
   
   ///Get the general person information for a specific id.
-  public static func person_id(_ api_key: String!, personID: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonMDB?) ->()) ->(){
+  public static func person_id(personID: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonMDB?) ->()) ->(){
     let urlType = String(personID)
-    Client.Person(urlType, api_key: api_key, language: nil, page: nil){
+    Client.Person(urlType,  language: nil, page: nil){
       apiReturn in
       var data: PersonMDB?
       if(apiReturn.error == nil){
@@ -55,9 +55,9 @@ public struct PersonMDB: ArrayObject{
   
   
   ///Get the movie credits for a specific person id.
-  public static func movie_credits(_ api_key: String!, personID: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonMovieCredits?) -> ()) ->(){
+  public static func movie_credits(personID: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonMovieCredits?) -> ()) ->(){
     let urlType = String(personID) + "/movie_credits"
-    Client.Person(urlType, api_key: api_key, language: language, page: nil){
+    Client.Person(urlType,  language: language, page: nil){
       apiReturn in
       var data: PersonMovieCredits?
       if(apiReturn.error == nil){
@@ -67,9 +67,9 @@ public struct PersonMDB: ArrayObject{
     }
   }
   ///Get the TV credits for a specific person id.
-  public static func tv_credits(_ api_key: String!, personID: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonTVCredits?) -> ()) ->(){
+  public static func tv_credits(personID: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonTVCredits?) -> ()) ->(){
     let urlType =  String(personID) + "/tv_credits"
-    Client.Person(urlType, api_key: api_key, language: language, page: nil){
+    Client.Person(urlType,  language: language, page: nil){
       apiReturn in
       var data: PersonTVCredits?
       if(apiReturn.error == nil){
@@ -80,9 +80,9 @@ public struct PersonMDB: ArrayObject{
   }
   
   ///Get the combined (movie and TV) credits for a specific person id.
-  public static func combined_credits(_ api_key: String!, personID: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonCreditsCombined?) -> ()) ->(){
+  public static func combined_credits(personID: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonCreditsCombined?) -> ()) ->(){
     let urlType =  String(personID) + "/combined_credits"
-    Client.Person(urlType, api_key: api_key, language: language, page: nil){
+    Client.Person(urlType,  language: language, page: nil){
       apiReturn in
       var data: PersonCreditsCombined?
       if(apiReturn.error == nil){
@@ -94,8 +94,8 @@ public struct PersonMDB: ArrayObject{
   
   
   ///Get the external ids for a specific person id.
-  public static func externalIDS(_ api_key: String!, personID: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: ExternalIdsMDB?) -> ()) -> (){
-    Client.Person( String(personID) + "/external_ids", api_key: api_key, language: nil, page: nil){
+  public static func externalIDS(personID: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: ExternalIdsMDB?) -> ()) -> (){
+    Client.Person( String(personID) + "/external_ids",  language: nil, page: nil){
       apiReturn in
       var data: ExternalIdsMDB?
       if(apiReturn.error == nil){
@@ -106,8 +106,8 @@ public struct PersonMDB: ArrayObject{
   }
   
   ///Get the images for a specific person id.
-  public static func images(_ api_key: String!, personID: Int!, completion: @escaping (_ client: ClientReturn, _ data: [Images_MDB]?) -> ()) -> (){
-    Client.Person( String(personID) + "/images", api_key: api_key, language: nil, page: nil){
+  public static func images(personID: Int!, completion: @escaping (_ client: ClientReturn, _ data: [Images_MDB]?) -> ()) -> (){
+    Client.Person( String(personID) + "/images",  language: nil, page: nil){
       apiReturn in
       var images: [Images_MDB]?
       if(apiReturn.error == nil){
@@ -118,8 +118,8 @@ public struct PersonMDB: ArrayObject{
     }
   }
   ///Get the images that have been tagged with a specific person id. Will return all of the image results with a media object mapped for each image.
-  public static func tagged_images(_ api_key: String!, personID: Int!, page: Int?, completion: @escaping (_ client: ClientReturn, _ data: TaggedImages?) -> ()) -> (){
-    Client.Person( String(personID) + "/tagged_images", api_key: api_key, language: nil, page: page){
+  public static func tagged_images(personID: Int!, page: Int?, completion: @escaping (_ client: ClientReturn, _ data: TaggedImages?) -> ()) -> (){
+    Client.Person( String(personID) + "/tagged_images",  language: nil, page: page){
       apiReturn in
       var images: TaggedImages?
       if(apiReturn.error == nil){
@@ -130,8 +130,8 @@ public struct PersonMDB: ArrayObject{
   }
   
   ///Get the latest person id.
-  public static func latest(_ api_key: String!, completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonMDB?) -> ()) -> (){
-    Client.Person("latest", api_key: api_key, language: nil, page: nil){
+  public static func latest(completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonMDB?) -> ()) -> (){
+    Client.Person("latest",  language: nil, page: nil){
       apiReturn in
       var data: PersonMDB?
       if(apiReturn.error == nil){
@@ -142,8 +142,8 @@ public struct PersonMDB: ArrayObject{
   }
   
   ///Get the list of popular people on The Movie Database. This list refreshes every day.
-  public static func popular(_ api_key: String!, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [PersonResults]?) -> ()) -> (){
-    Client.Person("popular", api_key: api_key, language: nil, page: page){
+  public static func popular(page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [PersonResults]?) -> ()) -> (){
+    Client.Person("popular",  language: nil, page: page){
       apiReturn in
       var data: [PersonResults]?
       if(apiReturn.error == nil){
@@ -154,9 +154,9 @@ public struct PersonMDB: ArrayObject{
   }
   
   ///Retrive data by append multiple person methods. Initlization of object has to be done manually. Exepect PersonMDB
-  public static func personAppendTo(_ api_key: String!, personID: Int!, append_to: [String], completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonMDB?, _ json: JSON?) ->()) ->(){
+  public static func personAppendTo(personID: Int!, append_to: [String], completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonMDB?, _ json: JSON?) ->()) ->(){
     let urlType =  String(personID)
-    Client.Person(urlType, api_key: api_key, language: nil, page: nil, append_to: append_to){
+    Client.Person(urlType,  language: nil, page: nil, append_to: append_to){
       apiReturn in
       var data: PersonMDB?
       if(apiReturn.error == nil){

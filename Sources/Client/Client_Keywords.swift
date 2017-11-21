@@ -9,7 +9,7 @@
 import Foundation
 
 extension Client{
-  static func keyword(_ keywordType: String, api_key: String!, completion: @escaping (ClientReturn) -> ()) -> (){
+  static func keyword(_ keywordType: String, completion: @escaping (ClientReturn) -> ()) -> (){
     let parameters: [String : AnyObject] = [:]
     let url = keywordType
     
@@ -19,7 +19,7 @@ extension Client{
     })
   }
   
-  static func keyword_movies(_ keywordType: String, api_key: String!, page: Int?, language: String?, completion: @escaping (ClientReturn) -> ()) -> (){
+  static func keyword_movies(_ keywordType: String, page: Int?, language: String?, completion: @escaping (ClientReturn) -> ()) -> (){
     var parameters: [String : AnyObject] = [:]
     if(page != nil){
       parameters["page"] = page as AnyObject?

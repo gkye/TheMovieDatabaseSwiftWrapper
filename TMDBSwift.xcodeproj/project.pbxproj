@@ -94,7 +94,7 @@
 		5EF143611CF0A3FB009C620D /* ArrayObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayObjectProtocol.swift; path = Protocols/ArrayObjectProtocol.swift; sourceTree = "<group>"; };
 		5EF1B26B1CB72DBF00B49F4E /* TMDBSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TMDBSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF1B26E1CB72DC000B49F4E /* TMDBSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMDBSwift.h; sourceTree = "<group>"; };
-		5EF1B2701CB72DC000B49F4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = SOURCE_ROOT; };
+		5EF1B2701CB72DC000B49F4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EF1B2751CB72DC000B49F4E /* TMDBSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMDBSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF1B27A1CB72DC000B49F4E /* TMDBSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBSwiftTests.swift; sourceTree = "<group>"; };
 		5EF1B27C1CB72DC000B49F4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };

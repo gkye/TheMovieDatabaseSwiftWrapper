@@ -9,7 +9,7 @@
 import Foundation
 extension Client{
   
-  static func networks(_ api_key: String!, networkId: Int!, completion: @escaping (ClientReturn) -> ()) -> (){
+  static func networks(networkId: Int!, completion: @escaping (ClientReturn) -> ()) -> (){
     let parameters: [String : AnyObject] = [:]
     let url = "https://api.themoviedb.org/3/network/" + String(networkId)
     networkRequest(url: url, parameters: parameters, completion: {

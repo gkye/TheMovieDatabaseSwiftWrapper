@@ -10,7 +10,7 @@ import Foundation
 
 extension Client{
   
-  static func Company(_ api_key: String!, companyId: Int!, completion: @escaping (ClientReturn) -> ()) -> (){
+  static func Company(companyId: Int!, completion: @escaping (ClientReturn) -> ()) -> (){
     let parameters: [String : AnyObject] = [:]
     let url = "https://api.themoviedb.org/3/company/" + String(companyId)
     networkRequest(url: url, parameters: parameters, completion: {
@@ -20,7 +20,7 @@ extension Client{
     })
   }
   
-  static func Company(_ api_key: String!, companyId: Int!, language: String?, page: Int?, completion: @escaping (ClientReturn) -> ()) -> (){
+  static func Company(companyId: Int!, language: String?, page: Int?, completion: @escaping (ClientReturn) -> ()) -> (){
     var parameters: [String : AnyObject] = [:]
     if(page != nil){
       parameters["page"] = page as AnyObject?

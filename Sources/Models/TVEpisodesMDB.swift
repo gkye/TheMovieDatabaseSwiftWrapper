@@ -52,7 +52,7 @@ public struct TVEpisodesMDB: ArrayObject {
   ///Get the primary information about a TV episode by combination of a season and episode number.
   public static func episode_number(tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: TVEpisodesMDB) -> ()) -> (){
     let urltype = String(tvShowId) + "/season/" + String(seasonNumber) + "/episode/" + String(episodeNumber)
-    Client.Seasons(urltype, api_key: api_key, language: language){
+    Client.Seasons(urltype,  language: language){
       apiReturn in
       completion(apiReturn, TVEpisodesMDB(results: apiReturn.json!))
       
@@ -62,7 +62,7 @@ public struct TVEpisodesMDB: ArrayObject {
   ///Get the TV episode credits by combination of season and episode number.
   public static func credits(tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: TVCreditsMDB?) -> ()) -> (){
     let urltype = String(tvShowId) + "/season/" + String(seasonNumber) + "/episode/" + String(episodeNumber) + "/credits"
-    Client.Seasons(urltype, api_key: api_key, language: nil){
+    Client.Seasons(urltype,  language: nil){
       apiReturn in
       var data: TVCreditsMDB?
       if(apiReturn.error == nil){
@@ -75,7 +75,7 @@ public struct TVEpisodesMDB: ArrayObject {
   ///Get the external ids for a TV episode by comabination of a season and episode number.
   public static func externalIDS(tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int, language: String, completion: @escaping (_ clientReturn: ClientReturn, _ data: ExternalIdsMDB?) -> ()) -> (){
     let urltype = String(tvShowId) + "/season/" + String(seasonNumber) + "/episode/" + String(episodeNumber) + "/external_ids"
-    Client.Seasons(urltype, api_key: api_key, language: language){
+    Client.Seasons(urltype,  language: language){
       apiReturn in
       var data: ExternalIdsMDB?
       if(apiReturn.error == nil){
@@ -88,7 +88,7 @@ public struct TVEpisodesMDB: ArrayObject {
   ///Get the images (episode stills) for a TV episode by combination of a season and episode number. Since episode stills don't have a language, this call will always return all images. **ONLY `stills` retuned from ImagesMDB (`posters` & `backdrops` will be empty)**
   public static func images(tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: ImagesMDB?) -> ()) -> (){
     let urltype = String(tvShowId) + "/season/" + String(seasonNumber) + "/episode/" + String(episodeNumber) + "/images"
-    Client.Seasons(urltype, api_key: api_key, language: nil){
+    Client.Seasons(urltype,  language: nil){
       apiReturn in
       var data: ImagesMDB?
       if(apiReturn.error == nil){
@@ -101,7 +101,7 @@ public struct TVEpisodesMDB: ArrayObject {
   ///Get the videos that have been added to a TV episode (teasers, clips, etc...)
   public static func videos(tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [VideosMDB]?) -> ()) -> (){
     let urltype = String(tvShowId) + "/season/" + String(seasonNumber) + "/episode/" + String(episodeNumber) + "/videos"
-    Client.Seasons(urltype, api_key: api_key, language: language){
+    Client.Seasons(urltype,  language: language){
       apiReturn in
       var data: [VideosMDB]?
       if(apiReturn.error == nil){

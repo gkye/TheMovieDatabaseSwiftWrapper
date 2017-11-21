@@ -11,7 +11,7 @@ import Foundation
 extension Client{
   
   
-  static func Genres(_ api_key: String!, listType: String, language: String?, genreId: Int, page: Double?, include_all_movies: Bool?, include_adult: Bool?, movieList: Bool?, completion: @escaping (ClientReturn) -> ()) -> (){
+  static func Genres(listType: String, language: String?, genreId: Int, page: Double?, include_all_movies: Bool?, include_adult: Bool?, movieList: Bool?, completion: @escaping (ClientReturn) -> ()) -> (){
     var parameters: [String : AnyObject] = [:]
     var url = "";
     if(movieList == false || movieList == nil){
