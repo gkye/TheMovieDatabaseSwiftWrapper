@@ -11,7 +11,7 @@ extension Client{
   
   
   static func Find(_ api_key: String!, external_id: String!, external_source: String!, completion: @escaping (ClientReturn) -> ()) -> (){
-    var parameters: [String : AnyObject] = ["api_key": api_key as AnyObject]
+    var parameters: [String : AnyObject] = [:]
     parameters["external_source"] = external_source as AnyObject?
     
     let url = "https://api.themoviedb.org/3/find/" + external_id

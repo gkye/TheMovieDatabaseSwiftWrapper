@@ -8,9 +8,9 @@
 import Foundation
 extension Client{
 	
-	static func Changes(_ api_key: String!, changeType: String, page: Int?, startDate: String?, endDate:String?, completion: @escaping (ClientReturn) -> ()) -> (){
+	static func Changes(changeType: String, page: Int?, startDate: String?, endDate:String?, completion: @escaping (ClientReturn) -> ()) -> (){
 		
-		var parameters: [String : AnyObject] = ["api_key": api_key as AnyObject]
+		var parameters: [String : AnyObject] = [:]
 		
 		if(page != nil){
 			parameters["page"] = page as AnyObject?
@@ -25,11 +25,8 @@ extension Client{
 		}
 		
 		let url = "https://api.themoviedb.org/3/" + changeType + "/changes"
-		
-		
 		networkRequest(url: url, parameters: parameters){
 			apiReturn in
-			
 			completion(apiReturn)
 		}
 	}

@@ -11,7 +11,7 @@ import Foundation
 extension Client{
   
   static func Company(_ api_key: String!, companyId: Int!, completion: @escaping (ClientReturn) -> ()) -> (){
-    let parameters: [String : AnyObject] = ["api_key": api_key as AnyObject]
+    let parameters: [String : AnyObject] = [:]
     let url = "https://api.themoviedb.org/3/company/" + String(companyId)
     networkRequest(url: url, parameters: parameters, completion: {
       apiReturn in
@@ -21,7 +21,7 @@ extension Client{
   }
   
   static func Company(_ api_key: String!, companyId: Int!, language: String?, page: Int?, completion: @escaping (ClientReturn) -> ()) -> (){
-    var parameters: [String : AnyObject] = ["api_key": api_key as AnyObject]
+    var parameters: [String : AnyObject] = [:]
     if(page != nil){
       parameters["page"] = page as AnyObject?
     }

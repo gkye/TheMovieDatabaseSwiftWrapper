@@ -31,7 +31,12 @@ public struct MDBReturn{
 struct Client{
   static func networkRequest(url: String, parameters: [String : AnyObject], completion: @escaping (ClientReturn) -> ()) -> (){
     var cReturn = ClientReturn()
-    HTTPRequest.request(url, parameters: parameters){
+		guard let apikey = TMDBConfig.apikey else {
+			fatalError("NO API is set. Set your api using TMDBConfig.api = YOURKEY")
+		}
+		var params = parameters
+		params["api_key"] = apikey as AnyObject
+    HTTPRequest.request(url, parameters: params){
       (data, response, error) in
       if error == nil{
         let json = try! JSON(data: data!)
@@ -64,7 +69,6 @@ struct Client{
 class HTTPRequest{
   
   class func request(_ url: String!, parameters: [String: AnyObject],completionHandler: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> ()) -> (){
-    
     let parameterString = parameters.stringFromHttpParameters()
     let urlString = url + "?" + parameterString
     let requestURL = URL(string: urlString)!

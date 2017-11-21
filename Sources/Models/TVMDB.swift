@@ -46,7 +46,7 @@ extension TVMDB{
   }
   
   ///Get the content ratings for a specific TV show id.
-  public class func content_ratings(_ api_key: String, tvShowID: Int,  completion: @escaping (_ clientReturn: ClientReturn, _ data: [Content_RatingsMDB]?) -> ()) -> (){
+  public class func content_ratings(tvShowID: Int,  completion: @escaping (_ clientReturn: ClientReturn, _ data: [Content_RatingsMDB]?) -> ()) -> (){
     Client.TV(String(tvShowID) + "/content_ratings", api_key: api_key, page: nil, language: nil, timezone: nil){
       apiReturn in
       var data: [Content_RatingsMDB]?
@@ -94,7 +94,7 @@ extension TVMDB{
   }
   
   ///Get the plot keywords for a specific TV show id.
-  public class func keywords(_ api_key: String, tvShowID: Int!, completion: @escaping (_ clientResult: ClientReturn, _ data: [KeywordsMDB]?) -> ()) -> (){
+  public class func keywords(tvShowID: Int!, completion: @escaping (_ clientResult: ClientReturn, _ data: [KeywordsMDB]?) -> ()) -> (){
     Client.TV(String(tvShowID) + "/keywords", api_key: api_key, page: nil, language: nil, timezone: nil){
       apiReturn in
       var data: [KeywordsMDB]?

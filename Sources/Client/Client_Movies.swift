@@ -11,7 +11,7 @@ extension Client{
   
   static func Movies(_ urlType: String!, api_key: String!, page: Int?, language: String?, region: String? = nil, append_to: [String]? = nil, completion: @escaping (ClientReturn) -> ()) -> (){
     
-    var parameters: [String : AnyObject] = ["api_key": api_key as AnyObject]
+    var parameters: [String : AnyObject] = [:]
     
     if let pg = page{
       parameters["page"] = pg as AnyObject?

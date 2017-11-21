@@ -27,9 +27,9 @@ public struct ChangesMDB{
     }
     return changes
   }
-  
-  public static func changes(_ api_key: String!, changeType: String, page: Double?, startDate: String? = nil, endDate:String? = nil, completionHandler: @escaping (_ clientReturn: ClientReturn, _ data: [ChangesMDB]?) -> ()) -> (){
-    Client.Changes(api_key, changeType: "movie", page: 1, startDate: nil, endDate: nil){
+	
+	public static func changes(changeType: String, page: Double?, startDate: String? = nil, endDate:String? = nil, completionHandler: @escaping (_ clientReturn: ClientReturn, _ data: [ChangesMDB]?) -> ()) -> (){
+    Client.Changes(changeType: "movie", page: 1, startDate: nil, endDate: nil){
       apiReturn in
       var changes: [ChangesMDB]?
       if(apiReturn.error == nil){

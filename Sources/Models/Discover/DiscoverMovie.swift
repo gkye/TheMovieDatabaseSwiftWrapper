@@ -52,12 +52,20 @@ public enum DiscoverSortByMovie: String {
 }
 
 open class DiscoverMovieMDB: DiscoverMDB{
-  
-  
-  
+    
   /// Discover movies by different types of data like average rating, number of votes, genres and certifications. You can get a valid list of certifications from the /certifications method. Please note, when using certification \ certification.lte you must also specify certification_country. These two parameters work together in order to filter the results.
+	
+	open class func discoverA(_ apikey: String, params: [DiscoverParam], completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> ()) -> (){
+		Client.discover(apikey, baseURL: "movie", params: params, completion: {
+			apiReturn in
+			var data: [MovieMDB]?
+			if(apiReturn.error == nil){ data = MovieMDB.initialize(json: apiReturn.json!["results"]) }
+			completion(apiReturn, data)
+		})
+	}
+	
   
-  ///
+   /// Discover movies by different types of data like average rating, number of votes, genres and certifications. You can get a valid list of certifications from the /certifications method. Please note, when using certification \ certification.lte you must also specify certification_country. These two parameters work together in order to filter the results.
   /// - parameter apikey:                   <#apikey description#>
   /// - parameter language:                 Specify a language to query translatable fields with.
   /// - parameter page:                     Specify the page of results to query.
@@ -111,7 +119,7 @@ open class DiscoverMovieMDB: DiscoverMDB{
   
   
   ///all `_with` values-> comma separated indicates an 'AND' query, while a pipe (|) separated value indicates an 'OR'. ALL parameters are optional
-  open class func discoverMoviesWith(_ api_key: String, with_genres: String? = nil, with_cast: String? = nil, with_crew: String? = nil, with_companies: String? = nil, with_keywords: String? = nil, with_people: String? = nil, with_networks: String? = nil, year: Int? = nil, sort_by: DiscoverSortByMovie? = nil, page: Int, language: String, completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> ()) -> (){
+  open class func discoverMoviesWith(with_genres: String? = nil, with_cast: String? = nil, with_crew: String? = nil, with_companies: String? = nil, with_keywords: String? = nil, with_people: String? = nil, with_networks: String? = nil, year: Int? = nil, sort_by: DiscoverSortByMovie? = nil, page: Int, language: String, completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> ()) -> (){
     Client.discover(api_key, baseURL:"movie", sort_by: sort_by?.rawValue, certification_country: nil, certification: nil, certification_lte: nil, include_adult: nil, include_video: nil, primary_release_year: nil, primary_release_date_gte: nil, primary_release_date_lte: nil, release_date_gte: nil, release_date_lte: nil, air_date_gte: nil, air_date_lte: nil, first_air_date_gte: nil, first_air_date_lte: nil, first_air_date_year: nil, language: language, page: page, timezone: nil, vote_average_gte: nil, vote_average_lte: nil, vote_count_gte: nil, vote_count_lte: nil, with_genres: with_genres, with_cast: with_cast, with_crew: with_crew, with_companies: with_companies , with_keywords: with_keywords, with_people: with_people, with_networks: with_networks , year: year, certification_gte: nil){
       apiReturn in
       var data: [MovieMDB]?

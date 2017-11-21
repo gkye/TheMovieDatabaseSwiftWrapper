@@ -12,7 +12,7 @@ extension Client{
   
   static func Person(_ urlType: String!, api_key: String!, language: String?, page: Int?, append_to: [String]? = nil, completion: @escaping (ClientReturn) -> ()) -> (){
     let url = "https://api.themoviedb.org/3/person/" + urlType
-    var parameters: [String : AnyObject] = ["api_key": api_key as AnyObject]
+    var parameters: [String : AnyObject] = [:]
     if(language != nil){ parameters["language"] = language as AnyObject? }
     if(page != nil){parameters["page"] = page as AnyObject?}
     if append_to != nil{

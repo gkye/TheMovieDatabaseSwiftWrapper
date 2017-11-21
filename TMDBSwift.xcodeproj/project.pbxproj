@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17A7ACE71FC4857900FAE133 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A7ACE61FC4857900FAE133 /* Config.swift */; };
 		185D4CAB1EC924DA0083D85A /* FindMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D4CAA1EC924DA0083D85A /* FindMDBTests.swift */; };
 		5774C0D71CF751B40045F0CE /* Client_Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774C0D61CF751B40045F0CE /* Client_Search.swift */; };
 		5774C0D91CF757120045F0CE /* SearchMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774C0D81CF757120045F0CE /* SearchMDB.swift */; };
@@ -83,6 +84,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17A7ACE61FC4857900FAE133 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		185D4CAA1EC924DA0083D85A /* FindMDBTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindMDBTests.swift; sourceTree = "<group>"; };
 		5774C0D61CF751B40045F0CE /* Client_Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_Search.swift; sourceTree = "<group>"; };
 		5774C0D81CF757120045F0CE /* SearchMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMDB.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 		5EF1B3091CB732C900B49F4E /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				17A7ACE61FC4857900FAE133 /* Config.swift */,
 				5EF1B30B1CB732C900B49F4E /* Client.swift */,
 				5EF1B30A1CB732C900B49F4E /* Clent_Discover.swift */,
 				5EF1B30C1CB732C900B49F4E /* Client_Certifications.swift */,
@@ -502,6 +505,7 @@
 				5EF1B3431CB732C900B49F4E /* Client.swift in Sources */,
 				5E66E1861D8F8B490044A901 /* SwiftyJSON.swift in Sources */,
 				5EF1B3441CB732C900B49F4E /* Client_Certifications.swift in Sources */,
+				17A7ACE71FC4857900FAE133 /* Config.swift in Sources */,
 				5EF1B36F1CB732C900B49F4E /* ReviewsMDB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

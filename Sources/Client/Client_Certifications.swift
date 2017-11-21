@@ -10,8 +10,8 @@ import Foundation
 
 extension Client{
     
-    static func Certification(_ api_key: String, listType: String, completion: @escaping (ClientReturn) -> ()) -> (){
-        let parameters: [String : AnyObject] = ["api_key": api_key as AnyObject]
+    static func Certification(listType: String, completion: @escaping (ClientReturn) -> ()) -> (){
+        let parameters: [String : AnyObject] = [:]
         let url = "https://api.themoviedb.org/3/certification/ " + listType + "/list";
         networkRequest(url: url, parameters: parameters, completion: {
             apiReturn in
