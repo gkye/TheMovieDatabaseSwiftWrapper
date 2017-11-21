@@ -16,10 +16,10 @@ open class MovieListMDB: ArrayObject{
   open var iso_639_1: String!
   open var name: String!
   open var poster_path: String?
-  open var id: String!
+  open var id: Int!
   
   required public init(results: JSON){
-    id = results["id"].string
+    id = results["id"].int
     description = results["description"].string
     favorite_count = results["favorite_count"].int
     item_count = results["item_count"].int

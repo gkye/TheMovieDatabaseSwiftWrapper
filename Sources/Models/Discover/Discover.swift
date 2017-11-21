@@ -58,7 +58,7 @@ open class DiscoverMDB: ArrayObject {
 	open var adult: Bool!
 	open var overview: String?
 	open var popularity: Double?
-	open var id: Int?
+	open var id: Int!
 	open var backdrop_path: String?
 	open var vote_average: Double?
 	open var original_language: String?
