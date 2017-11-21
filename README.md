@@ -8,7 +8,7 @@
 ---------
 Replace SwiftyJSON with swift4's Codeable
 
-##Usage
+## Usage
 
 1. Get an API key-> <a href="themoviedb.org">themoviedb.org</a>
 <blockquote>
@@ -49,10 +49,7 @@ pod "TMDBSwift"
 
 * Certifications 
 
-##Compatibility
-iOS 8.0 +
-
-##Dependencies
+## Dependencies
 * SwiftyJSON
 
 
