@@ -9,11 +9,19 @@
 import Foundation
 
 public enum MovieQueryType: String{
-	
 	case nowplaying = "now_playing"
 	case toprated = "top_rated"
 	case upcoming = "upcoming"
 	case popular = "popular"
+}
+
+enum AppendDataType: String {
+	case video, review
+}
+
+public enum AppendData{
+	case video([VideosMDB])
+	case review(ReviewsMDB)
 }
 
 extension MovieMDB{
@@ -258,4 +266,30 @@ extension MovieMDB{
       completion(apiReturn, detailed, apiReturn.json)
     }
   }
+	
+	public class func movie(movieID: Int!, append_to: [AppendDataType], language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: MovieDetailedMDB?, _ json: JSON?) -> ()) -> (){
+		Client.Movies(String(movieID),  page: nil, language: language, append_to: append_to.map{$0.rawValue}){
+			apiReturn in
+			var detailed: MovieDetailedMDB?
+			var appenedData: [AppendData] = []
+			if(apiReturn.error == nil){
+				detailed = MovieDetailedMDB.init(results: apiReturn.json!)
+			}
+			
+//			if let json_ = apiReturn.json {
+//				for type in append_to {
+//					switch type {
+//					case .video:
+//						let video = VideosMDB.initialize(json: <#T##JSON#>)
+//					case .review :
+//						appenedData.append(AppendData.review(ReviewsMDB.))
+//					default: break
+//					}
+//				}
+//			}
+		
+			
+			completion(apiReturn, detailed, apiReturn.json)
+		}
+	}
 }

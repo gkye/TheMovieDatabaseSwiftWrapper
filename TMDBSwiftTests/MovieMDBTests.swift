@@ -250,6 +250,8 @@ class MovieMDBTests: XCTestCase {
 	}
 	
 	//  //Append to response (Retrieve multiple movie object with one request). Object must be manually initialized using the JSON returned.
+	
+	//REMINDME: TEST WITH `inout` array parameters
 	func testAppendTo(){
 		var cReturn: ClientReturn?
 		var movieData: MovieDetailedMDB?
@@ -262,13 +264,17 @@ class MovieMDBTests: XCTestCase {
 			cReturn = api
 			movieData = movie
 			if let json = json {
-				videos = VideosMDB.initialize(json: json["videos"]["results"])
-				reviews = MovieReviewsMDB.initialize(json: json["reviews"]["results"])
+				
+				videos = VideosMDB.decode(json: json, keys: ["videos"])
+				dump(videos)
+				
+//				videos = VideosMDB.initialize(json: json["videos"]["results"])
+				reviews = MovieReviewsMDB.decode(json: json, keys: ["reviews"])
 				expectation.fulfill()
 			}
 		})
 		
-		waitForExpectations(timeout: 5, handler: nil)
+		waitForExpectations(timeout: 50, handler: nil)
 		
 		XCTAssertNotNil(movieData)
 		XCTAssertNotNil(cReturn?.json)

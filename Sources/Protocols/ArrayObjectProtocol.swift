@@ -8,6 +8,9 @@
 
 import Foundation
 
+public typealias DecodeableObjectType<T> = (entryKeys: [String], json: JSON, decodedArr: [T])
+
+
 //MARK: Array protocol returns an array of types by initlizaing using the json passed
 public protocol ArrayObject {
   init(results: JSON)
@@ -23,4 +26,42 @@ public extension ArrayObject {
     }
     return array
   }
+	
+	// Used only for append to methods. It deocded the main object and iterated through the array of secondary objects to return and array of those types. Find way to order?
+	///
+	/// - Parameters:
+	///   - json: JSON to be decoded
+	///   - key: entry key of secondary value
+	/// - Returns: array of type
+	public static func decode<T:ArrayObject>(json: JSON, key: [String]) -> [T] {
+		var array = [T]()
+		var decodedJSON: JSON!
+		for key in keys {
+			if let js = json.json(forKey: key){
+				decodedJSON = js
+			}
+		}
+		//Check if deocedJSON not empty. If not deocoded and return an array of type
+		array = T.initialize(json: decodedJSON)
+		return array
+	}
+	
+//	public static func decode<T:ArrayObject>(type: T, json: JSON, arr: inout [T]) {
+//		var decodedJSON: JSON!
+//		arr.first.
+//		for key in type.jsonEntryKeys {
+//			if let js = json.json(forKey: key){
+//				decodedJSON = js
+//			}
+//		}
+//		guard decodedJSON != nil else { return }
+//		arr = T.initialize(json: json)
+//	}
+}
+
+fileprivate extension JSON {
+	func json(forKey key: String) -> JSON? {
+		guard let obj = self[key].dictionary else { return nil }
+		return obj.first?.value
+	}
 }
