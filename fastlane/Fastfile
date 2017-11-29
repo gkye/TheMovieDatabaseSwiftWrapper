@@ -1,0 +1,34 @@
+COMMIT_MESSAGE = "Bump podspec to"
+
+lane :pods do
+  cocoapods(podfile: "TMDBSwift.podspec")
+end
+
+lane :tests do
+  scan(workspace: "TMDBSwift.xcodeproj", scheme: "TMDBSwift", clean: true)
+end
+
+lane :travis do
+  pods
+  tests
+  danger
+end
+
+lane :push do
+  ensure_git_branch
+  release_version = prompt(text: "📮  Please provide a version number for the new Release: ")
+  version = version_bump_podspec(path: "TMDBSwift.podspec", version_number: release_version)
+  git_commit(path: ["./TMDBSwift.podspec"], message: "#{COMMIT_MESSAGE} #{version}")
+  changelog = changelog_from_git_commits
+  github_release = set_github_release(
+    repository_name: "gkye/TheMovieDatabaseSwiftWrapper",
+    api_token: ENV['GITHUB_TOKEN'],
+    name: version,
+    tag_name: version,
+    description: changelog,
+    commitish: "master"
+  )
+  sh("git fetch --tags")
+  push_to_git_remote(remote_branch: 'master', force: false, tags: true)
+  pod_push(allow_warnings: true, verbose: true)
+end

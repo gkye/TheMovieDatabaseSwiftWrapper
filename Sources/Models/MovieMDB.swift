@@ -15,15 +15,6 @@ public enum MovieQueryType: String{
 	case popular = "popular"
 }
 
-enum AppendDataType: String {
-	case video, review
-}
-
-public enum AppendData{
-	case video([VideosMDB])
-	case review(ReviewsMDB)
-}
-
 extension MovieMDB{
   
   ///Get the basic movie information for a specific movie id.
@@ -129,6 +120,20 @@ extension MovieMDB{
   ///Get the similar movies for a specific movie id.
   public class func similar(movieID: Int!, page: Int?, language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> ()) -> (){
     Client.Movies(String(movieID) + "/similar",  page: page, language: language){
+      apiReturn in
+      var movie: [MovieMDB]?
+      if(apiReturn.error == nil){
+        if(apiReturn.json!["results"].count > 0){
+          movie = MovieMDB.initialize(json: apiReturn.json!["results"])
+        }
+      }
+      completion(apiReturn, movie)
+    }
+  }
+  
+  ///Get a list of recommened movies for a movie
+  public class func recommendations(movieID: Int!, page: Int?, language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> ()) -> (){
+    Client.Movies(String(movieID) + "/recommendations",  page: page, language: language){
       apiReturn in
       var movie: [MovieMDB]?
       if(apiReturn.error == nil){
@@ -267,29 +272,18 @@ extension MovieMDB{
     }
   }
 	
-	public class func movie(movieID: Int!, append_to: [AppendDataType], language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: MovieDetailedMDB?, _ json: JSON?) -> ()) -> (){
+  public class func movie(movieID: Int!, append_to: [AppendedDataType], language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: MovieDetailedMDB?, _ appendedData: [AppendedData], _ json: JSON?) -> ()) -> (){
 		Client.Movies(String(movieID),  page: nil, language: language, append_to: append_to.map{$0.rawValue}){
 			apiReturn in
 			var detailed: MovieDetailedMDB?
-			var appenedData: [AppendData] = []
+			var appenedData: [AppendedData] = []
 			if(apiReturn.error == nil){
 				detailed = MovieDetailedMDB.init(results: apiReturn.json!)
-			}
-			
-//			if let json_ = apiReturn.json {
-//				for type in append_to {
-//					switch type {
-//					case .video:
-//						let video = VideosMDB.initialize(json: <#T##JSON#>)
-//					case .review :
-//						appenedData.append(AppendData.review(ReviewsMDB.))
-//					default: break
-//					}
-//				}
-//			}
-		
-			
-			completion(apiReturn, detailed, apiReturn.json)
+			}      
+      if let json = apiReturn.json {
+        appenedData = AppendedData.decodeAppenedTypes(json: json, types: append_to)
+      }
+      completion(apiReturn, detailed, appenedData, apiReturn.json)
 		}
 	}
 }

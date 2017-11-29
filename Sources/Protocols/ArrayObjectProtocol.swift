@@ -33,18 +33,18 @@ public extension ArrayObject {
 	///   - json: JSON to be decoded
 	///   - key: entry key of secondary value
 	/// - Returns: array of type
-	public static func decode<T:ArrayObject>(json: JSON, key: [String]) -> [T] {
-		var array = [T]()
-		var decodedJSON: JSON!
-		for key in keys {
-			if let js = json.json(forKey: key){
-				decodedJSON = js
-			}
-		}
-		//Check if deocedJSON not empty. If not deocoded and return an array of type
-		array = T.initialize(json: decodedJSON)
-		return array
-	}
+//  public static func decode<T:ArrayObject>(json: JSON, key: [String]) -> [T] {
+//    var array = [T]()
+//    var decodedJSON: JSON!
+//    for key in keys {
+//      if let js = json.json(forKey: key){
+//        decodedJSON = js
+//      }
+//    }
+//    //Check if deocedJSON not empty. If not deocoded and return an array of type
+//    array = T.initialize(json: decodedJSON)
+//    return array
+//  }
 	
 //	public static func decode<T:ArrayObject>(type: T, json: JSON, arr: inout [T]) {
 //		var decodedJSON: JSON!

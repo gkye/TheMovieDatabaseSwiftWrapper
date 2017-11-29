@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		17A7ACE71FC4857900FAE133 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A7ACE61FC4857900FAE133 /* Config.swift */; };
+		184213C31FCF6CF6000C9736 /* AppendTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184213C21FCF6CF6000C9736 /* AppendTo.swift */; };
 		185D4CAB1EC924DA0083D85A /* FindMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D4CAA1EC924DA0083D85A /* FindMDBTests.swift */; };
 		5774C0D71CF751B40045F0CE /* Client_Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774C0D61CF751B40045F0CE /* Client_Search.swift */; };
 		5774C0D91CF757120045F0CE /* SearchMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774C0D81CF757120045F0CE /* SearchMDB.swift */; };
@@ -85,6 +86,7 @@
 
 /* Begin PBXFileReference section */
 		17A7ACE61FC4857900FAE133 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		184213C21FCF6CF6000C9736 /* AppendTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppendTo.swift; sourceTree = "<group>"; };
 		185D4CAA1EC924DA0083D85A /* FindMDBTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindMDBTests.swift; sourceTree = "<group>"; };
 		5774C0D61CF751B40045F0CE /* Client_Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_Search.swift; sourceTree = "<group>"; };
 		5774C0D81CF757120045F0CE /* SearchMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMDB.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 		5EF1B31C1CB732C900B49F4E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				184213C21FCF6CF6000C9736 /* AppendTo.swift */,
 				5EF1B31D1CB732C900B49F4E /* Alternative_TitlesMDB.swift */,
 				5EF1B31E1CB732C900B49F4E /* CastCrewMDB.swift */,
 				5E56F3241D0781A500CAED06 /* CertificationMDB.swift */,
@@ -488,6 +491,7 @@
 				5EF1B3481CB732C900B49F4E /* Client_Configuration.swift in Sources */,
 				5EF1B3741CB732C900B49F4E /* TVMDB.swift in Sources */,
 				5EF1B3561CB732C900B49F4E /* ChangesMDB.swift in Sources */,
+				184213C31FCF6CF6000C9736 /* AppendTo.swift in Sources */,
 				5EF1B3541CB732C900B49F4E /* Alternative_TitlesMDB.swift in Sources */,
 				5EF1B34B1CB732C900B49F4E /* Client_Genres.swift in Sources */,
 				5EF1B3751CB732C900B49F4E /* TVMDBModel.swift in Sources */,

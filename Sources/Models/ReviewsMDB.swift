@@ -9,7 +9,7 @@
 import Foundation
 
 
-public struct ReviewsMDB{
+public struct ReviewsMDB: ArrayObject {
   public var id: String!
   public var author: String!
   public var content: String!
@@ -17,6 +17,7 @@ public struct ReviewsMDB{
   public var media_id: Double!
   public var media_title: String!
   public var url: String!
+  
   public init(results: JSON){
     id = results["id"].string
     author = results["author"].string
