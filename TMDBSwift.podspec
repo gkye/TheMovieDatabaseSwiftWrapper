@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "TMDBSwift"
-  s.version          = "0.4.2"
+  s.version          = "0.4.2.1"
   s.summary          = "Swift wrapper for themoviedb.org api v3"
 
 # This description is used to generate tags and improve search results.
