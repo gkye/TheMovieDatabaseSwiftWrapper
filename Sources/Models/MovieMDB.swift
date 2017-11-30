@@ -272,16 +272,22 @@ extension MovieMDB{
     }
   }
 	
-  public class func movie(movieID: Int!, append_to: [AppendedDataType], language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: MovieDetailedMDB?, _ appendedData: [AppendedData], _ json: JSON?) -> ()) -> (){
+  
+  /// The movie endpoint support a query parameter called append_to_response. This makes it possible to make sub requests within the same namespace in a single HTTP request. Each request will get appended to the response as a new JSON object. More info available here https://developers.themoviedb.org/3/getting-started/append-to-response
+  /// - Parameters:
+  ///   - movieID: id of movie
+  ///   - append_to: Append requests within the same namespace to the response.
+  ///   - language: Pass a ISO 639-1 value to display translated data for the fields that support it.
+  public class func movie(movieID: Int!, append_to: [AppendToResponse], language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: MovieDetailedMDB?, _ AppendToResponseData: [AppendToResponseData], _ json: JSON?) -> ()) -> (){
 		Client.Movies(String(movieID),  page: nil, language: language, append_to: append_to.map{$0.rawValue}){
 			apiReturn in
 			var detailed: MovieDetailedMDB?
-			var appenedData: [AppendedData] = []
+			var appenedData: [AppendToResponseData] = []
 			if(apiReturn.error == nil){
 				detailed = MovieDetailedMDB.init(results: apiReturn.json!)
 			}      
       if let json = apiReturn.json {
-        appenedData = AppendedData.decodeAppenedTypes(json: json, types: append_to)
+        appenedData = AppendToResponseData.decodeAppenedTypes(json: json, types: append_to)
       }
       completion(apiReturn, detailed, appenedData, apiReturn.json)
 		}

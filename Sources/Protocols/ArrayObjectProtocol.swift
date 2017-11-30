@@ -59,9 +59,4 @@ public extension ArrayObject {
 //	}
 }
 
-fileprivate extension JSON {
-	func json(forKey key: String) -> JSON? {
-		guard let obj = self[key].dictionary else { return nil }
-		return obj.first?.value
-	}
-}
+

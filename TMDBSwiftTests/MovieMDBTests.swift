@@ -68,37 +68,50 @@ class MovieMDBTests: XCTestCase {
 		XCTAssertEqual(data?.titles[0].title, "Au Nom du Père")
 		XCTAssertEqual(data?.titles[0].iso_3166_1, "FR")
 	}
+  
+  func testRecommendations(){
+    var recommendations: [MovieMDB]!
+    let expectation = self.expectation(description: "Wait for data to load.")
+    MovieMDB.recommendations(movieID: 49026, page: 1, language: "en", completion: {
+      _, data in
+      recommendations = data
+      expectation.fulfill()
+    })
+    waitForExpectations(timeout: 5, handler: nil)
+    XCTAssert(recommendations.count > 0)
+    
+  }
 	
 	//Get the cast and crew information for a specific movie id.
 	
 	
 	func testCredits(){
-		var data: MovieCreditsMDB?
+		var credits: MovieCreditsMDB?
 		let expectation = self.expectation(description: "Wait for data to load.")
 		
 		MovieMDB.credits(movieID: 7984){
 			_, creds in
-			data = creds
+			credits = creds
 			expectation.fulfill()
 		}
 		waitForExpectations(timeout: 5, handler: nil)
-		XCTAssertNotNil(data?.cast)
-		XCTAssertNotNil(data?.crew)
+		XCTAssertNotNil(credits?.cast)
+		XCTAssertNotNil(credits?.crew)
 		
 		//cast
-		XCTAssertEqual(data?.cast[0].cast_id, 4)
-		XCTAssertEqual(data?.cast[0].name, "Daniel Day-Lewis")
-		XCTAssertEqual(data?.cast[0].credit_id, "52fe448bc3a36847f809c0b5")
-		XCTAssertEqual(data?.cast[0].id, 11856)
-		XCTAssertEqual(data?.cast[0].order, 0)
+		XCTAssertEqual(credits?.cast[0].cast_id, 4)
+		XCTAssertEqual(credits?.cast[0].name, "Daniel Day-Lewis")
+		XCTAssertEqual(credits?.cast[0].credit_id, "52fe448bc3a36847f809c0b5")
+		XCTAssertEqual(credits?.cast[0].id, 11856)
+		XCTAssertEqual(credits?.cast[0].order, 0)
 		//    XCTAssertEqual(data?.cast[0].profile_path, "/hknfCSSU6AMeKV9yn9NTtTzIEGc.jpg")
 		
 		//crew
-		XCTAssertEqual(data?.crew[0].credit_id, "52fe448bc3a36847f809c0a5")
-		XCTAssertEqual(data?.crew[0].department, "Directing")
-		XCTAssertEqual(data?.crew[0].id, 53334)
-		XCTAssertEqual(data?.crew[0].job, "Director")
-		XCTAssertEqual(data?.crew[0].name, "Jim Sheridan")
+		XCTAssertEqual(credits?.crew[0].credit_id, "52fe448bc3a36847f809c0a5")
+		XCTAssertEqual(credits?.crew[0].department, "Directing")
+		XCTAssertEqual(credits?.crew[0].id, 53334)
+		XCTAssertEqual(credits?.crew[0].job, "Director")
+		XCTAssertEqual(credits?.crew[0].name, "Jim Sheridan")
 		//    XCTAssertEqual(data?.crew[0].profile_path, "/mfukw1JcUsXmUzt6IoaayMaescv.jpg")
 		
 	}
@@ -132,19 +145,17 @@ class MovieMDBTests: XCTestCase {
 	//Get the plot keywords for a specific movie id.
 	
 	func testKeywords(){
-		var data: [KeywordsMDB]?
+		var keywords: [KeywordsMDB]?
 		let expectation = self.expectation(description: "Wait for data to load.")
-		
 		MovieMDB.keywords(movieID: 871){
 			_, kwords in
-			data = kwords
+			keywords = kwords
 			expectation.fulfill()
-		}
-		
+		}		
 		waitForExpectations(timeout: 5, handler: nil)
-		XCTAssertNotNil(data)
-		XCTAssertEqual(data?[0].name, "human evolution")
-		XCTAssertEqual(data?[0].id, 311)
+		XCTAssertNotNil(keywords)
+		XCTAssertEqual(keywords?[0].name, "human evolution")
+		XCTAssertEqual(keywords?[0].id, 311)
 	}
 	
 	//Get the release dates, certifications and related information by country for a specific movie id.
@@ -232,7 +243,6 @@ class MovieMDBTests: XCTestCase {
 	func testReviews(){
 		var data: [MovieReviewsMDB]?
 		let expectation = self.expectation(description: "Wait for data to load.")
-		
 		MovieMDB.reviews(movieID: 49026, page: 1){
 			_, reviews in
 			data = reviews
@@ -241,7 +251,6 @@ class MovieMDBTests: XCTestCase {
 		waitForExpectations(timeout: 5, handler: nil)
 		XCTAssertNotNil(data)
 		let review = data?[0]
-		
 		XCTAssertEqual(review?.id, "5010553819c2952d1b000451")
 		XCTAssertEqual(review?.author, "Travis Bell")
 		XCTAssertNotNil(review?.content)
@@ -251,44 +260,76 @@ class MovieMDBTests: XCTestCase {
 	
 	//  //Append to response (Retrieve multiple movie object with one request). Object must be manually initialized using the JSON returned.
 	
-	//REMINDME: TEST WITH `inout` array parameters
 	func testAppendTo(){
-		var cReturn: ClientReturn?
-		var movieData: MovieDetailedMDB?
-		var videos: [VideosMDB]?
-		var reviews: [MovieReviewsMDB]?
+		var apiData: ClientReturn!
+		var movieData: MovieDetailedMDB!
+		var videos: [VideosMDB]!
+		var reviews: [MovieReviewsMDB]!
+    var altTitles: Alternative_TitlesMDB!
+    var images: ImagesMDB!
+    var keywords: [KeywordsMDB]!
+    var credits: MovieCreditsMDB!
+    var releaseDates: [MovieReleaseDatesMDB]!
+    var recommendations: [MovieMDB]!
+    var translations: TranslationsMDB!
+    var similarMovies: [MovieMDB]!
+    var lists: [ListsMDB]!
+    
 		let expectation = self.expectation(description: "Wait for data to load.")
-		
-		MovieMDB.movieAppendTo(movieID: 49026, append_to: ["videos", "reviews"], completion: {
-			api, movie, json in
-			cReturn = api
-			movieData = movie
-			if let json = json {
-				
-				videos = VideosMDB.decode(json: json, keys: ["videos"])
-				dump(videos)
-				
-//				videos = VideosMDB.initialize(json: json["videos"]["results"])
-				reviews = MovieReviewsMDB.decode(json: json, keys: ["reviews"])
-				expectation.fulfill()
-			}
-		})
-		
+
+    MovieMDB.movie(movieID: 49026, append_to: [.videos, .reviews, .alternative_titles, .images, .keywords, .movieCredits, .release_dates, .translations, .similarMovies, .recommendationsMovies, .lists], language: "en", completion: {
+      (api, movie, AppendToResponseData, json) in
+      movieData = movie
+      apiData = api
+      for item in AppendToResponseData{
+        switch item {
+        case .videos(let vids): videos = vids
+        case .movieReviews(let reviews_): reviews = reviews_
+        case .alternative_titles(let titles): altTitles = titles
+        case .images(let imgs): images = imgs
+        case .keywords(let keywrds): keywords = keywrds
+        case .movieCredits(let creds): credits = creds
+        case .release_dates(let dates): releaseDates = dates
+        case .translations(let trans): translations = trans
+        case .similarMovies(let movies): similarMovies = movies
+        case .recommendationsMovies(let movies): recommendations = movies
+        case .lists(let lists_): lists = lists_
+        }
+      }
+      expectation.fulfill()
+    })
+    
 		waitForExpectations(timeout: 50, handler: nil)
-		
 		XCTAssertNotNil(movieData)
-		XCTAssertNotNil(cReturn?.json)
+		XCTAssertNotNil(apiData.json)
+    
 		XCTAssertNotNil(videos)
-		XCTAssertNotNil(reviews)
-		
-		XCTAssertEqual(videos?.count, 4)
-		
-		let review = reviews?[0]
-		
-		XCTAssertEqual(review?.id, "5010553819c2952d1b000451")
-		XCTAssertEqual(review?.author, "Travis Bell")
-		XCTAssertNotNil(review?.content)
-		XCTAssertEqual(review?.url, "https://www.themoviedb.org/review/5010553819c2952d1b000451")
+    XCTAssert(videos.count > 0)
+    
+    XCTAssertNotNil(reviews)
+    XCTAssert(reviews.count > 0)
+    
+    XCTAssertNotNil(images)
+    XCTAssertNotNil(images.backdrops)
+    XCTAssertNotNil(images.posters)
+    
+    XCTAssert(altTitles.titles.count > 0)
+    
+    XCTAssert(keywords.count > 0)
+    
+    XCTAssertNotNil(credits?.cast.count ?? 0 > 0)
+    XCTAssertNotNil(credits?.crew.count ?? 0 > 0)
+    
+    XCTAssertNotNil(releaseDates)
+    XCTAssert(releaseDates.count > 0)
+    
+    XCTAssertNotNil(translations)
+    
+    XCTAssertTrue(similarMovies.count > 0)
+    
+    XCTAssertTrue(lists.count > 0)
+    
+    XCTAssertTrue(recommendations.count > 0)
 	}
 	
 }
