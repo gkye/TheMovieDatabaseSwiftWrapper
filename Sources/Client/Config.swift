@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TMDBConfig {
+public struct TMDBConfig {
 	/// API key to be used for queries.
-	static var apikey: String!
+	public static var apikey: String!
 }
