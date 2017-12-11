@@ -48,7 +48,7 @@ open class MovieDetailedMDB: MovieMDB {
   
   required public init(results: JSON) {
     super.init(results: results)
-    belongs_to_collection = belongstocollectionMovieMDB(results: results["belong_to_collection"])
+    belongs_to_collection = belongstocollectionMovieMDB(results: results["belongs_to_collection"])
     budget = results["budget"].int
     homepage = results["homepage"].string
     imdb_id = results["imdb_id"].int
