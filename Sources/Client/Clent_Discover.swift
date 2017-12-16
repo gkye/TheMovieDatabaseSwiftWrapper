@@ -45,35 +45,35 @@ extension Client{
 				}
 			case .primary_release_date_gte(let primary_release_date_gte):
 				if (primary_release_date_gte != nil){
-					parameters["primary_release_date_gte"] = primary_release_date_gte as AnyObject?;
+					parameters["primary_release_date.gte"] = primary_release_date_gte as AnyObject?;
 				}
 			case .primary_release_date_lte(let primary_release_date_lte):
 				if (primary_release_date_lte != nil){
-					parameters["primary_release_date_lte"] = primary_release_date_lte as AnyObject?;
+					parameters["primary_release_date.lte"] = primary_release_date_lte as AnyObject?;
 				}
 			case .release_date_gte(let release_date_gte):
 				if (release_date_gte != nil){
-					parameters["release_date_gte"] = release_date_gte as AnyObject?;
+					parameters["release_date.gte"] = release_date_gte as AnyObject?;
 				}
 			case .release_date_lte(let release_date_lte):
 				if (release_date_lte != nil){
-					parameters["release_date_lte"] = release_date_lte as AnyObject?;
+					parameters["release_date.lte"] = release_date_lte as AnyObject?;
 				}
 			case . air_date_gte(let  air_date_gte):
 				if ( air_date_gte != nil){
-					parameters["air_date_gte"] =  air_date_gte as AnyObject?;
+					parameters["air_date.gte"] =  air_date_gte as AnyObject?;
 				}
 			case .air_date_lte(let air_date_lte):
 				if (air_date_lte != nil){
-					parameters["air_date_lte"] = air_date_lte as AnyObject?;
+					parameters["air_date.lte"] = air_date_lte as AnyObject?;
 				}
 			case .first_air_date_gte(let first_air_date_gte):
 				if (first_air_date_gte != nil){
-					parameters["first_air_date_gte"] = first_air_date_gte as AnyObject?;
+					parameters["first_air_date.gte"] = first_air_date_gte as AnyObject?;
 				}
 			case .first_air_date_lte(let first_air_date_lte):
 				if (first_air_date_lte != nil){
-					parameters["first_air_date_lte"] = first_air_date_lte as AnyObject?;
+					parameters["first_air_date.lte"] = first_air_date_lte as AnyObject?;
 				}
 			case .first_air_date_year(let first_air_date_year):
 				if (first_air_date_year != nil){
@@ -93,19 +93,19 @@ extension Client{
 				}
 			case .vote_average_gte(let vote_average_gte):
 				if (vote_average_gte != nil){
-					parameters["vote_average_gte"] = vote_average_gte as AnyObject?;
+					parameters["vote_average.gte"] = vote_average_gte as AnyObject?;
 				}
 			case .vote_average_lte(let vote_average_lte):
 				if (vote_average_lte != nil){
-					parameters["vote_average_lte"] = vote_average_lte as AnyObject?;
+					parameters["vote_average.lte"] = vote_average_lte as AnyObject?;
 				}
 			case .vote_count_gte(let vote_count_gte):
 				if (vote_count_gte != nil){
-					parameters["vote_count_gte"] = vote_count_gte as AnyObject?;
+					parameters["vote_count.gte"] = vote_count_gte as AnyObject?;
 				}
 			case .vote_count_lte(let vote_count_lte):
 				if (vote_count_lte != nil){
-					parameters["vote_count_lte"] = vote_count_lte as AnyObject?;
+					parameters["vote_count.lte"] = vote_count_lte as AnyObject?;
 				}
 			case .with_genres(let with_genres):
 				if (with_genres != nil){
@@ -194,11 +194,11 @@ extension Client{
 		}
 		
 		if(release_date_gte != nil){
-			parameters["release_date_gte"] = release_date_gte as AnyObject?
+			parameters["release_date.gte"] = release_date_gte as AnyObject?
 		}
 		
 		if(release_date_lte != nil){
-			parameters["release_date_lte"] = release_date_lte as AnyObject?
+			parameters["release_date.lte"] = release_date_lte as AnyObject?
 		}
 		
 		//Date expected format is YYYY-MM-DD.
