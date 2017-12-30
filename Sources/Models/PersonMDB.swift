@@ -6,8 +6,6 @@
 //  Copyright © 2016 George Kye. All rights reserved.
 //
 
-
-
 //MARK: Person
 
 public struct PersonMDB: ArrayObject{
@@ -118,12 +116,12 @@ public struct PersonMDB: ArrayObject{
     }
   }
   ///Get the images that have been tagged with a specific person id. Will return all of the image results with a media object mapped for each image.
-  public static func tagged_images(personID: Int!, page: Int?, completion: @escaping (_ client: ClientReturn, _ data: TaggedImages?) -> ()) -> (){
+  public static func tagged_images(personID: Int!, page: Int?, completion: @escaping (_ client: ClientReturn, _ data: TaggedImagesMDB?) -> ()) -> (){
     Client.Person( String(personID) + "/tagged_images",  language: nil, page: page){
       apiReturn in
-      var images: TaggedImages?
-      if(apiReturn.error == nil){
-        images = TaggedImages.init(json: apiReturn.json!)
+      var images: TaggedImagesMDB?
+      if let json = apiReturn.json {
+        images = TaggedImagesMDB(json: json)
       }
       completion(apiReturn, images)
     }
@@ -296,73 +294,55 @@ public struct PersonCreditsCombined{
   public var movieCredits: (crew: [PersonMovieCrew]?, cast: [PersonMovieCast]?)
   public var id: Int?
   
-	public init(json: JSON){
-		var tvCrew = [PersonTVCrew]()
-		var tvCast = [PersonTVCast]()
-		var movieCrew = [PersonMovieCrew]()
-		var movieCast = [PersonMovieCast]()
-		
-		//Set TV and Movie crew data
-		tvCrew = json["crew"].filter{$0.1["media_type"] == "tv"}.map{PersonTVCrew.init(results: $0.1)}
-		
-		movieCrew = json["crew"].filter{$0.1["media_type"] == "movie"}.map{PersonMovieCrew.init(results: $0.1)}
-		
-		//Set TV and Movie cast Data
-		tvCast = json["cast"].filter{$0.1["media_type"] == "tv"}.map{PersonTVCast.init(results: $0.1)}
-		movieCast = json["cast"].filter{$0.1["media_type"] == "movie"}.map{PersonMovieCast.init(results: $0.1)}
-		
-		id = json["id"].int
-		tvCredits = (tvCrew, tvCast)
-		movieCredits = (movieCrew, movieCast)
-	}
-	
-}
-
-open class TaggedImagesCommon: Images_MDB{
-  
-  open var id: String!
-  open var image_type: String!
-  open var media_type: String!
-  required public init(results: JSON) {
-    super.init(results: results)
-    id = results["id"].string
-    image_type = results["image_type"].string
-    media_type = results["media_type"].string
+  public init(json: JSON){
+    var tvCrew = [PersonTVCrew]()
+    var tvCast = [PersonTVCast]()
+    var movieCrew = [PersonMovieCrew]()
+    var movieCast = [PersonMovieCast]()
+    
+    //Set TV and Movie crew data
+    tvCrew = json["crew"].filter{$0.1["media_type"] == "tv"}.map{PersonTVCrew.init(results: $0.1)}
+    
+    movieCrew = json["crew"].filter{$0.1["media_type"] == "movie"}.map{PersonMovieCrew.init(results: $0.1)}
+    
+    //Set TV and Movie cast Data
+    tvCast = json["cast"].filter{$0.1["media_type"] == "tv"}.map{PersonTVCast.init(results: $0.1)}
+    movieCast = json["cast"].filter{$0.1["media_type"] == "movie"}.map{PersonMovieCast.init(results: $0.1)}
+    
+    id = json["id"].int
+    tvCredits = (tvCrew, tvCast)
+    movieCredits = (movieCrew, movieCast)
   }
+  
 }
 
-open class TaggedImagesMovie: TaggedImagesCommon{
-  open var media: DiscoverMovieMDB!
+public enum TaggedImageMediaMDB {
+  case movie(DiscoverMovieMDB)
+  case tv(DiscoverTVMDB)
+}
+
+public class TaggedImageMDB: Images_MDB {
+  public var media: TaggedImageMediaMDB!
   public required init(results: JSON) {
     super.init(results: results)
-    media = DiscoverMovieMDB.init(results: results["media"])
+    if results["media_type"] == "movie"{
+      media = .movie(DiscoverMovieMDB(results: results["media"]))
+    }else if results["media_type"] == "tv"{
+      media = TaggedImageMediaMDB.tv(DiscoverTVMDB(results: results["media"]))
+    }
   }
 }
 
-open class TaggedImagesTV: TaggedImagesCommon{
-  open var media: DiscoverTVMDB!
-  public required init(results: JSON) {
-    super.init(results: results)
-    media = DiscoverTVMDB.init(results: results["media"])
-  }
-}
-
-public struct TaggedImages{
+public struct TaggedImagesMDB{
   
-  public var tvImages =  [TaggedImagesTV]()
-  public var movieImages =  [TaggedImagesMovie]()
+  public var images: [TaggedImageMDB] = []
   public var id: Int!
   public var pageResults: PageResultsMDB!
   
   public init(json: JSON){
     id = json["id"].int
-    pageResults = PageResultsMDB.init(results: json)
-    json["results"].forEach(){
-      if $0.1["media_type"] == "movie"{
-        movieImages.append(TaggedImagesMovie.init(results: $0.1))
-      }else{
-        tvImages.append(TaggedImagesTV.init(results: $0.1))
-      }
-    }
+    pageResults = PageResultsMDB(results: json)
+    images = TaggedImageMDB.initialize(json: json["results"])
   }
 }
+

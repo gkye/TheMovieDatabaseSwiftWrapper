@@ -18,7 +18,6 @@ public struct belongstocollectionMovieMDB{
     name = results["name"].string
     poster_path = results["poster_path"].string
     backdrop_path = results["backdrop_path"].string
-    
   }
   
 }
@@ -72,3 +71,4 @@ open class MovieDetailedMDB: MovieMDB {
   
   
 }
+
