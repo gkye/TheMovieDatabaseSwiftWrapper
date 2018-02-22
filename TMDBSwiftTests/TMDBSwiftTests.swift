@@ -118,5 +118,4 @@ class TMDBSwiftTests: XCTestCase {
 //    XCTAssertEqual(data?.parent_company?.id, 5752)
     XCTAssertNotNil(data?.parent_company?.logo_path)
   }
-  
 }

@@ -21,7 +21,7 @@ extension Client{
       parameters["language"] = language as AnyObject?
     }
     
-    //--Alternative titles (lazy change later)
+    //TODO: --Alternative titles (lazy change later)
     if(urlType.contains("alternative_titles")){
       if(language != nil){
         parameters["country"] = language as AnyObject?
