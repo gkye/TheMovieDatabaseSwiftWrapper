@@ -32,7 +32,7 @@ public struct ChangesMDB{
     Client.Changes(changeType: "movie", page: 1, startDate: nil, endDate: nil){
       apiReturn in
       var changes: [ChangesMDB]?
-      if let results = apiReturn.json {
+      if let results = apiReturn.json?["results"] {
         changes = ChangesMDB.initReturn(results)
       }
       completionHandler(apiReturn, changes)
