@@ -19,8 +19,8 @@ public struct belongstocollectionMovieMDB{
     poster_path = results["poster_path"].string
     backdrop_path = results["backdrop_path"].string
   }
-  
 }
+
 public struct SpokenLanguages{
   public var iso_639_1: String!
   public var name: String!
@@ -31,7 +31,6 @@ public struct SpokenLanguages{
 }
 
 open class MovieDetailedMDB: MovieMDB {
-  
   open var belongs_to_collection: belongstocollectionMovieMDB?
   open var budget: Int?
   open var homepage: String?
@@ -43,7 +42,6 @@ open class MovieDetailedMDB: MovieMDB {
   open var spoken_languages: [SpokenLanguages]?
   open var status: String!
   open var tagline: String!
-  
   
   required public init(results: JSON) {
     super.init(results: results)
@@ -68,7 +66,5 @@ open class MovieDetailedMDB: MovieMDB {
     status = results["status"].string
     tagline = results["tagline"].string
   }
-  
-  
 }
 

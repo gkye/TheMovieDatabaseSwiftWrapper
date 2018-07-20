@@ -164,10 +164,10 @@ class MovieMDBTests: XCTestCase {
 		XCTAssertNotNil(data?[0].iso_3166_1)
 		XCTAssertNotNil(dates?.certification)
 		//cert test 2
-		XCTAssertEqual(data?[2].release_dates[0].certification, "12")
+		XCTAssertEqual(data?[2].release_dates[0].certification, "15")
 //		XCTAssertEqual(dates?.iso_639_1, "")
 //		XCTAssertEqual(dates?.note, "")
-		XCTAssertEqual(dates?.release_date,  "1969-09-25T00:00:00.000Z")
+		XCTAssertEqual(dates?.release_date, "1969-09-25T00:00:00.000Z")
 		XCTAssertEqual(dates?.type, 3)
 	}
 	
@@ -187,7 +187,7 @@ class MovieMDBTests: XCTestCase {
 		XCTAssertEqual(vids?.id, "533ec657c3a3685448000674")
 		XCTAssertEqual(vids?.iso_639_1, "en")
 		XCTAssertEqual(vids?.key, "VjcpRHuPjOI")
-		XCTAssertEqual(vids?.name, "Trailer 1")
+		XCTAssertEqual(vids?.name, "Planet of the Apes (1968) trailer")
 		XCTAssertEqual(vids?.site, "YouTube")
 		XCTAssertEqual(vids?.size, 360)
 		XCTAssertEqual(vids?.type, "Trailer")

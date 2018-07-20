@@ -74,7 +74,9 @@ open class DiscoverMovieMDB: DiscoverMDB{
     Client.discover(baseURL: "movie", params: params, completion: {
       apiReturn in
       var data: [MovieMDB]?
-      if(apiReturn.error == nil){ data = MovieMDB.initialize(json: apiReturn.json!["results"]) }
+      if let json = apiReturn.json?["results"] {
+        data = MovieMDB.initialize(json: json)
+      }
       completion(apiReturn, data)
     })
   }
@@ -138,7 +140,9 @@ open class DiscoverMovieMDB: DiscoverMDB{
     Client.discover(baseURL:"movie", sort_by: sort_by?.rawValue, certification_country: nil, certification: nil, certification_lte: nil, include_adult: nil, include_video: nil, primary_release_year: nil, primary_release_date_gte: nil, primary_release_date_lte: nil, release_date_gte: nil, release_date_lte: nil, air_date_gte: nil, air_date_lte: nil, first_air_date_gte: nil, first_air_date_lte: nil, first_air_date_year: nil, language: language, page: page, timezone: nil, vote_average_gte: nil, vote_average_lte: nil, vote_count_gte: nil, vote_count_lte: nil, with_genres: with_genres, with_cast: with_cast, with_crew: with_crew, with_companies: with_companies , with_keywords: with_keywords, with_people: with_people, with_networks: with_networks , year: year, certification_gte: nil){
       apiReturn in
       var data: [MovieMDB]?
-      if(apiReturn.error == nil){ data = MovieMDB.initialize(json: apiReturn.json!["results"]) }
+      if let json = apiReturn.json?["results"] {
+        data = MovieMDB.initialize(json: json)
+      }
       completion(apiReturn, data)
     }
   }
@@ -148,7 +152,9 @@ open class DiscoverMovieMDB: DiscoverMDB{
     Client.Company(companyId: companyId!, language: language, page: page){
       apiReturn in
       var data: [MovieMDB]?
-      if(apiReturn.error == nil){ data = MovieMDB.initialize(json: apiReturn.json!["results"]) }
+      if let json = apiReturn.json?["results"] {
+        data = MovieMDB.initialize(json: json)
+      }
       completion(apiReturn, data)
     }
   }
@@ -158,11 +164,11 @@ open class DiscoverMovieMDB: DiscoverMDB{
     Client.Genres(listType: "movie", language: nil, genreId: genreId, page: page, include_all_movies: include_all_movies, include_adult: nil, movieList: true){
       apiReturn in
       var data: [MovieMDB]?
-      if(apiReturn.error == nil){ data = MovieMDB.initialize(json: apiReturn.json!["results"]) }
+      if let json = apiReturn.json?["results"] {
+        data = MovieMDB.initialize(json: json)
+      }
       completion(apiReturn, data)
     }
   }
-  
-  
 }
 

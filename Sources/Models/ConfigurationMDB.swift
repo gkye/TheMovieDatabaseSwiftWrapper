@@ -35,12 +35,11 @@ public struct ConfigurationMDB {
   public static func configuration(completion: @escaping (_ clientReturn: ClientReturn, _ data: ConfigurationMDB?) -> ()) -> (){
     Client.Configuration(){
       apiReturn in
-      //var aReturn = apiReturn
-      if(apiReturn.error == nil){
-        completion(apiReturn, ConfigurationMDB.init(results: apiReturn.json!))
-      }else{
-        completion(apiReturn, nil)
+      var config: ConfigurationMDB?
+      if let json = apiReturn.json {
+        config = ConfigurationMDB(results: json)
       }
+      completion(apiReturn, config)
     }
   }
 }

@@ -26,8 +26,8 @@ extension TVMDB{
     Client.TV(String(tvShowID),  page: nil, language: language, timezone: nil){
       apiReturn in
       var data: TVDetailedMDB?
-      if(apiReturn.error == nil){
-        data = TVDetailedMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        data = TVDetailedMDB.init(results: json)
       }
       completion(apiReturn, data)
     }
@@ -38,8 +38,8 @@ extension TVMDB{
     Client.TV( String(tvShowID) + "/alternative_titles",  page: nil, language: nil, timezone: nil){
       apiReturn in
       var data: Alternative_TitlesMDB?
-      if(apiReturn.error == nil){
-        data = Alternative_TitlesMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        data = Alternative_TitlesMDB(results: json)
       }
       completion(apiReturn, data)
     }
@@ -50,8 +50,8 @@ extension TVMDB{
     Client.TV(String(tvShowID) + "/content_ratings",  page: nil, language: nil, timezone: nil){
       apiReturn in
       var data: [Content_RatingsMDB]?
-      if(apiReturn.error == nil){
-        data = Content_RatingsMDB.initialize(json: apiReturn.json!["results"])
+      if let json = apiReturn.json?["results"] {
+        data = Content_RatingsMDB.initialize(json: json)
       }
       completion(apiReturn, data)
     }
@@ -62,8 +62,8 @@ extension TVMDB{
     Client.TV(String(tvShowID) + "/credits",  page: nil, language: nil, timezone: nil){
       apiReturn in
       var data: TVCreditsMDB?
-      if(apiReturn.error == nil){
-        data =  TVCreditsMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        data =  TVCreditsMDB.init(results: json)
       }
       completion(apiReturn, data)
     }
@@ -74,8 +74,8 @@ extension TVMDB{
     Client.TV(String(tvShowID) + "/external_ids",  page: nil, language: language, timezone: nil){
       apiReturn in
       var data: ExternalIdsMDB?
-      if(apiReturn.error == nil){
-        data = ExternalIdsMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        data = ExternalIdsMDB.init(results: json)
       }
       completion(apiReturn, data)
     }
@@ -86,8 +86,8 @@ extension TVMDB{
     Client.TV(String(tvShowID) + "/images",  page: nil, language: language, timezone: nil){
       apiReturn in
       var data: ImagesMDB?
-      if(apiReturn.error == nil){
-        data = ImagesMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        data = ImagesMDB.init(results: json)
       }
       completion(apiReturn, data)
     }
@@ -98,8 +98,8 @@ extension TVMDB{
     Client.TV(String(tvShowID) + "/keywords",  page: nil, language: nil, timezone: nil){
       apiReturn in
       var data: [KeywordsMDB]?
-      if(apiReturn.error == nil){
-        data = KeywordsMDB.initialize(json: apiReturn.json!["results"])
+      if let json = apiReturn.json?["results"]{
+        data = KeywordsMDB.initialize(json: json)
       }
       completion(apiReturn, data)
     }
@@ -110,10 +110,8 @@ extension TVMDB{
     Client.TV(String(tvShowID) + "/similar",  page: page, language: language, timezone: nil){
       apiReturn in
       var data: [TVMDB]?
-      if(apiReturn.error == nil){
-        if(apiReturn.json!["results"].count > 0){
-          data = TVMDB.initialize(json: apiReturn.json!["results"])
-        }
+      if let json = apiReturn.json?["results"]{
+        data = TVMDB.initialize(json: json)
       }
       completion(apiReturn, data)
     }
@@ -123,8 +121,8 @@ extension TVMDB{
     Client.TV(String(tvShowID) + "/translations",  page: nil, language: nil, timezone: nil){
       apiReturn in
       var data: [TranslationsMDB]?
-      if(apiReturn.error == nil){
-        data = TranslationsMDB.initialize(json: apiReturn.json!["translations"])
+      if let json = apiReturn.json?["translations"]{
+        data = TranslationsMDB.initialize(json: json)
       }
       completion(apiReturn, data)
     }
@@ -136,8 +134,8 @@ extension TVMDB{
     Client.TV(String(tvShowID) + "/videos",  page: nil, language: language, timezone: nil){
       apiReturn in
       var data: [VideosMDB]?
-      if(apiReturn.error == nil){
-        data = VideosMDB.initialize(json: apiReturn.json!["results"])
+      if let json = apiReturn.json?["results"]{
+        data = VideosMDB.initialize(json: json)
       }
       completion(apiReturn, data)
     }
@@ -148,8 +146,8 @@ extension TVMDB{
     Client.TV("latest",  page: nil, language: nil, timezone: nil){
       apiReturn in
       var data: TVDetailedMDB?
-      if(apiReturn.error == nil){
-        data = TVDetailedMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        data = TVDetailedMDB.init(results: json)
       }
       completion(apiReturn, data)
     }
@@ -160,10 +158,8 @@ extension TVMDB{
     Client.TV("on_the_air",  page: page, language: language, timezone: nil){
       apiReturn in
       var data: [TVMDB]?
-      if(apiReturn.error == nil){
-        if(apiReturn.json!["results"].count > 0){
-          data = TVMDB.initialize(json: apiReturn.json!["results"])
-        }
+      if let json = apiReturn.json?["results"] {
+        data = TVMDB.initialize(json: json)
       }
       completion(apiReturn, data)
     }
@@ -174,10 +170,8 @@ extension TVMDB{
     Client.TV("airing_today",  page: page, language: language, timezone: timezone){
       apiReturn in
       var data: [TVMDB]?
-      if(apiReturn.error == nil){
-        if(apiReturn.json!["results"].count > 0){
-          data = TVMDB.initialize(json: apiReturn.json!["results"])
-        }
+      if let json = apiReturn.json?["results"] {
+        data = TVMDB.initialize(json: json)
       }
       completion(apiReturn, data)
     }
@@ -188,10 +182,8 @@ extension TVMDB{
     Client.TV("top_rated",  page: page, language: language, timezone: nil){
       apiReturn in
       var data: [TVMDB]?
-      if(apiReturn.error == nil){
-        if(apiReturn.json!["results"].count > 0){
-          data = TVMDB.initialize(json: apiReturn.json!["results"])
-        }
+      if let json = apiReturn.json?["results"] {
+        data = TVMDB.initialize(json: json)
       }
       completion(apiReturn, data)
     }
@@ -202,41 +194,33 @@ extension TVMDB{
     Client.TV("popular",  page: page, language: language, timezone: nil){
       apiReturn in
       var data: [TVMDB]?
-      if(apiReturn.error == nil){
-        if(apiReturn.json!["results"].count > 0){
-          data = TVMDB.initialize(json: apiReturn.json!["results"])
-        }
+      if let json = apiReturn.json?["results"] {
+        data = TVMDB.initialize(json: json)
       }
       completion(apiReturn, data)
     }
   }
   
-  
-///Get data using TVQueryType Enum for popular, toprated, airing today and on air queries
+  ///Get data using TVQueryType Enum for popular, toprated, airing today and on air queries
   public class func query(queryType: TVQueryType, page: Int?, language: String?, completion: @escaping (_ clientResult: ClientReturn, _ data: [TVMDB]?) -> ()) -> (){
     Client.TV(queryType.rawValue,  page: page, language: language, timezone: nil){
       apiReturn in
       var data: [TVMDB]?
-      if(apiReturn.error == nil){
-        if(apiReturn.json!["results"].count > 0){
-          data = TVMDB.initialize(json: apiReturn.json!["results"])
-        }
+      if let json = apiReturn.json?["results"] {
+        data = TVMDB.initialize(json: json)
       }
       completion(apiReturn, data)
     }
   }
   
   
-  /**
-   *  Retrive data by append multiple tv methods. Initlization of object have to be done manually. Exepect TVMDB
-   */
+   /// Retrive data by append multiple tv methods. Initlization of object have to be done manually. Exepect TVMDB
   public class func tvAppendTo(tvShowID: Int!, language: String? = nil, append_to: [String], completion: @escaping (_ clientReturn: ClientReturn, _ data: TVDetailedMDB?, _ json: JSON?) -> ()) -> (){
-    
     Client.TV(String(tvShowID),  page: nil, language: language, timezone: nil, append_to: append_to){
       apiReturn in
       var data: TVDetailedMDB?
-      if(apiReturn.error == nil){
-        data = TVDetailedMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        data = TVDetailedMDB.init(results: json)
       }
       completion(apiReturn, data, apiReturn.json)
     }

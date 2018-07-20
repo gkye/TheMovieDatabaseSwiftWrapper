@@ -36,11 +36,11 @@ public struct CollectionMDB: ArrayObject{
   public static func collection(collectionId: Int!, language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: CollectionMDB?) -> ()) -> (){
     Client.Collection(collectionId: String(collectionId), language: language){
       apiReturn in
-      if(apiReturn.error == nil){
-        completion(apiReturn, CollectionMDB(results: apiReturn.json!))
-      }else{
-        completion(apiReturn, nil)
+      var collection: CollectionMDB?
+      if let json = apiReturn.json {
+        collection = CollectionMDB(results: json)
       }
+      completion(apiReturn, collection)
     }
   }
   
@@ -48,11 +48,11 @@ public struct CollectionMDB: ArrayObject{
   public static func collectionImages(collectionId: Int!, language: String?, completion:  @escaping (_ clientReturn: ClientReturn, _ data: ImagesMDB?) -> ()) -> (){
     Client.Collection(collectionId:  String(collectionId) + "/images", language: language){
       apiReturn in
-      if(apiReturn.error == nil){
-        completion(apiReturn, ImagesMDB.init(results: apiReturn.json!))
-      }else{
-        completion(apiReturn, nil)
+      var images: ImagesMDB?
+      if let json = apiReturn.json {
+        images = ImagesMDB(results: json)
       }
+      completion(apiReturn, images)
     }
   }
 }

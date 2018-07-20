@@ -7,29 +7,29 @@
 //
 import Foundation
 extension Client{
-	
-	static func Changes(changeType: String, page: Int?, startDate: String?, endDate:String?, completion: @escaping (ClientReturn) -> ()) -> (){
-		
-		var parameters: [String : AnyObject] = [:]
-		
-		if(page != nil){
-			parameters["page"] = page as AnyObject?
-		}
-		
-		if(startDate != nil){
-			parameters["start_date"] = startDate as AnyObject?
-		}
-		
-		if(endDate != nil){
-			parameters["end_date"] = endDate as AnyObject?
-		}
-		
-		let url = "https://api.themoviedb.org/3/" + changeType + "/changes"
-		networkRequest(url: url, parameters: parameters){
-			apiReturn in
-			completion(apiReturn)
-		}
-	}
-	
-	
+  
+  static func Changes(changeType: String, page: Int?, startDate: String?, endDate:String?, completion: @escaping (ClientReturn) -> ()) -> (){
+    
+    var parameters: [String : AnyObject] = [:]
+    
+    if(page != nil){
+      parameters["page"] = page as AnyObject?
+    }
+    
+    if(startDate != nil){
+      parameters["start_date"] = startDate as AnyObject?
+    }
+    
+    if(endDate != nil){
+      parameters["end_date"] = endDate as AnyObject?
+    }
+    
+    let url = "https://api.themoviedb.org/3/" + changeType + "/changes"
+    networkRequest(url: url, parameters: parameters){
+      apiReturn in
+      completion(apiReturn)
+    }
+  }
+  
+  
 }

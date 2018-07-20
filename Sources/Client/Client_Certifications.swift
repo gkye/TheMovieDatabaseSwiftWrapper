@@ -9,14 +9,14 @@
 import Foundation
 
 extension Client{
-    
-    static func Certification(listType: String, completion: @escaping (ClientReturn) -> ()) -> (){
-        let parameters: [String : AnyObject] = [:]
-        let url = "https://api.themoviedb.org/3/certification/ " + listType + "/list";
-        networkRequest(url: url, parameters: parameters, completion: {
-            apiReturn in
-            completion(apiReturn)
-        })
-    }
+  
+  static func Certification(listType: String, completion: @escaping (ClientReturn) -> ()) -> (){
+    let parameters: [String : AnyObject] = [:]
+    let url = "https://api.themoviedb.org/3/certification/ " + listType + "/list";
+    networkRequest(url: url, parameters: parameters, completion: {
+      apiReturn in
+      completion(apiReturn)
+    })
+  }
 }
 

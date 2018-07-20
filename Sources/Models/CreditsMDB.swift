@@ -49,13 +49,13 @@ public struct Credits_Media{
     
     if(media["episodes"].count > 0){
       for episode in media["episodes"]{
-        episodes.append(Credits_Episodes.init(episodes: episode.1))
+        episodes.append(Credits_Episodes(episodes: episode.1))
       }
     }
     
     if(media["seasons"].count > 0){
       seasons = media["seasons"].map{
-        Credits_Seasons.init(seasons: $0.1)
+        Credits_Seasons(seasons: $0.1)
       }
     }
   }
@@ -75,7 +75,7 @@ public struct CreditsMDB{
     department = credits["department"].string
     job = credits["job"].string
     
-    media = Credits_Media.init(media: credits["media"])
+    media = Credits_Media(media: credits["media"])
     
     media_Type = credits["media_type"].string
     id = credits["id"].string
@@ -86,11 +86,11 @@ public struct CreditsMDB{
   public static func credits(creditID: String, language: String, completion: @escaping (_ clientReturn: ClientReturn, _ data: CreditsMDB?) -> ()) -> (){
     Client.Credits(creditID: creditID, language: language){
       apiReturn in
-      if(apiReturn.error == nil){
-        completion(apiReturn, CreditsMDB.init(credits: apiReturn.json!))
-      }else{
-        completion(apiReturn, nil)
+      var credits: CreditsMDB?
+      if let json = apiReturn.json {
+        credits = CreditsMDB(credits: json)
       }
+      completion(apiReturn, credits)
     }
   }
   

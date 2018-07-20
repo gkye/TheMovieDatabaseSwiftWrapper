@@ -27,5 +27,4 @@ open class MovieListMDB: ArrayObject{
     name = results["name"].string
     poster_path = results["poster_path"].string
   }
-  
 }

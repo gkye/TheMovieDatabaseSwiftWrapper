@@ -50,12 +50,15 @@ public struct TVEpisodesMDB: ArrayObject {
   
   
   ///Get the primary information about a TV episode by combination of a season and episode number.
-  public static func episode_number(tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: TVEpisodesMDB) -> ()) -> (){
+  public static func episode_number(tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: TVEpisodesMDB?) -> ()) -> (){
     let urltype = String(tvShowId) + "/season/" + String(seasonNumber) + "/episode/" + String(episodeNumber)
     Client.Seasons(urltype,  language: language){
       apiReturn in
-      completion(apiReturn, TVEpisodesMDB(results: apiReturn.json!))
-      
+      var episodes: TVEpisodesMDB?
+      if let json = apiReturn.json {
+        episodes = TVEpisodesMDB(results: json)
+      }
+      completion(apiReturn, episodes)
     }
   }
   
@@ -65,8 +68,8 @@ public struct TVEpisodesMDB: ArrayObject {
     Client.Seasons(urltype,  language: nil){
       apiReturn in
       var data: TVCreditsMDB?
-      if(apiReturn.error == nil){
-        data = TVCreditsMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        data = TVCreditsMDB(results: json)
       }
       completion(apiReturn, data)
     }
@@ -78,8 +81,8 @@ public struct TVEpisodesMDB: ArrayObject {
     Client.Seasons(urltype,  language: language){
       apiReturn in
       var data: ExternalIdsMDB?
-      if(apiReturn.error == nil){
-        data = ExternalIdsMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        data = ExternalIdsMDB(results: json)
       }
       completion(apiReturn, data)
     }
@@ -91,8 +94,8 @@ public struct TVEpisodesMDB: ArrayObject {
     Client.Seasons(urltype,  language: nil){
       apiReturn in
       var data: ImagesMDB?
-      if(apiReturn.error == nil){
-        data = ImagesMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        data = ImagesMDB(results: json)
       }
       completion(apiReturn, data)
     }
@@ -104,8 +107,8 @@ public struct TVEpisodesMDB: ArrayObject {
     Client.Seasons(urltype,  language: language){
       apiReturn in
       var data: [VideosMDB]?
-      if(apiReturn.error == nil){
-        data = VideosMDB.initialize(json: apiReturn.json!["results"])
+      if let json = apiReturn.json?["results"] {
+        data = VideosMDB.initialize(json: json)
       }
       completion(apiReturn, data)
     }

@@ -24,11 +24,11 @@ open class KeywordsMDB: ArrayObject{
     let url = "https://api.themoviedb.org/3/keyword/" + String(keywordId)
     Client.keyword(url){
       apiReturn in
-      if(apiReturn.error == nil){
-        completion(apiReturn, KeywordsMDB.init(results: apiReturn.json!))
-      }else{
-        completion(apiReturn, nil)
+      var keywords: KeywordsMDB?
+      if let json = apiReturn.json {
+        keywords = KeywordsMDB(results: json)
       }
+      completion(apiReturn, keywords)
     }
   }
   
@@ -37,11 +37,11 @@ open class KeywordsMDB: ArrayObject{
     let url = "https://api.themoviedb.org/3/keyword/" + String(keywordId) + "/movies"
     Client.keyword_movies(url, page: page, language: language){
       apiReturn in
-      if(apiReturn.error == nil){
-        completion(apiReturn, MovieMDB.initialize(json: apiReturn.json!["results"]))
-      }else{
-        completion(apiReturn, nil)
+      var movies: [MovieMDB]?
+      if let json = apiReturn.json?["results"] {
+        movies = MovieMDB.initialize(json: json)
       }
+      completion(apiReturn, movies)
     }
   }
   

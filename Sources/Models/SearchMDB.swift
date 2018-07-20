@@ -1,16 +1,13 @@
 public struct SearchMDB{
   
   ///Search for companies by name.
-  public static func company(query: String, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ company: [parent_companymdb]? ) -> ()) -> (){
+  public static func company(query: String, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ company: [ParentCompanyMDB]? ) -> ()) -> (){
     
     Client.Search("company",  query: query, page: page, language: nil, include_adult: nil, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil){
       apiReturn in
-      
-      var company = [parent_companymdb]()
-      if apiReturn.error == nil{
-        if(apiReturn.json!["results"].count > 0){
-          company = parent_companymdb.initialize(json: apiReturn.json!["results"])
-        }
+      var company = [ParentCompanyMDB]()
+      if let json = apiReturn.json?["results"] {
+        company = ParentCompanyMDB.initialize(json: json)
       }
       completion(apiReturn, company)
     }
@@ -22,12 +19,9 @@ public struct SearchMDB{
     
     Client.Search("collection", query: query, page: page, language: language, include_adult: nil, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil){
       apiReturn in
-      
       var collection = [CollectionMDB]()
-      if apiReturn.error == nil{
-        if(apiReturn.json!["results"].count > 0){
-          collection = CollectionMDB.initialize(json: apiReturn.json!["results"])
-        }
+      if let json = apiReturn.json?["results"] {
+        collection = CollectionMDB.initialize(json:  json)
       }
       completion(apiReturn, collection)
     }
@@ -38,14 +32,11 @@ public struct SearchMDB{
     
     Client.Search("keyword",  query: query, page: page, language: nil, include_adult: nil, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil){
       apiReturn in
-      
-      var keyword = [KeywordsMDB]()
-      if apiReturn.error == nil{
-        if(apiReturn.json!["results"].count > 0){
-          keyword = KeywordsMDB.initialize(json: apiReturn.json!["results"])
-        }
+      var keywords = [KeywordsMDB]()
+      if let json = apiReturn.json?["results"] {
+        keywords = KeywordsMDB.initialize(json: json)
       }
-      completion(apiReturn, keyword)
+      completion(apiReturn, keywords)
     }
   }
   
@@ -54,27 +45,22 @@ public struct SearchMDB{
     
     Client.Search("list",  query: query, page: page, language: nil, include_adult: include_adult, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil){
       apiReturn in
-      
       var list: [ListsMDB]?
-      if apiReturn.error == nil{
-        if(apiReturn.json!["results"].count > 0){
-          list = ListsMDB.initialize(json: apiReturn.json!["results"])
-        }
+      if let json = apiReturn.json?["results"] {
+        list = ListsMDB.initialize(json: json)
       }
       completion(apiReturn, list)
     }
   }
   
-  
   ///Search for movies by title.
   public static func movie(query: String, language: String?, page: Int?, includeAdult: Bool?, year: Int?, primaryReleaseYear: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> ()) -> (){
     
-    Client.Search("movie",  query: query, page: page, language: language, include_adult: includeAdult, year: year, primary_release_year: primaryReleaseYear, search_type: nil, first_air_date_year: nil) { apiReturn in
+    Client.Search("movie",  query: query, page: page, language: language, include_adult: includeAdult, year: year, primary_release_year: primaryReleaseYear, search_type: nil, first_air_date_year: nil) {
+      apiReturn in
       var movie: [MovieMDB]?
-      if(apiReturn.error == nil){
-        if(apiReturn.json!["results"].count > 0){
-          movie = MovieMDB.initialize(json: apiReturn.json!["results"])
-        }
+      if let json = apiReturn.json?["results"] {
+        movie = MovieMDB.initialize(json: json)
       }
       completion(apiReturn, movie)
     }
@@ -85,10 +71,8 @@ public struct SearchMDB{
     
     Client.Search("person",  query: query, page: page, language: nil, include_adult: includeAdult, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil) { apiReturn in
       var person: [PersonResults]?
-      if(apiReturn.error == nil){
-        if(apiReturn.json!["results"].count > 0){
-          person = PersonResults.initialize(json: apiReturn.json!["results"])
-        }
+      if let json = apiReturn.json?["results"] {
+        person = PersonResults.initialize(json: json)
       }
       completion(apiReturn, person)
     }
@@ -99,10 +83,8 @@ public struct SearchMDB{
     
     Client.Search("tv",  query: query, page: page, language: language, include_adult: nil, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: first_air_date_year) { apiReturn in
       var person: [TVMDB]?
-      if(apiReturn.error == nil){
-        if(apiReturn.json!["results"].count > 0){
-          person = TVMDB.initialize(json: apiReturn.json!["results"])
-        }
+      if let json = apiReturn.json?["results"] {
+        person = TVMDB.initialize(json: json)
       }
       completion(apiReturn, person)
     }
@@ -116,22 +98,21 @@ public struct SearchMDB{
       var tv = [TVMDB]()
       var movie = [MovieMDB]()
       
-      apiReturn.json?["results"].forEach({
-        switch $0.1["media_type"].string!{
-        case "tv":
-          tv.append(TVMDB(results: $0.1))
-        case "movie":
-          movie.append(MovieMDB(results: $0.1))
-        case "person":
-          person.append(PersonResults(results: $0.1))
-        default:
-          break
+      apiReturn.json?["results"].forEach({ string, json in
+        if let mediaType = json["media_type"].string {
+          switch mediaType {
+          case "tv":
+            tv.append(TVMDB(results: json))
+          case "movie":
+            movie.append(MovieMDB(results: json))
+          case "person":
+            person.append(PersonResults(results: json))
+          default:
+            break
+          }
         }
       })
-      
       completion(apiReturn, movie, tv, person)
-      
     }
   }
-  
 }

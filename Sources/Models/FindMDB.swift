@@ -119,8 +119,8 @@ public struct FindMDB{
     Client.Find(external_id: id, external_source: external_source.rawValue){
       apiReturn in
       var data: FindMDB?
-      if(apiReturn.error == nil){
-        data = FindMDB.init(json: apiReturn.json!)
+      if let json = apiReturn.json {
+        data = FindMDB(json: json)
       }
       completion(apiReturn, data)
     }
