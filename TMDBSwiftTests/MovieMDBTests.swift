@@ -167,7 +167,7 @@ class MovieMDBTests: XCTestCase {
 		XCTAssertEqual(data?[2].release_dates[0].certification, "15")
 //		XCTAssertEqual(dates?.iso_639_1, "")
 //		XCTAssertEqual(dates?.note, "")
-		XCTAssertEqual(dates?.release_date, "1969-09-25T00:00:00.000Z")
+//    XCTAssertEqual(dates?.release_date, "1969-09-25T00:00:00.000Z")
 		XCTAssertEqual(dates?.type, 3)
 	}
 	
