@@ -23,8 +23,8 @@ extension MovieMDB{
     Client.Movies(String(movieID),  page: nil, language: language){
       apiReturn in
       var detailed: MovieDetailedMDB?
-      if(apiReturn.error == nil){
-        detailed = MovieDetailedMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        detailed = MovieDetailedMDB.init(results: json)
       }
       completion(apiReturn, detailed)
     }
@@ -36,8 +36,8 @@ extension MovieMDB{
     Client.Movies(String(movieID) + "/alternative_titles",  page: nil, language: country){
       apiReturn in
       var alt: Alternative_TitlesMDB?
-      if(apiReturn.error == nil){
-        alt = Alternative_TitlesMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        alt = Alternative_TitlesMDB.init(results: json)
       }
       completion(apiReturn, alt)
     }
@@ -48,8 +48,8 @@ extension MovieMDB{
     Client.Movies(String(movieID) + "/credits",  page: nil, language: nil){
       apiReturn in
       var credits: MovieCreditsMDB?
-      if(apiReturn.error == nil){
-        credits = MovieCreditsMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        credits = MovieCreditsMDB(results: json)
       }
       completion(apiReturn, credits)
     }
@@ -60,8 +60,8 @@ extension MovieMDB{
     Client.Movies(String(movieID) + "/images",  page: nil, language: language){
       apiReturn in
       var images: ImagesMDB?
-      if(apiReturn.error == nil){
-        images = ImagesMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        images = ImagesMDB.init(results: json)
       }
       completion(apiReturn, images)
     }
@@ -72,8 +72,8 @@ extension MovieMDB{
     Client.Movies(String(movieID) + "/keywords",  page: nil, language: nil){
       apiReturn in
       var keywords: [KeywordsMDB]?
-      if(apiReturn.error == nil){
-        keywords = KeywordsMDB.initialize(json: apiReturn.json!["keywords"])
+      if let json = apiReturn.json?["keywords"] {
+        keywords = KeywordsMDB.initialize(json: json)
       }
       completion(apiReturn, keywords)
     }
@@ -85,8 +85,8 @@ extension MovieMDB{
     Client.Movies(String(movieID) + "/release_dates",  page: nil, language: nil){
       apiReturn in
       var releatedDates: [MovieReleaseDatesMDB]?
-      if(apiReturn.error == nil){
-        releatedDates = MovieReleaseDatesMDB.initialize(json: apiReturn.json!["results"])
+      if let json = apiReturn.json?["results"]  {
+        releatedDates = MovieReleaseDatesMDB.initialize(json: json)
       }
       completion(apiReturn, releatedDates)
     }
@@ -98,8 +98,8 @@ extension MovieMDB{
     Client.Movies(String(movieID) + "/videos",  page: nil, language: language){
       apiReturn in
       var videos: [VideosMDB]?
-      if(apiReturn.error == nil){
-        videos = VideosMDB.initialize(json: apiReturn.json!["results"])
+      if let json = apiReturn.json?["results"]  {
+        videos = VideosMDB.initialize(json: json)
       }
       completion(apiReturn, videos)
     }
@@ -110,8 +110,8 @@ extension MovieMDB{
     Client.Movies(String(movieID) + "/translations",  page: nil, language: nil){
       apiReturn in
       var trans: TranslationsMDB?
-      if(apiReturn.error == nil){
-        trans = TranslationsMDB.init(results: apiReturn.json!["translations"])
+      if let json = apiReturn.json?["translations"]  {
+        trans = TranslationsMDB(results: json)
       }
       completion(apiReturn, trans)
     }
@@ -122,13 +122,11 @@ extension MovieMDB{
   public class func similar(movieID: Int!, page: Int?, language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> ()) -> (){
     Client.Movies(String(movieID) + "/similar",  page: page, language: language){
       apiReturn in
-      var movie: [MovieMDB]?
-      if(apiReturn.error == nil){
-        if(apiReturn.json!["results"].count > 0){
-          movie = MovieMDB.initialize(json: apiReturn.json!["results"])
-        }
+      var movies: [MovieMDB]?
+      if let json = apiReturn.json?["results"] {
+        movies = MovieMDB.initialize(json: json)
       }
-      completion(apiReturn, movie)
+      completion(apiReturn, movies)
     }
   }
   
@@ -137,10 +135,8 @@ extension MovieMDB{
     Client.Movies(String(movieID) + "/reviews",  page: page, language: language){
       apiReturn in
       var reviews: [MovieReviewsMDB]?
-      if(apiReturn.error == nil){
-        if(apiReturn.json!["results"].count > 0){
-          reviews = MovieReviewsMDB.initialize(json: apiReturn.json!["results"])
-        }
+      if let json = apiReturn.json?["results"] {
+        reviews = MovieReviewsMDB.initialize(json: json)
       }
       completion(apiReturn, reviews)
     }
@@ -152,10 +148,8 @@ extension MovieMDB{
     Client.Movies(String(movieID) + "/lists",  page: page, language: language){
       apiReturn in
       var list: [MovieListMDB]?
-      if(apiReturn.error == nil){
-        if(apiReturn.json!["results"].count > 0){
-          list = MovieListMDB.initialize(json: apiReturn.json!["results"])
-        }
+      if let json = apiReturn.json?["results"] {
+        list = MovieListMDB.initialize(json: json)
       }
       completion(apiReturn, list)
     }
@@ -166,8 +160,8 @@ extension MovieMDB{
     Client.Movies("latest",  page: nil, language: nil){
       apiReturn in
       var movie: MovieDetailedMDB?
-      if(apiReturn.error == nil){
-        movie = MovieDetailedMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        movie = MovieDetailedMDB.init(results: json)
       }
       completion(apiReturn, movie)
     }
@@ -178,11 +172,8 @@ extension MovieMDB{
     Client.Movies("now_playing",  page: page, language: language){
       apiReturn in
       var movie = [MovieMDB]()
-      if(apiReturn.error == nil){
-        if(apiReturn.json!["results"].count > 0){
-          let results = apiReturn.json!["results"]
-          movie = MovieMDB.initialize(json: results)
-        }
+      if let json = apiReturn.json?["results"] {
+        movie = MovieMDB.initialize(json: json)
       }
       completion(apiReturn, movie)
     }
@@ -193,10 +184,8 @@ extension MovieMDB{
     Client.Movies("popular",  page: page, language: language){
       apiReturn in
       var movie = [MovieMDB]()
-      if(apiReturn.error == nil){
-        if(apiReturn.json!["results"].count > 0){
-          movie = MovieMDB.initialize(json: apiReturn.json!["results"])
-        }
+      if let json = apiReturn.json?["results"] {
+        movie = MovieMDB.initialize(json: json)
       }
       completion(apiReturn, movie)
     }
@@ -207,10 +196,8 @@ extension MovieMDB{
     Client.Movies("top_rated",  page: page, language: language){
       apiReturn in
       var movie: [MovieMDB]?
-      if(apiReturn.error == nil){
-        if(apiReturn.json!["results"].count > 0){
-          movie = MovieMDB.initialize(json: apiReturn.json!["results"])
-        }
+      if let json = apiReturn.json?["results"] {
+        movie = MovieMDB.initialize(json: json)
       }
       completion(apiReturn, movie)
     }
@@ -221,10 +208,8 @@ extension MovieMDB{
     Client.Movies("upcoming",  page: page, language: language){
       apiReturn in
       var movie: [MovieMDB]?
-      if(apiReturn.error == nil){
-        if(apiReturn.json!["results"].count > 0){
-          movie = MovieMDB.initialize(json: apiReturn.json!["results"])
-        }
+      if let json = apiReturn.json?["results"] {
+        movie = MovieMDB.initialize(json: json)
       }
       completion(apiReturn, movie)
     }
@@ -235,12 +220,10 @@ extension MovieMDB{
   public class func query(queryType: MovieQueryType, language: String? = nil, page: Int?, region: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> ()) -> (){
     Client.Movies(queryType.rawValue,  page: page, language: language, region: region){
 			apiReturn in
-			var movie = [MovieMDB]()
-			if(apiReturn.error == nil){
-				if(apiReturn.json!["results"].count > 0){
-					movie = MovieMDB.initialize(json: apiReturn.json!["results"])
-				}
-			}
+      var movie: [MovieMDB]?
+      if let json = apiReturn.json?["results"] {
+        movie = MovieMDB.initialize(json: json)
+      }
 			completion(apiReturn, movie)
 		}
 	}
@@ -252,8 +235,8 @@ extension MovieMDB{
     Client.Movies(String(movieID),  page: nil, language: language, append_to: append_to){
       apiReturn in
       var detailed: MovieDetailedMDB?
-      if(apiReturn.error == nil){
-        detailed = MovieDetailedMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        detailed = MovieDetailedMDB.init(results: json)
       }
       completion(apiReturn, detailed, apiReturn.json)
     }

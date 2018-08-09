@@ -62,7 +62,6 @@ class FindMDBTests: XCTestCase {
     XCTAssertEqual(gameOfThronesTV?.original_name, "Game of Thrones")
     XCTAssertEqual(gameOfThronesTV?.id, 1399)
     XCTAssertEqual(gameOfThronesTV?.first_air_date, "2011-04-17")
-		
   }
 	
 }

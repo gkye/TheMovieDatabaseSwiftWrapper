@@ -30,13 +30,13 @@ public struct TVSeasonsMDB: ArrayObject{
   
   ///Get the primary information about a TV season by its season number.
   public static func season_number(tvShowId: Int!, seasonNumber: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: TVSeasonsMDB?) -> ()) -> (){
-
+    
     let urltype = String(tvShowId) + "/season/" + String(seasonNumber)
     Client.Seasons(urltype,  language: language){
       apiReturn in
       var data: TVSeasonsMDB?
-      if(apiReturn.error == nil){
-        data = TVSeasonsMDB(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        data = TVSeasonsMDB(results: json)
       }
       completion(apiReturn, data)
     }
@@ -49,8 +49,8 @@ public struct TVSeasonsMDB: ArrayObject{
     Client.Seasons(urltype,  language: language){
       apiReturn in
       var data: TVCreditsMDB?
-      if(apiReturn.error == nil){
-        data = TVCreditsMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        data = TVCreditsMDB.init(results: json)
       }
       completion(apiReturn, data)
     }
@@ -62,8 +62,8 @@ public struct TVSeasonsMDB: ArrayObject{
     Client.Seasons(urltype,  language: language){
       apiReturn in
       var data: ExternalIdsMDB?
-      if(apiReturn.error == nil){
-        data = ExternalIdsMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        data = ExternalIdsMDB.init(results: json)
       }
       completion(apiReturn, data)
     }
@@ -75,8 +75,8 @@ public struct TVSeasonsMDB: ArrayObject{
     Client.Seasons(urltype,  language: language){
       apiReturn in
       var data: ImagesMDB?
-      if(apiReturn.error == nil){
-        data = ImagesMDB.init(results: apiReturn.json!)
+      if let json = apiReturn.json {
+        data = ImagesMDB.init(results: json)
       }
       completion(apiReturn, data)
     }
@@ -89,11 +89,10 @@ public struct TVSeasonsMDB: ArrayObject{
     Client.Seasons(urltype,  language: language){
       apiReturn in
       var data: [VideosMDB]?
-      if(apiReturn.error == nil){
-        data = VideosMDB.initialize(json: apiReturn.json!["results"])
+      if let json = apiReturn.json?["results"] {
+        data = VideosMDB.initialize(json: json)
       }
       completion(apiReturn, data)
     }
   }
-  
 }

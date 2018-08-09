@@ -8,9 +8,7 @@
 
 import Foundation
 
-extension Client{
-  
-  
+extension Client{  
   static func Genres(listType: String, language: String?, genreId: Int, page: Double?, include_all_movies: Bool?, include_adult: Bool?, movieList: Bool?, completion: @escaping (ClientReturn) -> ()) -> (){
     var parameters: [String : AnyObject] = [:]
     var url = "";

@@ -40,11 +40,11 @@ public struct ListsMDB: ArrayObject{
     let url  = "https://api.themoviedb.org/3/list/" + listId
     Client.Lists(url, listId: listId!){
       apiReturn in
-      if(apiReturn.error == nil){
-        completion(apiReturn, ListsMDB.init(results: apiReturn.json!))
-      }else{
-        completion(apiReturn, nil)
+      var lists: ListsMDB?
+      if let json = apiReturn.json {
+        lists = ListsMDB(results: json)
       }
+      completion(apiReturn, lists)
     }
     
   }

@@ -9,9 +9,8 @@
 import Foundation
 
 open class MovieCreditsMDB{
-  
-  open  var cast = [MovieCastMDB]()
-  open  var crew = [CrewMDB]()
+  open var cast = [MovieCastMDB]()
+  open var crew = [CrewMDB]()
   
   public init(results: JSON){
     for cast in results["cast"]{
@@ -25,7 +24,6 @@ open class MovieCreditsMDB{
 }
 
 open class MovieCastMDB: CastCrewCommonMDB{
-  
   open var cast_id: Int!
   open var character: String!
   open var order: Int!

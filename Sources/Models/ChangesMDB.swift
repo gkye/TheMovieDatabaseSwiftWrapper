@@ -27,13 +27,13 @@ public struct ChangesMDB{
     }
     return changes
   }
-	
-	public static func changes(changeType: String, page: Double?, startDate: String? = nil, endDate:String? = nil, completionHandler: @escaping (_ clientReturn: ClientReturn, _ data: [ChangesMDB]?) -> ()) -> (){
+  
+  public static func changes(changeType: String, page: Double?, startDate: String? = nil, endDate:String? = nil, completionHandler: @escaping (_ clientReturn: ClientReturn, _ data: [ChangesMDB]?) -> ()) -> (){
     Client.Changes(changeType: "movie", page: 1, startDate: nil, endDate: nil){
       apiReturn in
       var changes: [ChangesMDB]?
-      if(apiReturn.error == nil){
-        changes = ChangesMDB.initReturn(apiReturn.json!["results"])
+      if let results = apiReturn.json?["results"] {
+        changes = ChangesMDB.initReturn(results)
       }
       completionHandler(apiReturn, changes)
     }

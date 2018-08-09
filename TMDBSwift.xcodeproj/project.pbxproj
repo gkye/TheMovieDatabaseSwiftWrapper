@@ -330,7 +330,9 @@
 				5EF1B26C1CB72DBF00B49F4E /* Products */,
 				185875F8E34AE1EB1192AE53 /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		5EF1B26C1CB72DBF00B49F4E /* Products */ = {
 			isa = PBXGroup;
@@ -565,6 +567,7 @@
 					};
 					5EF1B2741CB72DC000B49F4E = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 2JJGDVS5KS;
 						LastSwiftMigration = 0900;
 					};
 					6F62A0B320CB935F000744A9 = {
@@ -958,6 +961,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 2JJGDVS5KS;
 				INFOPLIST_FILE = TMDBSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GeorgeKye.TMDBSwiftTests;
@@ -972,6 +976,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 2JJGDVS5KS;
 				INFOPLIST_FILE = TMDBSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GeorgeKye.TMDBSwiftTests;
