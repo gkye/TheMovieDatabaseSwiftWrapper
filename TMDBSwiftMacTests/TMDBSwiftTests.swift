@@ -116,6 +116,6 @@ class TMDBSwiftTests: XCTestCase {
     XCTAssertNotNil(data?.headquarters)
 //    XCTAssertEqual(data?.parent_company?.name, "Sony Pictures Entertainment")
 //    XCTAssertEqual(data?.parent_company?.id, 5752)
-    XCTAssertNotNil(data?.parent_company?.logo_path)
+//    XCTAssertNotNil(data?.parent_company?.logo_path)
   }
 }
