@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import TMDBSwiftMac
+@testable import TMDBSwiftTvOS
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -116,6 +116,6 @@ class TMDBSwiftTests: XCTestCase {
     XCTAssertNotNil(data?.headquarters)
 //    XCTAssertEqual(data?.parent_company?.name, "Sony Pictures Entertainment")
 //    XCTAssertEqual(data?.parent_company?.id, 5752)
-//    XCTAssertNotNil(data?.parent_company?.logo_path)
+//    XCTAssertNotNil(data?.parent_company)
   }
 }
