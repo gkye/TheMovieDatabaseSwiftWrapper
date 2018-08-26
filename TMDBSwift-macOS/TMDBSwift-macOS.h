@@ -1,6 +1,6 @@
 //
-//  TMDBSwiftMac.h
-//  TMDBSwiftMac
+//  TMDBSwift-macOS.h
+//  TMDBSwift-macOS
 //
 //  Created by Patrick Dinger on 08.06.18.
 //  Copyright © 2018 George. All rights reserved.

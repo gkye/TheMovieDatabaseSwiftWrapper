@@ -15,7 +15,7 @@
 		5E56F3251D0781A500CAED06 /* CertificationMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E56F3241D0781A500CAED06 /* CertificationMDB.swift */; };
 		5E66E1861D8F8B490044A901 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E66E1841D8F8B490044A901 /* SwiftyJSON.swift */; };
 		5EF143621CF0A3FB009C620D /* ArrayObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF143611CF0A3FB009C620D /* ArrayObjectProtocol.swift */; };
-		5EF1B26F1CB72DC000B49F4E /* TMDBSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EF1B26E1CB72DC000B49F4E /* TMDBSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5EF1B26F1CB72DC000B49F4E /* TMDBSwift-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EF1B26E1CB72DC000B49F4E /* TMDBSwift-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5EF1B2761CB72DC000B49F4E /* TMDBSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EF1B26B1CB72DBF00B49F4E /* TMDBSwift.framework */; };
 		5EF1B27B1CB72DC000B49F4E /* TMDBSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B27A1CB72DC000B49F4E /* TMDBSwiftTests.swift */; };
 		5EF1B3421CB732C900B49F4E /* Clent_Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B30A1CB732C900B49F4E /* Clent_Discover.swift */; };
@@ -71,8 +71,8 @@
 		5EF1B3751CB732C900B49F4E /* TVMDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B33F1CB732C900B49F4E /* TVMDBModel.swift */; };
 		5EF1B3761CB732C900B49F4E /* TVSeasonsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B3401CB732C900B49F4E /* TVSeasonsMDB.swift */; };
 		5EF1B3771CB732C900B49F4E /* VideosMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B3411CB732C900B49F4E /* VideosMDB.swift */; };
-		6F62A0BD20CB9360000744A9 /* TMDBSwiftMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F62A0B420CB935F000744A9 /* TMDBSwiftMac.framework */; };
-		6F62A0C420CB9360000744A9 /* TMDBSwiftMac.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F62A0B620CB935F000744A9 /* TMDBSwiftMac.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F62A0BD20CB9360000744A9 /* TMDBSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F62A0B420CB935F000744A9 /* TMDBSwift.framework */; };
+		6F62A0C420CB9360000744A9 /* TMDBSwift-macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F62A0B620CB935F000744A9 /* TMDBSwift-macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F62A0D420CB9471000744A9 /* ArrayObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF143611CF0A3FB009C620D /* ArrayObjectProtocol.swift */; };
 		6F62A0D520CB9471000744A9 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E66E1841D8F8B490044A901 /* SwiftyJSON.swift */; };
 		6F62A0D620CB9471000744A9 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A7ACE61FC4857900FAE133 /* Config.swift */; };
@@ -134,8 +134,8 @@
 		6F62A10E20CB9471000744A9 /* SearchMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774C0D81CF757120045F0CE /* SearchMDB.swift */; };
 		6F62A11520CB9A20000744A9 /* TMDBSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F62A11020CB9A18000744A9 /* TMDBSwiftTests.swift */; };
 		6F62A11620CB9A20000744A9 /* FindMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F62A11120CB9A18000744A9 /* FindMDBTests.swift */; };
-		D1D3B4D2212980C2002B3486 /* TMDBSwiftTvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D3B4C9212980C2002B3486 /* TMDBSwiftTvOS.framework */; };
-		D1D3B4D9212980C2002B3486 /* TMDBSwiftTvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D3B4CB212980C2002B3486 /* TMDBSwiftTvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D1D3B4D2212980C2002B3486 /* TMDBSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D3B4C9212980C2002B3486 /* TMDBSwift.framework */; };
+		D1D3B4D9212980C2002B3486 /* TMDBSwift-tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D3B4CB212980C2002B3486 /* TMDBSwift-tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1D3B4E021298148002B3486 /* ArrayObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF143611CF0A3FB009C620D /* ArrayObjectProtocol.swift */; };
 		D1D3B4E121298148002B3486 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E66E1841D8F8B490044A901 /* SwiftyJSON.swift */; };
 		D1D3B4E22129814D002B3486 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A7ACE61FC4857900FAE133 /* Config.swift */; };
@@ -235,9 +235,9 @@
 		5E66E1841D8F8B490044A901 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		5EF143611CF0A3FB009C620D /* ArrayObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayObjectProtocol.swift; path = Protocols/ArrayObjectProtocol.swift; sourceTree = "<group>"; };
 		5EF1B26B1CB72DBF00B49F4E /* TMDBSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TMDBSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5EF1B26E1CB72DC000B49F4E /* TMDBSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMDBSwift.h; sourceTree = "<group>"; };
+		5EF1B26E1CB72DC000B49F4E /* TMDBSwift-iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TMDBSwift-iOS.h"; sourceTree = "<group>"; };
 		5EF1B2701CB72DC000B49F4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5EF1B2751CB72DC000B49F4E /* TMDBSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMDBSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EF1B2751CB72DC000B49F4E /* TMDBSwift-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TMDBSwift-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF1B27A1CB72DC000B49F4E /* TMDBSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBSwiftTests.swift; sourceTree = "<group>"; };
 		5EF1B27C1CB72DC000B49F4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EF1B30A1CB732C900B49F4E /* Clent_Discover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clent_Discover.swift; sourceTree = "<group>"; };
@@ -295,18 +295,18 @@
 		5EF1B3411CB732C900B49F4E /* VideosMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosMDB.swift; sourceTree = "<group>"; };
 		5EF1B37A1CB73D6B00B49F4E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/TMDBSwift-ctqadmatvtticcbrgqcmawytsfdg/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		5EF1B37C1CB73D7100B49F4E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/TMDBSwift-ctqadmatvtticcbrgqcmawytsfdg/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
-		6F62A0B420CB935F000744A9 /* TMDBSwiftMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TMDBSwiftMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F62A0B620CB935F000744A9 /* TMDBSwiftMac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMDBSwiftMac.h; sourceTree = "<group>"; };
+		6F62A0B420CB935F000744A9 /* TMDBSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TMDBSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F62A0B620CB935F000744A9 /* TMDBSwift-macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TMDBSwift-macOS.h"; sourceTree = "<group>"; };
 		6F62A0B720CB935F000744A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6F62A0BC20CB935F000744A9 /* TMDBSwiftMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMDBSwiftMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F62A0BC20CB935F000744A9 /* TMDBSwift-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TMDBSwift-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F62A0C320CB9360000744A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F62A10F20CB9A18000744A9 /* MovieMDBTests-old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieMDBTests-old.swift"; sourceTree = "<group>"; };
 		6F62A11020CB9A18000744A9 /* TMDBSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBSwiftTests.swift; sourceTree = "<group>"; };
 		6F62A11120CB9A18000744A9 /* FindMDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMDBTests.swift; sourceTree = "<group>"; };
-		D1D3B4C9212980C2002B3486 /* TMDBSwiftTvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TMDBSwiftTvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1D3B4CB212980C2002B3486 /* TMDBSwiftTvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMDBSwiftTvOS.h; sourceTree = "<group>"; };
+		D1D3B4C9212980C2002B3486 /* TMDBSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TMDBSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1D3B4CB212980C2002B3486 /* TMDBSwift-tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TMDBSwift-tvOS.h"; sourceTree = "<group>"; };
 		D1D3B4CC212980C2002B3486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D1D3B4D1212980C2002B3486 /* TMDBSwiftTvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMDBSwiftTvOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1D3B4D1212980C2002B3486 /* TMDBSwift-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TMDBSwift-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D3B4D8212980C2002B3486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1D3B51B212981BB002B3486 /* TMDBSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBSwiftTests.swift; sourceTree = "<group>"; };
 		D1D3B51C212981BB002B3486 /* MovieMDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMDBTests.swift; sourceTree = "<group>"; };
@@ -341,7 +341,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F62A0BD20CB9360000744A9 /* TMDBSwiftMac.framework in Frameworks */,
+				6F62A0BD20CB9360000744A9 /* TMDBSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +356,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1D3B4D2212980C2002B3486 /* TMDBSwiftTvOS.framework in Frameworks */,
+				D1D3B4D2212980C2002B3486 /* TMDBSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,11 +419,12 @@
 			isa = PBXGroup;
 			children = (
 				5EF1B26D1CB72DC000B49F4E /* Sources */,
-				5EF1B2791CB72DC000B49F4E /* TMDBSwiftTests */,
-				6F62A0B520CB935F000744A9 /* TMDBSwiftMac */,
-				6F62A0C020CB9360000744A9 /* TMDBSwiftMacTests */,
-				D1D3B4CA212980C2002B3486 /* TMDBSwiftTvOS */,
-				D1D3B4D5212980C2002B3486 /* TMDBSwiftTvOSTests */,
+				D1393A5021329C9100291F8C /* TMDBSwift-iOS */,
+				5EF1B2791CB72DC000B49F4E /* TMDBSwift-iOSTests */,
+				6F62A0B520CB935F000744A9 /* TMDBSwift-macOS */,
+				6F62A0C020CB9360000744A9 /* TMDBSwift-macOSTests */,
+				D1D3B4CA212980C2002B3486 /* TMDBSwift-tvOS */,
+				D1D3B4D5212980C2002B3486 /* TMDBSwift-tvOSTests */,
 				5EF1B26C1CB72DBF00B49F4E /* Products */,
 				185875F8E34AE1EB1192AE53 /* Frameworks */,
 			);
@@ -435,11 +436,11 @@
 			isa = PBXGroup;
 			children = (
 				5EF1B26B1CB72DBF00B49F4E /* TMDBSwift.framework */,
-				5EF1B2751CB72DC000B49F4E /* TMDBSwiftTests.xctest */,
-				6F62A0B420CB935F000744A9 /* TMDBSwiftMac.framework */,
-				6F62A0BC20CB935F000744A9 /* TMDBSwiftMacTests.xctest */,
-				D1D3B4C9212980C2002B3486 /* TMDBSwiftTvOS.framework */,
-				D1D3B4D1212980C2002B3486 /* TMDBSwiftTvOSTests.xctest */,
+				5EF1B2751CB72DC000B49F4E /* TMDBSwift-iOSTests.xctest */,
+				6F62A0B420CB935F000744A9 /* TMDBSwift.framework */,
+				6F62A0BC20CB935F000744A9 /* TMDBSwift-macOSTests.xctest */,
+				D1D3B4C9212980C2002B3486 /* TMDBSwift.framework */,
+				D1D3B4D1212980C2002B3486 /* TMDBSwift-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -451,13 +452,11 @@
 				5E7643B71CB76D480095A4C1 /* Open Source */,
 				5EF1B3091CB732C900B49F4E /* Client */,
 				5EF1B31C1CB732C900B49F4E /* Models */,
-				5EF1B26E1CB72DC000B49F4E /* TMDBSwift.h */,
-				5EF1B2701CB72DC000B49F4E /* Info.plist */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		5EF1B2791CB72DC000B49F4E /* TMDBSwiftTests */ = {
+		5EF1B2791CB72DC000B49F4E /* TMDBSwift-iOSTests */ = {
 			isa = PBXGroup;
 			children = (
 				5EF1B27A1CB72DC000B49F4E /* TMDBSwiftTests.swift */,
@@ -465,7 +464,7 @@
 				185D4CAA1EC924DA0083D85A /* FindMDBTests.swift */,
 				5E4CC87A1D295BC700101495 /* MovieMDBTests.swift */,
 			);
-			path = TMDBSwiftTests;
+			path = "TMDBSwift-iOSTests";
 			sourceTree = "<group>";
 		};
 		5EF1B3091CB732C900B49F4E /* Client */ = {
@@ -536,16 +535,16 @@
 			path = Discover;
 			sourceTree = "<group>";
 		};
-		6F62A0B520CB935F000744A9 /* TMDBSwiftMac */ = {
+		6F62A0B520CB935F000744A9 /* TMDBSwift-macOS */ = {
 			isa = PBXGroup;
 			children = (
-				6F62A0B620CB935F000744A9 /* TMDBSwiftMac.h */,
+				6F62A0B620CB935F000744A9 /* TMDBSwift-macOS.h */,
 				6F62A0B720CB935F000744A9 /* Info.plist */,
 			);
-			path = TMDBSwiftMac;
+			path = "TMDBSwift-macOS";
 			sourceTree = "<group>";
 		};
-		6F62A0C020CB9360000744A9 /* TMDBSwiftMacTests */ = {
+		6F62A0C020CB9360000744A9 /* TMDBSwift-macOSTests */ = {
 			isa = PBXGroup;
 			children = (
 				6F62A11020CB9A18000744A9 /* TMDBSwiftTests.swift */,
@@ -554,19 +553,28 @@
 				6F62A10F20CB9A18000744A9 /* MovieMDBTests-old.swift */,
 				6F62A0C320CB9360000744A9 /* Info.plist */,
 			);
-			path = TMDBSwiftMacTests;
+			path = "TMDBSwift-macOSTests";
 			sourceTree = "<group>";
 		};
-		D1D3B4CA212980C2002B3486 /* TMDBSwiftTvOS */ = {
+		D1393A5021329C9100291F8C /* TMDBSwift-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				D1D3B4CB212980C2002B3486 /* TMDBSwiftTvOS.h */,
-				D1D3B4CC212980C2002B3486 /* Info.plist */,
+				5EF1B26E1CB72DC000B49F4E /* TMDBSwift-iOS.h */,
+				5EF1B2701CB72DC000B49F4E /* Info.plist */,
 			);
-			path = TMDBSwiftTvOS;
+			path = "TMDBSwift-iOS";
 			sourceTree = "<group>";
 		};
-		D1D3B4D5212980C2002B3486 /* TMDBSwiftTvOSTests */ = {
+		D1D3B4CA212980C2002B3486 /* TMDBSwift-tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				D1D3B4CB212980C2002B3486 /* TMDBSwift-tvOS.h */,
+				D1D3B4CC212980C2002B3486 /* Info.plist */,
+			);
+			path = "TMDBSwift-tvOS";
+			sourceTree = "<group>";
+		};
+		D1D3B4D5212980C2002B3486 /* TMDBSwift-tvOSTests */ = {
 			isa = PBXGroup;
 			children = (
 				D1D3B51B212981BB002B3486 /* TMDBSwiftTests.swift */,
@@ -574,7 +582,7 @@
 				D1D3B51C212981BB002B3486 /* MovieMDBTests.swift */,
 				D1D3B4D8212980C2002B3486 /* Info.plist */,
 			);
-			path = TMDBSwiftTvOSTests;
+			path = "TMDBSwift-tvOSTests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -584,7 +592,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EF1B26F1CB72DC000B49F4E /* TMDBSwift.h in Headers */,
+				5EF1B26F1CB72DC000B49F4E /* TMDBSwift-iOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,7 +600,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F62A0C420CB9360000744A9 /* TMDBSwiftMac.h in Headers */,
+				6F62A0C420CB9360000744A9 /* TMDBSwift-macOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,16 +608,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1D3B4D9212980C2002B3486 /* TMDBSwiftTvOS.h in Headers */,
+				D1D3B4D9212980C2002B3486 /* TMDBSwift-tvOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		5EF1B26A1CB72DBF00B49F4E /* TMDBSwift */ = {
+		5EF1B26A1CB72DBF00B49F4E /* TMDBSwift-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5EF1B27F1CB72DC000B49F4E /* Build configuration list for PBXNativeTarget "TMDBSwift" */;
+			buildConfigurationList = 5EF1B27F1CB72DC000B49F4E /* Build configuration list for PBXNativeTarget "TMDBSwift-iOS" */;
 			buildPhases = (
 				5EF1B2661CB72DBF00B49F4E /* Sources */,
 				5EF1B2671CB72DBF00B49F4E /* Frameworks */,
@@ -620,14 +628,14 @@
 			);
 			dependencies = (
 			);
-			name = TMDBSwift;
+			name = "TMDBSwift-iOS";
 			productName = TMDBSwift;
 			productReference = 5EF1B26B1CB72DBF00B49F4E /* TMDBSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		5EF1B2741CB72DC000B49F4E /* TMDBSwiftTests */ = {
+		5EF1B2741CB72DC000B49F4E /* TMDBSwift-iOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5EF1B2821CB72DC000B49F4E /* Build configuration list for PBXNativeTarget "TMDBSwiftTests" */;
+			buildConfigurationList = 5EF1B2821CB72DC000B49F4E /* Build configuration list for PBXNativeTarget "TMDBSwift-iOSTests" */;
 			buildPhases = (
 				5EF1B2711CB72DC000B49F4E /* Sources */,
 				5EF1B2721CB72DC000B49F4E /* Frameworks */,
@@ -638,14 +646,14 @@
 			dependencies = (
 				5EF1B2781CB72DC000B49F4E /* PBXTargetDependency */,
 			);
-			name = TMDBSwiftTests;
+			name = "TMDBSwift-iOSTests";
 			productName = TMDBSwiftTests;
-			productReference = 5EF1B2751CB72DC000B49F4E /* TMDBSwiftTests.xctest */;
+			productReference = 5EF1B2751CB72DC000B49F4E /* TMDBSwift-iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		6F62A0B320CB935F000744A9 /* TMDBSwiftMac */ = {
+		6F62A0B320CB935F000744A9 /* TMDBSwift-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6F62A0C920CB9360000744A9 /* Build configuration list for PBXNativeTarget "TMDBSwiftMac" */;
+			buildConfigurationList = 6F62A0C920CB9360000744A9 /* Build configuration list for PBXNativeTarget "TMDBSwift-macOS" */;
 			buildPhases = (
 				6F62A0AF20CB935F000744A9 /* Sources */,
 				6F62A0B020CB935F000744A9 /* Frameworks */,
@@ -656,14 +664,14 @@
 			);
 			dependencies = (
 			);
-			name = TMDBSwiftMac;
+			name = "TMDBSwift-macOS";
 			productName = TMDBSwiftMac;
-			productReference = 6F62A0B420CB935F000744A9 /* TMDBSwiftMac.framework */;
+			productReference = 6F62A0B420CB935F000744A9 /* TMDBSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		6F62A0BB20CB935F000744A9 /* TMDBSwiftMacTests */ = {
+		6F62A0BB20CB935F000744A9 /* TMDBSwift-macOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6F62A0CA20CB9360000744A9 /* Build configuration list for PBXNativeTarget "TMDBSwiftMacTests" */;
+			buildConfigurationList = 6F62A0CA20CB9360000744A9 /* Build configuration list for PBXNativeTarget "TMDBSwift-macOSTests" */;
 			buildPhases = (
 				6F62A0B820CB935F000744A9 /* Sources */,
 				6F62A0B920CB935F000744A9 /* Frameworks */,
@@ -674,14 +682,14 @@
 			dependencies = (
 				6F62A0BF20CB9360000744A9 /* PBXTargetDependency */,
 			);
-			name = TMDBSwiftMacTests;
+			name = "TMDBSwift-macOSTests";
 			productName = TMDBSwiftMacTests;
-			productReference = 6F62A0BC20CB935F000744A9 /* TMDBSwiftMacTests.xctest */;
+			productReference = 6F62A0BC20CB935F000744A9 /* TMDBSwift-macOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D1D3B4C8212980C2002B3486 /* TMDBSwiftTvOS */ = {
+		D1D3B4C8212980C2002B3486 /* TMDBSwift-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D1D3B4DA212980C2002B3486 /* Build configuration list for PBXNativeTarget "TMDBSwiftTvOS" */;
+			buildConfigurationList = D1D3B4DA212980C2002B3486 /* Build configuration list for PBXNativeTarget "TMDBSwift-tvOS" */;
 			buildPhases = (
 				D1D3B4C4212980C2002B3486 /* Headers */,
 				D1D3B4C5212980C2002B3486 /* Sources */,
@@ -692,14 +700,14 @@
 			);
 			dependencies = (
 			);
-			name = TMDBSwiftTvOS;
+			name = "TMDBSwift-tvOS";
 			productName = TMDBSwiftTvOS;
-			productReference = D1D3B4C9212980C2002B3486 /* TMDBSwiftTvOS.framework */;
+			productReference = D1D3B4C9212980C2002B3486 /* TMDBSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		D1D3B4D0212980C2002B3486 /* TMDBSwiftTvOSTests */ = {
+		D1D3B4D0212980C2002B3486 /* TMDBSwift-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D1D3B4DD212980C2002B3486 /* Build configuration list for PBXNativeTarget "TMDBSwiftTvOSTests" */;
+			buildConfigurationList = D1D3B4DD212980C2002B3486 /* Build configuration list for PBXNativeTarget "TMDBSwift-tvOSTests" */;
 			buildPhases = (
 				D1D3B4CD212980C2002B3486 /* Sources */,
 				D1D3B4CE212980C2002B3486 /* Frameworks */,
@@ -710,9 +718,9 @@
 			dependencies = (
 				D1D3B4D4212980C2002B3486 /* PBXTargetDependency */,
 			);
-			name = TMDBSwiftTvOSTests;
+			name = "TMDBSwift-tvOSTests";
 			productName = TMDBSwiftTvOSTests;
-			productReference = D1D3B4D1212980C2002B3486 /* TMDBSwiftTvOSTests.xctest */;
+			productReference = D1D3B4D1212980C2002B3486 /* TMDBSwift-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -772,12 +780,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5EF1B26A1CB72DBF00B49F4E /* TMDBSwift */,
-				5EF1B2741CB72DC000B49F4E /* TMDBSwiftTests */,
-				6F62A0B320CB935F000744A9 /* TMDBSwiftMac */,
-				6F62A0BB20CB935F000744A9 /* TMDBSwiftMacTests */,
-				D1D3B4C8212980C2002B3486 /* TMDBSwiftTvOS */,
-				D1D3B4D0212980C2002B3486 /* TMDBSwiftTvOSTests */,
+				5EF1B26A1CB72DBF00B49F4E /* TMDBSwift-iOS */,
+				5EF1B2741CB72DC000B49F4E /* TMDBSwift-iOSTests */,
+				6F62A0B320CB935F000744A9 /* TMDBSwift-macOS */,
+				6F62A0BB20CB935F000744A9 /* TMDBSwift-macOSTests */,
+				D1D3B4C8212980C2002B3486 /* TMDBSwift-tvOS */,
+				D1D3B4D0212980C2002B3486 /* TMDBSwift-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1061,17 +1069,17 @@
 /* Begin PBXTargetDependency section */
 		5EF1B2781CB72DC000B49F4E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5EF1B26A1CB72DBF00B49F4E /* TMDBSwift */;
+			target = 5EF1B26A1CB72DBF00B49F4E /* TMDBSwift-iOS */;
 			targetProxy = 5EF1B2771CB72DC000B49F4E /* PBXContainerItemProxy */;
 		};
 		6F62A0BF20CB9360000744A9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6F62A0B320CB935F000744A9 /* TMDBSwiftMac */;
+			target = 6F62A0B320CB935F000744A9 /* TMDBSwift-macOS */;
 			targetProxy = 6F62A0BE20CB9360000744A9 /* PBXContainerItemProxy */;
 		};
 		D1D3B4D4212980C2002B3486 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D1D3B4C8212980C2002B3486 /* TMDBSwiftTvOS */;
+			target = D1D3B4C8212980C2002B3486 /* TMDBSwift-tvOS */;
 			targetProxy = D1D3B4D3212980C2002B3486 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1200,11 +1208,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
+				INFOPLIST_FILE = "TMDBSwift-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GeorgeKye.TMDBSwift;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(PROJECT)";
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1223,11 +1231,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
+				INFOPLIST_FILE = "TMDBSwift-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GeorgeKye.TMDBSwift;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(PROJECT)";
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1243,7 +1251,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3F89ZY3P47;
-				INFOPLIST_FILE = TMDBSwiftTests/Info.plist;
+				INFOPLIST_FILE = "TMDBSwift-iOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GeorgeKye.TMDBSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1261,7 +1269,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3F89ZY3P47;
-				INFOPLIST_FILE = TMDBSwiftTests/Info.plist;
+				INFOPLIST_FILE = "TMDBSwift-iOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GeorgeKye.TMDBSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1291,12 +1299,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = TMDBSwiftMac/Info.plist;
+				INFOPLIST_FILE = "TMDBSwift-macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = GeorgeKye.TMDBSwift;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(PROJECT)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -1325,12 +1333,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = TMDBSwiftMac/Info.plist;
+				INFOPLIST_FILE = "TMDBSwift-macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = GeorgeKye.TMDBSwift;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(PROJECT)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -1354,7 +1362,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3F89ZY3P47;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = TMDBSwiftMacTests/Info.plist;
+				INFOPLIST_FILE = "TMDBSwift-macOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.the-skylab.TMDBSwiftMacTests";
@@ -1382,7 +1390,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = TMDBSwiftMacTests/Info.plist;
+				INFOPLIST_FILE = "TMDBSwift-macOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.the-skylab.TMDBSwiftMacTests";
@@ -1408,13 +1416,13 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = TMDBSwiftTvOS/Info.plist;
+				INFOPLIST_FILE = "TMDBSwift-tvOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = GeorgeKye.TMDBSwift;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(PROJECT)";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1439,12 +1447,12 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = TMDBSwiftTvOS/Info.plist;
+				INFOPLIST_FILE = "TMDBSwift-tvOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = GeorgeKye.TMDBSwift;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(PROJECT)";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -1465,7 +1473,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3F89ZY3P47;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = TMDBSwiftTvOSTests/Info.plist;
+				INFOPLIST_FILE = "TMDBSwift-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1475,7 +1483,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
 			};
 			name = Debug;
 		};
@@ -1491,7 +1499,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3F89ZY3P47;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = TMDBSwiftTvOSTests/Info.plist;
+				INFOPLIST_FILE = "TMDBSwift-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.notsobright.TMDBSwiftTvOSTests;
@@ -1499,7 +1507,7 @@
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
 			};
 			name = Release;
 		};
@@ -1515,7 +1523,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5EF1B27F1CB72DC000B49F4E /* Build configuration list for PBXNativeTarget "TMDBSwift" */ = {
+		5EF1B27F1CB72DC000B49F4E /* Build configuration list for PBXNativeTarget "TMDBSwift-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5EF1B2801CB72DC000B49F4E /* Debug */,
@@ -1524,7 +1532,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5EF1B2821CB72DC000B49F4E /* Build configuration list for PBXNativeTarget "TMDBSwiftTests" */ = {
+		5EF1B2821CB72DC000B49F4E /* Build configuration list for PBXNativeTarget "TMDBSwift-iOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5EF1B2831CB72DC000B49F4E /* Debug */,
@@ -1533,7 +1541,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6F62A0C920CB9360000744A9 /* Build configuration list for PBXNativeTarget "TMDBSwiftMac" */ = {
+		6F62A0C920CB9360000744A9 /* Build configuration list for PBXNativeTarget "TMDBSwift-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F62A0C520CB9360000744A9 /* Debug */,
@@ -1542,7 +1550,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6F62A0CA20CB9360000744A9 /* Build configuration list for PBXNativeTarget "TMDBSwiftMacTests" */ = {
+		6F62A0CA20CB9360000744A9 /* Build configuration list for PBXNativeTarget "TMDBSwift-macOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F62A0C720CB9360000744A9 /* Debug */,
@@ -1551,7 +1559,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D1D3B4DA212980C2002B3486 /* Build configuration list for PBXNativeTarget "TMDBSwiftTvOS" */ = {
+		D1D3B4DA212980C2002B3486 /* Build configuration list for PBXNativeTarget "TMDBSwift-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D1D3B4DB212980C2002B3486 /* Debug */,
@@ -1560,7 +1568,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D1D3B4DD212980C2002B3486 /* Build configuration list for PBXNativeTarget "TMDBSwiftTvOSTests" */ = {
+		D1D3B4DD212980C2002B3486 /* Build configuration list for PBXNativeTarget "TMDBSwift-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D1D3B4DE212980C2002B3486 /* Debug */,

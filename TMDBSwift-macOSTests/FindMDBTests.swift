@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import TMDBSwiftMac
+@testable import TMDBSwift
 
 class FindMDBTests: XCTestCase {
 	

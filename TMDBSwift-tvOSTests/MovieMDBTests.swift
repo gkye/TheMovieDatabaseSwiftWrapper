@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import TMDBSwiftTvOS
+@testable import TMDBSwift
 
 class MovieMDBTests: XCTestCase {
 	

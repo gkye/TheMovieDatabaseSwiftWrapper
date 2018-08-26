@@ -1,6 +1,6 @@
 //
-//  TMDBSwiftTvOS.h
-//  TMDBSwiftTvOS
+//  TMDBSwift-tvOS.h
+//  TMDBSwift-tvOS
 //
 //  Created by Michele Dall'Agata on 19/08/2018.
 //  Copyright © 2018 George. All rights reserved.

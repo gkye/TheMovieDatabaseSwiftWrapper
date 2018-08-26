@@ -1,6 +1,6 @@
 //
-//  TMDBSwift.h
-//  TMDBSwift
+//  TMDBSwift-iOS.h
+//  TMDBSwift-iOS
 //
 //  Created by George Kye on 2016-04-07.
 //  Copyright © 2016 George Kye. All rights reserved.
