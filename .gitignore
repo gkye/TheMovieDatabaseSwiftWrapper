@@ -3,6 +3,8 @@
 # OS X
 .DS_Store
 *.DS_Store
+TMDBSwift-macOSTests
+TMDBSwift-tvOSTests
 
 # Xcode
 build/
