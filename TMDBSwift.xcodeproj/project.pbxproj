@@ -132,8 +132,12 @@
 		6F62A10C20CB9471000744A9 /* TVSeasonsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B3401CB732C900B49F4E /* TVSeasonsMDB.swift */; };
 		6F62A10D20CB9471000744A9 /* VideosMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B3411CB732C900B49F4E /* VideosMDB.swift */; };
 		6F62A10E20CB9471000744A9 /* SearchMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774C0D81CF757120045F0CE /* SearchMDB.swift */; };
-		6F62A11520CB9A20000744A9 /* TMDBSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F62A11020CB9A18000744A9 /* TMDBSwiftTests.swift */; };
-		6F62A11620CB9A20000744A9 /* FindMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F62A11120CB9A18000744A9 /* FindMDBTests.swift */; };
+		D165CA4721410C33000274F3 /* TMDBSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B27A1CB72DC000B49F4E /* TMDBSwiftTests.swift */; };
+		D165CA4821410C33000274F3 /* FindMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D4CAA1EC924DA0083D85A /* FindMDBTests.swift */; };
+		D165CA4921410C33000274F3 /* MovieMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4CC87A1D295BC700101495 /* MovieMDBTests.swift */; };
+		D165CA4A21410C34000274F3 /* TMDBSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B27A1CB72DC000B49F4E /* TMDBSwiftTests.swift */; };
+		D165CA4B21410C34000274F3 /* FindMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D4CAA1EC924DA0083D85A /* FindMDBTests.swift */; };
+		D165CA4C21410C34000274F3 /* MovieMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4CC87A1D295BC700101495 /* MovieMDBTests.swift */; };
 		D1D3B4D2212980C2002B3486 /* TMDBSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D3B4C9212980C2002B3486 /* TMDBSwift.framework */; };
 		D1D3B4D9212980C2002B3486 /* TMDBSwift-tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D3B4CB212980C2002B3486 /* TMDBSwift-tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1D3B4E021298148002B3486 /* ArrayObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF143611CF0A3FB009C620D /* ArrayObjectProtocol.swift */; };
@@ -195,10 +199,6 @@
 		D1D3B5182129816A002B3486 /* TVSeasonsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B3401CB732C900B49F4E /* TVSeasonsMDB.swift */; };
 		D1D3B5192129816A002B3486 /* VideosMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B3411CB732C900B49F4E /* VideosMDB.swift */; };
 		D1D3B51A2129816A002B3486 /* SearchMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774C0D81CF757120045F0CE /* SearchMDB.swift */; };
-		D1D3B51E212981C9002B3486 /* TMDBSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D3B51B212981BB002B3486 /* TMDBSwiftTests.swift */; };
-		D1D3B51F212981C9002B3486 /* FindMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D3B51D212981BB002B3486 /* FindMDBTests.swift */; };
-		D1D3B520212981C9002B3486 /* MovieMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D3B51C212981BB002B3486 /* MovieMDBTests.swift */; };
-		D1D3B5222129ED24002B3486 /* MovieMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D3B5212129ED24002B3486 /* MovieMDBTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -299,19 +299,10 @@
 		6F62A0B620CB935F000744A9 /* TMDBSwift-macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TMDBSwift-macOS.h"; sourceTree = "<group>"; };
 		6F62A0B720CB935F000744A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F62A0BC20CB935F000744A9 /* TMDBSwift-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TMDBSwift-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F62A0C320CB9360000744A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6F62A10F20CB9A18000744A9 /* MovieMDBTests-old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieMDBTests-old.swift"; sourceTree = "<group>"; };
-		6F62A11020CB9A18000744A9 /* TMDBSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBSwiftTests.swift; sourceTree = "<group>"; };
-		6F62A11120CB9A18000744A9 /* FindMDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMDBTests.swift; sourceTree = "<group>"; };
 		D1D3B4C9212980C2002B3486 /* TMDBSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TMDBSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D3B4CB212980C2002B3486 /* TMDBSwift-tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TMDBSwift-tvOS.h"; sourceTree = "<group>"; };
 		D1D3B4CC212980C2002B3486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1D3B4D1212980C2002B3486 /* TMDBSwift-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TMDBSwift-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1D3B4D8212980C2002B3486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D1D3B51B212981BB002B3486 /* TMDBSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBSwiftTests.swift; sourceTree = "<group>"; };
-		D1D3B51C212981BB002B3486 /* MovieMDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMDBTests.swift; sourceTree = "<group>"; };
-		D1D3B51D212981BB002B3486 /* FindMDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMDBTests.swift; sourceTree = "<group>"; };
-		D1D3B5212129ED24002B3486 /* MovieMDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMDBTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -420,11 +411,9 @@
 			children = (
 				5EF1B26D1CB72DC000B49F4E /* Sources */,
 				D1393A5021329C9100291F8C /* TMDBSwift-iOS */,
-				5EF1B2791CB72DC000B49F4E /* TMDBSwift-iOSTests */,
 				6F62A0B520CB935F000744A9 /* TMDBSwift-macOS */,
-				6F62A0C020CB9360000744A9 /* TMDBSwift-macOSTests */,
 				D1D3B4CA212980C2002B3486 /* TMDBSwift-tvOS */,
-				D1D3B4D5212980C2002B3486 /* TMDBSwift-tvOSTests */,
+				5EF1B2791CB72DC000B49F4E /* TMDBSwiftTests */,
 				5EF1B26C1CB72DBF00B49F4E /* Products */,
 				185875F8E34AE1EB1192AE53 /* Frameworks */,
 			);
@@ -456,15 +445,15 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		5EF1B2791CB72DC000B49F4E /* TMDBSwift-iOSTests */ = {
+		5EF1B2791CB72DC000B49F4E /* TMDBSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				5EF1B27A1CB72DC000B49F4E /* TMDBSwiftTests.swift */,
 				5EF1B27C1CB72DC000B49F4E /* Info.plist */,
+				5EF1B27A1CB72DC000B49F4E /* TMDBSwiftTests.swift */,
 				185D4CAA1EC924DA0083D85A /* FindMDBTests.swift */,
 				5E4CC87A1D295BC700101495 /* MovieMDBTests.swift */,
 			);
-			path = "TMDBSwift-iOSTests";
+			path = TMDBSwiftTests;
 			sourceTree = "<group>";
 		};
 		5EF1B3091CB732C900B49F4E /* Client */ = {
@@ -544,18 +533,6 @@
 			path = "TMDBSwift-macOS";
 			sourceTree = "<group>";
 		};
-		6F62A0C020CB9360000744A9 /* TMDBSwift-macOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				6F62A11020CB9A18000744A9 /* TMDBSwiftTests.swift */,
-				6F62A11120CB9A18000744A9 /* FindMDBTests.swift */,
-				D1D3B5212129ED24002B3486 /* MovieMDBTests.swift */,
-				6F62A10F20CB9A18000744A9 /* MovieMDBTests-old.swift */,
-				6F62A0C320CB9360000744A9 /* Info.plist */,
-			);
-			path = "TMDBSwift-macOSTests";
-			sourceTree = "<group>";
-		};
 		D1393A5021329C9100291F8C /* TMDBSwift-iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -572,17 +549,6 @@
 				D1D3B4CC212980C2002B3486 /* Info.plist */,
 			);
 			path = "TMDBSwift-tvOS";
-			sourceTree = "<group>";
-		};
-		D1D3B4D5212980C2002B3486 /* TMDBSwift-tvOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				D1D3B51B212981BB002B3486 /* TMDBSwiftTests.swift */,
-				D1D3B51D212981BB002B3486 /* FindMDBTests.swift */,
-				D1D3B51C212981BB002B3486 /* MovieMDBTests.swift */,
-				D1D3B4D8212980C2002B3486 /* Info.plist */,
-			);
-			path = "TMDBSwift-tvOSTests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -982,9 +948,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1D3B5222129ED24002B3486 /* MovieMDBTests.swift in Sources */,
-				6F62A11620CB9A20000744A9 /* FindMDBTests.swift in Sources */,
-				6F62A11520CB9A20000744A9 /* TMDBSwiftTests.swift in Sources */,
+				D165CA4921410C33000274F3 /* MovieMDBTests.swift in Sources */,
+				D165CA4821410C33000274F3 /* FindMDBTests.swift in Sources */,
+				D165CA4721410C33000274F3 /* TMDBSwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1058,9 +1024,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1D3B520212981C9002B3486 /* MovieMDBTests.swift in Sources */,
-				D1D3B51F212981C9002B3486 /* FindMDBTests.swift in Sources */,
-				D1D3B51E212981C9002B3486 /* TMDBSwiftTests.swift in Sources */,
+				D165CA4C21410C34000274F3 /* MovieMDBTests.swift in Sources */,
+				D165CA4B21410C34000274F3 /* FindMDBTests.swift in Sources */,
+				D165CA4A21410C34000274F3 /* TMDBSwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1251,7 +1217,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3F89ZY3P47;
-				INFOPLIST_FILE = "TMDBSwift-iOSTests/Info.plist";
+				INFOPLIST_FILE = TMDBSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GeorgeKye.TMDBSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1269,7 +1235,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3F89ZY3P47;
-				INFOPLIST_FILE = "TMDBSwift-iOSTests/Info.plist";
+				INFOPLIST_FILE = TMDBSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GeorgeKye.TMDBSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1362,7 +1328,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3F89ZY3P47;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "TMDBSwift-macOSTests/Info.plist";
+				INFOPLIST_FILE = TMDBSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.the-skylab.TMDBSwiftMacTests";
@@ -1390,7 +1356,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "TMDBSwift-macOSTests/Info.plist";
+				INFOPLIST_FILE = TMDBSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.the-skylab.TMDBSwiftMacTests";
@@ -1473,7 +1439,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3F89ZY3P47;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "TMDBSwift-tvOSTests/Info.plist";
+				INFOPLIST_FILE = TMDBSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1499,7 +1465,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3F89ZY3P47;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "TMDBSwift-tvOSTests/Info.plist";
+				INFOPLIST_FILE = TMDBSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.notsobright.TMDBSwiftTvOSTests;
