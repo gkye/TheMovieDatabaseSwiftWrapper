@@ -101,7 +101,7 @@ extension MovieMDB{
 
       if let data = apiReturn.data {
         do {
-          let decodedWrapper = try JSONDecoder().decode(ArrayWrapper<VideosMDB>.self, from: data)
+          let decodedWrapper = try JSONDecoder().decode(ResultsWrapper<VideosMDB>.self, from: data)
           videos = decodedWrapper.results
         } catch (let error) {
           print("failed to decode \(error)")
@@ -142,7 +142,7 @@ extension MovieMDB{
       apiReturn in
       var reviews: [MovieReviewsMDB]?
       if let data = apiReturn.data,
-        let decodedWrapper = try? JSONDecoder().decode(ArrayWrapper<MovieReviewsMDB>.self, from: data) {
+        let decodedWrapper = try? JSONDecoder().decode(ResultsWrapper<MovieReviewsMDB>.self, from: data) {
           reviews = decodedWrapper.results
       }
       completion(apiReturn, reviews)

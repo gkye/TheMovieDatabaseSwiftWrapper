@@ -257,24 +257,19 @@ class MovieMDBTests: XCTestCase {
 		var reviews: [MovieReviewsMDB]?
 		let expectation = self.expectation(description: "Wait for data to load.")
 		
-		MovieMDB.movieAppendTo(movieID: 49026, append_to: ["videos", "reviews"], completion: {
-			api, movie, json in
-			cReturn = api
-			movieData = movie
-      if let data = cReturn?.data {
+    MovieMDB.movieAppendTo(movieID: 49026, append_to: ["videos", "reviews"], completion: {
+      api, movie, json in
+      cReturn = api
+      movieData = movie
+      if let data = cReturn?.data,
+        let decodedVideoWrapper = try? JSONDecoder().decode(ResponseWrapper.self, from: data),
+        let decodedReviewWrapper = try? JSONDecoder().decode(ResponseWrapper.self, from: data) {
         expectation.fulfill()
-        do {
-          let decodedVideoWrapper = try JSONDecoder().decode(VideosWrapper.self, from: data)
-          videos = decodedVideoWrapper.videos.results
-
-          let decodedReviewWrapper = try JSONDecoder().decode(ReviewsWrapper.self, from: data)
-          reviews = decodedReviewWrapper.reviews.results
-
-        } catch (let error) {
-          print("failed to decode \(error)")
-        }
+        
+        videos = decodedVideoWrapper.videos?.results
+        reviews = decodedReviewWrapper.reviews?.results
       }
-		})
+    })
 		
 		waitForExpectations(timeout: 5, handler: nil)
 		

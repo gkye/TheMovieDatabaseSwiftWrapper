@@ -90,7 +90,7 @@ public struct TVSeasonsMDB: ArrayObject{
       apiReturn in
       var results: [VideosMDB]?
       if let data = apiReturn.data,
-        let decodedWrapper = try? JSONDecoder().decode(ArrayWrapper<VideosMDB>.self, from: data) {
+        let decodedWrapper = try? JSONDecoder().decode(ResultsWrapper<VideosMDB>.self, from: data) {
 
         results = decodedWrapper.results
       }
