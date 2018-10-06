@@ -92,14 +92,20 @@ extension MovieMDB{
     }
     
   }
-  
+
   ///Get the videos (trailers, teasers, clips, etc...) for a specific movie id.
   public class func videos(movieID: Int!, language: String?  = nil, completion: @escaping (_ clientReturn: ClientReturn, _ videos: [VideosMDB]?) -> ()) -> (){
     Client.Movies(String(movieID) + "/videos",  page: nil, language: language){
       apiReturn in
       var videos: [VideosMDB]?
-      if let json = apiReturn.json?["results"]  {
-        videos = VideosMDB.initialize(json: json)
+
+      if let data = apiReturn.data {
+        do {
+          let decodedWrapper = try JSONDecoder().decode(ArrayWrapper<VideosMDB>.self, from: data)
+          videos = decodedWrapper.results
+        } catch (let error) {
+          print("failed to decode \(error)")
+        }
       }
       completion(apiReturn, videos)
     }
@@ -135,8 +141,9 @@ extension MovieMDB{
     Client.Movies(String(movieID) + "/reviews",  page: page, language: language){
       apiReturn in
       var reviews: [MovieReviewsMDB]?
-      if let json = apiReturn.json?["results"] {
-        reviews = MovieReviewsMDB.initialize(json: json)
+      if let data = apiReturn.data,
+        let decodedWrapper = try? JSONDecoder().decode(ArrayWrapper<MovieReviewsMDB>.self, from: data) {
+          reviews = decodedWrapper.results
       }
       completion(apiReturn, reviews)
     }

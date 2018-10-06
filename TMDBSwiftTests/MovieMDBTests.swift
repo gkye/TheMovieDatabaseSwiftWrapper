@@ -261,11 +261,19 @@ class MovieMDBTests: XCTestCase {
 			api, movie, json in
 			cReturn = api
 			movieData = movie
-			if let json = json {
-				videos = VideosMDB.initialize(json: json["videos"]["results"])
-				reviews = MovieReviewsMDB.initialize(json: json["reviews"]["results"])
-				expectation.fulfill()
-			}
+      if let data = cReturn?.data {
+        expectation.fulfill()
+        do {
+          let decodedVideoWrapper = try JSONDecoder().decode(VideosWrapper.self, from: data)
+          videos = decodedVideoWrapper.videos.results
+
+          let decodedReviewWrapper = try JSONDecoder().decode(ReviewsWrapper.self, from: data)
+          reviews = decodedReviewWrapper.reviews.results
+
+        } catch (let error) {
+          print("failed to decode \(error)")
+        }
+      }
 		})
 		
 		waitForExpectations(timeout: 5, handler: nil)
