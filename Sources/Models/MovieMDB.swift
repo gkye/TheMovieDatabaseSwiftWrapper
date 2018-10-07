@@ -97,16 +97,7 @@ extension MovieMDB{
   public class func videos(movieID: Int!, language: String?  = nil, completion: @escaping (_ clientReturn: ClientReturn, _ videos: [VideosMDB]?) -> ()) -> (){
     Client.Movies(String(movieID) + "/videos",  page: nil, language: language){
       apiReturn in
-      var videos: [VideosMDB]?
-
-      if let data = apiReturn.data {
-        do {
-          let decodedWrapper = try JSONDecoder().decode(ResultsWrapper<VideosMDB>.self, from: data)
-          videos = decodedWrapper.results
-        } catch (let error) {
-          print("failed to decode \(error)")
-        }
-      }
+      let videos: [VideosMDB]? = apiReturn.decodeResults()
       completion(apiReturn, videos)
     }
   }
@@ -140,11 +131,7 @@ extension MovieMDB{
   public class func reviews(movieID: Int!, page: Int?, language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ reviews: [MovieReviewsMDB]?) -> ()) -> (){
     Client.Movies(String(movieID) + "/reviews",  page: page, language: language){
       apiReturn in
-      var reviews: [MovieReviewsMDB]?
-      if let data = apiReturn.data,
-        let decodedWrapper = try? JSONDecoder().decode(ResultsWrapper<MovieReviewsMDB>.self, from: data) {
-          reviews = decodedWrapper.results
-      }
+      let reviews: [MovieReviewsMDB]? = apiReturn.decodeResults()
       completion(apiReturn, reviews)
     }
     
