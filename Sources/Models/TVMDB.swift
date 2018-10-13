@@ -133,11 +133,8 @@ extension TVMDB{
   public class func videos(tvShowID: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [VideosMDB]?) -> ()) -> (){
     Client.TV(String(tvShowID) + "/videos",  page: nil, language: language, timezone: nil){
       apiReturn in
-      var data: [VideosMDB]?
-      if let json = apiReturn.json?["results"]{
-        data = VideosMDB.initialize(json: json)
-      }
-      completion(apiReturn, data)
+      let videos: [VideosMDB]? = apiReturn.decodeResults()
+      completion(apiReturn, videos)
     }
   }
   

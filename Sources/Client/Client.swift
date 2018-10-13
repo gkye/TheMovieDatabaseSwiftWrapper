@@ -11,6 +11,7 @@ import Foundation
 public struct ClientReturn{
   public var error: NSError?
   public var json: JSON?
+  public var data: Data?
   //  public var MBDBReturn: AnyObject?
   public var pageResults: PageResultsMDB?
 }
@@ -40,6 +41,7 @@ struct Client{
       (data, response, error) in
       if let data = data, let json = try? JSON(data: data) {
         apiReturn.json = json
+        apiReturn.data = data
         if json["page"].exists() {
           apiReturn.pageResults = PageResultsMDB(results: json)
         }

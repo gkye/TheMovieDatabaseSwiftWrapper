@@ -106,11 +106,9 @@ public struct TVEpisodesMDB: ArrayObject {
     let urltype = String(tvShowId) + "/season/" + String(seasonNumber) + "/episode/" + String(episodeNumber) + "/videos"
     Client.Seasons(urltype,  language: language){
       apiReturn in
-      var data: [VideosMDB]?
-      if let json = apiReturn.json?["results"] {
-        data = VideosMDB.initialize(json: json)
-      }
-      completion(apiReturn, data)
+      let videos: [VideosMDB]? = apiReturn.decodeResults()
+
+      completion(apiReturn, videos)
     }
   }
 }
