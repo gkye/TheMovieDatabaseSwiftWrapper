@@ -328,7 +328,7 @@ public class TaggedImageMDB: Images_MDB {
     if results["media_type"] == "movie"{
       media = .movie(DiscoverMovieMDB(results: results["media"]))
     }else if results["media_type"] == "tv"{
-      media = TaggedImageMediaMDB.tv(DiscoverTVMDB(results: results["media"]))
+      media = .tv(DiscoverTVMDB(results: results["media"]))
     }
   }
 }

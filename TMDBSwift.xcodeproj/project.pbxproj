@@ -71,6 +71,9 @@
 		5EF1B3751CB732C900B49F4E /* TVMDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B33F1CB732C900B49F4E /* TVMDBModel.swift */; };
 		5EF1B3761CB732C900B49F4E /* TVSeasonsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B3401CB732C900B49F4E /* TVSeasonsMDB.swift */; };
 		5EF1B3771CB732C900B49F4E /* VideosMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B3411CB732C900B49F4E /* VideosMDB.swift */; };
+		6EDE03922171A9850034A153 /* PersonMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDE03902171A9160034A153 /* PersonMDBTests.swift */; };
+		6EDE03932171A9860034A153 /* PersonMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDE03902171A9160034A153 /* PersonMDBTests.swift */; };
+		6EDE03942171A9860034A153 /* PersonMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDE03902171A9160034A153 /* PersonMDBTests.swift */; };
 		6E963017215F76B3006F7FA5 /* ResultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E963016215F76B3006F7FA5 /* ResultsWrapper.swift */; };
 		6E96305521698762006F7FA5 /* ResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96305421698762006F7FA5 /* ResponseWrapper.swift */; };
 		6E963057216987CB006F7FA5 /* ClientReturn+decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E963056216987CB006F7FA5 /* ClientReturn+decode.swift */; };
@@ -298,6 +301,7 @@
 		5EF1B3411CB732C900B49F4E /* VideosMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosMDB.swift; sourceTree = "<group>"; };
 		5EF1B37A1CB73D6B00B49F4E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/TMDBSwift-ctqadmatvtticcbrgqcmawytsfdg/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		5EF1B37C1CB73D7100B49F4E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/TMDBSwift-ctqadmatvtticcbrgqcmawytsfdg/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		6EDE03902171A9160034A153 /* PersonMDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonMDBTests.swift; sourceTree = "<group>"; };
 		6E963016215F76B3006F7FA5 /* ResultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsWrapper.swift; sourceTree = "<group>"; };
 		6E96305421698762006F7FA5 /* ResponseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseWrapper.swift; sourceTree = "<group>"; };
 		6E963056216987CB006F7FA5 /* ClientReturn+decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClientReturn+decode.swift"; sourceTree = "<group>"; };
@@ -459,6 +463,7 @@
 				5EF1B27A1CB72DC000B49F4E /* TMDBSwiftTests.swift */,
 				185D4CAA1EC924DA0083D85A /* FindMDBTests.swift */,
 				5E4CC87A1D295BC700101495 /* MovieMDBTests.swift */,
+				6EDE03902171A9160034A153 /* PersonMDBTests.swift */,
 			);
 			path = TMDBSwiftTests;
 			sourceTree = "<group>";
@@ -892,6 +897,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EDE03922171A9850034A153 /* PersonMDBTests.swift in Sources */,
 				185D4CAB1EC924DA0083D85A /* FindMDBTests.swift in Sources */,
 				5E4CC87B1D295BC700101495 /* MovieMDBTests.swift in Sources */,
 				5EF1B27B1CB72DC000B49F4E /* TMDBSwiftTests.swift in Sources */,
@@ -968,6 +974,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EDE03932171A9860034A153 /* PersonMDBTests.swift in Sources */,
 				D165CA4921410C33000274F3 /* MovieMDBTests.swift in Sources */,
 				D165CA4821410C33000274F3 /* FindMDBTests.swift in Sources */,
 				D165CA4721410C33000274F3 /* TMDBSwiftTests.swift in Sources */,
@@ -1044,6 +1051,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EDE03942171A9860034A153 /* PersonMDBTests.swift in Sources */,
 				D165CA4C21410C34000274F3 /* MovieMDBTests.swift in Sources */,
 				D165CA4B21410C34000274F3 /* FindMDBTests.swift in Sources */,
 				D165CA4A21410C34000274F3 /* TMDBSwiftTests.swift in Sources */,
