@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct VideosMDB: ArrayObject{
+public struct VideosMDB: Codable{
   public var id: String!
   public var iso_639_1: String?
   public var key: String!
@@ -16,14 +16,4 @@ public struct VideosMDB: ArrayObject{
   public var site: String?
   public var size: Int!
   public var  type: String!
-  
-  public init(results: JSON){
-    id = results["id"].string
-    iso_639_1 = results["iso_639_1"].string
-    key = results["key"].string
-    name = results["name"].string
-    site = results["site"].string
-    size = results["size"].int
-    type = results["type"].string
-  }
 }
