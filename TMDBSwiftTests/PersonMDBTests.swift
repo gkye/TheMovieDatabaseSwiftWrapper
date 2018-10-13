@@ -181,16 +181,19 @@ class PersonMDBTests: XCTestCase {
     XCTAssertNotNil(data.id)
   }
 
-  func testPopular() {
+  func testPopular_AndPageResults() {
     var data: [PersonResults]!
+    var api: ClientReturn!
     let expectation = self.expectation(description: "Wait for data to load.")
 
-    PersonMDB.popular(page: 1) { api, responseData in
+    PersonMDB.popular(page: 1) { responseApi, responseData in
       data = responseData
+      api = responseApi
       expectation.fulfill()
     }
     waitForExpectations(timeout: expecationTimeout, handler: nil)
     XCTAssertNotNil(data.first)
+    XCTAssertNotNil(api.pageResults)
   }
 
   func testPersonAppendTo() {
