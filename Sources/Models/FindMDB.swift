@@ -19,35 +19,20 @@ public enum ExternalIdTypes: String{
   case id
 }
 
-open class KnownForMovie: DiscoverMDB{
-  open var original_title: String?
-  open var release_date: String?
-  open var title: String!
-  open var video: Bool!
+open class KnownForMovie: DiscoverMovieMDB {
   open var media_type: String!
   
   required public init(results: JSON) {
     super.init(results: results)
-    original_title = results["original_title"].string
-    release_date = results["release_date"].string
-    title = results["title"].string
     media_type = results["media_type"].string
   }
 }
 
-open class KnownForTV: DiscoverMDB{
-  open var original_name: String?
-  open var origin_country: [String]?
-  open var first_air_date: String?
-  open var name: String!
+open class KnownForTV: DiscoverTVMDB{
   open var media_type: String!
   
   required public init(results: JSON) {
     super.init(results: results)
-    original_name = results["original_name"].string
-    origin_country = results["origin_country"].arrayObject as? [String]
-    first_air_date = results["first_air_date"].string
-    name = results["name"].string
     media_type = results["media_type"].string
   }
   
