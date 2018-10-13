@@ -77,6 +77,9 @@
 		6E963017215F76B3006F7FA5 /* ResultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E963016215F76B3006F7FA5 /* ResultsWrapper.swift */; };
 		6E96305521698762006F7FA5 /* ResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96305421698762006F7FA5 /* ResponseWrapper.swift */; };
 		6E963057216987CB006F7FA5 /* ClientReturn+decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E963056216987CB006F7FA5 /* ClientReturn+decode.swift */; };
+		6E34E87521721DF000174B31 /* ChangesMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E34E87421721DF000174B31 /* ChangesMDBTests.swift */; };
+		6E34E87621721DF000174B31 /* ChangesMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E34E87421721DF000174B31 /* ChangesMDBTests.swift */; };
+		6E34E87721721DF000174B31 /* ChangesMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E34E87421721DF000174B31 /* ChangesMDBTests.swift */; };
 		6F62A0BD20CB9360000744A9 /* TMDBSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F62A0B420CB935F000744A9 /* TMDBSwift.framework */; };
 		6F62A0C420CB9360000744A9 /* TMDBSwift-macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F62A0B620CB935F000744A9 /* TMDBSwift-macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F62A0D420CB9471000744A9 /* ArrayObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF143611CF0A3FB009C620D /* ArrayObjectProtocol.swift */; };
@@ -305,6 +308,7 @@
 		6E963016215F76B3006F7FA5 /* ResultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsWrapper.swift; sourceTree = "<group>"; };
 		6E96305421698762006F7FA5 /* ResponseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseWrapper.swift; sourceTree = "<group>"; };
 		6E963056216987CB006F7FA5 /* ClientReturn+decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClientReturn+decode.swift"; sourceTree = "<group>"; };
+		6E34E87421721DF000174B31 /* ChangesMDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangesMDBTests.swift; sourceTree = "<group>"; };
 		6F62A0B420CB935F000744A9 /* TMDBSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TMDBSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F62A0B620CB935F000744A9 /* TMDBSwift-macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TMDBSwift-macOS.h"; sourceTree = "<group>"; };
 		6F62A0B720CB935F000744A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -464,6 +468,7 @@
 				185D4CAA1EC924DA0083D85A /* FindMDBTests.swift */,
 				5E4CC87A1D295BC700101495 /* MovieMDBTests.swift */,
 				6EDE03902171A9160034A153 /* PersonMDBTests.swift */,
+				6E34E87421721DF000174B31 /* ChangesMDBTests.swift */,
 			);
 			path = TMDBSwiftTests;
 			sourceTree = "<group>";
@@ -898,6 +903,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EDE03922171A9850034A153 /* PersonMDBTests.swift in Sources */,
+				6E34E87521721DF000174B31 /* ChangesMDBTests.swift in Sources */,
 				185D4CAB1EC924DA0083D85A /* FindMDBTests.swift in Sources */,
 				5E4CC87B1D295BC700101495 /* MovieMDBTests.swift in Sources */,
 				5EF1B27B1CB72DC000B49F4E /* TMDBSwiftTests.swift in Sources */,
@@ -975,6 +981,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EDE03932171A9860034A153 /* PersonMDBTests.swift in Sources */,
+				6E34E87621721DF000174B31 /* ChangesMDBTests.swift in Sources */,
 				D165CA4921410C33000274F3 /* MovieMDBTests.swift in Sources */,
 				D165CA4821410C33000274F3 /* FindMDBTests.swift in Sources */,
 				D165CA4721410C33000274F3 /* TMDBSwiftTests.swift in Sources */,
@@ -1052,6 +1059,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EDE03942171A9860034A153 /* PersonMDBTests.swift in Sources */,
+				6E34E87721721DF000174B31 /* ChangesMDBTests.swift in Sources */,
 				D165CA4C21410C34000274F3 /* MovieMDBTests.swift in Sources */,
 				D165CA4B21410C34000274F3 /* FindMDBTests.swift in Sources */,
 				D165CA4A21410C34000274F3 /* TMDBSwiftTests.swift in Sources */,
