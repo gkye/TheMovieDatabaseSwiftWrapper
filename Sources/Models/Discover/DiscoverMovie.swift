@@ -54,6 +54,7 @@ public enum DiscoverSortByMovie: String {
 open class DiscoverMovieMDB: DiscoverMDB{
   open var title: String?
   open var video: Bool?
+  open var adult: Bool?
   open var release_date: String?
   open var original_title: String?
   open var genreIds: [Int]?

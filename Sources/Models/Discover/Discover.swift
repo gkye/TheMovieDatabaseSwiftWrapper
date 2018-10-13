@@ -55,7 +55,6 @@ public enum DiscoverParam {
 }
 
 open class DiscoverMDB: ArrayObject {
-	open var adult: Bool!
 	open var overview: String?
 	open var popularity: Double?
 	open var id: Int!
