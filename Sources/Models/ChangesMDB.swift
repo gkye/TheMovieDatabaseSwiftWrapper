@@ -27,9 +27,25 @@ public struct ChangesMDB{
     }
     return changes
   }
-  
-  public static func changes(changeType: String, page: Double?, startDate: String? = nil, endDate:String? = nil, completionHandler: @escaping (_ clientReturn: ClientReturn, _ data: [ChangesMDB]?) -> ()) -> (){
-    Client.Changes(changeType: "movie", page: 1, startDate: nil, endDate: nil){
+
+    public enum ChangeType: String {
+        case movie, tv, person
+    }
+
+    public static func changes(changeType: ChangeType, page: Int? = 1, startDate: String? = nil, endDate:String? = nil, completionHandler: @escaping (_ clientReturn: ClientReturn, _ data: [ChangesMDB]?) -> ()) -> (){
+        Client.Changes(changeType: changeType.rawValue, page: page, startDate: startDate, endDate: endDate){
+            apiReturn in
+            var changes: [ChangesMDB]?
+            if let results = apiReturn.json?["results"] {
+                changes = ChangesMDB.initReturn(results)
+            }
+            completionHandler(apiReturn, changes)
+        }
+    }
+
+  public static func changes(changeType: String, page: Double? = nil, startDate: String? = nil, endDate:String? = nil, completionHandler: @escaping (_ clientReturn: ClientReturn, _ data: [ChangesMDB]?) -> ()) -> (){
+    let pageValue: Int? = page != nil ? Int(page!) : nil
+    Client.Changes(changeType: changeType, page: pageValue, startDate: startDate, endDate: endDate){
       apiReturn in
       var changes: [ChangesMDB]?
       if let results = apiReturn.json?["results"] {
