@@ -70,7 +70,7 @@ extension TVMDB{
   }
   
   //Get the external ids that we have stored for a TV series.
-  public class func externalIDS(tvShowID: Int!, language: String, completion: @escaping (_ clientResult: ClientReturn, _ data: ExternalIdsMDB?) -> ()) -> (){
+  public class func externalIDS(tvShowID: Int!, language: String?, completion: @escaping (_ clientResult: ClientReturn, _ data: ExternalIdsMDB?) -> ()) -> (){
     Client.TV(String(tvShowID) + "/external_ids",  page: nil, language: language, timezone: nil){
       apiReturn in
       var data: ExternalIdsMDB?
