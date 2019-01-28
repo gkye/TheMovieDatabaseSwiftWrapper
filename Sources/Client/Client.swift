@@ -29,15 +29,15 @@ public struct MDBReturn{
 	}
 }
 
-struct Client{
-  static func networkRequest(url: String, parameters: [String : AnyObject], completion: @escaping (ClientReturn) -> ()) -> (){
+struct Client{  
+  static func networkRequest(url: String, httpMethod: String = "GET", parameters: [String : AnyObject], completion: @escaping (ClientReturn) -> ()) -> (){
     var apiReturn = ClientReturn()
-		guard let apikey = TMDBConfig.apikey else {
-			fatalError("NO API is set. Set your api using TMDBConfig.api = YOURKEY")
-		}
-		var params = parameters
-		params["api_key"] = apikey as AnyObject
-    HTTPRequest.request(url, parameters: params){
+    guard let apikey = TMDBConfig.apikey else {
+      fatalError("NO API is set. Set your api using TMDBConfig.api = YOURKEY")
+    }
+    var params = parameters
+    params["api_key"] = apikey as AnyObject
+    HTTPRequest.request(url, httpMethod: httpMethod, parameters: params){
       (data, response, error) in
       if let data = data, let json = try? JSON(data: data) {
         apiReturn.json = json
@@ -61,13 +61,12 @@ struct Client{
 }
 
 class HTTPRequest{
-  
-  class func request(_ url: String, parameters: [String: AnyObject],completionHandler: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> ()) -> (){
+  class func request(_ url: String, httpMethod: String = "GET", parameters: [String: AnyObject],completionHandler: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> ()) -> (){
     let parameterString = parameters.stringFromHttpParameters()
     let urlString = url + "?" + parameterString
     let requestURL = URL(string: urlString)!
     let request = NSMutableURLRequest(url: requestURL)
-    request.httpMethod = "GET"
+    request.httpMethod = httpMethod
     request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
     
     let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
