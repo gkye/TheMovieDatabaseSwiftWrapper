@@ -104,8 +104,8 @@ public struct PersonMDB: ArrayObject{
   }
   
   ///Get the images for a specific person id.
-  public static func images(personID: Int!, completion: @escaping (_ client: ClientReturn, _ data: [Images_MDB]?) -> ()) -> (){
-    Client.Person( String(personID) + "/images",  language: nil, page: nil){
+  public static func images(personID: Int!, language: String? = nil, completion: @escaping (_ client: ClientReturn, _ data: [Images_MDB]?) -> ()) -> (){
+    Client.Person( String(personID) + "/images",  language: language, page: nil){
       apiReturn in
       var images: [Images_MDB]?
       if let json = apiReturn.json?["profiles"] {
@@ -116,8 +116,8 @@ public struct PersonMDB: ArrayObject{
     }
   }
   ///Get the images that have been tagged with a specific person id. Will return all of the image results with a media object mapped for each image.
-  public static func tagged_images(personID: Int!, page: Int?, completion: @escaping (_ client: ClientReturn, _ data: TaggedImagesMDB?) -> ()) -> (){
-    Client.Person( String(personID) + "/tagged_images",  language: nil, page: page){
+  public static func tagged_images(personID: Int!, page: Int?, language: String? = nil, completion: @escaping (_ client: ClientReturn, _ data: TaggedImagesMDB?) -> ()) -> (){
+    Client.Person( String(personID) + "/tagged_images",  language: language, page: page){
       apiReturn in
       var images: TaggedImagesMDB?
       if let json = apiReturn.json {
@@ -128,8 +128,8 @@ public struct PersonMDB: ArrayObject{
   }
   
   ///Get the latest person id.
-  public static func latest(completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonMDB?) -> ()) -> (){
-    Client.Person("latest",  language: nil, page: nil){
+  public static func latest(language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonMDB?) -> ()) -> (){
+    Client.Person("latest",  language: language, page: nil){
       apiReturn in
       var data: PersonMDB?
       if let json = apiReturn.json {
@@ -140,8 +140,8 @@ public struct PersonMDB: ArrayObject{
   }
   
   ///Get the list of popular people on The Movie Database. This list refreshes every day.
-  public static func popular(page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [PersonResults]?) -> ()) -> (){
-    Client.Person("popular",  language: nil, page: page){
+  public static func popular(page: Int?, language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: [PersonResults]?) -> ()) -> (){
+    Client.Person("popular",  language: language, page: page){
       apiReturn in
       var data: [PersonResults]?
       if let json = apiReturn.json?["results"] {
@@ -152,9 +152,9 @@ public struct PersonMDB: ArrayObject{
   }
   
   ///Retrive data by append multiple person methods. Initlization of object has to be done manually. Exepect PersonMDB
-  public static func personAppendTo(personID: Int!, append_to: [String], completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonMDB?, _ json: JSON?) ->()) ->(){
+  public static func personAppendTo(personID: Int!, append_to: [String], language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonMDB?, _ json: JSON?) ->()) ->(){
     let urlType =  String(personID)
-    Client.Person(urlType,  language: nil, page: nil, append_to: append_to){
+    Client.Person(urlType,  language: language, page: nil, append_to: append_to){
       apiReturn in
       var data: PersonMDB?
       if let json = apiReturn.json {
