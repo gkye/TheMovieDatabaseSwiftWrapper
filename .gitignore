@@ -38,4 +38,4 @@ build
 !*.xcodeproj/project.pbxproj
 !*.xcworkspace/contents.xcworkspacedata
 *.xcworkspace/xcuserdata
-*.xcodeproj/xcuserdata
+!*.xcodeproj/xcshareddata
