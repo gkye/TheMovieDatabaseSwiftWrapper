@@ -31,7 +31,7 @@ public struct TVEpisodesMDB: ArrayObject {
         crew.append(CrewMDB.init(crew: results["crew"][i]))
       }
     }
-    number = results["number"].int
+    number = results["episode_number"].int
     
     if(results["guest_stars"].exists()){
       for i in 0 ..< results["guest_stars"].count {
