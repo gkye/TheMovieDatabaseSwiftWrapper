@@ -55,7 +55,9 @@ open class TVDetailedMDB: TVMDB{
   open var seasons = [tv_seasons]()
   open var status: String!
   open var type: String!
-  
+  open var nextEpisodeToAir: TVEpisodesMDB?
+  open var lastEpisodeToAir: TVEpisodesMDB?
+
   required public init(results: JSON) {
     super.init(results: results)
     if(results["created_by"].count > 0 && results["created_by"][0].exists()){
@@ -95,6 +97,14 @@ open class TVDetailedMDB: TVMDB{
     
     status = results["status"].string
     type = results["type"].string
+    
+    if results["last_episode_to_air"].count > 0 {
+        lastEpisodeToAir = TVEpisodesMDB.init(results: results["last_episode_to_air"])
+    }
+
+    if results["next_episode_to_air"].count > 0 {
+        nextEpisodeToAir = TVEpisodesMDB.init(results: results["next_episode_to_air"])
+    }
   }
   
 }
