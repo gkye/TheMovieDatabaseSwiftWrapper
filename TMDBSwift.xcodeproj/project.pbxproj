@@ -147,6 +147,9 @@
 		6F62A10C20CB9471000744A9 /* TVSeasonsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B3401CB732C900B49F4E /* TVSeasonsMDB.swift */; };
 		6F62A10D20CB9471000744A9 /* VideosMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B3411CB732C900B49F4E /* VideosMDB.swift */; };
 		6F62A10E20CB9471000744A9 /* SearchMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774C0D81CF757120045F0CE /* SearchMDB.swift */; };
+		6FBFDD052273F36000B5A9B4 /* ClientReturn+decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E963056216987CB006F7FA5 /* ClientReturn+decode.swift */; };
+		6FBFDD062273F37300B5A9B4 /* ResultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E963016215F76B3006F7FA5 /* ResultsWrapper.swift */; };
+		6FBFDD072273F37300B5A9B4 /* ResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96305421698762006F7FA5 /* ResponseWrapper.swift */; };
 		CE0A99AF21FF769700ADADE7 /* Client_Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A99AE21FF769700ADADE7 /* Client_Authentication.swift */; };
 		CE0A99B021FF769700ADADE7 /* Client_Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A99AE21FF769700ADADE7 /* Client_Authentication.swift */; };
 		CE0A99B121FF769700ADADE7 /* Client_Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A99AE21FF769700ADADE7 /* Client_Authentication.swift */; };
@@ -955,6 +958,7 @@
 			files = (
 				6F62A0D420CB9471000744A9 /* ArrayObjectProtocol.swift in Sources */,
 				6F62A0D520CB9471000744A9 /* SwiftyJSON.swift in Sources */,
+				6FBFDD062273F37300B5A9B4 /* ResultsWrapper.swift in Sources */,
 				6F62A0D620CB9471000744A9 /* Config.swift in Sources */,
 				6F62A0D720CB9471000744A9 /* Client.swift in Sources */,
 				6F62A0D820CB9471000744A9 /* Clent_Discover.swift in Sources */,
@@ -967,6 +971,7 @@
 				6F62A0DF20CB9471000744A9 /* Client_Find.swift in Sources */,
 				6F62A0E020CB9471000744A9 /* Client_Genres.swift in Sources */,
 				6F62A0E120CB9471000744A9 /* Client_Keywords.swift in Sources */,
+				6FBFDD052273F36000B5A9B4 /* ClientReturn+decode.swift in Sources */,
 				6F62A0E220CB9471000744A9 /* Client_Lists.swift in Sources */,
 				6F62A0E320CB9471000744A9 /* Client_Movies.swift in Sources */,
 				6F62A0E420CB9471000744A9 /* Client_Networks.swift in Sources */,
@@ -997,6 +1002,7 @@
 				6F62A0FA20CB9471000744A9 /* ListsMDB.swift in Sources */,
 				6F62A0FB20CB9471000744A9 /* MovieCreditsMDB.swift in Sources */,
 				6F62A0FC20CB9471000744A9 /* MovieDetailedMDB.swift in Sources */,
+				6FBFDD072273F37300B5A9B4 /* ResponseWrapper.swift in Sources */,
 				6F62A0FD20CB9471000744A9 /* MovieListMDB.swift in Sources */,
 				6F62A0FE20CB9471000744A9 /* MovieMDB.swift in Sources */,
 				6F62A0FF20CB9471000744A9 /* MovieMDBModel.swift in Sources */,
