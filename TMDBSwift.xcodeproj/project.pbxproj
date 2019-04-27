@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		17A7ACE71FC4857900FAE133 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A7ACE61FC4857900FAE133 /* Config.swift */; };
 		185D4CAB1EC924DA0083D85A /* FindMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D4CAA1EC924DA0083D85A /* FindMDBTests.swift */; };
+		3A397F502270570200F65EB6 /* Clent_Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A397F4F2270570200F65EB6 /* Clent_Trending.swift */; };
+		3A397F512270570700F65EB6 /* Clent_Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A397F4F2270570200F65EB6 /* Clent_Trending.swift */; };
+		3A397F522270570800F65EB6 /* Clent_Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A397F4F2270570200F65EB6 /* Clent_Trending.swift */; };
+		3A397F542270573900F65EB6 /* Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A397F532270573900F65EB6 /* Trending.swift */; };
+		3A397F552270573900F65EB6 /* Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A397F532270573900F65EB6 /* Trending.swift */; };
+		3A397F562270573900F65EB6 /* Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A397F532270573900F65EB6 /* Trending.swift */; };
 		5774C0D71CF751B40045F0CE /* Client_Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774C0D61CF751B40045F0CE /* Client_Search.swift */; };
 		5774C0D91CF757120045F0CE /* SearchMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774C0D81CF757120045F0CE /* SearchMDB.swift */; };
 		5E4CC87B1D295BC700101495 /* MovieMDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4CC87A1D295BC700101495 /* MovieMDBTests.swift */; };
@@ -246,6 +252,8 @@
 /* Begin PBXFileReference section */
 		17A7ACE61FC4857900FAE133 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		185D4CAA1EC924DA0083D85A /* FindMDBTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindMDBTests.swift; sourceTree = "<group>"; };
+		3A397F4F2270570200F65EB6 /* Clent_Trending.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clent_Trending.swift; sourceTree = "<group>"; };
+		3A397F532270573900F65EB6 /* Trending.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trending.swift; sourceTree = "<group>"; };
 		5774C0D61CF751B40045F0CE /* Client_Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_Search.swift; sourceTree = "<group>"; };
 		5774C0D81CF757120045F0CE /* SearchMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMDB.swift; sourceTree = "<group>"; };
 		5E4CC87A1D295BC700101495 /* MovieMDBTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieMDBTests.swift; sourceTree = "<group>"; };
@@ -505,6 +513,7 @@
 				5EF1B3171CB732C900B49F4E /* Client_Networks.swift */,
 				5EF1B3181CB732C900B49F4E /* Client_People.swift */,
 				5EF1B3191CB732C900B49F4E /* Client_Review.swift */,
+				3A397F4F2270570200F65EB6 /* Clent_Trending.swift */,
 				5EF1B31A1CB732C900B49F4E /* Client_TV.swift */,
 				5EF1B31B1CB732C900B49F4E /* Client_TVSeasonsEpisodes.swift */,
 				5774C0D61CF751B40045F0CE /* Client_Search.swift */,
@@ -538,6 +547,7 @@
 				5EF1B3371CB732C900B49F4E /* PersonMDB.swift */,
 				5EF1B3391CB732C900B49F4E /* ReviewsMDB.swift */,
 				5EF1B33A1CB732C900B49F4E /* TranslationsMDB.swift */,
+				3A397F532270573900F65EB6 /* Trending.swift */,
 				5E92596B1CB774C1003082AB /* TV */,
 				5EF1B3411CB732C900B49F4E /* VideosMDB.swift */,
 				5774C0D81CF757120045F0CE /* SearchMDB.swift */,
@@ -788,6 +798,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -877,6 +888,7 @@
 				6E963057216987CB006F7FA5 /* ClientReturn+decode.swift in Sources */,
 				5EF1B3551CB732C900B49F4E /* CastCrewMDB.swift in Sources */,
 				5EF1B34C1CB732C900B49F4E /* Client_Keywords.swift in Sources */,
+				3A397F542270573900F65EB6 /* Trending.swift in Sources */,
 				5EF1B3611CB732C900B49F4E /* ImagesMDB.swift in Sources */,
 				5774C0D71CF751B40045F0CE /* Client_Search.swift in Sources */,
 				5EF1B3721CB732C900B49F4E /* TVDetailedMDB.swift in Sources */,
@@ -905,6 +917,7 @@
 				5EF1B3541CB732C900B49F4E /* Alternative_TitlesMDB.swift in Sources */,
 				5EF1B34B1CB732C900B49F4E /* Client_Genres.swift in Sources */,
 				5EF1B3751CB732C900B49F4E /* TVMDBModel.swift in Sources */,
+				3A397F502270570200F65EB6 /* Clent_Trending.swift in Sources */,
 				5EF1B35B1CB732C900B49F4E /* Discover.swift in Sources */,
 				5EF1B3731CB732C900B49F4E /* TVEpisodesMDB.swift in Sources */,
 				5EF143621CF0A3FB009C620D /* ArrayObjectProtocol.swift in Sources */,
@@ -976,6 +989,7 @@
 				CE0A99B021FF769700ADADE7 /* Client_Authentication.swift in Sources */,
 				6F62A0F420CB9471000744A9 /* DiscoverTV.swift in Sources */,
 				6F62A0F520CB9471000744A9 /* ExternalIdsMDB.swift in Sources */,
+				3A397F552270573900F65EB6 /* Trending.swift in Sources */,
 				6F62A0F620CB9471000744A9 /* FindMDB.swift in Sources */,
 				6F62A0F720CB9471000744A9 /* GenresMDB.swift in Sources */,
 				6F62A0F820CB9471000744A9 /* ImagesMDB.swift in Sources */,
@@ -995,6 +1009,7 @@
 				6F62A10620CB9471000744A9 /* TranslationsMDB.swift in Sources */,
 				6F62A10720CB9471000744A9 /* TVMDB.swift in Sources */,
 				6F62A10820CB9471000744A9 /* TVMDBModel.swift in Sources */,
+				3A397F512270570700F65EB6 /* Clent_Trending.swift in Sources */,
 				6F62A10920CB9471000744A9 /* TVCreditsMDB.swift in Sources */,
 				6F62A10A20CB9471000744A9 /* TVDetailedMDB.swift in Sources */,
 				6F62A10B20CB9471000744A9 /* TVEpisodesMDB.swift in Sources */,
@@ -1057,6 +1072,7 @@
 				CE0A99B121FF769700ADADE7 /* Client_Authentication.swift in Sources */,
 				D1D3B4EE2129814D002B3486 /* Client_Lists.swift in Sources */,
 				D1D3B4FA2129815B002B3486 /* CollectionsMDB.swift in Sources */,
+				3A397F562270573900F65EB6 /* Trending.swift in Sources */,
 				D1D3B5032129815B002B3486 /* GenresMDB.swift in Sources */,
 				D1D3B5042129815B002B3486 /* ImagesMDB.swift in Sources */,
 				D1D3B50F21298162002B3486 /* PageResultsMDB.swift in Sources */,
@@ -1076,6 +1092,7 @@
 				D1D3B4F12129814D002B3486 /* Client_People.swift in Sources */,
 				D1D3B5012129815B002B3486 /* ExternalIdsMDB.swift in Sources */,
 				D1D3B4E42129814D002B3486 /* Clent_Discover.swift in Sources */,
+				3A397F522270570800F65EB6 /* Clent_Trending.swift in Sources */,
 				D1D3B50B21298162002B3486 /* MovieMDBModel.swift in Sources */,
 				D1D3B5062129815B002B3486 /* ListsMDB.swift in Sources */,
 				D1D3B50821298162002B3486 /* MovieDetailedMDB.swift in Sources */,
