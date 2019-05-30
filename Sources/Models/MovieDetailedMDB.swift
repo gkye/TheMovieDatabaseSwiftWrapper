@@ -50,6 +50,10 @@ open class MovieDetailedMDB: MovieMDB {
     homepage = results["homepage"].string
     imdb_id = results["imdb_id"].int
     
+    production_countries = [KeywordsMDB]()
+    production_companies = [KeywordsMDB]()
+    spoken_languages = [SpokenLanguages]()
+    
     for i in 0...results["production_companies"].count{
       production_companies?.append(KeywordsMDB.init(results: results["production_companies"][i]))
     }
