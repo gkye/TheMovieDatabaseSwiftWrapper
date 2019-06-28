@@ -226,6 +226,9 @@
 		D1D3B5182129816A002B3486 /* TVSeasonsMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B3401CB732C900B49F4E /* TVSeasonsMDB.swift */; };
 		D1D3B5192129816A002B3486 /* VideosMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1B3411CB732C900B49F4E /* VideosMDB.swift */; };
 		D1D3B51A2129816A002B3486 /* SearchMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774C0D81CF757120045F0CE /* SearchMDB.swift */; };
+		D1DA879222C622DE0018F0EA /* ClientReturn+decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E963056216987CB006F7FA5 /* ClientReturn+decode.swift */; };
+		D1DA879322C622EA0018F0EA /* ResultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E963016215F76B3006F7FA5 /* ResultsWrapper.swift */; };
+		D1DA879422C622FC0018F0EA /* ResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96305421698762006F7FA5 /* ResponseWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1067,6 +1070,7 @@
 				D1D3B50721298162002B3486 /* MovieCreditsMDB.swift in Sources */,
 				D1D3B4F42129814D002B3486 /* Client_TVSeasonsEpisodes.swift in Sources */,
 				D1D3B4EB2129814D002B3486 /* Client_Find.swift in Sources */,
+				D1DA879222C622DE0018F0EA /* ClientReturn+decode.swift in Sources */,
 				D1D3B51021298162002B3486 /* PersonMDB.swift in Sources */,
 				D1D3B5002129815B002B3486 /* DiscoverTV.swift in Sources */,
 				D1D3B4E82129814D002B3486 /* Client_Companies.swift in Sources */,
@@ -1101,7 +1105,9 @@
 				3A397F522270570800F65EB6 /* Client_Trending.swift in Sources */,
 				D1D3B50B21298162002B3486 /* MovieMDBModel.swift in Sources */,
 				D1D3B5062129815B002B3486 /* ListsMDB.swift in Sources */,
+				D1DA879322C622EA0018F0EA /* ResultsWrapper.swift in Sources */,
 				D1D3B50821298162002B3486 /* MovieDetailedMDB.swift in Sources */,
+				D1DA879422C622FC0018F0EA /* ResponseWrapper.swift in Sources */,
 				CE0A99B721FF81BA00ADADE7 /* AuthenticationMDB.swift in Sources */,
 				D1D3B4F32129814D002B3486 /* Client_TV.swift in Sources */,
 				D1D3B4FD2129815B002B3486 /* CreditsMDB.swift in Sources */,
