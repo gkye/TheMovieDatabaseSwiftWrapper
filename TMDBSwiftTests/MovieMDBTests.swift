@@ -163,12 +163,6 @@ class MovieMDBTests: XCTestCase {
 		let dates = data?[0].release_dates[0]
 		XCTAssertNotNil(data?[0].iso_3166_1)
 		XCTAssertNotNil(dates?.certification)
-		//cert test 2
-		XCTAssertEqual(data?[2].release_dates[0].certification, "15")
-//		XCTAssertEqual(dates?.iso_639_1, "")
-//		XCTAssertEqual(dates?.note, "")
-//    XCTAssertEqual(dates?.release_date, "1969-09-25T00:00:00.000Z")
-		XCTAssertEqual(dates?.type, 3)
 	}
 	
 	//Get the videos (trailers, teasers, clips, etc...) for a specific movie id.
@@ -227,6 +221,19 @@ class MovieMDBTests: XCTestCase {
 		waitForExpectations(timeout: 5, handler: nil)
 		XCTAssertNotNil(data)
 	}
+
+  /// Get the similar movies for a specific movie id.
+  func testRecommendations(){
+    var data: [MovieMDB]?
+    let expectation = self.expectation(description: "Wait for data to load.")
+    MovieMDB.recommendations(movieID: 871, page: 1){
+      _, movies in
+      data = movies
+      expectation.fulfill()
+    }
+    waitForExpectations(timeout: 5, handler: nil)
+    XCTAssertNotNil(data)
+  }
 	
 	/// Get the reviews for a particular movie id.
 	func testReviews(){

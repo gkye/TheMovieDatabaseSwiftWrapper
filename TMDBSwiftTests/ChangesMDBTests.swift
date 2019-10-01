@@ -26,7 +26,7 @@ class ChangesMDBTests: XCTestCase {
     var data: [ChangesMDB]!
     let expectation = self.expectation(description: "Wait for data to load.")
 
-    ChangesMDB.changes(changeType: "movie") { api, responseData in
+    ChangesMDB.changes(type: .movie) { api, responseData in
       data = responseData
       expectation.fulfill()
     }
@@ -53,14 +53,14 @@ class ChangesMDBTests: XCTestCase {
     var api: ClientReturn!
     let expectation = self.expectation(description: "Wait for data to load.")
 
-    ChangesMDB.changes(type: .tv, page: 2) { responseApi, responseData in
+    ChangesMDB.changes(type: .tv, page: 1) { responseApi, responseData in
       api = responseApi
       data = responseData
       expectation.fulfill()
     }
     waitForExpectations(timeout: expecationTimeout, handler: nil)
-    XCTAssertNotNil(data.first?.id)
-    XCTAssertNotNil(data.first?.adult)
-    XCTAssertEqual(api.pageResults?.page, 2)
+    XCTAssertNotNil(data[0].id)
+    XCTAssertNotNil(data[0].adult)
+    XCTAssertEqual(api.pageResults?.page, 1)
   }
 }

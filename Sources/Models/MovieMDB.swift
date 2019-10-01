@@ -126,6 +126,18 @@ extension MovieMDB{
       completion(apiReturn, movies)
     }
   }
+
+  ///Get the recommended movies for a specific tv id.
+  public class func recommendations(movieID: Int!, page: Int?, language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> ()) -> (){
+    Client.Movies(String(movieID) + "/recommendations",  page: page, language: language){
+      apiReturn in
+      var movies: [MovieMDB]?
+      if let json = apiReturn.json?["results"] {
+        movies = MovieMDB.initialize(json: json)
+      }
+      completion(apiReturn, movies)
+    }
+  }
   
   ///Get the reviews for a particular movie id.
   public class func reviews(movieID: Int!, page: Int?, language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ reviews: [MovieReviewsMDB]?) -> ()) -> (){

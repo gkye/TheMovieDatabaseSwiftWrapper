@@ -116,6 +116,19 @@ extension TVMDB{
       completion(apiReturn, data)
     }
   }
+
+   ///Get the recommended TV shows for a specific tv id.
+   public  class func recommendations(tvShowID: Int!, page: Int?, language: String?, completion: @escaping (_ clientResult: ClientReturn, _ data: [TVMDB]?) -> ()) -> (){
+     Client.TV(String(tvShowID) + "/recommendations",  page: page, language: language, timezone: nil){
+       apiReturn in
+       var data: [TVMDB]?
+       if let json = apiReturn.json?["results"]{
+         data = TVMDB.initialize(json: json)
+       }
+       completion(apiReturn, data)
+     }
+   }
+
   ///Get the list of translations that exist for a TV series. These translations cascade down to the episode level.
   public class func translations(tvShowID: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: [TranslationsMDB]?) -> ()) -> (){
     Client.TV(String(tvShowID) + "/translations",  page: nil, language: nil, timezone: nil){
