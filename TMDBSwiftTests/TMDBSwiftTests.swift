@@ -111,7 +111,7 @@ class TMDBSwiftTests: XCTestCase {
     XCTAssertEqual(data?.id, 5)
     XCTAssertEqual(data?.name, "Columbia Pictures")
     XCTAssertNotNil(data?.logo_path)
-    XCTAssertEqual(data?.homepage, "http://www.sonypictures.com/")
+    XCTAssertEqual(data?.homepage, "http://www.sonypictures.com")
     XCTAssertNotNil(data?.description)
     XCTAssertNotNil(data?.headquarters)
 //    XCTAssertEqual(data?.parent_company?.name, "Sony Pictures Entertainment")
