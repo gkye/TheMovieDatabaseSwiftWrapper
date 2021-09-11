@@ -65,8 +65,9 @@ class MovieMDBTests: XCTestCase {
 		}
 		waitForExpectations(timeout: 5, handler: nil)
 		XCTAssertNotNil(data)
-		XCTAssertEqual(data?.titles[0].title, "Au Nom du Père")
-		XCTAssertEqual(data?.titles[0].iso_3166_1, "FR")
+    let french = data?.titles.filter { $0.iso_3166_1 == "FR" }.first
+
+		XCTAssertEqual(french?.title, "Au Nom du Père")
 	}
 	
 	//Get the cast and crew information for a specific movie id.
@@ -86,21 +87,21 @@ class MovieMDBTests: XCTestCase {
 		XCTAssertNotNil(data?.crew)
 		
 		//cast
-		XCTAssertEqual(data?.cast[0].cast_id, 4)
-		XCTAssertEqual(data?.cast[0].name, "Daniel Day-Lewis")
-		XCTAssertEqual(data?.cast[0].credit_id, "52fe448bc3a36847f809c0b5")
-		XCTAssertEqual(data?.cast[0].id, 11856)
-		XCTAssertEqual(data?.cast[0].order, 0)
-		//    XCTAssertEqual(data?.cast[0].profile_path, "/hknfCSSU6AMeKV9yn9NTtTzIEGc.jpg")
+    let danielDayLewis = data?.cast.filter { $0.credit_id == "52fe448bc3a36847f809c0b5" }.first
+		XCTAssertEqual(danielDayLewis?.cast_id, 4)
+		XCTAssertEqual(danielDayLewis?.name, "Daniel Day-Lewis")
+		XCTAssertEqual(danielDayLewis?.id, 11856)
+		XCTAssertEqual(danielDayLewis?.order, 0)
+//    XCTAssertEqual(danielDayLewis?.profile_path, "/hknfCSSU6AMeKV9yn9NTtTzIEGc.jpg")
 		
 		//crew
-		XCTAssertEqual(data?.crew[0].credit_id, "52fe448bc3a36847f809c0a5")
-		XCTAssertEqual(data?.crew[0].department, "Directing")
-		XCTAssertEqual(data?.crew[0].id, 53334)
-		XCTAssertEqual(data?.crew[0].job, "Director")
-		XCTAssertEqual(data?.crew[0].name, "Jim Sheridan")
-		//    XCTAssertEqual(data?.crew[0].profile_path, "/mfukw1JcUsXmUzt6IoaayMaescv.jpg")
-		
+    let jimSheridan = data?.crew.filter { $0.credit_id == "52fe448bc3a36847f809c0a5" }.first
+
+    XCTAssertEqual(jimSheridan?.department, "Directing")
+		XCTAssertEqual(jimSheridan?.id, 53334)
+		XCTAssertEqual(jimSheridan?.job, "Director")
+		XCTAssertEqual(jimSheridan?.name, "Jim Sheridan")
+//    XCTAssertEqual(jimSheridan?.profile_path, "/aWTmBt44TyUCb0t50avtFsPdTPp.jpg")
 	}
 	
 	//  Get the images (posters and backdrops) for a specific movie id.
@@ -177,14 +178,14 @@ class MovieMDBTests: XCTestCase {
 		}
 		waitForExpectations(timeout: 5, handler: nil)
 		XCTAssertNotNil(data)
-		let vids = data?[0]
-		XCTAssertEqual(vids?.id, "533ec657c3a3685448000674")
-		XCTAssertEqual(vids?.iso_639_1, "en")
-		XCTAssertEqual(vids?.key, "VjcpRHuPjOI")
-		XCTAssertEqual(vids?.name, "Planet of the Apes (1968) trailer")
-		XCTAssertEqual(vids?.site, "YouTube")
-		XCTAssertEqual(vids?.size, 360)
-		XCTAssertEqual(vids?.type, "Trailer")
+
+    let planetOfTheApes = data?.filter { $0.id == "533ec657c3a3685448000678" }.first
+		XCTAssertEqual(planetOfTheApes?.iso_639_1, "en")
+		XCTAssertEqual(planetOfTheApes?.key, "mU9ZzgRPfR8")
+		XCTAssertEqual(planetOfTheApes?.name, "John Landis on PLANET OF THE APES")
+		XCTAssertEqual(planetOfTheApes?.site, "YouTube")
+		XCTAssertEqual(planetOfTheApes?.size, 720)
+		XCTAssertEqual(planetOfTheApes?.type, "Featurette")
 	}
 	
 	//Get the lists that the movie belongs to.
