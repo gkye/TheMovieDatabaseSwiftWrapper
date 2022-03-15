@@ -27,6 +27,12 @@ it, simply add the following line to your Podfile:
 pod "TMDBSwift"
 ```
 
+
+TMDBSwift is available through [Swift Package Manager](https://docs.swift.org/package-manager/PackageDescription/PackageDescription.html). To install it to your project, simply add the following to your Package.swift file:
+``` swift
+.package(url: "https://github.com/gkye/TheMovieDatabaseSwiftWrapper", from: "0.6.0"),
+```
+
 ## ENDPOINTS
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Changes">Changes</a>
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Collections"> Collections </a>
