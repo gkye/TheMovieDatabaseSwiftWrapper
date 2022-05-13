@@ -42,7 +42,7 @@ class FindMDBTests: XCTestCase {
     XCTAssertEqual(person?.name, "Emilia Clarke")
 		
     //Test known for movies
-    let knownForMoviesIndex = person?.known_for.movies?.index(where: {
+    let knownForMoviesIndex = person?.known_for.movies?.firstIndex(where: {
       $0.id == 87101
     })
      XCTAssertNotNil(knownForMoviesIndex)
@@ -53,7 +53,7 @@ class FindMDBTests: XCTestCase {
     XCTAssertEqual(terminatorMovie?.id, 87101)
 		
     //Test known for tv
-    let knownForTVIndex = person?.known_for.tvShows?.index(where: {
+    let knownForTVIndex = person?.known_for.tvShows?.firstIndex(where: {
       $0.id == 1399
     })
     XCTAssertNotNil(knownForTVIndex)
