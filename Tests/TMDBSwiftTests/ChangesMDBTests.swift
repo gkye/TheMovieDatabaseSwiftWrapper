@@ -31,8 +31,7 @@ class ChangesMDBTests: XCTestCase {
       expectation.fulfill()
     }
     waitForExpectations(timeout: expecationTimeout, handler: nil)
-    XCTAssertNotNil(data.first?.id)
-    XCTAssertNotNil(data.first?.adult)
+    XCTAssertGreaterThan(data.count, 0)
   }
 
   func testChangesWithEnum() {
@@ -44,8 +43,7 @@ class ChangesMDBTests: XCTestCase {
       expectation.fulfill()
     }
     waitForExpectations(timeout: expecationTimeout, handler: nil)
-    XCTAssertNotNil(data.first?.id)
-    XCTAssertNotNil(data.first?.adult)
+    XCTAssertGreaterThan(data.count, 0)
   }
 
   func testChangesWithParam() {
