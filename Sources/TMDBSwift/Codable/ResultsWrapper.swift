@@ -7,6 +7,6 @@
 //
 
 struct ResultsWrapper<T: Codable>: Codable {
-  var id: Int?
-  var results: [T]
+    var id: Int?
+    var results: [T]
 }

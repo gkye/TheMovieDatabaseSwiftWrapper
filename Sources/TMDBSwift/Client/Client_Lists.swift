@@ -8,13 +8,12 @@
 
 import Foundation
 
-extension Client{
-  
-  static func Lists(_ url: String!, listId: String!, completion: @escaping (ClientReturn) -> ()) -> (){
-    let parameters: [String : AnyObject] = [:]
-    networkRequest(url: url, parameters: parameters, completion: {
-      apiReturn in
-      completion(apiReturn)
-    })
-  }
+extension Client {
+
+    static func Lists(_ url: String!, listId: String!, completion: @escaping (ClientReturn) -> Void) {
+        let parameters: [String: AnyObject] = [:]
+        networkRequest(url: url, parameters: parameters, completion: { apiReturn in
+            completion(apiReturn)
+        })
+    }
 }

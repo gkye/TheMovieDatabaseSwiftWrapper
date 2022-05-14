@@ -9,58 +9,58 @@
 import XCTest
 @testable import TMDBSwift
 
-class ChangesMDBTests: XCTestCase {
+final class ChangesMDBTests: XCTestCase {
 
-  let expecationTimeout: TimeInterval = 50
+    let expecationTimeout: TimeInterval = 50
 
-  override func setUp() {
-    super.setUp()
-    TMDBConfig.apikey = "8a7a49369d1af6a70ec5a6787bbfcf79"
-  }
-
-  override func tearDown() {
-    super.tearDown()
-  }
-
-  func testChanges() {
-    var data: [ChangesMDB]!
-    let expectation = self.expectation(description: "Wait for data to load.")
-
-    ChangesMDB.changes(type: .movie) { api, responseData in
-      data = responseData
-      expectation.fulfill()
+    override func setUp() {
+        super.setUp()
+        TMDBConfig.apikey = "8a7a49369d1af6a70ec5a6787bbfcf79"
     }
-    waitForExpectations(timeout: expecationTimeout, handler: nil)
-    XCTAssertNotNil(data.first?.id)
-    XCTAssertNotNil(data.first?.adult)
-  }
 
-  func testChangesWithEnum() {
-    var data: [ChangesMDB]!
-    let expectation = self.expectation(description: "Wait for data to load.")
-
-    ChangesMDB.changes(type: .movie) { api, responseData in
-      data = responseData
-      expectation.fulfill()
+    override func tearDown() {
+        super.tearDown()
     }
-    waitForExpectations(timeout: expecationTimeout, handler: nil)
-    XCTAssertNotNil(data.first?.id)
-    XCTAssertNotNil(data.first?.adult)
-  }
 
-  func testChangesWithParam() {
-    var data: [ChangesMDB]!
-    var api: ClientReturn!
-    let expectation = self.expectation(description: "Wait for data to load.")
+    func testChanges() {
+        var data: [ChangesMDB]!
+        let expectation = self.expectation(description: "Wait for data to load.")
 
-    ChangesMDB.changes(type: .tv, page: 1) { responseApi, responseData in
-      api = responseApi
-      data = responseData
-      expectation.fulfill()
+        ChangesMDB.changes(type: .movie) { _, responseData in
+            data = responseData
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNotNil(data.first?.id)
+        XCTAssertNotNil(data.first?.adult)
     }
-    waitForExpectations(timeout: expecationTimeout, handler: nil)
-    XCTAssertNotNil(data[0].id)
-    XCTAssertNotNil(data[0].adult)
-    XCTAssertEqual(api.pageResults?.page, 1)
-  }
+
+    func testChangesWithEnum() {
+        var data: [ChangesMDB]!
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        ChangesMDB.changes(type: .movie) { _, responseData in
+            data = responseData
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNotNil(data.first?.id)
+        XCTAssertNotNil(data.first?.adult)
+    }
+
+    func testChangesWithParam() {
+        var data: [ChangesMDB]!
+        var api: ClientReturn!
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        ChangesMDB.changes(type: .tv, page: 1) { responseApi, responseData in
+            api = responseApi
+            data = responseData
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNotNil(data[0].id)
+        XCTAssertNotNil(data[0].adult)
+        XCTAssertEqual(api.pageResults?.page, 1)
+    }
 }
