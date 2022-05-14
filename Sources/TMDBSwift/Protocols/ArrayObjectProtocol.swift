@@ -13,7 +13,7 @@ public protocol ArrayObject {
   init(results: JSON)
 }
 
-public extension ArrayObject {c
+public extension ArrayObject {
   static func initialize<T:ArrayObject>(json: JSON) -> [T] {
     var array = [T]()
 
