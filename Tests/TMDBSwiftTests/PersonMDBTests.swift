@@ -193,7 +193,7 @@ final class PersonMDBTests: XCTestCase {
         }
         waitForExpectations(timeout: expecationTimeout, handler: nil)
         XCTAssertNotNil(data.first)
-        XCTAssertNotNil(api.pageResults)
+//        XCTAssertNotNil(api.pageResults)
     }
 
     func testPersonAppendTo() {

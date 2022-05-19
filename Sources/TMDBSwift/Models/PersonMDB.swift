@@ -100,21 +100,18 @@ public struct PersonMDB: ArrayObject {
     public static func images(personID: Int!, language: String? = nil, completion: @escaping (_ client: ClientReturn, _ data: [ImageMDB]?) -> Void) {
         Client.Person( String(personID) + "/images", language: language, page: nil) { apiReturn in
             var images: [ImageMDB]?
-            if let json = apiReturn.json?["profiles"] {
-                images = ImageMDB.initialize(json: json)
+            if let data = apiReturn.data,
+               let decodedWrapper = try? JSONDecoder().decode(ProfilesWrapper<ImageMDB>.self, from: data) {
+                images = decodedWrapper.profiles
             }
             completion(apiReturn, images)
-
         }
     }
     /// Get the images that have been tagged with a specific person id. Will return all of the image results with a media object mapped for each image.
     public static func tagged_images(personID: Int!, page: Int?, language: String? = nil, completion: @escaping (_ client: ClientReturn, _ data: TaggedImagesMDB?) -> Void) {
         Client.Person( String(personID) + "/tagged_images", language: language, page: page) { apiReturn in
-            var images: TaggedImagesMDB?
-            if let json = apiReturn.json {
-                images = TaggedImagesMDB(json: json)
-            }
-            completion(apiReturn, images)
+            let data: TaggedImagesMDB? = apiReturn.decode()
+            completion(apiReturn, data)
         }
     }
 
@@ -132,10 +129,7 @@ public struct PersonMDB: ArrayObject {
     /// Get the list of popular people on The Movie Database. This list refreshes every day.
     public static func popular(page: Int?, language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: [PersonResults]?) -> Void) {
         Client.Person("popular", language: language, page: page) { apiReturn in
-            var data: [PersonResults]?
-            if let json = apiReturn.json?["results"] {
-                data = PersonResults.initialize(json: json)
-            }
+            let data: [PersonResults]? = apiReturn.decodeResults()
             completion(apiReturn, data)
         }
     }
@@ -310,25 +304,53 @@ public enum TaggedImageMediaMDB {
 
 public class TaggedImageMDB: ImageMDB {
     public var media: TaggedImageMediaMDB!
-    public required init(results: JSON) {
-        super.init(results: results)
-        if results["media_type"] == "movie"{
-            media = .movie(DiscoverMovieMDB(results: results["media"]))
-        } else if results["media_type"] == "tv"{
-            media = .tv(DiscoverTVMDB(results: results["media"]))
+
+    enum CodingKeys: String, CodingKey {
+        case media
+    }
+
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        try super.init(from: decoder)
+        if let tv = try? container.decode(DiscoverTVMDB?.self, forKey: .media) {
+            media = .tv(tv)
+        }
+        if let movie = try? container.decode(DiscoverMovieMDB?.self, forKey: .media) {
+            media = .movie(movie)
         }
     }
 }
 
-public struct TaggedImagesMDB {
+public struct TaggedImagesMDB: Codable {
 
     public var images: [TaggedImageMDB] = []
     public var id: Int!
     public var pageResults: PageResultsMDB!
 
-    public init(json: JSON) {
-        id = json["id"].int
-        pageResults = PageResultsMDB(results: json)
-        images = TaggedImageMDB.initialize(json: json["results"])
+    enum CodingKeys: String, CodingKey {
+        case images = "results"
+        case id
+        case page
+        case total_results
+        case total_pages
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let idValue = try container.decode(Int.self, forKey: .id)
+        id = Int(idValue)
+        images = try container.decode([TaggedImageMDB].self, forKey: .images)
+        pageResults = PageResultsMDB(page: try? container.decode(Int?.self, forKey: .page),
+                                     total_results: try? container.decode(Int?.self, forKey: .total_results),
+                                     total_pages: try? container.decode(Int?.self, forKey: .total_pages))
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.id, forKey: .id)
+        try container.encode(self.pageResults.page, forKey: .page)
+        try container.encode(self.pageResults.total_results, forKey: .total_results)
+        try container.encode(self.pageResults.total_pages, forKey: .total_pages)
+        try container.encode(self.images, forKey: .images)
     }
 }

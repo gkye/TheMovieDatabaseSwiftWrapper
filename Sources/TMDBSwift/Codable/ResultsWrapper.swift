@@ -10,3 +10,18 @@ struct ResultsWrapper<T: Codable>: Codable {
     var id: Int?
     var results: [T]
 }
+
+struct GenresWrapper<T: Codable>: Codable {
+    var id: Int?
+    var genres: [T]
+}
+
+struct KeywordWrapper<T: Codable>: Codable {
+    var id: Int?
+    var keywords: [T]
+}
+
+struct ProfilesWrapper<T: Codable>: Codable {
+    var id: Int?
+    var profiles: [T]
+}

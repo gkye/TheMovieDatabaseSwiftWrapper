@@ -53,11 +53,8 @@ open class CompanyMDB {
     /// Get the list of movies associated with a particular company.
     open class func companyMovies(companyId: Int!, language: String?, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> Void) {
         Client.Company(companyId: companyId, language: language, page: page) { apiReturn in
-            var movies: [MovieMDB]?
-            if let json = apiReturn.json?["results"] {
-                movies = MovieMDB.initialize(json: json)
-            }
-            completion(apiReturn, movies)
+            let data: [MovieMDB]? = apiReturn.decodeResults()
+            completion(apiReturn, data)
         }
     }
 }

@@ -82,7 +82,7 @@ final class MovieMDBTests: XCTestCase {
         XCTAssertNotNil(data?.crew)
 
         // cast
-        let danielDayLewis = data?.cast.filter { $0.credit_id == "52fe448bc3a36847f809c0b5" }.first
+        let danielDayLewis = data?.cast?.filter { $0.credit_id == "52fe448bc3a36847f809c0b5" }.first
         XCTAssertEqual(danielDayLewis?.cast_id, 4)
         XCTAssertEqual(danielDayLewis?.name, "Daniel Day-Lewis")
         XCTAssertEqual(danielDayLewis?.id, 11856)
@@ -90,7 +90,7 @@ final class MovieMDBTests: XCTestCase {
         //    XCTAssertEqual(danielDayLewis?.profile_path, "/hknfCSSU6AMeKV9yn9NTtTzIEGc.jpg")
 
         // crew
-        let jimSheridan = data?.crew.filter { $0.credit_id == "52fe448bc3a36847f809c0a5" }.first
+        let jimSheridan = data?.crew?.filter { $0.credit_id == "52fe448bc3a36847f809c0a5" }.first
 
         XCTAssertEqual(jimSheridan?.department, "Directing")
         XCTAssertEqual(jimSheridan?.id, 53334)
@@ -112,7 +112,7 @@ final class MovieMDBTests: XCTestCase {
         XCTAssertNotNil(data)
         XCTAssertNotNil(data?.backdrops)
         XCTAssertNotNil(data?.posters)
-        XCTAssertEqual(data?.stills.count, 0)
+        XCTAssertEqual(data?.stills.count, 4)
         // backdrops
         XCTAssertNotNil(data?.backdrops[0].aspect_ratio)
         XCTAssertNotNil(data?.backdrops[0].file_path)
@@ -264,7 +264,7 @@ final class MovieMDBTests: XCTestCase {
             }
         })
 
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
 
         XCTAssertNotNil(movieData)
         XCTAssertNotNil(cReturn?.json)

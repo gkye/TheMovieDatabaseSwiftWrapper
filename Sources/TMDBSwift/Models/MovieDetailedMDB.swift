@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct BelongsToCollectionMovieMDB {
+public struct BelongsToCollectionMovieMDB: Codable {
     public var id: Int!
     public var name: String!
     public var poster_path: String!
@@ -21,7 +21,7 @@ public struct BelongsToCollectionMovieMDB {
     }
 }
 
-public struct SpokenLanguages {
+public struct SpokenLanguages: Codable {
     public var iso_639_1: String!
     public var name: String!
     init(results: JSON) {
@@ -42,28 +42,4 @@ open class MovieDetailedMDB: MovieMDB {
     open var spoken_languages: [SpokenLanguages]? = []
     open var status: String!
     open var tagline: String!
-
-    required public init(results: JSON) {
-        super.init(results: results)
-        belongs_to_collection = BelongsToCollectionMovieMDB(results: results["belongs_to_collection"])
-        budget = results["budget"].int
-        homepage = results["homepage"].string
-        imdb_id = results["imdb_id"].int
-
-        for i in 0...results["production_companies"].count {
-            production_companies?.append(KeywordsMDB.init(results: results["production_companies"][i]))
-        }
-
-        for i in 0...results["production_countries"].count {
-            production_countries?.append(KeywordsMDB.init(results: results["production_countries"][i]))
-        }
-        revenue = results["revenue"].int
-        runtime = results["runtime"].int
-
-        for i in 0...results["spoken_languages"].count {
-            spoken_languages?.append(SpokenLanguages.init(results: results["spoken_languages"][i]))
-        }
-        status = results["status"].string
-        tagline = results["tagline"].string
-    }
 }

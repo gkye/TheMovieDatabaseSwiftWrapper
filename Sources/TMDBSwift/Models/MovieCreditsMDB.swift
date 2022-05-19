@@ -8,18 +8,19 @@
 
 import Foundation
 
-open class MovieCreditsMDB {
-    open var cast = [MovieCastMDB]()
-    open var crew = [CrewMDB]()
+open class MovieCreditsMDB: Codable {
+    open var cast: [MovieCastMDB]?
+    open var crew: [CrewMDB]?
 
-    public init(results: JSON) {
-        for cast in results["cast"] {
-            self.cast.append(MovieCastMDB.init(cast: cast.1))
-        }
+    enum CodingKeys: String, CodingKey {
+        case cast
+        case crew
+    }
 
-        for crew in results["crew"] {
-            self.crew.append(CrewMDB.init(crew: crew.1))
-        }
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        cast = try? container.decode([MovieCastMDB]?.self, forKey: .cast)
+        crew = try? container.decode([CrewMDB]?.self, forKey: .crew)
     }
 }
 
@@ -28,10 +29,17 @@ open class MovieCastMDB: CastCrewCommonMDB {
     open var character: String!
     open var order: Int!
 
-    init(cast: JSON) {
-        super.init(results: cast)
-        cast_id = cast["cast_id"].int
-        character = cast["character"].string
-        order = cast["order"].int
+    enum CodingKeys: String, CodingKey {
+        case cast_id
+        case character
+        case order
+    }
+
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        cast_id = try? container.decode(Int?.self, forKey: .cast_id)
+        character = try? container.decode(String?.self, forKey: .character)
+        order = try? container.decode(Int?.self, forKey: .order)
+        try super.init(from: decoder)
     }
 }

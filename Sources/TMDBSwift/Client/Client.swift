@@ -13,7 +13,7 @@ public struct ClientReturn {
     public var json: JSON?
     public var data: Data?
     //  public var MBDBReturn: AnyObject?
-    public var pageResults: PageResultsMDB?
+//    public var pageResults: PageResultsMDB?
 }
 
 public struct MDBReturn {
@@ -41,9 +41,6 @@ struct Client {
             if let data = data, let json = try? JSON(data: data) {
                 apiReturn.json = json
                 apiReturn.data = data
-                if json["page"].exists() {
-                    apiReturn.pageResults = PageResultsMDB(results: json)
-                }
             }
             apiReturn.error = error as NSError?
             completion(apiReturn)

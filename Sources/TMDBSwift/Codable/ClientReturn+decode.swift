@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 extension ClientReturn {
 
     /// Decodes standard tmdb response data (keypath `results`) into array of expected model type

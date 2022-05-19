@@ -40,13 +40,4 @@ public struct ChangesMDB {
             completionHandler(apiReturn, changes)
         }
     }
-
-    @available(*, deprecated, renamed: "changes(type:page:startDate:endDate:completionHandler:)")
-    public static func changes(changeType: String, page: Double? = nil, startDate: String? = nil, endDate: String? = nil, completionHandler: @escaping (_ clientReturn: ClientReturn, _ data: [ChangesMDB]?) -> Void) {
-        let pageValue: Int? = page != nil ? Int(page!) : nil
-
-        changes(type: ChangeType(rawValue: changeType) ?? .movie, page: pageValue, startDate: startDate, endDate: endDate) { apiReturn, changes in
-            completionHandler(apiReturn, changes)
-        }
-    }
 }

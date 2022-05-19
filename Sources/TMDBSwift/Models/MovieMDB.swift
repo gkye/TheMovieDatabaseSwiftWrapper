@@ -21,11 +21,8 @@ extension MovieMDB {
     /// Get the basic movie information for a specific movie id.
     public class func movie(movieID: Int!, language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: MovieDetailedMDB?) -> Void) {
         Client.Movies(String(movieID), page: nil, language: language) { apiReturn in
-            var detailed: MovieDetailedMDB?
-            if let json = apiReturn.json {
-                detailed = MovieDetailedMDB.init(results: json)
-            }
-            completion(apiReturn, detailed)
+            let data: MovieDetailedMDB? = apiReturn.decode()
+            completion(apiReturn, data)
         }
     }
 
@@ -44,22 +41,16 @@ extension MovieMDB {
     /// Get the cast and crew information for a specific movie id.
     public  class func credits(movieID: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ credits: MovieCreditsMDB?) -> Void) {
         Client.Movies(String(movieID) + "/credits", page: nil, language: nil) { apiReturn in
-            var credits: MovieCreditsMDB?
-            if let json = apiReturn.json {
-                credits = MovieCreditsMDB(results: json)
-            }
-            completion(apiReturn, credits)
+            let data: MovieCreditsMDB? = apiReturn.decode()
+            completion(apiReturn, data)
         }
     }
 
     /// Get the images (posters and backdrops) for a specific movie id.
     public class func images(movieID: Int!, language: String?  = nil, completion: @escaping (_ clientReturn: ClientReturn, _ images: ImagesMDB?) -> Void) {
         Client.Movies(String(movieID) + "/images", page: nil, language: language) { apiReturn in
-            var images: ImagesMDB?
-            if let json = apiReturn.json {
-                images = ImagesMDB.init(results: json)
-            }
-            completion(apiReturn, images)
+            let data: ImagesMDB? = apiReturn.decode()
+            completion(apiReturn, data)
         }
     }
 
@@ -67,8 +58,9 @@ extension MovieMDB {
     public class func keywords(movieID: Int, completion: @escaping (_ clientReturn: ClientReturn, _ keywords: [KeywordsMDB]?) -> Void) {
         Client.Movies(String(movieID) + "/keywords", page: nil, language: nil) { apiReturn in
             var keywords: [KeywordsMDB]?
-            if let json = apiReturn.json?["keywords"] {
-                keywords = KeywordsMDB.initialize(json: json)
+            if let data = apiReturn.data,
+               let decodedWrapper = try? JSONDecoder().decode(KeywordWrapper<KeywordsMDB>.self, from: data) {
+                keywords = decodedWrapper.keywords
             }
             completion(apiReturn, keywords)
         }
@@ -110,30 +102,24 @@ extension MovieMDB {
     /// Get the similar movies for a specific movie id.
     public class func similar(movieID: Int!, page: Int?, language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> Void) {
         Client.Movies(String(movieID) + "/similar", page: page, language: language) { apiReturn in
-            var movies: [MovieMDB]?
-            if let json = apiReturn.json?["results"] {
-                movies = MovieMDB.initialize(json: json)
-            }
-            completion(apiReturn, movies)
+            let data: [MovieMDB]? = apiReturn.decodeResults()
+            completion(apiReturn, data)
         }
     }
 
     /// Get the recommended movies for a specific tv id.
     public class func recommendations(movieID: Int!, page: Int?, language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> Void) {
         Client.Movies(String(movieID) + "/recommendations", page: page, language: language) { apiReturn in
-            var movies: [MovieMDB]?
-            if let json = apiReturn.json?["results"] {
-                movies = MovieMDB.initialize(json: json)
-            }
-            completion(apiReturn, movies)
+            let data: [MovieMDB]? = apiReturn.decodeResults()
+            completion(apiReturn, data)
         }
     }
 
     /// Get the reviews for a particular movie id.
     public class func reviews(movieID: Int!, page: Int?, language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ reviews: [MovieReviewsMDB]?) -> Void) {
         Client.Movies(String(movieID) + "/reviews", page: page, language: language) { apiReturn in
-            let reviews: [MovieReviewsMDB]? = apiReturn.decodeResults()
-            completion(apiReturn, reviews)
+            let data: [MovieReviewsMDB]? = apiReturn.decodeResults()
+            completion(apiReturn, data)
         }
 
     }
@@ -152,66 +138,48 @@ extension MovieMDB {
     /// Get the latest movie id.
     public class func latest(completion: @escaping (_ clientReturn: ClientReturn, _ moviesDetailed: MovieDetailedMDB?) -> Void) {
         Client.Movies("latest", page: nil, language: nil) { apiReturn in
-            var movie: MovieDetailedMDB?
-            if let json = apiReturn.json {
-                movie = MovieDetailedMDB.init(results: json)
-            }
-            completion(apiReturn, movie)
+            let data: MovieDetailedMDB? = apiReturn.decode()
+            completion(apiReturn, data)
         }
     }
 
     /// Get the list of movies playing that have been, or are being released this week. This list refreshes every day.
     public class func nowplaying(language: String? = nil, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> Void) {
         Client.Movies("now_playing", page: page, language: language) { apiReturn in
-            var movie = [MovieMDB]()
-            if let json = apiReturn.json?["results"] {
-                movie = MovieMDB.initialize(json: json)
-            }
-            completion(apiReturn, movie)
+            let data: [MovieMDB]? = apiReturn.decodeResults()
+            completion(apiReturn, data)
         }
     }
 
     /// Get the list of popular movies on The Movie Database. This list refreshes every day.
     public class func popular(language: String? = nil, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> Void) {
         Client.Movies("popular", page: page, language: language) { apiReturn in
-            var movie = [MovieMDB]()
-            if let json = apiReturn.json?["results"] {
-                movie = MovieMDB.initialize(json: json)
-            }
-            completion(apiReturn, movie)
+            let data: [MovieMDB]? = apiReturn.decodeResults()
+            completion(apiReturn, data)
         }
     }
 
     /// Get the list of top rated movies. By default, this list will only include movies that have 50 or more votes. This list refreshes every day.
     public class func toprated(language: String? = nil, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> Void) {
         Client.Movies("top_rated", page: page, language: language) { apiReturn in
-            var movie: [MovieMDB]?
-            if let json = apiReturn.json?["results"] {
-                movie = MovieMDB.initialize(json: json)
-            }
-            completion(apiReturn, movie)
+            let data: [MovieMDB]? = apiReturn.decodeResults()
+            completion(apiReturn, data)
         }
     }
 
     /// Get the list of upcoming movies by release date. This list refreshes every day.
     public class func upcoming(page: Int?, language: String?  = nil, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> Void) {
         Client.Movies("upcoming", page: page, language: language) { apiReturn in
-            var movie: [MovieMDB]?
-            if let json = apiReturn.json?["results"] {
-                movie = MovieMDB.initialize(json: json)
-            }
-            completion(apiReturn, movie)
+            let data: [MovieMDB]? = apiReturn.decodeResults()
+            completion(apiReturn, data)
         }
     }
 
     /// Retrive a list of movies using the `MovieQueryType`
     public class func query(queryType: MovieQueryType, language: String? = nil, page: Int?, region: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> Void) {
         Client.Movies(queryType.rawValue, page: page, language: language, region: region) { apiReturn in
-            var movie: [MovieMDB]?
-            if let json = apiReturn.json?["results"] {
-                movie = MovieMDB.initialize(json: json)
-            }
-            completion(apiReturn, movie)
+            let data: [MovieMDB]? = apiReturn.decodeResults()
+            completion(apiReturn, data)
         }
     }
 
@@ -220,11 +188,8 @@ extension MovieMDB {
      */
     public class func movieAppendTo(movieID: Int!, append_to: [String], language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: MovieDetailedMDB?, _ json: JSON?) -> Void) {
         Client.Movies(String(movieID), page: nil, language: language, append_to: append_to) { apiReturn in
-            var detailed: MovieDetailedMDB?
-            if let json = apiReturn.json {
-                detailed = MovieDetailedMDB.init(results: json)
-            }
-            completion(apiReturn, detailed, apiReturn.json)
+            let data: MovieDetailedMDB? = apiReturn.decode()
+            completion(apiReturn, data, apiReturn.json)
         }
     }
 }

@@ -19,14 +19,5 @@ open class ContentRatingsMDB: ArrayObject {
 }
 
 open class TVMDB: DiscoverTVMDB {
-  open var genres = [GenresType]()
-  public typealias GenresType = (id: Int?, name: String?)
-
-  required public init(results: JSON) {
-    super.init(results: results)
-    results["genres"].forEach {
-      genres.append(($0.1["id"].int, $0.1["name"].string))
-    }
-  }
-
+  open var genres = [GenresMDB]()
 }
