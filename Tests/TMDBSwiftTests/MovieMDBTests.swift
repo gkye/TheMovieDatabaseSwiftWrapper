@@ -251,7 +251,7 @@ final class MovieMDBTests: XCTestCase {
         var reviews: [MovieReviewsMDB]?
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        MovieMDB.movieAppendTo(movieID: 49026, append_to: ["videos", "reviews"], completion: { api, movie, _ in
+        MovieMDB.movieAppendTo(movieID: 49026, append_to: ["videos", "reviews"], completion: { api, movie in
             cReturn = api
             movieData = movie
             if let data = cReturn?.data,
@@ -267,7 +267,6 @@ final class MovieMDBTests: XCTestCase {
         waitForExpectations(timeout: 10, handler: nil)
 
         XCTAssertNotNil(movieData)
-        XCTAssertNotNil(cReturn?.json)
         XCTAssertNotNil(videos)
         XCTAssertNotNil(reviews)
 

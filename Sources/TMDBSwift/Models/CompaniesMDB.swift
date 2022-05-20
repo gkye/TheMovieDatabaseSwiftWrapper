@@ -8,18 +8,13 @@
 
 import Foundation
 
-public struct ParentCompanyMDB: ArrayObject {
+public struct ParentCompanyMDB: Codable {
     public  var name: String!
     public  var id: Int!
     public  var logo_path: String!
-    public init(results: JSON) {
-        name = results["name"].string
-        id = results["id"].int
-        logo_path = results["logo_path"].string
-    }
 }
 
-open class CompanyMDB {
+open class CompanyMDB: Codable {
     open var description: String?
     open var headquarters: String?
     open var homepage: String!
@@ -28,25 +23,11 @@ open class CompanyMDB {
     open var name: String!
     open var parent_company: ParentCompanyMDB?
 
-    public init(results: JSON) {
-        description = results["description"].string
-        headquarters = results["headquarters"].string
-        homepage = results["homepage"].string
-        id = results["id"].int
-        logo_path = results["logo_path"].string
-        name = results["name"].string
-        if results["parent_company"].count > 0 {
-            parent_company = ParentCompanyMDB.init(results: results["parent_company"])
-        }
-    }
     /// This method is used to retrieve all of the basic information about a company.
     open class func companyInfo(companyId: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: CompanyMDB?) -> Void) {
         Client.Company(companyId: companyId) { apiReturn in
-            var company: CompanyMDB?
-            if let json = apiReturn.json {
-                company = CompanyMDB(results: json)
-            }
-            completion(apiReturn, company)
+            let data: CompanyMDB? = apiReturn.decode()
+            completion(apiReturn, data)
         }
     }
 

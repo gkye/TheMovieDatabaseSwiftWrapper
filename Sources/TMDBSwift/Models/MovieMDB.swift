@@ -30,11 +30,8 @@ extension MovieMDB {
     public class func alternativeTitles(movieID: Int!, country: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ altTitles: AlternativeTitlesMDB?) -> Void) {
         // language changed to country to avoid modifiying multiple defined functions.
         Client.Movies(String(movieID) + "/alternative_titles", page: nil, language: country) { apiReturn in
-            var alt: AlternativeTitlesMDB?
-            if let json = apiReturn.json {
-                alt = AlternativeTitlesMDB.init(results: json)
-            }
-            completion(apiReturn, alt)
+            let data: AlternativeTitlesMDB? = apiReturn.decode()
+            completion(apiReturn, data)
         }
     }
 
@@ -70,11 +67,8 @@ extension MovieMDB {
     /// Get the release dates, certifications and related information by country for a specific movie id.
     public class func release_dates(movieID: Int, completion: @escaping (_ clientReturn: ClientReturn, _ releatedDates: [MovieReleaseDatesMDB]?) -> Void) {
         Client.Movies(String(movieID) + "/release_dates", page: nil, language: nil) { apiReturn in
-            var releatedDates: [MovieReleaseDatesMDB]?
-            if let json = apiReturn.json?["results"] {
-                releatedDates = MovieReleaseDatesMDB.initialize(json: json)
-            }
-            completion(apiReturn, releatedDates)
+            let data: [MovieReleaseDatesMDB]? = apiReturn.decodeResults()
+            completion(apiReturn, data)
         }
 
     }
@@ -90,11 +84,12 @@ extension MovieMDB {
     /// Get the translations for a specific movie id.
     public class func translations(movieID: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ translations: TranslationsMDB? ) -> Void) {
         Client.Movies(String(movieID) + "/translations", page: nil, language: nil) { apiReturn in
-            var trans: TranslationsMDB?
-            if let json = apiReturn.json?["translations"] {
-                trans = TranslationsMDB(results: json)
+            var translations: TranslationsMDB?
+            if let data = apiReturn.data,
+               let decodedWrapper = try? JSONDecoder().decode(TranslationWrapper<TranslationsMDB>.self, from: data) {
+                translations = decodedWrapper.translations
             }
-            completion(apiReturn, trans)
+            completion(apiReturn, translations)
         }
 
     }
@@ -127,11 +122,8 @@ extension MovieMDB {
     /// Get the lists that the movie belongs to.
     public class func list(movieID: Int!, page: Int?, language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ list: [MovieListMDB]?) -> Void) {
         Client.Movies(String(movieID) + "/lists", page: page, language: language) { apiReturn in
-            var list: [MovieListMDB]?
-            if let json = apiReturn.json?["results"] {
-                list = MovieListMDB.initialize(json: json)
-            }
-            completion(apiReturn, list)
+            let data: [MovieListMDB]? = apiReturn.decodeResults()
+            completion(apiReturn, data)
         }
 
     }
@@ -186,10 +178,10 @@ extension MovieMDB {
     /**
      *  Retrive data by append multiple movie methods. Initlization of object have to be done manually. Exepect MovieDetailedMDB
      */
-    public class func movieAppendTo(movieID: Int!, append_to: [String], language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: MovieDetailedMDB?, _ json: JSON?) -> Void) {
+    public class func movieAppendTo(movieID: Int!, append_to: [String], language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: MovieDetailedMDB?) -> Void) {
         Client.Movies(String(movieID), page: nil, language: language, append_to: append_to) { apiReturn in
             let data: MovieDetailedMDB? = apiReturn.decode()
-            completion(apiReturn, data, apiReturn.json)
+            completion(apiReturn, data)
         }
     }
 }

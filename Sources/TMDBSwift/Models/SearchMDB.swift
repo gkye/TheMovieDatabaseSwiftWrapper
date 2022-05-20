@@ -23,11 +23,8 @@ public struct SearchMDB {
     public static func company(query: String, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ company: [ParentCompanyMDB]? ) -> Void) {
 
         Client.Search("company", query: query, page: page, language: nil, include_adult: nil, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil) { apiReturn in
-            var company = [ParentCompanyMDB]()
-            if let json = apiReturn.json?["results"] {
-                company = ParentCompanyMDB.initialize(json: json)
-            }
-            completion(apiReturn, company)
+            let data: [ParentCompanyMDB]? = apiReturn.decodeResults()
+            completion(apiReturn, data)
         }
     }
 

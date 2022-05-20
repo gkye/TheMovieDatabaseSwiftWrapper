@@ -25,3 +25,13 @@ struct ProfilesWrapper<T: Codable>: Codable {
     var id: Int?
     var profiles: [T]
 }
+
+struct TranslationsWrapper<T: Codable>: Codable {
+    var id: Int?
+    var translations: [T]
+}
+
+struct TranslationWrapper<T: Codable>: Codable {
+    var id: Int?
+    var translations: T
+}

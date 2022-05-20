@@ -8,14 +8,9 @@
 
 import Foundation
 
-open class ContentRatingsMDB: ArrayObject {
+open class ContentRatingsMDB: Codable {
   open  var iso_3166_1: String?
   open var rating: String?
-
-  required public init(results: JSON) {
-    iso_3166_1 = results["iso_3166_1"].string
-    rating = results["rating"].string
-  }
 }
 
 open class TVMDB: DiscoverTVMDB {

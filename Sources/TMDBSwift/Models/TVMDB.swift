@@ -31,10 +31,7 @@ extension TVMDB {
     /// Get the alternative titles for a specific show ID.
     public class func alternativeTitles(tvShowID: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: AlternativeTitlesMDB?) -> Void) {
         Client.TV( String(tvShowID) + "/alternative_titles", page: nil, language: nil, timezone: nil) { apiReturn in
-            var data: AlternativeTitlesMDB?
-            if let json = apiReturn.json {
-                data = AlternativeTitlesMDB(results: json)
-            }
+            let data: AlternativeTitlesMDB? = apiReturn.decode()
             completion(apiReturn, data)
         }
     }
@@ -42,10 +39,7 @@ extension TVMDB {
     /// Get the content ratings for a specific TV show id.
     public class func content_ratings(tvShowID: Int, completion: @escaping (_ clientReturn: ClientReturn, _ data: [ContentRatingsMDB]?) -> Void) {
         Client.TV(String(tvShowID) + "/content_ratings", page: nil, language: nil, timezone: nil) { apiReturn in
-            var data: [ContentRatingsMDB]?
-            if let json = apiReturn.json?["results"] {
-                data = ContentRatingsMDB.initialize(json: json)
-            }
+            let data: [ContentRatingsMDB]? = apiReturn.decodeResults()
             completion(apiReturn, data)
         }
     }
@@ -61,10 +55,7 @@ extension TVMDB {
     // Get the external ids that we have stored for a TV series.
     public class func externalIDS(tvShowID: Int!, language: String, completion: @escaping (_ clientResult: ClientReturn, _ data: ExternalIdsMDB?) -> Void) {
         Client.TV(String(tvShowID) + "/external_ids", page: nil, language: language, timezone: nil) { apiReturn in
-            var data: ExternalIdsMDB?
-            if let json = apiReturn.json {
-                data = ExternalIdsMDB.init(results: json)
-            }
+            let data: ExternalIdsMDB? = apiReturn.decode()
             completion(apiReturn, data)
         }
     }
@@ -104,11 +95,12 @@ extension TVMDB {
     /// Get the list of translations that exist for a TV series. These translations cascade down to the episode level.
     public class func translations(tvShowID: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: [TranslationsMDB]?) -> Void) {
         Client.TV(String(tvShowID) + "/translations", page: nil, language: nil, timezone: nil) { apiReturn in
-            var data: [TranslationsMDB]?
-            if let json = apiReturn.json?["translations"] {
-                data = TranslationsMDB.initialize(json: json)
+            var translations: [TranslationsMDB]?
+            if let data = apiReturn.data,
+               let decodedWrapper = try? JSONDecoder().decode(TranslationsWrapper<TranslationsMDB>.self, from: data) {
+                translations = decodedWrapper.translations
             }
-            completion(apiReturn, data)
+            completion(apiReturn, translations)
         }
 
     }
@@ -170,10 +162,10 @@ extension TVMDB {
     }
 
     /// Retrive data by append multiple tv methods. Initlization of object have to be done manually. Exepect TVMDB
-    public class func tvAppendTo(tvShowID: Int!, language: String? = nil, append_to: [String], completion: @escaping (_ clientReturn: ClientReturn, _ data: TVDetailedMDB?, _ json: JSON?) -> Void) {
+    public class func tvAppendTo(tvShowID: Int!, language: String? = nil, append_to: [String], completion: @escaping (_ clientReturn: ClientReturn, _ data: TVDetailedMDB?) -> Void) {
         Client.TV(String(tvShowID), page: nil, language: language, timezone: nil, append_to: append_to) { apiReturn in
             let data: TVDetailedMDB? = apiReturn.decode()
-            completion(apiReturn, data, apiReturn.json)
+            completion(apiReturn, data)
         }
     }
 }

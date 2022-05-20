@@ -10,22 +10,9 @@ import Foundation
 
 public typealias Changes1MDB = (id: Double, adult: Bool?)
 
-public struct ChangesMDB {
+public struct ChangesMDB: Codable {
     public var id: Int64!
     public var adult: Bool!
-
-    public init(results: JSON) {
-        id = results["id"].int64
-        adult = results["adult"].bool
-    }
-
-    static func initReturn(_ json: JSON) -> [ChangesMDB] {
-        var changes = [ChangesMDB]()
-        for i in 0 ..< json.count {
-            changes.append(ChangesMDB(results: json[i]))
-        }
-        return changes
-    }
 
     public enum ChangeType: String {
         case movie, tv, person
@@ -33,11 +20,8 @@ public struct ChangesMDB {
 
     public static func changes(type changeType: ChangeType, page: Int? = 1, startDate: String? = nil, endDate: String? = nil, completionHandler: @escaping (_ clientReturn: ClientReturn, _ data: [ChangesMDB]?) -> Void) {
         Client.Changes(changeType: changeType.rawValue, page: page, startDate: startDate, endDate: endDate) { apiReturn in
-            var changes: [ChangesMDB]?
-            if let results = apiReturn.json?["results"] {
-                changes = ChangesMDB.initReturn(results)
-            }
-            completionHandler(apiReturn, changes)
+            let data: [ChangesMDB]? = apiReturn.decodeResults()
+            completionHandler(apiReturn, data)
         }
     }
 }

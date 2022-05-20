@@ -8,36 +8,18 @@
 
 import Foundation
 
-public struct TVCreatedBy {
+public struct TVCreatedBy: Codable {
     public var id: Int!
     public var name: String!
     public var profile_path: String!
 }
 
-public struct TVSeasons {
+public struct TVSeasons: Codable {
     public var air_date: String?
     public var episode_count: Int!
     public var id: Int!
     public var poster_path: String!
     public var season_number: Int!
-
-    init(results: JSON) {
-        if results["air_date"].exists() {
-            air_date = results["air_date"].string
-        } else {
-            air_date = ""
-        }
-        episode_count = results["episode_count"].int
-        id = results["id"].int
-
-        if results["poster_path"].exists() {
-            poster_path = results["poster_path"].string
-        } else {
-            poster_path = ""
-        }
-        season_number = results["season_number"].int
-    }
-
 }
 
 open class TVDetailedMDB: TVMDB {

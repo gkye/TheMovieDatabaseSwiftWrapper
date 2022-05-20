@@ -8,27 +8,12 @@
 
 import Foundation
 
-public struct AltTitlesMDB: ArrayObject {
+public struct AltTitlesMDB: Codable {
     public var title: String?
     public var iso_3166_1: String?
-    public init(results: JSON) {
-        title = results["title"].string
-        iso_3166_1 = results["iso_3166_1"].string
-
-    }
+    public var type: String?
 }
-public struct AlternativeTitlesMDB {
-
+public struct AlternativeTitlesMDB: Codable {
     public var id: Int!
     public var titles = [AltTitlesMDB]()
-
-    public init(results: JSON) {
-        id = results["id"].int
-        if results["results"].exists() { // TV Changes
-            titles = AltTitlesMDB.initialize(json: results["results"])
-
-        } else if results["titles"].exists() {
-            titles = AltTitlesMDB.initialize(json: results["titles"])
-        }
-    }
 }

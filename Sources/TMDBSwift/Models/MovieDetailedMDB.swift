@@ -13,21 +13,11 @@ public struct BelongsToCollectionMovieMDB: Codable {
     public var name: String!
     public var poster_path: String!
     public var backdrop_path: String!
-    init(results: JSON) {
-        id = results["id"].int
-        name = results["name"].string
-        poster_path = results["poster_path"].string
-        backdrop_path = results["backdrop_path"].string
-    }
 }
 
 public struct SpokenLanguages: Codable {
     public var iso_639_1: String!
     public var name: String!
-    init(results: JSON) {
-        iso_639_1 = results["iso_639_1"].string
-        name = results["name"].string
-    }
 }
 
 open class MovieDetailedMDB: MovieMDB {

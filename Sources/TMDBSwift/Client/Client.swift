@@ -10,10 +10,7 @@ import Foundation
 
 public struct ClientReturn {
     public var error: NSError?
-    public var json: JSON?
     public var data: Data?
-    //  public var MBDBReturn: AnyObject?
-//    public var pageResults: PageResultsMDB?
 }
 
 public struct MDBReturn {
@@ -38,8 +35,7 @@ struct Client {
         var params = parameters
         params["api_key"] = apikey as AnyObject
         HTTPRequest.request(url, httpMethod: httpMethod, parameters: params) { (data, _, error) in
-            if let data = data, let json = try? JSON(data: data) {
-                apiReturn.json = json
+            if let data = data {
                 apiReturn.data = data
             }
             apiReturn.error = error as NSError?

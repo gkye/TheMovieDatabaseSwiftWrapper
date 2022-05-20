@@ -45,10 +45,7 @@ public struct TVEpisodesMDB: Codable {
     public static func externalIDS(tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int, language: String, completion: @escaping (_ clientReturn: ClientReturn, _ data: ExternalIdsMDB?) -> Void) {
         let urltype = String(tvShowId) + "/season/" + String(seasonNumber) + "/episode/" + String(episodeNumber) + "/external_ids"
         Client.Seasons(urltype, language: language) { apiReturn in
-            var data: ExternalIdsMDB?
-            if let json = apiReturn.json {
-                data = ExternalIdsMDB(results: json)
-            }
+            let data: ExternalIdsMDB? = apiReturn.decode()
             completion(apiReturn, data)
         }
     }

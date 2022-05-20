@@ -8,44 +8,40 @@
 
 import Foundation
 
-public struct GuestSessionMDB {
+public struct GuestSessionMDB: Codable {
     public var success: Bool!
     public var guestSessionId: String!
     public var expiresAt: String!
 
-    public init(json: JSON) {
-        success = json["success"].boolValue
-        guestSessionId = json["guest_session_id"].string
-        expiresAt = json["expires_at"].string
+    enum CodingKeys: String, CodingKey {
+        case success
+        case guestSessionId = "guest_session_id"
+        case expiresAt = "expires_at"
     }
 }
 
-public struct RequestTokenMDB {
+public struct RequestTokenMDB: Codable {
     public var success: Bool!
     public var requestToken: String!
     public var expiresAt: String!
 
-    public init(json: JSON) {
-        success = json["success"].boolValue
-        requestToken = json["request_token"].string
-        expiresAt = json["expires_at"].string
+    enum CodingKeys: String, CodingKey {
+        case success
+        case requestToken = "request_token"
+        case expiresAt = "expires_at"
     }
 }
 
-public struct SessionMDB {
+public struct SessionMDB: Codable {
     public var success: Bool!
     public var sessionId: String!
 
-    public init(json: JSON) {
-        success = json["success"].boolValue
-        sessionId = json["session_id"].string
+    enum CodingKeys: String, CodingKey {
+        case success
+        case sessionId = "session_id"
     }
 }
 
-public struct DeleteSessionMDB {
+public struct DeleteSessionMDB: Codable {
     public var success: Bool!
-
-    public init(json: JSON) {
-        success = json["success"].boolValue
-    }
 }

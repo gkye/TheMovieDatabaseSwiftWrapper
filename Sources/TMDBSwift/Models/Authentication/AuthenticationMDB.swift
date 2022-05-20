@@ -19,10 +19,7 @@ public struct AuthenticationMDB {
     public static func createGuestSession(completion: @escaping (_ clientReturn: ClientReturn, _ guestSession: GuestSessionMDB? ) -> Void) {
 
         Client.createGuestSession { (apiReturn) in
-            var data: GuestSessionMDB?
-            if let json = apiReturn.json {
-                data = GuestSessionMDB(json: json)
-            }
+            let data: GuestSessionMDB? = apiReturn.decode()
             completion(apiReturn, data)
         }
     }
@@ -33,10 +30,7 @@ public struct AuthenticationMDB {
     public static func createRequestToken(completion: @escaping (_ clientReturn: ClientReturn, _ requestToken: RequestTokenMDB? ) -> Void) {
 
         Client.createRequestToken { (apiReturn) in
-            var data: RequestTokenMDB?
-            if let json = apiReturn.json {
-                data = RequestTokenMDB(json: json)
-            }
+            let data: RequestTokenMDB? = apiReturn.decode()
             completion(apiReturn, data)
         }
     }
@@ -51,10 +45,7 @@ public struct AuthenticationMDB {
     public static func createSession(requestToken: String!, completion: @escaping (_ clientReturn: ClientReturn, _ session: SessionMDB? ) -> Void) {
 
         Client.createSession(requestToken: requestToken) { (apiReturn) in
-            var data: SessionMDB?
-            if let json = apiReturn.json {
-                data = SessionMDB(json: json)
-            }
+            let data: SessionMDB? = apiReturn.decode()
             completion(apiReturn, data)
         }
     }
@@ -73,10 +64,7 @@ public struct AuthenticationMDB {
     public static func createRequestTokenWithLogin(username: String!, password: String!, requestToken: String!, completion: @escaping (_ clientReturn: ClientReturn, _ session: RequestTokenMDB? ) -> Void) {
 
         Client.createRequestTokenWithLogin(username: username, password: password, requestToken: requestToken) { (apiReturn) in
-            var data: RequestTokenMDB?
-            if let json = apiReturn.json {
-                data = RequestTokenMDB(json: json)
-            }
+            let data: RequestTokenMDB? = apiReturn.decode()
             completion(apiReturn, data)
         }
     }
@@ -89,10 +77,7 @@ public struct AuthenticationMDB {
     public static func deleteSession(sessionId: String!, completion: @escaping (_ clientReturn: ClientReturn, _ requestToken: DeleteSessionMDB? ) -> Void) {
 
         Client.deleteSession(sessionId: sessionId) { (apiReturn) in
-            var data: DeleteSessionMDB?
-            if let json = apiReturn.json {
-                data = DeleteSessionMDB(json: json)
-            }
+            let data: DeleteSessionMDB? = apiReturn.decode()
             completion(apiReturn, data)
         }
     }
