@@ -4,10 +4,6 @@
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/gkye/TheMovieDatabaseSwiftWrapper.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
 
 
-## TODO
----------
-Replace SwiftyJSON with swift4's Codeable
-
 ## Usage
 
 1. Get an API key-> <a href="themoviedb.org">themoviedb.org</a>
@@ -52,10 +48,6 @@ TMDBSwift is available through [Swift Package Manager](https://docs.swift.org/pa
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Movies">Movie</a>
 
 * Certifications 
-
-## Dependencies
-* SwiftyJSON
-
 
 ## Author
 George Kye
