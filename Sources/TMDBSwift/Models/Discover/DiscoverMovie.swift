@@ -77,7 +77,6 @@ open class DiscoverMovieMDB: DiscoverMDB {
     }
 
     /// Discover movies by different types of data like average rating, number of votes, genres and certifications. You can get a valid list of certifications from the /certifications method. Please note, when using certification \ certification.lte you must also specify certification_country. These two parameters work together in order to filter the results.
-
     open class func discoverMovies(params: [DiscoverParam], completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> Void) {
         Client.discover(baseURL: "movie", params: params, completion: { apiReturn in
             let data: [MovieMDB]? = apiReturn.decodeResults()
