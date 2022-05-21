@@ -279,5 +279,4 @@ final class MovieMDBTests: XCTestCase {
         XCTAssertNotNil(review?.content)
         XCTAssertEqual(review?.url, "https://www.themoviedb.org/review/5010553819c2952d1b000451")
     }
-
 }
