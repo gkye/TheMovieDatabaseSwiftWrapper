@@ -1,17 +1,15 @@
 import Foundation
 
-extension Client{
+extension Client {
 
-  static func trending(baseURL: String, completion: @escaping (ClientReturn) -> ()) -> (){
+    static func trending(baseURL: String, completion: @escaping (ClientReturn) -> Void) {
 
-    let url = "https://api.themoviedb.org/3/trending/" + baseURL
-    networkRequest(url: url, parameters: [:]){
-      apiReturn in
-      if(apiReturn.error == nil){
-        completion(apiReturn)
-      }
+        let url = "https://api.themoviedb.org/3/trending/" + baseURL
+        networkRequest(url: url, parameters: [:]) { apiReturn in
+            if apiReturn.error == nil {
+                completion(apiReturn)
+            }
+        }
     }
-  }
 
 }
-

@@ -1,11 +1,11 @@
 import Foundation
 
-//TODO: Handle people Type
-public enum TrendingMediaType: String{
+// TODO: Handle people Type
+public enum TrendingMediaType: String {
     case tv, movie
 }
 
-public enum TrendingTimeWindow: String{
+public enum TrendingTimeWindow: String {
     case day, week
 }
 
@@ -20,7 +20,7 @@ open class TrendingMDB: ArrayObject {
     open var poster_path: String?
     open var genre_ids: [Int]?
 
-    required public init(results: JSON){
+    required public init(results: JSON) {
         poster_path = results["poster_path"].string
         popularity = results["popularity"].double
         id = results["id"].int
@@ -33,14 +33,12 @@ open class TrendingMDB: ArrayObject {
 
     }
 
-
     /// Get the daily or weekly trending items. The daily trending list tracks items over the period of a day while items have a 24 hour half life. The weekly list tracks items over a 7 day period, with a 7 day half life.
     /// - Parameters:
     ///   - mediaType: TV or Movie
     ///   - timeWindow: Day or Week
-    public class func trending(mediaType: TrendingMediaType, timeWindow: TrendingTimeWindow, completionHandler: @escaping (ClientReturn, _ movieData: [MovieMDB]?, _ tvData: [TVMDB]?) -> ()) -> (){
-        Client.trending(baseURL: mediaType.rawValue + "/" + timeWindow.rawValue, completion: {
-            data in
+    public class func trending(mediaType: TrendingMediaType, timeWindow: TrendingTimeWindow, completionHandler: @escaping (ClientReturn, _ movieData: [MovieMDB]?, _ tvData: [TVMDB]?) -> Void) {
+        Client.trending(baseURL: mediaType.rawValue + "/" + timeWindow.rawValue, completion: { data in
             if mediaType == .tv {
                 completionHandler(data, nil, TVMDB.initialize(json: (data.json?["results"])!))
             } else if mediaType == .movie {

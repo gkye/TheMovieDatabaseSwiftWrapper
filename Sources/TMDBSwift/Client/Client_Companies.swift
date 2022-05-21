@@ -8,34 +8,32 @@
 
 import Foundation
 
-extension Client{
-  
-  static func Company(companyId: Int!, completion: @escaping (ClientReturn) -> ()) -> (){
-    let parameters: [String : AnyObject] = [:]
-    let url = "https://api.themoviedb.org/3/company/" + String(companyId)
-    networkRequest(url: url, parameters: parameters, completion: {
-      apiReturn in
-      
-      completion(apiReturn)
-    })
-  }
-  
-  static func Company(companyId: Int!, language: String?, page: Int?, completion: @escaping (ClientReturn) -> ()) -> (){
-    var parameters: [String : AnyObject] = [:]
-    if(page != nil){
-      parameters["page"] = page as AnyObject?
+extension Client {
+
+    static func Company(companyId: Int!, completion: @escaping (ClientReturn) -> Void) {
+        let parameters: [String: AnyObject] = [:]
+        let url = "https://api.themoviedb.org/3/company/" + String(companyId)
+        networkRequest(url: url, parameters: parameters, completion: { apiReturn in
+
+            completion(apiReturn)
+        })
     }
-    
-    if(language != nil){
-      parameters["language"] = language as AnyObject?
+
+    static func Company(companyId: Int!, language: String?, page: Int?, completion: @escaping (ClientReturn) -> Void) {
+        var parameters: [String: AnyObject] = [:]
+        if page != nil {
+            parameters["page"] = page as AnyObject?
+        }
+
+        if language != nil {
+            parameters["language"] = language as AnyObject?
+        }
+
+        let url = "https://api.themoviedb.org/3/company/" + String(companyId) + "/movies"
+        networkRequest(url: url, parameters: parameters, completion: { apiReturn in
+
+            completion(apiReturn)
+        })
     }
-    
-    let url = "https://api.themoviedb.org/3/company/" + String(companyId) + "/movies"
-    networkRequest(url: url, parameters: parameters, completion: {
-      apiReturn in
-      
-      completion(apiReturn)
-    })
-  }
-  
+
 }
