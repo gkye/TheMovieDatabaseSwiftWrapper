@@ -28,7 +28,7 @@ pod "TMDBSwift"
 
 TMDBSwift is available through [Swift Package Manager](https://docs.swift.org/package-manager/PackageDescription/PackageDescription.html). To install it to your project, simply add the following to your Package.swift file:
 ``` swift
-.package(url: "https://github.com/gkye/TheMovieDatabaseSwiftWrapper", from: "0.6.0"),
+.package(url: "https://github.com/gkye/TheMovieDatabaseSwiftWrapper", from: "0.6.1"),
 ```
 
 ## ENDPOINTS
