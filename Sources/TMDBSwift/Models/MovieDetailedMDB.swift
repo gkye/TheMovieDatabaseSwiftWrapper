@@ -35,11 +35,11 @@ open class MovieDetailedMDB: MovieMDB {
   open var budget: Int?
   open var homepage: String?
   open var imdb_id: Int!
-  open var production_companies: [KeywordsMDB]?
-  open var production_countries: [KeywordsMDB]?
+  open var production_companies: [KeywordsMDB]? = []
+  open var production_countries: [KeywordsMDB]? = []
   open var revenue : Int?
   open var runtime: Int?
-  open var spoken_languages: [SpokenLanguages]?
+  open var spoken_languages: [SpokenLanguages]? = []
   open var status: String!
   open var tagline: String!
   
