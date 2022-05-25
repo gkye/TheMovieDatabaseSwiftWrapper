@@ -17,8 +17,6 @@ Replace SwiftyJSON with swift4's Codeable
 2. View <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki">Wikis</a> for examples 
 <br>
 
-To run the example project, clone the repo, and run `pod install` from the Demo directory first.
-
 ## Installation
 
 TMDBSwift is available through [CocoaPods](http://cocoapods.org). To install

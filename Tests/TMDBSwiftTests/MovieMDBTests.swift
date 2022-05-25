@@ -286,7 +286,7 @@ class MovieMDBTests: XCTestCase {
 		XCTAssertNotNil(videos)
 		XCTAssertNotNil(reviews)
 		
-		XCTAssertEqual(videos?.count, 4)
+		XCTAssertEqual(videos?.count, 9)
 		
 		let review = reviews?[0]
 		
