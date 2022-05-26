@@ -76,31 +76,30 @@ extension SwiftyJSONError: CustomNSError {
 // MARK: - JSON Type
 
 /**
- JSON's type definitions.
+    JSON's type definitions.
  
- See http://www.json.org
- */
+    See http://www.json.org
+*/
 public enum Type: Int {
 
-case number
-case string
-case bool
-case array
-case dictionary
-case null
-case unknown
+    case number
+    case string
+    case bool
+    case array
+    case dictionary
+    case null
+    case unknown
 }
 
 // MARK: - JSON Base
 public struct JSON {
 
     /**
-     Creates a JSON using the data.
-     
-     - parameter data:  The NSData used to convert to json.Top level object in data is an NSArray or NSDictionary
-     - parameter opt:   The JSON serialization reading options. `[]` by default.
-     
-     - returns: The created JSON
+        Creates a JSON using the data.
+            - parameter data:  The NSData used to convert to json.Top level object in data is an NSArray or NSDictionary
+            - parameter opt:   The JSON serialization reading options. `[]` by default.
+
+            - returns: The created JSON
      */
     public init(data: Data, options opt: JSONSerialization.ReadingOptions = []) throws {
         let object: Any = try JSONSerialization.jsonObject(with: data, options: opt)
@@ -108,10 +107,10 @@ public struct JSON {
     }
 
     /**
-     Creates a JSON object
-     - parameter object: the object
-     - note: this does not parse a `String` into JSON, instead use `init(parseJSON: String)`
-     - returns: the created JSON object
+        Creates a JSON object
+            - parameter object: the object
+            - note: this does not parse a `String` into JSON, instead use `init(parseJSON: String)`
+            - returns: the created JSON object
      */
     public init(_ object: Any) {
         switch object {
@@ -127,9 +126,9 @@ public struct JSON {
     }
 
     /**
-     Parses the JSON string into a JSON object
-     - parameter json: the JSON string
-     - returns: the created JSON object
+        Parses the JSON string into a JSON object
+            - parameter json: the JSON string
+            - returns: the created JSON object
      */
     public init(parseJSON jsonString: String) {
         if let data = jsonString.data(using: .utf8) {
@@ -140,10 +139,10 @@ public struct JSON {
     }
 
     /**
-     Creates a JSON from JSON string
-     - parameter string: Normal json string like '{"a":"b"}'
+        Creates a JSON from JSON string
+            - parameter string: Normal json string like '{"a":"b"}'
      
-     - returns: The created JSON
+            - returns: The created JSON
      */
     @available(*, deprecated, message: "Use instead `init(parseJSON: )`")
     public static func parse(_ json: String) -> JSON {
@@ -152,34 +151,33 @@ public struct JSON {
     }
 
     /**
-     Creates a JSON using the object.
+        Creates a JSON using the object.
+            - parameter object: The object must have the following properties: All objects are NSString/String, NSNumber/Int/Float/Double/Bool, NSArray/Array, NSDictionary/Dictionary, or NSNull; All dictionary keys are NSStrings/String; NSNumbers are not NaN or infinity.
      
-     - parameter object:  The object must have the following properties: All objects are NSString/String, NSNumber/Int/Float/Double/Bool, NSArray/Array, NSDictionary/Dictionary, or NSNull; All dictionary keys are NSStrings/String; NSNumbers are not NaN or infinity.
-     
-     - returns: The created JSON
+            - returns: The created JSON
      */
     fileprivate init(jsonObject: Any) {
         self.object = jsonObject
     }
 
     /**
-     Merges another JSON into this JSON, whereas primitive values which are not present in this JSON are getting added,
+        Merges another JSON into this JSON, whereas primitive values which are not present in this JSON are getting added,
      present values getting overwritten, array values getting appended and nested JSONs getting merged the same way.
      
-     - parameter other: The JSON which gets merged into this JSON
-     - throws `ErrorWrongType` if the other JSONs differs in type on the top level.
+            - parameter other: The JSON which gets merged into this JSON
+            - throws `ErrorWrongType` if the other JSONs differs in type on the top level.
      */
     public mutating func merge(with other: JSON) throws {
         try self.merge(with: other, typecheck: true)
     }
 
     /**
-     Merges another JSON into this JSON and returns a new JSON, whereas primitive values which are not present in this JSON are getting added,
+        Merges another JSON into this JSON and returns a new JSON, whereas primitive values which are not present in this JSON are getting added,
      present values getting overwritten, array values getting appended and nested JSONS getting merged the same way.
      
-     - parameter other: The JSON which gets merged into this JSON
-     - returns: New merged JSON
-     - throws `ErrorWrongType` if the other JSONs differs in type on the top level.
+            - parameter other: The JSON which gets merged into this JSON
+            - returns: New merged JSON
+            - throws `ErrorWrongType` if the other JSONs differs in type on the top level.
      */
     public func merged(with other: JSON) throws -> JSON {
         var merged = self
