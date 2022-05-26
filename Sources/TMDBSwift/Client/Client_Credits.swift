@@ -8,18 +8,16 @@
 
 import Foundation
 
+extension Client {
 
-extension Client{
-  
-  static func Credits(creditID: String, language: String, completion: @escaping (ClientReturn) -> ()) -> (){
-    var parameters: [String : AnyObject] = [:]
-    parameters["language"] = language as AnyObject?
-    let url = "https://api.themoviedb.org/3/credit/"+creditID
-    networkRequest(url: url, parameters: parameters, completion: {
-      apiReturn in
-      
-      completion(apiReturn)
-      
-    })
-  }
+    static func Credits(creditID: String, language: String, completion: @escaping (ClientReturn) -> Void) {
+        var parameters: [String: AnyObject] = [:]
+        parameters["language"] = language as AnyObject?
+        let url = "https://api.themoviedb.org/3/credit/"+creditID
+        networkRequest(url: url, parameters: parameters, completion: { apiReturn in
+
+            completion(apiReturn)
+
+        })
+    }
 }

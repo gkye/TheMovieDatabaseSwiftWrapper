@@ -8,12 +8,11 @@
 
 import Foundation
 
+open class MovieReviewsMDB: Codable {
 
-open class MovieReviewsMDB: Codable{
-  
-  open var id: String!
-  open var author: String!
-  open var content: String!
-  open var url: String!
+    open var id: String!
+    open var author: String!
+    open var content: String!
+    open var url: String!
 
 }

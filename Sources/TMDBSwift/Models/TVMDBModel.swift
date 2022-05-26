@@ -8,25 +8,25 @@
 
 import Foundation
 
-open class Content_RatingsMDB: ArrayObject{
+open class ContentRatingsMDB: ArrayObject {
   open  var iso_3166_1: String?
   open var rating: String?
-  
-  required public init(results: JSON){
+
+  required public init(results: JSON) {
     iso_3166_1 = results["iso_3166_1"].string
     rating = results["rating"].string
   }
 }
 
 open class TVMDB: DiscoverTVMDB {
-  open var genres = [genresType]()
-  public typealias genresType = (id: Int?, name: String?)
-  
-  required public init(results: JSON){
+  open var genres = [GenresType]()
+  public typealias GenresType = (id: Int?, name: String?)
+
+  required public init(results: JSON) {
     super.init(results: results)
-    results["genres"].forEach{
+    results["genres"].forEach {
       genres.append(($0.1["id"].int, $0.1["name"].string))
     }
   }
-  
+
 }

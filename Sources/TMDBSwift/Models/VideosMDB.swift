@@ -8,12 +8,12 @@
 
 import Foundation
 
-public struct VideosMDB: Codable{
-  public var id: String!
-  public var iso_639_1: String?
-  public var key: String!
-  public var name: String!
-  public var site: String?
-  public var size: Int!
-  public var  type: String!
+public struct VideosMDB: Codable {
+    public var id: String!
+    public var iso_639_1: String?
+    public var key: String!
+    public var name: String!
+    public var site: String?
+    public var size: Int!
+    public var  type: String!
 }

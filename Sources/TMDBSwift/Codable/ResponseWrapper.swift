@@ -7,6 +7,6 @@
 //
 
 struct ResponseWrapper: Codable {
-  var videos: ResultsWrapper<VideosMDB>?
-  var reviews: ResultsWrapper<MovieReviewsMDB>?
+    var videos: ResultsWrapper<VideosMDB>?
+    var reviews: ResultsWrapper<MovieReviewsMDB>?
 }
