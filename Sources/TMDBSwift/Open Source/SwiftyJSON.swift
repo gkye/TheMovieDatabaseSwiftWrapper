@@ -491,7 +491,7 @@ extension JSON {
             case 0:
                 return
             case 1:
-                self[sub:path[0]].object = newValue.object
+                self[sub: path[0]].object = newValue.object
             default:
                 var aPath = path; aPath.remove(at: 0)
                 var nextJSON = self[sub: path[0]]
