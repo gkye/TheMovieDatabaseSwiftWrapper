@@ -82,11 +82,11 @@ extension MovieMDB {
     }
 
     /// Get the translations for a specific movie id.
-    public class func translations(movieID: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ translations: TranslationsMDB? ) -> Void) {
+    public class func translations(movieID: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ translations: [TranslationsMDB]? ) -> Void) {
         Client.Movies(String(movieID) + "/translations", page: nil, language: nil) { apiReturn in
-            var translations: TranslationsMDB?
+            var translations: [TranslationsMDB]?
             if let data = apiReturn.data,
-               let decodedWrapper = try? JSONDecoder().decode(TranslationWrapper<TranslationsMDB>.self, from: data) {
+               let decodedWrapper = try? JSONDecoder().decode(TranslationWrapper<[TranslationsMDB]>.self, from: data) {
                 translations = decodedWrapper.translations
             }
             completion(apiReturn, translations)
