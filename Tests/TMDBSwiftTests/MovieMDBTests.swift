@@ -241,4 +241,88 @@ final class MovieMDBTests: XCTestCase {
         XCTAssertEqual(review?.url, "https://www.themoviedb.org/review/5010553819c2952d1b000451")
 
     }
+
+    func testLatest() {
+        var data: MovieDetailedMDB?
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieMDB.latest { _, movie in
+            data = movie
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 50, handler: nil)
+        XCTAssertNotNil(data)
+    }
+
+    func testNowPlaying() {
+        var data: [MovieMDB]?
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieMDB.nowplaying(page: nil) { _, movies in
+            data = movies
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 50, handler: nil)
+        XCTAssertNotNil(data)
+    }
+
+    func testPopular() {
+        var data: [MovieMDB]?
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieMDB.popular(language: nil, page: nil) { _, movies in
+            data = movies
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 50, handler: nil)
+        XCTAssertNotNil(data)
+    }
+
+    func testTopRated() {
+        var data: [MovieMDB]?
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieMDB.toprated(language: nil, page: nil) { _, movies in
+            data = movies
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 50, handler: nil)
+        XCTAssertNotNil(data)
+    }
+
+    func testUpcoming() {
+        var data: [MovieMDB]?
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieMDB.upcoming(page: nil, language: nil) { _, movies in
+            data = movies
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 50, handler: nil)
+        XCTAssertNotNil(data)
+    }
+
+    func testQuery() {
+        var data: [MovieMDB]?
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieMDB.query(queryType: .nowplaying, language: nil, page: nil) { _, movies in
+            data = movies
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 50, handler: nil)
+        XCTAssertNotNil(data)
+    }
+
+    func testTranslations() {
+        var data: [TranslationsMDB]?
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieMDB.translations(movieID: 7984) { _, translations in
+            data = translations
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 50, handler: nil)
+        XCTAssertNotNil(data)
+    }
 }

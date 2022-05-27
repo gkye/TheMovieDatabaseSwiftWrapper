@@ -18,7 +18,6 @@ final class NetworksMDBTests: XCTestCase {
         super.tearDown()
     }
 
-
     func testNetworks() {
         var data: NetworksMDB!
         let expectation = self.expectation(description: "Wait for data to load.")
