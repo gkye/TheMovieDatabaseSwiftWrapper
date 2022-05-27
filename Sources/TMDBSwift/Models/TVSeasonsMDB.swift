@@ -10,13 +10,13 @@ import Foundation
 
 public struct TVSeasonsMDB: Decodable {
 
-    public var air_date: String!
-    public var episodes = [TVEpisodesMDB]()
-    public var name: String!
-    public var overview: String!
-    public var id: Int!
-    public var poster_path: String!
-    public var season_number: Int!
+    public var air_date: String?
+    public var episodes: [TVEpisodesMDB]?
+    public var name: String?
+    public var overview: String?
+    public var id: Int?
+    public var poster_path: String?
+    public var season_number: Int?
 
     /// Get the primary information about a TV season by its season number.
     public static func season_number(tvShowId: Int!, seasonNumber: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: TVSeasonsMDB?) -> Void) {
@@ -39,7 +39,7 @@ public struct TVSeasonsMDB: Decodable {
     }
 
     /// Get the external ids that we have stored for a TV season by season number.
-    public static func externalIDS(tvShowId: Int!, seasonNumber: Int!, language: String, completion: @escaping (_ clientReturn: ClientReturn, _ data: ExternalIdsMDB?) -> Void) {
+    public static func externalIDS(tvShowId: Int!, seasonNumber: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: ExternalIdsMDB?) -> Void) {
         let urltype = String(tvShowId) + "/season/" + String(seasonNumber) + "/external_ids"
         Client.Seasons(urltype, language: language) { apiReturn in
             let data: ExternalIdsMDB? = apiReturn.decode()
@@ -48,7 +48,7 @@ public struct TVSeasonsMDB: Decodable {
     }
 
     /// Get the images (posters) that we have stored for a TV season by season number. **[backdrops] returned in ImagesMDB will be `nil`
-    public static func images(tvShowId: Int!, seasonNumber: Int!, language: String, completion: @escaping (_ clientReturn: ClientReturn, _ data: ImagesMDB?) -> Void) {
+    public static func images(tvShowId: Int!, seasonNumber: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: ImagesMDB?) -> Void) {
         let urltype = String(tvShowId) + "/season/" + String(seasonNumber) + "/images"
         Client.Seasons(urltype, language: language) { apiReturn in
             let data: ImagesMDB? = apiReturn.decode()
@@ -57,7 +57,7 @@ public struct TVSeasonsMDB: Decodable {
     }
 
     /// Get the videos that have been added to a TV season (trailers, teasers, etc...)
-    public static func videos(tvShowId: Int!, seasonNumber: Int!, language: String, completion: @escaping (_ clientReturn: ClientReturn, _ data: [VideosMDB]?) -> Void) {
+    public static func videos(tvShowId: Int!, seasonNumber: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [VideosMDB]?) -> Void) {
         //     [/tv/11/season/1/credits]
         let urltype = String(tvShowId) + "/season/" + String(seasonNumber) + "/videos"
         Client.Seasons(urltype, language: language) { apiReturn in

@@ -20,9 +20,9 @@ open class ImageMDB: Decodable {
 }
 
 public struct ImagesMDB: Decodable {
-    public var backdrops = [ImageMDB]()
-    public var posters = [ImageMDB]()
-    public var stills = [ImageMDB]()
+    public var backdrops: [ImageMDB]?
+    public var posters: [ImageMDB]?
+    public var stills: [ImageMDB]?
     public var id: Int!
 
     enum CodingKeys: String, CodingKey {

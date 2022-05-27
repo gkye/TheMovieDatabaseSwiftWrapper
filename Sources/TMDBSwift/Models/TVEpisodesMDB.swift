@@ -10,18 +10,18 @@ import Foundation
 
 public struct TVEpisodesMDB: Decodable {
 
-    public var air_date: String!
-    public var crew = [CrewMDB]()
-    public var guest_stars = [TVCastMDB]()
-    public var episode_number: Int!
-    public var name: String!
-    public var overview: String!
-    public var id: Int!
-    public var production_code: Int!
-    public var season_number: Int!
-    public var still_path: String!
-    public var vote_average: Int!
-    public var vote_count: Int!
+    public var air_date: String?
+    public var crew: [CrewMDB]?
+    public var guest_stars: [TVCastMDB]?
+    public var episode_number: Int?
+    public var name: String?
+    public var overview: String?
+    public var id: Int?
+    public var production_code: String?
+    public var season_number: Int?
+    public var still_path: String?
+    public var vote_average: Double?
+    public var vote_count: Int?
 
     /// Get the primary information about a TV episode by combination of a season and episode number.
     public static func episode_number(tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: TVEpisodesMDB?) -> Void) {
