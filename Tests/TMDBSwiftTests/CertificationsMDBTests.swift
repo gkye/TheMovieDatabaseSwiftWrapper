@@ -20,7 +20,7 @@ final class CertificationsMDBTests: XCTestCase {
         super.tearDown()
     }
 
-    func testChanges() {
+    func testTVCertifications() {
         var data: TVCertifications!
         let expectation = self.expectation(description: "Wait for data to load.")
 
@@ -29,6 +29,6 @@ final class CertificationsMDBTests: XCTestCase {
             expectation.fulfill()
         }
         waitForExpectations(timeout: expecationTimeout, handler: nil)
-        XCTAssertGreaterThan(data., 0)
+        XCTAssertNotNil(data.US)
     }
 }

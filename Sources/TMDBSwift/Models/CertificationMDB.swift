@@ -25,6 +25,37 @@ public struct TVCertifications: Decodable {
     public var KR: [Certification]!
     public var GB: [Certification]!
     public var BR: [Certification]!
+
+    enum CodingKeys: String, CodingKey {
+        case certifications
+        case RU
+        case US
+        case CA
+        case AU
+        case FR
+        case DE
+        case TH
+        case KR
+        case GB
+        case BR
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let certifications = try container.nestedContainer(keyedBy:
+            CodingKeys.self, forKey: .certifications)
+
+        RU = try? certifications.decode([Certification].self, forKey: .RU)
+        US = try? certifications.decode([Certification].self, forKey: .US)
+        CA = try? certifications.decode([Certification].self, forKey: .CA)
+        AU = try? certifications.decode([Certification].self, forKey: .AU)
+        FR = try? certifications.decode([Certification].self, forKey: .FR)
+        DE = try? certifications.decode([Certification].self, forKey: .DE)
+        TH = try? certifications.decode([Certification].self, forKey: .TH)
+        KR = try? certifications.decode([Certification].self, forKey: .KR)
+        GB = try? certifications.decode([Certification].self, forKey: .GB)
+        BR = try? certifications.decode([Certification].self, forKey: .BR)
+    }
 }
 
 public struct MovieCertifications: Decodable {
