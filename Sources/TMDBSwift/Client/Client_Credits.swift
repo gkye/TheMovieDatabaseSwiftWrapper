@@ -10,14 +10,11 @@ import Foundation
 
 extension Client {
 
-    static func Credits(creditID: String, language: String, completion: @escaping (ClientReturn) -> Void) {
-        var parameters: [String: AnyObject] = [:]
-        parameters["language"] = language as AnyObject?
-        let url = "https://api.themoviedb.org/3/credit/"+creditID
+    static func Credits(creditID: String, completion: @escaping (ClientReturn) -> Void) {
+        let parameters: [String: AnyObject] = [:]
+        let url = "https://api.themoviedb.org/3/credit/" + creditID
         networkRequest(url: url, parameters: parameters, completion: { apiReturn in
-
             completion(apiReturn)
-
         })
     }
 }
