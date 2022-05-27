@@ -7,7 +7,7 @@
 //
 
 import Foundation
-open class ExternalIdsMDB: Codable {
+open class ExternalIdsMDB: Decodable {
 
     open var  imdb_id: String?
     open var  freebase_mid: String?

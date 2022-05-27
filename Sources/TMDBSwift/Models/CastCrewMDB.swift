@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class CastCrewCommonMDB: Codable {
+open class CastCrewCommonMDB: Decodable {
     open var credit_id: String!
     open var id: Int!
     open var name: String!
@@ -38,7 +38,7 @@ open class TVCastMDB: CastCrewCommonMDB {
     open var order: Int!
 }
 
-open class TVCreditsMDB: Codable {
+open class TVCreditsMDB: Decodable {
     open var cast = [TVCastMDB]()
     open var crew = [CrewMDB]()
 }

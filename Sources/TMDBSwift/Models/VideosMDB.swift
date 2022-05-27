@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct VideosMDB: Codable {
+public struct VideosMDB: Decodable {
     public var id: String!
     public var iso_639_1: String?
     public var key: String!

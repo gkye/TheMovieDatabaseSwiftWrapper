@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct TranslationsMDB: Codable {
+public struct TranslationsMDB: Decodable {
 
     public var iso_639_1: String!
     public var name: String!

@@ -8,14 +8,14 @@
 
 import Foundation
 
-public struct BelongsToCollectionMovieMDB: Codable {
+public struct BelongsToCollectionMovieMDB: Decodable {
     public var id: Int!
     public var name: String!
     public var poster_path: String!
     public var backdrop_path: String!
 }
 
-public struct SpokenLanguages: Codable {
+public struct SpokenLanguages: Decodable {
     public var iso_639_1: String!
     public var name: String!
 }

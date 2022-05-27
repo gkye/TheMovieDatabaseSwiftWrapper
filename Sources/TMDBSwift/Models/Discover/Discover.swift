@@ -54,7 +54,7 @@ public enum DiscoverParam {
     case certification_gte(String?)
 }
 
-open class DiscoverMDB: Codable {
+open class DiscoverMDB: Decodable {
     open var overview: String?
     open var popularity: Double?
     open var id: Int!

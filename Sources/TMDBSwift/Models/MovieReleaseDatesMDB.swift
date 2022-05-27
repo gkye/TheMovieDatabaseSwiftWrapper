@@ -8,13 +8,13 @@
 
 import Foundation
 
-open class MovieReleaseDatesMDB: Codable {
+open class MovieReleaseDatesMDB: Decodable {
     open var iso_3166_1: String?
     open var release_dates = [ReleaseDates]()
 }
 
 // move inside class?
-public struct ReleaseDates: Codable {
+public struct ReleaseDates: Decodable {
     public var certification: String?
     public var iso_639_1: String?
     public var note: String?

@@ -46,7 +46,7 @@ open class KnownForTV: DiscoverTVMDB {
     }
 }
 
-public struct PersonResults: Codable {
+public struct PersonResults: Decodable {
     public var adult: Bool!
     public var id: Int!
     public var known_for: (tvShows: [KnownForTV]?, movies: [KnownForMovie]?)
@@ -63,17 +63,6 @@ public struct PersonResults: Codable {
         case profile_path
     }
 
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.adult, forKey: .adult)
-        try container.encode(self.id, forKey: .id)
-        try container.encode(self.name, forKey: .name)
-        try container.encode(self.popularity, forKey: .popularity)
-        try container.encode(self.profile_path, forKey: .profile_path)
-//        let array: []
-//        try container.encode(self.known_for, forKey: .known_for)
-    }
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         adult = try? container.decode(Bool?.self, forKey: .adult)
@@ -87,7 +76,7 @@ public struct PersonResults: Codable {
     }
 }
 
-public struct FindMDB: Codable {
+public struct FindMDB: Decodable {
 
     // MARK: FindMDB all results returned are optional (Most results will return one section only
 

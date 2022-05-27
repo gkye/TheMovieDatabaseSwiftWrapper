@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct CreditsEpisodes: Codable {
+public struct CreditsEpisodes: Decodable {
     public var air_date: String!
     public var episode_number: Int!
     public var overview: String!
@@ -16,13 +16,13 @@ public struct CreditsEpisodes: Codable {
     public var still_path: String?
 }
 
-public struct CreditsSeasons: Codable {
+public struct CreditsSeasons: Decodable {
     public var air_date: String!
     public var poster_path: String!
     public var season_number: Int!
 }
 
-public struct CreditsMedia: Codable {
+public struct CreditsMedia: Decodable {
     public var id: Int!
     public var name: String!
     public var original_name: String!
@@ -31,7 +31,7 @@ public struct CreditsMedia: Codable {
     public var seasons = [CreditsSeasons]()
 }
 
-public struct CreditsMDB: Codable {
+public struct CreditsMDB: Decodable {
     public var credit_type: String!
     public var department: String!
     public var job: String!
@@ -63,15 +63,6 @@ public struct CreditsMDB: Codable {
             CodingKeys.self, forKey: .person)
         person = (name: try? personObject.decode(String.self, forKey: .name),
                   id: try? personObject.decode(Int.self, forKey: .id))
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.credit_type, forKey: .credit_type)
-        try container.encode(self.department, forKey: .department)
-        try container.encode(self.job, forKey: .job)
-        try container.encode(self.media_Type, forKey: .media_Type)
-//        try container.encode(self.person, forKey: .person)
     }
 
     /// Get the detailed information about a particular credit record. This is currently only supported with the new credit model found in TV. These ids can be found from any TV credit response as well as the tv_credits and combined_credits methods for people. The episodes object returns a list of episodes and are generally going to be guest stars. The season array will return a list of season numbers.

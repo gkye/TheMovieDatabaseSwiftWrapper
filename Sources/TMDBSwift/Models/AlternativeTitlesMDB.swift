@@ -8,12 +8,12 @@
 
 import Foundation
 
-public struct AltTitlesMDB: Codable {
+public struct AltTitlesMDB: Decodable {
     public var title: String?
     public var iso_3166_1: String?
     public var type: String?
 }
-public struct AlternativeTitlesMDB: Codable {
+public struct AlternativeTitlesMDB: Decodable {
     public var id: Int!
     public var titles = [AltTitlesMDB]()
 }

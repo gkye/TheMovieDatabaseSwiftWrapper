@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class ImageMDB: Codable {
+open class ImageMDB: Decodable {
     open var aspect_ratio: Double?
     open var file_path: String?
     open var height: Int?
@@ -19,7 +19,7 @@ open class ImageMDB: Codable {
 
 }
 
-public struct ImagesMDB: Codable {
+public struct ImagesMDB: Decodable {
     public var backdrops = [ImageMDB]()
     public var posters = [ImageMDB]()
     public var stills = [ImageMDB]()

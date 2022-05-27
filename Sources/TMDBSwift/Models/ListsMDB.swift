@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ListsMDB: Codable {
+public struct ListsMDB: Decodable {
 
     public var created_by: String!
     public var description: String?

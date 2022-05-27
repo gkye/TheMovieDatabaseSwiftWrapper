@@ -8,13 +8,13 @@
 
 import Foundation
 
-public struct ParentCompanyMDB: Codable {
+public struct ParentCompanyMDB: Decodable {
     public  var name: String!
     public  var id: Int!
     public  var logo_path: String!
 }
 
-open class CompanyMDB: Codable {
+open class CompanyMDB: Decodable {
     open var description: String?
     open var headquarters: String?
     open var homepage: String!

@@ -8,7 +8,7 @@
 
 // MARK: Person
 
-public struct PersonMDB: Codable {
+public struct PersonMDB: Decodable {
 
     public var adult: Bool?
     public var also_known_as: [String]?
@@ -105,7 +105,7 @@ public struct PersonMDB: Codable {
 import Foundation
 
 // MARK: Movie Crew & TV Crew common
-open class PersonCrewCommon: Codable {
+open class PersonCrewCommon: Decodable {
     open var poster_path: String?
     open var credit_id: String!
     open var department: String!
@@ -129,7 +129,7 @@ open class PersonTVCrew: PersonCrewCommon {
     open var original_name: String!
 }
 
-open class PersonMovieTVCastCommon: Codable {
+open class PersonMovieTVCastCommon: Decodable {
     open var poster_path: String?
     open var credit_id: String!
     open var id: Int!
@@ -153,20 +153,20 @@ open class PersonMovieCast: PersonMovieTVCastCommon {
     open var title: String!
 }
 
-public struct PersonTVCredits: Codable {
+public struct PersonTVCredits: Decodable {
     public var crew: [PersonTVCrew]
     public var cast: [PersonTVCast]
     public var id: Int!
 }
 
-public struct PersonMovieCredits: Codable {
+public struct PersonMovieCredits: Decodable {
 
     public var crew: [PersonMovieCrew]
     public var cast: [PersonMovieCast]
     public var id: Int!
 }
 
-public struct PersonCreditsCombined: Codable {
+public struct PersonCreditsCombined: Decodable {
 
     public var tvCredits: (crew: [PersonTVCrew]?, cast: [PersonTVCast]?)
     public var movieCredits: (crew: [PersonMovieCrew]?, cast: [PersonMovieCast]?)
@@ -187,14 +187,6 @@ public struct PersonCreditsCombined: Codable {
         let movieCrew = try? container.decode([PersonMovieCrew]?.self, forKey: .crew)
         tvCredits = (crew: tvCrew, cast: tvCast)
         movieCredits = (crew: movieCrew, cast: movieCast)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.id, forKey: .id)
-//        let array: []
-//        try container.encode(self.cast, forKey: .cast)
-//        try container.encode(self.crew, forKey: .crew)
     }
 }
 
@@ -222,7 +214,7 @@ public class TaggedImageMDB: ImageMDB {
     }
 }
 
-public struct TaggedImagesMDB: Codable {
+public struct TaggedImagesMDB: Decodable {
 
     public var images: [TaggedImageMDB] = []
     public var id: Int!
@@ -244,14 +236,5 @@ public struct TaggedImagesMDB: Codable {
         pageResults = PageResultsMDB(page: try? container.decode(Int?.self, forKey: .page),
                                      total_results: try? container.decode(Int?.self, forKey: .total_results),
                                      total_pages: try? container.decode(Int?.self, forKey: .total_pages))
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.id, forKey: .id)
-        try container.encode(self.pageResults.page, forKey: .page)
-        try container.encode(self.pageResults.total_results, forKey: .total_results)
-        try container.encode(self.pageResults.total_pages, forKey: .total_pages)
-        try container.encode(self.images, forKey: .images)
     }
 }

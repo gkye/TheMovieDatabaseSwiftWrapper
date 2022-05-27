@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class ContentRatingsMDB: Codable {
+open class ContentRatingsMDB: Decodable {
   open  var iso_3166_1: String?
   open var rating: String?
 }

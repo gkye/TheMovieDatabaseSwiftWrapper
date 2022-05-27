@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ConfigurationMDB: Codable {
+public struct ConfigurationMDB: Decodable {
     public var base_url: String?
     public var secure_base_url: String?
     public var backdrop_sizes: [String]?
@@ -43,14 +43,6 @@ public struct ConfigurationMDB: Codable {
         poster_sizes = try? images.decode([String].self, forKey: .poster_sizes)
         profile_sizes = try? images.decode([String].self, forKey: .profile_sizes)
         still_sizes = try? images.decode([String].self, forKey: .still_sizes)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        _ = encoder.container(keyedBy: CodingKeys.self)
-//        try container.encode(self.credit_type, forKey: .credit_type)
-//        try container.encode(self.department, forKey: .department)
-//        try container.encode(self.job, forKey: .job)
-//        try container.encode(self.media_Type, forKey: .media_Type)
     }
 
     /// This method currently holds the data relevant to building image URLs as well as the change key map.To build an image URL, you will need 3 pieces of data. The base_url, size and file path; . Simply combine them all and you will have a fully qualified URL. Here’s an example URL: http://image.tmdb.org/t/p/w500/8uO0gUM8aNqYLs1OsTBQiXu0fEv.jpg

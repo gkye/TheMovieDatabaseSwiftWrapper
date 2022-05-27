@@ -10,7 +10,7 @@ import Foundation
 
 public typealias Changes1MDB = (id: Double, adult: Bool?)
 
-public struct ChangesMDB: Codable {
+public struct ChangesMDB: Decodable {
     public var id: Int64!
     public var adult: Bool!
 

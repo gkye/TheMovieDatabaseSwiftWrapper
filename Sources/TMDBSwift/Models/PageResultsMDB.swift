@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct PageResultsMDB: Codable {
+public struct PageResultsMDB: Decodable {
     public var page: Int!
     public var total_results: Int!
     public var total_pages: Int!

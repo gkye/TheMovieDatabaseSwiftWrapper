@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class MovieListMDB: Codable {
+open class MovieListMDB: Decodable {
     open var description: String?
     open var favorite_count: Int?
     open var item_count: Int!

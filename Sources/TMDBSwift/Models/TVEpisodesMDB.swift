@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct TVEpisodesMDB: Codable {
+public struct TVEpisodesMDB: Decodable {
 
     public var air_date: String!
     public var crew = [CrewMDB]()

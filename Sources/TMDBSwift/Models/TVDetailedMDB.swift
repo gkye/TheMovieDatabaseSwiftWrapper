@@ -8,13 +8,13 @@
 
 import Foundation
 
-public struct TVCreatedBy: Codable {
+public struct TVCreatedBy: Decodable {
     public var id: Int!
     public var name: String!
     public var profile_path: String!
 }
 
-public struct TVSeasons: Codable {
+public struct TVSeasons: Decodable {
     public var air_date: String?
     public var episode_count: Int!
     public var id: Int!

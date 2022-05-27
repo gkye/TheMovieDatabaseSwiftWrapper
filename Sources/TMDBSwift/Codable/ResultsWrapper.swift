@@ -6,32 +6,32 @@
 //  Copyright © 2018 George. All rights reserved.
 //
 
-struct ResultsWrapper<T: Codable>: Codable {
+struct ResultsWrapper<T: Decodable>: Decodable {
     var id: Int?
     var results: [T]
 }
 
-struct GenresWrapper<T: Codable>: Codable {
+struct GenresWrapper<T: Decodable>: Decodable {
     var id: Int?
     var genres: [T]
 }
 
-struct KeywordWrapper<T: Codable>: Codable {
+struct KeywordWrapper<T: Decodable>: Decodable {
     var id: Int?
     var keywords: [T]
 }
 
-struct ProfilesWrapper<T: Codable>: Codable {
+struct ProfilesWrapper<T: Decodable>: Decodable {
     var id: Int?
     var profiles: [T]
 }
 
-struct TranslationsWrapper<T: Codable>: Codable {
+struct TranslationsWrapper<T: Decodable>: Decodable {
     var id: Int?
     var translations: [T]
 }
 
-struct TranslationWrapper<T: Codable>: Codable {
+struct TranslationWrapper<T: Decodable>: Decodable {
     var id: Int?
     var translations: T
 }

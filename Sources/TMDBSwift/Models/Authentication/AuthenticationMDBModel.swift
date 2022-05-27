@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct GuestSessionMDB: Codable {
+public struct GuestSessionMDB: Decodable {
     public var success: Bool!
     public var guestSessionId: String!
     public var expiresAt: String!
@@ -20,7 +20,7 @@ public struct GuestSessionMDB: Codable {
     }
 }
 
-public struct RequestTokenMDB: Codable {
+public struct RequestTokenMDB: Decodable {
     public var success: Bool!
     public var requestToken: String!
     public var expiresAt: String!
@@ -32,7 +32,7 @@ public struct RequestTokenMDB: Codable {
     }
 }
 
-public struct SessionMDB: Codable {
+public struct SessionMDB: Decodable {
     public var success: Bool!
     public var sessionId: String!
 
@@ -42,6 +42,6 @@ public struct SessionMDB: Codable {
     }
 }
 
-public struct DeleteSessionMDB: Codable {
+public struct DeleteSessionMDB: Decodable {
     public var success: Bool!
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ReviewsMDB: Codable {
+public struct ReviewsMDB: Decodable {
     public var id: String!
     public var author: String!
     public var content: String!

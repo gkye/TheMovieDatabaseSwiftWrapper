@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct GenreMDB: Codable {
+public struct GenreMDB: Decodable {
     let id: Int?
     let name: String?
 }

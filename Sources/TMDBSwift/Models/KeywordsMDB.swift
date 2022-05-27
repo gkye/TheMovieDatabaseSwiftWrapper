@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class KeywordsMDB: Codable {
+open class KeywordsMDB: Decodable {
 
     open var id: Int?
     open var name: String?

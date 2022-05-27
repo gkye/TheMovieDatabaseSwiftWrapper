@@ -8,7 +8,7 @@ public enum TrendingTimeWindow: String {
     case day, week
 }
 
-open class TrendingMDB: Codable {
+open class TrendingMDB: Decodable {
     open var overview: String?
     open var popularity: Double?
     open var id: Int!

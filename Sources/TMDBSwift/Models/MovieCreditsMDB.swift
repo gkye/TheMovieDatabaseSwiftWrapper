@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class MovieCreditsMDB: Codable {
+open class MovieCreditsMDB: Decodable {
     open var cast: [MovieCastMDB]?
     open var crew: [CrewMDB]?
 

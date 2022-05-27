@@ -10,7 +10,7 @@ import Foundation
 
 // ** CHECK LISt-> may contain collection or tv object.
 
-public struct CollectionMDB: Codable {
+public struct CollectionMDB: Decodable {
 
     public var id: Int?
     public var name: String?
