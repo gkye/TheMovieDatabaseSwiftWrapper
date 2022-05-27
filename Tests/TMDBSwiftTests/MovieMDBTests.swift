@@ -112,7 +112,7 @@ final class MovieMDBTests: XCTestCase {
         XCTAssertNotNil(data)
         XCTAssertNotNil(data?.backdrops)
         XCTAssertNotNil(data?.posters)
-        XCTAssertEqual(data?.stills?.count ?? 0, 4)
+        XCTAssertEqual(data?.logos?.count ?? 0, 4)
         // backdrops
         XCTAssertNotNil(data?.backdrops?[0].aspect_ratio)
         XCTAssertNotNil(data?.backdrops?[0].file_path)
