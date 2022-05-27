@@ -1,4 +1,3 @@
-
 //
 //  CastCrewMDBTests.swift
 //  TMDBSwift-iOS
@@ -27,7 +26,7 @@ final class TVMDBTests: XCTestCase {
         var data: TVDetailedMDB!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVMDB.tv(tvShowID: 1399, language: "en-US") { api, show in
+        TVMDB.tv(tvShowID: 1399, language: "en-US") { _, show in
             data = show
             expectation.fulfill()
         }
@@ -48,7 +47,7 @@ final class TVMDBTests: XCTestCase {
         var data: AlternativeTVTitlesMDB!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVMDB.alternativeTitles(tvShowID: 1399) { api, titles in
+        TVMDB.alternativeTitles(tvShowID: 1399) { _, titles in
             data = titles
             expectation.fulfill()
         }
@@ -62,7 +61,7 @@ final class TVMDBTests: XCTestCase {
         var data: [ContentRatingsMDB]!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVMDB.content_ratings(tvShowID: 1399) { api, ratings in
+        TVMDB.content_ratings(tvShowID: 1399) { _, ratings in
             data = ratings
             expectation.fulfill()
         }
@@ -77,7 +76,7 @@ final class TVMDBTests: XCTestCase {
         var data: TVCreditsMDB!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVMDB.credits(tvShowID: 1399) { api, credits in
+        TVMDB.credits(tvShowID: 1399) { _, credits in
             data = credits
             expectation.fulfill()
         }
@@ -91,7 +90,7 @@ final class TVMDBTests: XCTestCase {
         var data: ExternalIdsMDB!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVMDB.externalIDS(tvShowID: 1399, language: "en") { api, externalIDs in
+        TVMDB.externalIDS(tvShowID: 1399, language: "en") { _, externalIDs in
             data = externalIDs
             expectation.fulfill()
         }
@@ -105,7 +104,7 @@ final class TVMDBTests: XCTestCase {
         var data: ImagesMDB!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVMDB.images(tvShowID: 1399, language: nil) { api, images in
+        TVMDB.images(tvShowID: 1399, language: nil) { _, images in
             data = images
             expectation.fulfill()
         }
@@ -123,9 +122,8 @@ final class TVMDBTests: XCTestCase {
         var data: [KeywordsMDB]!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVMDB.keywords(tvShowID: 1399) { api, keywords in
+        TVMDB.keywords(tvShowID: 1399) { _, keywords in
             data = keywords
-            print(data.first.debugDescription)
             expectation.fulfill()
         }
 
@@ -138,9 +136,8 @@ final class TVMDBTests: XCTestCase {
         var data: [DiscoverTVMDB]!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVMDB.similar(tvShowID: 1399, page: nil, language: nil) { api, similar in
+        TVMDB.similar(tvShowID: 1399, page: nil, language: nil) { _, similar in
             data = similar
-            print(data.first.debugDescription)
             expectation.fulfill()
         }
 
@@ -154,9 +151,8 @@ final class TVMDBTests: XCTestCase {
         var data: [TranslationsMDB]!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVMDB.translations(tvShowID: 1399) { api, translations in
+        TVMDB.translations(tvShowID: 1399) { _, translations in
             data = translations
-            print(data.first.debugDescription)
             expectation.fulfill()
         }
 
@@ -171,9 +167,8 @@ final class TVMDBTests: XCTestCase {
         var data: [VideosMDB]!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVMDB.videos(tvShowID: 1399, language: nil) { api, videos in
+        TVMDB.videos(tvShowID: 1399, language: nil) { _, videos in
             data = videos
-            print(data.first.debugDescription)
             expectation.fulfill()
         }
 
@@ -188,9 +183,8 @@ final class TVMDBTests: XCTestCase {
         var data: TVDetailedMDB!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVMDB.latest() { api, latest in
+        TVMDB.latest { _, latest in
             data = latest
-            print(data.debugDescription)
             expectation.fulfill()
         }
 
@@ -202,9 +196,8 @@ final class TVMDBTests: XCTestCase {
         var data: [TVMDB]!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVMDB.ontheair(page: nil, language: nil) { api, ota in
+        TVMDB.ontheair(page: nil, language: nil) { _, ota in
             data = ota
-            print(data.first.debugDescription)
             expectation.fulfill()
         }
 
@@ -216,9 +209,8 @@ final class TVMDBTests: XCTestCase {
         var data: [TVMDB]!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVMDB.airingtoday(page: nil, language: nil, timezone: nil) { api, today in
+        TVMDB.airingtoday(page: nil, language: nil, timezone: nil) { _, today in
             data = today
-            print(data.first.debugDescription)
             expectation.fulfill()
         }
 
@@ -230,9 +222,8 @@ final class TVMDBTests: XCTestCase {
         var data: [TVMDB]!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVMDB.toprated(page: nil, language: nil) { api, toprated in
+        TVMDB.toprated(page: nil, language: nil) { _, toprated in
             data = toprated
-            print(data.first.debugDescription)
             expectation.fulfill()
         }
 
@@ -244,17 +235,12 @@ final class TVMDBTests: XCTestCase {
         var data: [TVMDB]!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVMDB.popular(page: nil, language: nil) { api, videos in
+        TVMDB.popular(page: nil, language: nil) { _, videos in
             data = videos
-            print(data.first.debugDescription)
             expectation.fulfill()
         }
 
         waitForExpectations(timeout: expecationTimeout, handler: nil)
         XCTAssertNotNil(data.first?.id)
     }
-
-    // TODO: query
-    // TODO: tvAppendTo
 }
-

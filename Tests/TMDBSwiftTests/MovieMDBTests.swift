@@ -191,7 +191,6 @@ final class MovieMDBTests: XCTestCase {
         XCTAssertNotNil(data)
 
         let list = data?[0]
-        dump(list)
         XCTAssertNotNil(list?.description)
         XCTAssertNotNil(list?.favorite_count)
         XCTAssertNotNil(list?.id)
