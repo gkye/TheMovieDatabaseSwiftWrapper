@@ -13,7 +13,24 @@ public struct AltTitlesMDB: Decodable {
     public var iso_3166_1: String?
     public var type: String?
 }
-public struct AlternativeTitlesMDB: Decodable {
-    public var id: Int!
-    public var titles = [AltTitlesMDB]()
+
+public struct AlternativeTVTitlesMDB: Decodable {
+    public var id: Int?
+    public var titles: [AltTitlesMDB]?
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case titles = "results"
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try? container.decode(Int?.self, forKey: .id)
+        titles = try? container.decode([AltTitlesMDB]?.self, forKey: .titles)
+    }
+}
+
+public struct AlternativeMovieTitlesMDB: Decodable {
+    public var id: Int?
+    public var titles: [AltTitlesMDB]?
 }

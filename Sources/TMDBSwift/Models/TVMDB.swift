@@ -27,9 +27,9 @@ extension TVMDB {
     }
 
     /// Get the alternative titles for a specific show ID.
-    public class func alternativeTitles(tvShowID: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: AlternativeTitlesMDB?) -> Void) {
+    public class func alternativeTitles(tvShowID: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: AlternativeTVTitlesMDB?) -> Void) {
         Client.TV( String(tvShowID) + "/alternative_titles", page: nil, language: nil, timezone: nil) { apiReturn in
-            let data: AlternativeTitlesMDB? = apiReturn.decode()
+            let data: AlternativeTVTitlesMDB? = apiReturn.decode()
             completion(apiReturn, data)
         }
     }
@@ -75,9 +75,9 @@ extension TVMDB {
     }
 
     /// Get the similar TV shows for a specific tv id.
-    public  class func similar(tvShowID: Int!, page: Int?, language: String?, completion: @escaping (_ clientResult: ClientReturn, _ data: [TVMDB]?) -> Void) {
+    public  class func similar(tvShowID: Int!, page: Int?, language: String?, completion: @escaping (_ clientResult: ClientReturn, _ data: [DiscoverTVMDB]?) -> Void) {
         Client.TV(String(tvShowID) + "/similar", page: page, language: language, timezone: nil) { apiReturn in
-            let data: [TVMDB]? = apiReturn.decodeResults()
+            let data: [DiscoverTVMDB]? = apiReturn.decodeResults()
             completion(apiReturn, data)
         }
     }
