@@ -5,7 +5,9 @@
 //  Created by George Kye on 2016-02-11.
 //  Copyright © 2016 George Kye. All rights reserved.
 //
+
 import Foundation
+
 extension Client {
 
     static func Changes(changeType: String, page: Int?, startDate: String?, endDate: String?, completion: @escaping (ClientReturn) -> Void) {

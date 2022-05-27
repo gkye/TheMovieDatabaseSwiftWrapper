@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 public struct AuthenticationMDB {
 
     /// This method will let you create a new guest session. Guest sessions are a type of session that will let a user rate movies and TV shows but not require them to have a TMDb user account. More information about user authentication can be found [here](https://developers.themoviedb.org/3/authentication/how-do-i-generate-a-session-id).
@@ -36,11 +37,11 @@ public struct AuthenticationMDB {
     }
 
     /**
-     You can use this method to create a fully valid session ID once a user has validated the request token. More information about how this works can be found [here](https://developers.themoviedb.org/3/authentication/how-do-i-generate-a-session-id).
+        You can use this method to create a fully valid session ID once a user has validated the request token. More information about how this works can be found [here](https://developers.themoviedb.org/3/authentication/how-do-i-generate-a-session-id).
 
-     - Parameters:
-     - requestToken:
-     - completion: on complete
+        - Parameters:
+        - requestToken:
+        - completion: on complete
      */
     public static func createSession(requestToken: String!, completion: @escaping (_ clientReturn: ClientReturn, _ session: SessionMDB? ) -> Void) {
 
@@ -51,15 +52,15 @@ public struct AuthenticationMDB {
     }
 
     /**
-     This method allows an application to validate a request token by entering a username and password.
-     Not all applications have access to a web view so this can be used as a substitute.
-     Please note, the preferred method of validating a request token is to have a user authenticate the request via the TMDb website.
-     If you decide to use this method please use HTTPS
-     - Parameters:
-     - username: TMDb username
-     - password: TMDb password
-     - requestToken: requestToken
-     - completion: completion
+        This method allows an application to validate a request token by entering a username and password.
+        Not all applications have access to a web view so this can be used as a substitute.
+        Please note, the preferred method of validating a request token is to have a user authenticate the request via the TMDb website.
+        If you decide to use this method please use HTTPS
+        - Parameters:
+        - username: TMDb username
+        - password: TMDb password
+        - requestToken: requestToken
+        - completion: completion
      */
     public static func createRequestTokenWithLogin(username: String!, password: String!, requestToken: String!, completion: @escaping (_ clientReturn: ClientReturn, _ session: RequestTokenMDB? ) -> Void) {
 

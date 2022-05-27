@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 extension Client {
 
     static func review(reviewId: String!, completion: @escaping (ClientReturn) -> Void) {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 extension Client {
 
     static func Movies(_ urlType: String!, page: Int?, language: String?, region: String? = nil, append_to: [String]? = nil, completion: @escaping (ClientReturn) -> Void) {

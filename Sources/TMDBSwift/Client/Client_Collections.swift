@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 extension Client {
 
     static func Collection(collectionId: String!, language: String?, completion: @escaping (ClientReturn) -> Void) {

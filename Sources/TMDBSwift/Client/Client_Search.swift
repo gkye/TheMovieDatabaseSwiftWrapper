@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 extension Client {
     static func Search(_ urlType: String!, query: String, page: Int?, language: String?, include_adult: Bool?, year: Int?, primary_release_year: Int?, search_type: String?, first_air_date_year: String?, completion: @escaping (ClientReturn) -> Void) {
 

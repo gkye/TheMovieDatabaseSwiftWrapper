@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 extension Client {
 
     static func networks(networkId: Int!, completion: @escaping (ClientReturn) -> Void) {
