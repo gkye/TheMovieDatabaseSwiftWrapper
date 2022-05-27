@@ -42,7 +42,7 @@ public struct TVEpisodesMDB: Decodable {
     }
 
     /// Get the external ids for a TV episode by comabination of a season and episode number.
-    public static func externalIDS(tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int, language: String, completion: @escaping (_ clientReturn: ClientReturn, _ data: ExternalIdsMDB?) -> Void) {
+    public static func externalIDS(tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: ExternalIdsMDB?) -> Void) {
         let urltype = String(tvShowId) + "/season/" + String(seasonNumber) + "/episode/" + String(episodeNumber) + "/external_ids"
         Client.Seasons(urltype, language: language) { apiReturn in
             let data: ExternalIdsMDB? = apiReturn.decode()

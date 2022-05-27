@@ -22,12 +22,14 @@ open class ImageMDB: Decodable {
 public struct ImagesMDB: Decodable {
     public var backdrops: [ImageMDB]?
     public var posters: [ImageMDB]?
+    public var logos: [ImageMDB]?
     public var stills: [ImageMDB]?
     public var id: Int!
 
     enum CodingKeys: String, CodingKey {
         case id
-        case stills = "logos"
+        case stills
+        case logos
         case posters
         case backdrops
     }
