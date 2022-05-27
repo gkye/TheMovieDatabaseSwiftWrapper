@@ -242,41 +242,4 @@ final class MovieMDBTests: XCTestCase {
         XCTAssertEqual(review?.url, "https://www.themoviedb.org/review/5010553819c2952d1b000451")
 
     }
-
-    //  //Append to response (Retrieve multiple movie object with one request). Object must be manually initialized using the JSON returned.
-    func testAppendTo() {
-        var cReturn: ClientReturn?
-        var movieData: MovieDetailedMDB?
-        var videos: [VideosMDB]?
-        var reviews: [MovieReviewsMDB]?
-        let expectation = self.expectation(description: "Wait for data to load.")
-
-        MovieMDB.movieAppendTo(movieID: 49026, append_to: ["videos", "reviews"], completion: { api, movie in
-            cReturn = api
-            movieData = movie
-            if let data = cReturn?.data,
-               let decodedVideoWrapper = try? JSONDecoder().decode(ResponseWrapper.self, from: data),
-               let decodedReviewWrapper = try? JSONDecoder().decode(ResponseWrapper.self, from: data) {
-                expectation.fulfill()
-
-                videos = decodedVideoWrapper.videos?.results
-                reviews = decodedReviewWrapper.reviews?.results
-            }
-        })
-
-        waitForExpectations(timeout: 10, handler: nil)
-
-        XCTAssertNotNil(movieData)
-        XCTAssertNotNil(videos)
-        XCTAssertNotNil(reviews)
-
-        XCTAssertEqual(videos?.count, 9)
-
-        let review = reviews?[0]
-
-        XCTAssertEqual(review?.id, "5010553819c2952d1b000451")
-        XCTAssertEqual(review?.author, "Travis Bell")
-        XCTAssertNotNil(review?.content)
-        XCTAssertEqual(review?.url, "https://www.themoviedb.org/review/5010553819c2952d1b000451")
-    }
 }

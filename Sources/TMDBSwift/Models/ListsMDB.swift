@@ -8,8 +8,6 @@
 
 import Foundation
 
-/// TODO: ListItem status
-
 public struct ListsMDB: Codable {
 
     public var created_by: String!

@@ -100,18 +100,8 @@ public struct PersonMDB: Codable {
             completion(apiReturn, data)
         }
     }
-
-    /// Retrive data by append multiple person methods. Initlization of object has to be done manually. Exepect PersonMDB
-    public static func personAppendTo(personID: Int!, append_to: [String], language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: PersonMDB?) -> Void) {
-        let urlType =  String(personID)
-        Client.Person(urlType, language: language, page: nil, append_to: append_to) { apiReturn in
-            let data: PersonMDB? = apiReturn.decode()
-            completion(apiReturn, data)
-        }
-    }
 }
 
-/// TODO: popular, taggedImages, tv & movies credits
 import Foundation
 
 // MARK: Movie Crew & TV Crew common

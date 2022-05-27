@@ -174,14 +174,4 @@ extension MovieMDB {
             completion(apiReturn, data)
         }
     }
-
-    /**
-     *  Retrive data by append multiple movie methods. Initlization of object have to be done manually. Exepect MovieDetailedMDB
-     */
-    public class func movieAppendTo(movieID: Int!, append_to: [String], language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: MovieDetailedMDB?) -> Void) {
-        Client.Movies(String(movieID), page: nil, language: language, append_to: append_to) { apiReturn in
-            let data: MovieDetailedMDB? = apiReturn.decode()
-            completion(apiReturn, data)
-        }
-    }
 }

@@ -5,8 +5,6 @@
 //  Created by George Kye on 2016-02-12.
 //  Copyright © 2016 George Kye. All rights reserved.
 //
-// TODO: - tanslations
-//
 
 import Foundation
 
@@ -157,14 +155,6 @@ extension TVMDB {
     public class func query(queryType: TVQueryType, page: Int?, language: String?, completion: @escaping (_ clientResult: ClientReturn, _ data: [TVMDB]?) -> Void) {
         Client.TV(queryType.rawValue, page: page, language: language, timezone: nil) { apiReturn in
             let data: [TVMDB]? = apiReturn.decodeResults()
-            completion(apiReturn, data)
-        }
-    }
-
-    /// Retrive data by append multiple tv methods. Initlization of object have to be done manually. Exepect TVMDB
-    public class func tvAppendTo(tvShowID: Int!, language: String? = nil, append_to: [String], completion: @escaping (_ clientReturn: ClientReturn, _ data: TVDetailedMDB?) -> Void) {
-        Client.TV(String(tvShowID), page: nil, language: language, timezone: nil, append_to: append_to) { apiReturn in
-            let data: TVDetailedMDB? = apiReturn.decode()
             completion(apiReturn, data)
         }
     }

@@ -46,7 +46,7 @@ public struct ConfigurationMDB: Codable {
     }
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
+        _ = encoder.container(keyedBy: CodingKeys.self)
 //        try container.encode(self.credit_type, forKey: .credit_type)
 //        try container.encode(self.department, forKey: .department)
 //        try container.encode(self.job, forKey: .job)

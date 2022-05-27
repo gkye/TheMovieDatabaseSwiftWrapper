@@ -1,6 +1,5 @@
 import Foundation
 
-// TODO: Handle people Type
 public enum TrendingMediaType: String {
     case tv, movie
 }

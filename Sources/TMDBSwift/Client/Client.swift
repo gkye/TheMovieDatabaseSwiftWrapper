@@ -17,7 +17,6 @@ public struct MDBReturn {
     public var error: Error?
     public var data: Data?
     public var response: URLResponse?
-    //	public var pageResults: PageResultsMDB
 
     init(err: Error?, data: Data?, reponse: URLResponse?) {
         error = err

@@ -184,33 +184,13 @@ final class PersonMDBTests: XCTestCase {
 
     func testPopular_AndPageResults() {
         var data: [PersonResults]!
-        var api: ClientReturn!
         let expectation = self.expectation(description: "Wait for data to load.")
 
         PersonMDB.popular(page: 1) { responseApi, responseData in
             data = responseData
-            api = responseApi
             expectation.fulfill()
         }
         waitForExpectations(timeout: expecationTimeout, handler: nil)
         XCTAssertNotNil(data.first)
-//        XCTAssertNotNil(api.pageResults)
     }
-
-//    func testPersonAppendTo() {
-//        var data: PersonMDB!
-//        var tvCredits: PersonTVCredits!
-//        let expectation = self.expectation(description: "Wait for data to load.")
-//
-//        PersonMDB.personAppendTo(personID: 19429, append_to: ["tv_credits"]) { _, person in
-//            data = person
-//            if let json = json {
-//                tvCredits = PersonTVCredits(json: json["tv_credits"])
-//                expectation.fulfill()
-//            }
-//        }
-//        waitForExpectations(timeout: expecationTimeout, handler: nil)
-//        XCTAssertEqual(data.name, "Bruce Lee")
-//        XCTAssertNotNil(tvCredits.cast)
-//    }
 }
