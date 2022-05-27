@@ -11,6 +11,6 @@ jobs:
         with:
         target: TMDBSwift
         output: ./docs
-        hosting-base-path: http://djpearce.github.io/TheMovieDatabaseSwiftWrapper/
+        hosting-base-path: http://gkye.github.io/TheMovieDatabaseSwiftWrapper/
         disable-indexing: 'true'
         transform-for-static-hosting: 'true'
