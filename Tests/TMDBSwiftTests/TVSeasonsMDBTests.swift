@@ -21,7 +21,7 @@ final class TVSeasonsMDBTests: XCTestCase {
         var data: TVCreditsMDB!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVSeasonsMDB.credits(tvShowId: 1399, seasonNumber: 1, language: nil) { clientReturn, responseData in
+        TVSeasonsMDB.credits(tvShowId: 1399, seasonNumber: 1, language: nil) { _, responseData in
             data = responseData
             expectation.fulfill()
         }
@@ -33,7 +33,7 @@ final class TVSeasonsMDBTests: XCTestCase {
         var data: ExternalIdsMDB!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVSeasonsMDB.externalIDS(tvShowId: 1399, seasonNumber: 1, language: nil) { clientReturn, responseData in
+        TVSeasonsMDB.externalIDS(tvShowId: 1399, seasonNumber: 1, language: nil) { _, responseData in
             data = responseData
             expectation.fulfill()
         }
@@ -45,7 +45,7 @@ final class TVSeasonsMDBTests: XCTestCase {
         var data: ImagesMDB!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVSeasonsMDB.images(tvShowId: 1399, seasonNumber: 1, language: nil) { clientReturn, responseData in
+        TVSeasonsMDB.images(tvShowId: 1399, seasonNumber: 1, language: nil) { _, responseData in
             data = responseData
             expectation.fulfill()
         }
@@ -57,7 +57,7 @@ final class TVSeasonsMDBTests: XCTestCase {
         var data: TVSeasonsMDB!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVSeasonsMDB.season_number(tvShowId: 1399, seasonNumber: 1, language: nil) { clientReturn, responseData in
+        TVSeasonsMDB.season_number(tvShowId: 1399, seasonNumber: 1, language: nil) { _, responseData in
             data = responseData
             expectation.fulfill()
         }
@@ -69,7 +69,7 @@ final class TVSeasonsMDBTests: XCTestCase {
         var data: [VideosMDB]!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVSeasonsMDB.videos(tvShowId: 1399, seasonNumber: 1, language: nil) { clientReturn, responseData in
+        TVSeasonsMDB.videos(tvShowId: 1399, seasonNumber: 1, language: nil) { _, responseData in
             data = responseData
             expectation.fulfill()
         }
