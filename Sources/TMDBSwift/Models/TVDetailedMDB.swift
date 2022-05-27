@@ -8,40 +8,22 @@
 
 import Foundation
 
-public struct TVCreatedBy {
+public struct TVCreatedBy: Decodable {
     public var id: Int!
     public var name: String!
     public var profile_path: String!
 }
 
-public struct TVSeasons {
+public struct TVSeasons: Decodable {
     public var air_date: String?
     public var episode_count: Int!
     public var id: Int!
     public var poster_path: String!
     public var season_number: Int!
-
-    init(results: JSON) {
-        if results["air_date"].exists() {
-            air_date = results["air_date"].string
-        } else {
-            air_date = ""
-        }
-        episode_count = results["episode_count"].int
-        id = results["id"].int
-
-        if results["poster_path"].exists() {
-            poster_path = results["poster_path"].string
-        } else {
-            poster_path = ""
-        }
-        season_number = results["season_number"].int
-    }
-
 }
 
 open class TVDetailedMDB: TVMDB {
-    open var createdBy: TVCreatedBy?
+    open var createdBy: [TVCreatedBy]?
     open var episode_run_time: [Int]!
     open var homepage: String?
     open var in_production: Bool?
@@ -56,54 +38,5 @@ open class TVDetailedMDB: TVMDB {
     open var type: String!
     open var nextEpisodeToAir: TVEpisodesMDB?
     open var lastEpisodeToAir: TVEpisodesMDB?
-
-    required public init(results: JSON) {
-        super.init(results: results)
-        if results["created_by"].count > 0 && results["created_by"][0].exists() {
-            createdBy = TVCreatedBy.init(id: results["created_by"][0]["id"].int, name: results["created_by"][0]["name"].string, profile_path: results["created_by"][0]["profile_path"].string)
-        }
-
-        episode_run_time = results["episode_run_time"].arrayObject as? [Int]
-        //        genres = KeywordsMDB.init(results: results["genres"])
-        homepage = results["homepage"].string
-        in_production = results["in_production"].bool
-        languages = results["languages"].arrayObject as? [String]
-
-        if results["last_air_date"].exists() {
-            last_air_date = results["last_air_date"].string
-        } else {
-            last_air_date = ""
-        }
-
-        if results["networks"].exists() {
-            networks = results["networks"].map {
-                KeywordsMDB.init(results: $0.1)
-            }
-        }
-
-        number_of_episodes = results["number_of_episodes"].int
-        number_of_seasons = results["number_of_seasons"].int
-
-        if results["production_companies"].exists() {
-            production_companies = results["production_companies"].map {
-                KeywordsMDB.init(results: $0.1)
-            }
-        }
-
-        seasons = results["seasons"].map {
-            TVSeasons.init(results: $0.1)
-        }
-
-        status = results["status"].string
-        type = results["type"].string
-
-        if results["last_episode_to_air"].count > 0 {
-            lastEpisodeToAir = TVEpisodesMDB.init(results: results["last_episode_to_air"])
-        }
-
-        if results["next_episode_to_air"].count > 0 {
-            nextEpisodeToAir = TVEpisodesMDB.init(results: results["next_episode_to_air"])
-        }
-    }
 
 }

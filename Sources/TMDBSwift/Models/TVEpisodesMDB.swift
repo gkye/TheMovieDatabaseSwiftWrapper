@@ -8,12 +8,12 @@
 
 import Foundation
 
-public struct TVEpisodesMDB: ArrayObject {
+public struct TVEpisodesMDB: Decodable {
 
     public var air_date: String!
     public var crew = [CrewMDB]()
     public var guest_stars = [TVCastMDB]()
-    public var number: Int!
+    public var episode_number: Int!
     public var name: String!
     public var overview: String!
     public var id: Int!
@@ -23,40 +23,12 @@ public struct TVEpisodesMDB: ArrayObject {
     public var vote_average: Int!
     public var vote_count: Int!
 
-    public init(results: JSON) {
-        air_date = results["air_date"].string
-
-        if results["crew"].exists() {
-            for i in 0 ..< results["crew"].count {
-                crew.append(CrewMDB.init(crew: results["crew"][i]))
-            }
-        }
-        number = results["episode_number"].int
-
-        if results["guest_stars"].exists() {
-            for i in 0 ..< results["guest_stars"].count {
-                guest_stars.append(TVCastMDB.init(cast: results["guest_stars"][i]))
-            }
-        }
-        name = results["name"].string
-        overview = results["overview"].string
-        id = results["id"].int
-        production_code = results["production_code"].int
-        season_number = results["season_number"].int
-        still_path = results["still_path"].string
-        vote_average = results["vote_average"].int
-        vote_count  = results[" vote_count"].int
-    }
-
     /// Get the primary information about a TV episode by combination of a season and episode number.
     public static func episode_number(tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: TVEpisodesMDB?) -> Void) {
         let urltype = String(tvShowId) + "/season/" + String(seasonNumber) + "/episode/" + String(episodeNumber)
         Client.Seasons(urltype, language: language) { apiReturn in
-            var episodes: TVEpisodesMDB?
-            if let json = apiReturn.json {
-                episodes = TVEpisodesMDB(results: json)
-            }
-            completion(apiReturn, episodes)
+            let data: TVEpisodesMDB? = apiReturn.decode()
+            completion(apiReturn, data)
         }
     }
 
@@ -64,10 +36,7 @@ public struct TVEpisodesMDB: ArrayObject {
     public static func credits(tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: TVCreditsMDB?) -> Void) {
         let urltype = String(tvShowId) + "/season/" + String(seasonNumber) + "/episode/" + String(episodeNumber) + "/credits"
         Client.Seasons(urltype, language: nil) { apiReturn in
-            var data: TVCreditsMDB?
-            if let json = apiReturn.json {
-                data = TVCreditsMDB(results: json)
-            }
+            let data: TVCreditsMDB? = apiReturn.decode()
             completion(apiReturn, data)
         }
     }
@@ -76,10 +45,7 @@ public struct TVEpisodesMDB: ArrayObject {
     public static func externalIDS(tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int, language: String, completion: @escaping (_ clientReturn: ClientReturn, _ data: ExternalIdsMDB?) -> Void) {
         let urltype = String(tvShowId) + "/season/" + String(seasonNumber) + "/episode/" + String(episodeNumber) + "/external_ids"
         Client.Seasons(urltype, language: language) { apiReturn in
-            var data: ExternalIdsMDB?
-            if let json = apiReturn.json {
-                data = ExternalIdsMDB(results: json)
-            }
+            let data: ExternalIdsMDB? = apiReturn.decode()
             completion(apiReturn, data)
         }
     }
@@ -88,10 +54,7 @@ public struct TVEpisodesMDB: ArrayObject {
     public static func images(tvShowId: Int!, seasonNumber: Int!, episodeNumber: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: ImagesMDB?) -> Void) {
         let urltype = String(tvShowId) + "/season/" + String(seasonNumber) + "/episode/" + String(episodeNumber) + "/images"
         Client.Seasons(urltype, language: nil) { apiReturn in
-            var data: ImagesMDB?
-            if let json = apiReturn.json {
-                data = ImagesMDB(results: json)
-            }
+            let data: ImagesMDB? = apiReturn.decode()
             completion(apiReturn, data)
         }
     }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 extension Client {
 
     static func Find(external_id: String!, external_source: String!, completion: @escaping (ClientReturn) -> Void) {

@@ -82,7 +82,7 @@ final class MovieMDBTests: XCTestCase {
         XCTAssertNotNil(data?.crew)
 
         // cast
-        let danielDayLewis = data?.cast.filter { $0.credit_id == "52fe448bc3a36847f809c0b5" }.first
+        let danielDayLewis = data?.cast?.filter { $0.credit_id == "52fe448bc3a36847f809c0b5" }.first
         XCTAssertEqual(danielDayLewis?.cast_id, 4)
         XCTAssertEqual(danielDayLewis?.name, "Daniel Day-Lewis")
         XCTAssertEqual(danielDayLewis?.id, 11856)
@@ -90,7 +90,7 @@ final class MovieMDBTests: XCTestCase {
         //    XCTAssertEqual(danielDayLewis?.profile_path, "/hknfCSSU6AMeKV9yn9NTtTzIEGc.jpg")
 
         // crew
-        let jimSheridan = data?.crew.filter { $0.credit_id == "52fe448bc3a36847f809c0a5" }.first
+        let jimSheridan = data?.crew?.filter { $0.credit_id == "52fe448bc3a36847f809c0a5" }.first
 
         XCTAssertEqual(jimSheridan?.department, "Directing")
         XCTAssertEqual(jimSheridan?.id, 53334)
@@ -112,7 +112,7 @@ final class MovieMDBTests: XCTestCase {
         XCTAssertNotNil(data)
         XCTAssertNotNil(data?.backdrops)
         XCTAssertNotNil(data?.posters)
-        XCTAssertEqual(data?.stills.count, 0)
+        XCTAssertEqual(data?.stills.count, 4)
         // backdrops
         XCTAssertNotNil(data?.backdrops[0].aspect_ratio)
         XCTAssertNotNil(data?.backdrops[0].file_path)
@@ -241,43 +241,5 @@ final class MovieMDBTests: XCTestCase {
         XCTAssertNotNil(review?.content)
         XCTAssertEqual(review?.url, "https://www.themoviedb.org/review/5010553819c2952d1b000451")
 
-    }
-
-    //  //Append to response (Retrieve multiple movie object with one request). Object must be manually initialized using the JSON returned.
-    func testAppendTo() {
-        var cReturn: ClientReturn?
-        var movieData: MovieDetailedMDB?
-        var videos: [VideosMDB]?
-        var reviews: [MovieReviewsMDB]?
-        let expectation = self.expectation(description: "Wait for data to load.")
-
-        MovieMDB.movieAppendTo(movieID: 49026, append_to: ["videos", "reviews"], completion: { api, movie, _ in
-            cReturn = api
-            movieData = movie
-            if let data = cReturn?.data,
-               let decodedVideoWrapper = try? JSONDecoder().decode(ResponseWrapper.self, from: data),
-               let decodedReviewWrapper = try? JSONDecoder().decode(ResponseWrapper.self, from: data) {
-                expectation.fulfill()
-
-                videos = decodedVideoWrapper.videos?.results
-                reviews = decodedReviewWrapper.reviews?.results
-            }
-        })
-
-        waitForExpectations(timeout: 5, handler: nil)
-
-        XCTAssertNotNil(movieData)
-        XCTAssertNotNil(cReturn?.json)
-        XCTAssertNotNil(videos)
-        XCTAssertNotNil(reviews)
-
-        XCTAssertEqual(videos?.count, 9)
-
-        let review = reviews?[0]
-
-        XCTAssertEqual(review?.id, "5010553819c2952d1b000451")
-        XCTAssertEqual(review?.author, "Travis Bell")
-        XCTAssertNotNil(review?.content)
-        XCTAssertEqual(review?.url, "https://www.themoviedb.org/review/5010553819c2952d1b000451")
     }
 }

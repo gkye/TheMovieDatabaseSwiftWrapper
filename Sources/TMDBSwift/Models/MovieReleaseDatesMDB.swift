@@ -8,29 +8,16 @@
 
 import Foundation
 
-open class MovieReleaseDatesMDB: ArrayObject {
-
+open class MovieReleaseDatesMDB: Decodable {
     open var iso_3166_1: String?
     open var release_dates = [ReleaseDates]()
-    required public init(results: JSON) {
-        iso_3166_1 = results["iso_3166_1"].string
-        release_dates = ReleaseDates.initialize(json: results["release_dates"])
-    }
 }
 
 // move inside class?
-public struct ReleaseDates: ArrayObject {
+public struct ReleaseDates: Decodable {
     public var certification: String?
     public var iso_639_1: String?
     public var note: String?
     public var release_date: String? // change to formatted NSDate later??
     public var type: Int?
-
-    public init(results release_date: JSON) {
-        certification = release_date["certification"].string
-        iso_639_1 = release_date["iso_639_1"].string
-        note = release_date["note"].string
-        self.release_date = release_date["release_date"].string
-        type = release_date["type"].int
-    }
 }

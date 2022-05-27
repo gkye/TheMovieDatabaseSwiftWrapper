@@ -10,17 +10,13 @@ import Foundation
 
 public struct ClientReturn {
     public var error: NSError?
-    public var json: JSON?
     public var data: Data?
-    //  public var MBDBReturn: AnyObject?
-    public var pageResults: PageResultsMDB?
 }
 
 public struct MDBReturn {
     public var error: Error?
     public var data: Data?
     public var response: URLResponse?
-    //	public var pageResults: PageResultsMDB
 
     init(err: Error?, data: Data?, reponse: URLResponse?) {
         error = err
@@ -38,12 +34,8 @@ struct Client {
         var params = parameters
         params["api_key"] = apikey as AnyObject
         HTTPRequest.request(url, httpMethod: httpMethod, parameters: params) { (data, _, error) in
-            if let data = data, let json = try? JSON(data: data) {
-                apiReturn.json = json
+            if let data = data {
                 apiReturn.data = data
-                if json["page"].exists() {
-                    apiReturn.pageResults = PageResultsMDB(results: json)
-                }
             }
             apiReturn.error = error as NSError?
             completion(apiReturn)
@@ -70,7 +62,6 @@ class HTTPRequest {
         let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
             DispatchQueue.main.async(execute: { () -> Void in
                 if error != nil {
-                    print("Error -> \(String(describing: error))")
                     completionHandler(nil, nil, error as Error?)
                 } else {
                     completionHandler(data, response, nil)

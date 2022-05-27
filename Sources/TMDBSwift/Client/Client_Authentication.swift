@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 extension Client {
     static func createGuestSession(completion: @escaping (ClientReturn) -> Void) {
 

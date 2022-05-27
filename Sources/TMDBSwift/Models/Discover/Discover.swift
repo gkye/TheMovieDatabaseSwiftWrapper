@@ -10,7 +10,7 @@ import Foundation
 public enum DiscoverSortBy: String {
 
     case popularity_asc = "popularity.asc"
-    case  popularity_desc = "popularity_desc"
+    case popularity_desc = "popularity_desc"
     case vote_average_asc = "vote_average.asc"
     case vote_average_desc = "vote_average.desc"
 }
@@ -54,7 +54,7 @@ public enum DiscoverParam {
     case certification_gte(String?)
 }
 
-open class DiscoverMDB: ArrayObject {
+open class DiscoverMDB: Decodable {
     open var overview: String?
     open var popularity: Double?
     open var id: Int!
@@ -65,47 +65,21 @@ open class DiscoverMDB: ArrayObject {
     open var poster_path: String?
     open var genre_ids: [Int]?
 
-    required public init(results: JSON) {
-        poster_path = results["poster_path"].string
-        popularity = results["popularity"].double
-        id = results["id"].int
-        backdrop_path = results["backdrop_path"].string
-        vote_average = results["vote_average"].double
-        overview = results["overview"].string
-        original_language = results["original_language"].string
-        vote_count = results["vote_count"].double
-        genre_ids = results["genre_ids"].arrayObject as? [Int]
-
-    }
-
     /// Discover a movie or tv shows by different types of data like average rating, number of votes, genres and certifications.
     /// - Parameters:
     ///   - discoverType: TV or Movie
     ///   - params: Optional parameters. See more at https://developers.themoviedb.org/3/discover
     public class func discover(discoverType: DiscoverType, params: [DiscoverParam], completionHandler: @escaping (ClientReturn, _ movieData: [MovieMDB]?, _ tvData: [TVMDB]?) -> Void) {
-        Client.discover(baseURL: discoverType.rawValue, params: params, completion: { data in
+        Client.discover(baseURL: discoverType.rawValue, params: params, completion: { apiReturn in
             let type = discoverType.rawValue.lowercased()
             if type == "tv"{
-                completionHandler(data, nil, TVMDB.initialize(json: (data.json?["results"])!))
+                let data: [TVMDB]? = apiReturn.decodeResults()
+                completionHandler(apiReturn, nil, data)
             } else {
-                completionHandler(data, MovieMDB.initialize(json: (data.json?["results"])!), nil)
+                let data: [MovieMDB]? = apiReturn.decodeResults()
+                completionHandler(apiReturn, data, nil)
             }
         })
-    }
-
-    @available(*, deprecated, message: "Will be removed next release. Please use `discover(discoverType: DiscoverType, params: [DiscoverParam])` instead")
-    public class func discover(discoverType: DiscoverType, language: String? = nil, page: Int, sort_by: String? = nil, year: Int? = nil, certification_country: String? = nil, certification: String? = nil, certification_gte: String? = nil, certification_lte: String? = nil, include_adult: Bool? = nil, include_video: Bool? = nil, timezone: String? = nil, primary_release_year: Int? = nil, primary_release_date_gte: String? = nil, primary_release_date_lte: String? = nil, release_date_gte: String? = nil, release_date_lte: String? = nil, vote_average_gte: Double? = nil, vote_average_lte: Double? = nil, vote_count_gte: Int? = nil, vote_count_lte: Int? = nil, with_genres: String? = nil, with_cast: String? = nil, with_crew: String? = nil, with_companies: String? = nil, with_keywords: String? = nil, with_people: String? = nil, air_date_gte: String? = nil, air_date_lte: String? = nil, first_air_date_year: String? = nil, first_air_date_lte: String? = nil, first_air_date_gte: String? = nil, with_networks: String? = nil, completionHandler: @escaping (ClientReturn, _ movieData: [MovieMDB]?, _ tvData: [TVMDB]?) -> Void) {
-
-        Client.discover(baseURL: discoverType.rawValue, sort_by: sort_by, certification_country: certification_country, certification: certification, certification_lte: certification_lte, include_adult: include_adult, include_video: include_video, primary_release_year: primary_release_year, primary_release_date_gte: primary_release_date_gte, primary_release_date_lte: primary_release_date_lte, release_date_gte: release_date_gte, release_date_lte: release_date_lte, air_date_gte: air_date_gte, air_date_lte: air_date_lte, first_air_date_gte: first_air_date_gte, first_air_date_lte: first_air_date_gte, first_air_date_year: first_air_date_year, language: language, page: page, timezone: timezone, vote_average_gte: vote_average_gte, vote_average_lte: vote_average_lte, vote_count_gte: vote_count_gte, vote_count_lte: vote_count_lte, with_genres: with_genres, with_cast: with_cast, with_crew: with_crew, with_companies: with_companies, with_keywords: with_keywords, with_people: with_people, with_networks: with_networks, year: year, certification_gte: certification_gte) {
-
-            let data = $0
-            let type = discoverType.rawValue.lowercased()
-            if type == "tv"{
-                completionHandler(data, nil, TVMDB.initialize(json: (data.json?["results"])!))
-            } else {
-                completionHandler(data, MovieMDB.initialize(json: (data.json?["results"])!), nil)
-            }
-        }
     }
 
     /// Discover movie by rating

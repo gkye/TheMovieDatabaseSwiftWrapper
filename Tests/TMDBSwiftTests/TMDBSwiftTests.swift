@@ -78,14 +78,14 @@ final class TMDBSwiftTests: XCTestCase {
 
         waitForExpectations(timeout: 30, handler: nil)
         XCTAssertNotNil(data)
-        XCTAssertTrue(data?.backdrop_sizes.count > 0)
+        XCTAssertTrue(data?.backdrop_sizes?.count > 0)
         XCTAssertEqual(data?.base_url, "http://image.tmdb.org/t/p/")
         XCTAssertEqual(data?.secure_base_url, "https://image.tmdb.org/t/p/")
-        XCTAssertTrue(data?.change_keys.count > 0)
-        XCTAssertTrue(data?.logo_sizes.count > 0)
-        XCTAssertTrue(data?.poster_sizes.count > 0)
-        XCTAssertTrue(data?.still_sizes.count > 0)
-        XCTAssertTrue(data?.logo_sizes.count > 0)
+        XCTAssertTrue(data?.change_keys?.count > 0)
+        XCTAssertTrue(data?.logo_sizes?.count > 0)
+        XCTAssertTrue(data?.poster_sizes?.count > 0)
+        XCTAssertTrue(data?.still_sizes?.count > 0)
+        XCTAssertTrue(data?.logo_sizes?.count > 0)
 
     }
 

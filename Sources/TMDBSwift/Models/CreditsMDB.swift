@@ -8,60 +8,30 @@
 
 import Foundation
 
-public struct CreditsEpisodes {
+public struct CreditsEpisodes: Decodable {
     public var air_date: String!
     public var episode_number: Int!
     public var overview: String!
     public var season_number: Int!
     public var still_path: String?
-    public init(episodes: JSON) {
-        air_date = episodes["air_date"].string
-        episode_number = episodes["episode_number"].int
-        overview = episodes["overview"].string
-        season_number = episodes["season_number"].int
-        still_path = episodes["still_path"].string
-    }
 }
-public struct CreditsSeasons {
+
+public struct CreditsSeasons: Decodable {
     public var air_date: String!
     public var poster_path: String!
     public var season_number: Int!
-    public init(seasons: JSON) {
-        air_date = seasons["air_date"].string
-        poster_path = seasons["poster_path"].string
-        season_number = seasons["season_number"].int
-    }
 }
 
-public struct CreditsMedia {
+public struct CreditsMedia: Decodable {
     public var id: Int!
     public var name: String!
     public var original_name: String!
     public var character: String!
     public var episodes = [CreditsEpisodes]()
     public var seasons = [CreditsSeasons]()
-    public init(media: JSON) {
-        id = media["id"].int
-        name = media["name"].string
-        original_name = media["original_name"].string
-        character = media["character"].string
-
-        if media["episodes"].count > 0 {
-            for episode in media["episodes"] {
-                episodes.append(CreditsEpisodes(episodes: episode.1))
-            }
-        }
-
-        if media["seasons"].count > 0 {
-            seasons = media["seasons"].map {
-                CreditsSeasons(seasons: $0.1)
-            }
-        }
-    }
 }
 
-public struct CreditsMDB {
-
+public struct CreditsMDB: Decodable {
     public var credit_type: String!
     public var department: String!
     public var job: String!
@@ -69,26 +39,37 @@ public struct CreditsMDB {
     public var media_Type: String!
     public var id: String!
     public var person: (name: String?, id: Int?)
-    public init(credits: JSON) {
-        credit_type = credits["credit_type"].string
-        department = credits["department"].string
-        job = credits["job"].string
 
-        media = CreditsMedia(media: credits["media"])
+    enum CodingKeys: String, CodingKey {
+        case credit_type
+        case department
+        case job
+        case media
+        case media_Type = "media_type"
+        case id
+        case person
+        case name
+    }
 
-        media_Type = credits["media_type"].string
-        id = credits["id"].string
-        person = (name: credits["person"]["name"].string, id: credits["person"]["id"].int)
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        credit_type = try? container.decode(String?.self, forKey: .credit_type)
+        department = try? container.decode(String.self, forKey: .department)
+        job = try? container.decode(String.self, forKey: .job)
+        media = try? container.decode(CreditsMedia.self, forKey: .media)
+        media_Type = try? container.decode(String.self, forKey: .media_Type)
+        id = try? container.decode(String.self, forKey: .id)
+        let personObject = try container.nestedContainer(keyedBy:
+            CodingKeys.self, forKey: .person)
+        person = (name: try? personObject.decode(String.self, forKey: .name),
+                  id: try? personObject.decode(Int.self, forKey: .id))
     }
 
     /// Get the detailed information about a particular credit record. This is currently only supported with the new credit model found in TV. These ids can be found from any TV credit response as well as the tv_credits and combined_credits methods for people. The episodes object returns a list of episodes and are generally going to be guest stars. The season array will return a list of season numbers.
     public static func credits(creditID: String, language: String, completion: @escaping (_ clientReturn: ClientReturn, _ data: CreditsMDB?) -> Void) {
         Client.Credits(creditID: creditID, language: language) { apiReturn in
-            var credits: CreditsMDB?
-            if let json = apiReturn.json {
-                credits = CreditsMDB(credits: json)
-            }
-            completion(apiReturn, credits)
+            let data: CreditsMDB? = apiReturn.decode()
+            completion(apiReturn, data)
         }
     }
 

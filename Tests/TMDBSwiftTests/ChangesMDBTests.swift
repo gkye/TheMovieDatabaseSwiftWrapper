@@ -48,17 +48,14 @@ final class ChangesMDBTests: XCTestCase {
 
     func testChangesWithParam() {
         var data: [ChangesMDB]!
-        var api: ClientReturn!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        ChangesMDB.changes(type: .tv, page: 1) { responseApi, responseData in
-            api = responseApi
+        ChangesMDB.changes(type: .tv, page: 1) { _, responseData in
             data = responseData
             expectation.fulfill()
         }
         waitForExpectations(timeout: expecationTimeout, handler: nil)
         XCTAssertNotNil(data[0].id)
         XCTAssertNotNil(data[0].adult)
-        XCTAssertEqual(api.pageResults?.page, 1)
     }
 }

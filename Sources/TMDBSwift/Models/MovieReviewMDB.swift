@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class MovieReviewsMDB: Codable {
+open class MovieReviewsMDB: Decodable {
 
     open var id: String!
     open var author: String!

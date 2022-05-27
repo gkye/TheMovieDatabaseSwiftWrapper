@@ -8,14 +8,21 @@
 
 import Foundation
 
-open class MovieMDB: DiscoverMovieMDB {
-    open var genres = [GenresType]()
-    public typealias GenresType = (id: Int?, name: String?)
+public struct GenreMDB: Decodable {
+    let id: Int?
+    let name: String?
+}
 
-    public required init(results: JSON) {
-        super.init(results: results)
-        results["genres"].forEach {
-            genres.append(($0.1["id"].int, $0.1["name"].string))
-        }
+open class MovieMDB: DiscoverMovieMDB {
+    open var genres: [GenreMDB]?
+
+    enum CodingKeys: String, CodingKey {
+        case genres
+    }
+
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        genres = try? container.decode([GenreMDB]?.self, forKey: .genres)
+        try super.init(from: decoder)
     }
 }

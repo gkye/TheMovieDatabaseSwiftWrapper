@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 extension Client {
 
     static func Movies(_ urlType: String!, page: Int?, language: String?, region: String? = nil, append_to: [String]? = nil, completion: @escaping (ClientReturn) -> Void) {
@@ -21,7 +22,6 @@ extension Client {
             parameters["language"] = language as AnyObject?
         }
 
-        // TODO: --Alternative titles (lazy change later)
         if urlType.contains("alternative_titles") {
             if language != nil {
                 parameters["country"] = language as AnyObject?

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 extension Client {
     static func Seasons(_ urlType: String!, language: String?, completion: @escaping (ClientReturn) -> Void) {
         var parameters: [String: AnyObject] = [:]

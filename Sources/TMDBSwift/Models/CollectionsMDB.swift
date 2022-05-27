@@ -10,7 +10,7 @@ import Foundation
 
 // ** CHECK LISt-> may contain collection or tv object.
 
-public struct CollectionMDB: ArrayObject {
+public struct CollectionMDB: Decodable {
 
     public var id: Int?
     public var name: String?
@@ -19,37 +19,28 @@ public struct CollectionMDB: ArrayObject {
     public var overview: String?
     public var collectionItems = [MovieMDB]()
 
-    public init(results: JSON) {
-        collectionItems = results["parts"].map {
-            MovieMDB(results: $0.1)
-        }
-
-        id = results["id"].int
-        name = results["name"].string
-        poster_path = results["poster_path"].string
-        backdrop_path = results["backdrop_path"].string
-        overview = results["overview"].string
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case poster_path
+        case backdrop_path
+        case overview
+        case collectionItems = "parts"
     }
 
     /// Get the basic collection information for a specific collection id.
     public static func collection(collectionId: Int!, language: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ data: CollectionMDB?) -> Void) {
         Client.Collection(collectionId: String(collectionId), language: language) { apiReturn in
-            var collection: CollectionMDB?
-            if let json = apiReturn.json {
-                collection = CollectionMDB(results: json)
-            }
-            completion(apiReturn, collection)
+            let data: CollectionMDB? = apiReturn.decode()
+            completion(apiReturn, data)
         }
     }
 
     /// Get all of the images for a particular collection by collection id.
     public static func collectionImages(collectionId: Int!, language: String?, completion:  @escaping (_ clientReturn: ClientReturn, _ data: ImagesMDB?) -> Void) {
         Client.Collection(collectionId: String(collectionId) + "/images", language: language) { apiReturn in
-            var images: ImagesMDB?
-            if let json = apiReturn.json {
-                images = ImagesMDB(results: json)
-            }
-            completion(apiReturn, images)
+            let data: ImagesMDB? = apiReturn.decode()
+            completion(apiReturn, data)
         }
     }
 }
