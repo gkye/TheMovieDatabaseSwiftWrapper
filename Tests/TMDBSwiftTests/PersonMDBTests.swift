@@ -186,7 +186,7 @@ final class PersonMDBTests: XCTestCase {
         var data: [PersonResults]!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        PersonMDB.popular(page: 1) { responseApi, responseData in
+        PersonMDB.popular(page: 1) { _, responseData in
             data = responseData
             expectation.fulfill()
         }
