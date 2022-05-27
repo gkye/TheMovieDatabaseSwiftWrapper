@@ -61,7 +61,7 @@ final class TMDBSwiftTests: XCTestCase {
         XCTAssertNotNil(data?.backdrop_path)
         XCTAssertNotNil(data?.overview)
         XCTAssertNotNil(data?.collectionItems)
-        XCTAssertTrue(data?.collectionItems.count > 0)
+        XCTAssertTrue(data?.collectionItems?.count ?? 0 > 0)
         XCTAssertNotNil(data?.poster_path)
     }
 

@@ -46,15 +46,6 @@ public struct SearchMDB {
         }
     }
 
-    /// Search for lists by name and description.
-    public static func list(query: String, page: Int?, include_adult: Bool?, completion: @escaping (_ clientReturn: ClientReturn, _ list: [ListsMDB]? ) -> Void) {
-
-        Client.Search("list", query: query, page: page, language: nil, include_adult: include_adult, year: nil, primary_release_year: nil, search_type: nil, first_air_date_year: nil) { apiReturn in
-            let data: [ListsMDB]? = apiReturn.decodeResults()
-            completion(apiReturn, data)
-        }
-    }
-
     /// Search for movies by title.
     public static func movie(query: String, language: String?, page: Int?, includeAdult: Bool?, year: Int?, primaryReleaseYear: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ movie: [MovieMDB]?) -> Void) {
 
