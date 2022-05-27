@@ -36,6 +36,18 @@ open class CrewMDB: CastCrewCommonMDB {
 open class TVCastMDB: CastCrewCommonMDB {
     open var character: String!
     open var order: Int!
+
+    enum CodingKeys: String, CodingKey {
+        case character
+        case order
+    }
+
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        character = try? container.decode(String?.self, forKey: .character)
+        order = try? container.decode(Int?.self, forKey: .order)
+        try super.init(from: decoder)
+    }
 }
 
 open class TVCreditsMDB: Decodable {

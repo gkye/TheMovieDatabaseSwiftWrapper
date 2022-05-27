@@ -111,11 +111,11 @@ final class TVMDBTests: XCTestCase {
 
         waitForExpectations(timeout: expecationTimeout, handler: nil)
         XCTAssertEqual(data.id, 1399)
-        XCTAssertTrue(data.backdrops.count > 0)
-        XCTAssertTrue(data.posters.count > 0)
-        XCTAssertNotNil(data.posters.first?.file_path)
-        XCTAssertNotNil(data.posters.first?.height)
-        XCTAssertNotNil(data.posters.first?.width)
+        XCTAssertTrue(data.backdrops?.count ?? -1 > 0)
+        XCTAssertTrue(data.posters?.count ?? -1 > 0)
+        XCTAssertNotNil(data.posters?.first?.file_path)
+        XCTAssertNotNil(data.posters?.first?.height)
+        XCTAssertNotNil(data.posters?.first?.width)
     }
 
     func testKeywords() {

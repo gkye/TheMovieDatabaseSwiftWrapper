@@ -112,15 +112,15 @@ final class MovieMDBTests: XCTestCase {
         XCTAssertNotNil(data)
         XCTAssertNotNil(data?.backdrops)
         XCTAssertNotNil(data?.posters)
-        XCTAssertEqual(data?.stills.count, 4)
+        XCTAssertEqual(data?.stills?.count ?? 0, 4)
         // backdrops
-        XCTAssertNotNil(data?.backdrops[0].aspect_ratio)
-        XCTAssertNotNil(data?.backdrops[0].file_path)
-        XCTAssertNotNil(data?.backdrops[0].height)
-        XCTAssertEqual(data?.backdrops[0].iso_639_1, nil)
-        XCTAssertNotNil(data?.backdrops[0].vote_average)
-        XCTAssertNotNil(data?.backdrops[0].vote_count)
-        XCTAssertNotNil(data?.backdrops[0].width)
+        XCTAssertNotNil(data?.backdrops?[0].aspect_ratio)
+        XCTAssertNotNil(data?.backdrops?[0].file_path)
+        XCTAssertNotNil(data?.backdrops?[0].height)
+        XCTAssertEqual(data?.backdrops?[0].iso_639_1, nil)
+        XCTAssertNotNil(data?.backdrops?[0].vote_average)
+        XCTAssertNotNil(data?.backdrops?[0].vote_count)
+        XCTAssertNotNil(data?.backdrops?[0].width)
     }
 
     // Get the plot keywords for a specific movie id.
