@@ -54,7 +54,7 @@ final class MovieMDBTests: XCTestCase {
 
     // Get the alternative titles for a specific movie id.
     func testAlternateTitles() {
-        var data: AlternativeTitlesMDB?
+        var data: AlternativeMovieTitlesMDB!
         let expectation = self.expectation(description: "Wait for data to load.")
         MovieMDB.alternativeTitles(movieID: 7984) { _, titles in
             data = titles
@@ -62,7 +62,7 @@ final class MovieMDBTests: XCTestCase {
         }
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertNotNil(data)
-        let french = data?.titles.filter { $0.iso_3166_1 == "FR" }.first
+        let french = data?.titles?.filter { $0.iso_3166_1 == "FR" }.first
 
         XCTAssertEqual(french?.title, "Au Nom du Père")
     }
@@ -191,7 +191,6 @@ final class MovieMDBTests: XCTestCase {
         XCTAssertNotNil(data)
 
         let list = data?[0]
-        dump(list)
         XCTAssertNotNil(list?.description)
         XCTAssertNotNil(list?.favorite_count)
         XCTAssertNotNil(list?.id)

@@ -76,8 +76,7 @@ public struct CertificationsMDB: Decodable {
 
     // Get the list of supported certifications for tv shows.
     public static func tv(completionHandler: @escaping (_ clientReturn: ClientReturn, _ data: TVCertifications?) -> Void) {
-        Client.Certification(listType: "tv") {
-            apiReturn in
+        Client.Certification(listType: "tv") { apiReturn in
             let data: TVCertifications? = apiReturn.decode()
             completionHandler(apiReturn, data)
         }
