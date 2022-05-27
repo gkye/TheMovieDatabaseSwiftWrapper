@@ -14,7 +14,7 @@ public struct ListsMDB: Decodable {
     public var description: String?
     public var favorite_count: Int!
     public var id: String!
-    public var items = [MovieMDB]()
+    public var items: [MovieMDB]?
     public var item_count: Int!
     public var iso_639_1: String!
     public var name: String!
