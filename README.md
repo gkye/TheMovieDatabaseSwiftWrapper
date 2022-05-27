@@ -4,10 +4,6 @@
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/gkye/TheMovieDatabaseSwiftWrapper.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
 
 
-## TODO
----------
-Replace SwiftyJSON with swift4's Codeable
-
 ## Usage
 
 1. Get an API key-> <a href="themoviedb.org">themoviedb.org</a>
@@ -17,14 +13,18 @@ Replace SwiftyJSON with swift4's Codeable
 2. View <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki">Wikis</a> for examples 
 <br>
 
-To run the example project, clone the repo, and run `pod install` from the Demo directory first.
-
 ## Installation
 
 TMDBSwift is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 ```ruby
 pod "TMDBSwift"
+```
+
+
+TMDBSwift is available through [Swift Package Manager](https://docs.swift.org/package-manager/PackageDescription/PackageDescription.html). To install it to your project, simply add the following to your Package.swift file:
+``` swift
+.package(url: "https://github.com/gkye/TheMovieDatabaseSwiftWrapper", from: "0.6.1"),
 ```
 
 ## ENDPOINTS
@@ -48,10 +48,6 @@ pod "TMDBSwift"
 * <a href="https://github.com/gkye/TheMovieDatabaseSwiftWrapper/wiki/Movies">Movie</a>
 
 * Certifications 
-
-## Dependencies
-* SwiftyJSON
-
 
 ## Author
 George Kye

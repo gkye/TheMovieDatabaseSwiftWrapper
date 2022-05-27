@@ -3,8 +3,6 @@
 # OS X
 .DS_Store
 *.DS_Store
-TMDBSwift-macOSTests
-TMDBSwift-tvOSTests
 
 # Xcode
 build/
@@ -38,4 +36,8 @@ build
 !*.xcodeproj/project.pbxproj
 !*.xcworkspace/contents.xcworkspacedata
 *.xcworkspace/xcuserdata
-*.xcodeproj/xcuserdata
+!*.xcodeproj/xcshareddata
+
+### Swift Package Manager ###
+.build
+.swiftpm
