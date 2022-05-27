@@ -1,0 +1,16 @@
+name: DocC
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Publish DocC:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: fwcd/swift-docc-action@v1
+        with:
+        target: TMDBSwift
+        output: ./docs
+        hosting-base-path: http://djpearce.github.io/TheMovieDatabaseSwiftWrapper/
+        disable-indexing: 'true'
+        transform-for-static-hosting: 'true'
