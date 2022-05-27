@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  Publish DocC:
+  Publish:
     runs-on: ubuntu-latest
     steps:
     - uses: fwcd/swift-docc-action@v1
-        with:
+      with:
         target: TMDBSwift
         output: ./docs
         hosting-base-path: http://gkye.github.io/TheMovieDatabaseSwiftWrapper/
