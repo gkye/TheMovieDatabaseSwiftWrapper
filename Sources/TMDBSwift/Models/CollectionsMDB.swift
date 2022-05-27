@@ -17,7 +17,7 @@ public struct CollectionMDB: Decodable {
     public var poster_path: String?
     public var backdrop_path: String?
     public var overview: String?
-    public var collectionItems = [MovieMDB]()
+    public var collectionItems: [MovieMDB]?
 
     enum CodingKeys: String, CodingKey {
         case id
