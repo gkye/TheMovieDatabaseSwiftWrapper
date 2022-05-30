@@ -243,4 +243,17 @@ final class TVMDBTests: XCTestCase {
         waitForExpectations(timeout: expecationTimeout, handler: nil)
         XCTAssertNotNil(data.first?.id)
     }
+
+    func testRecommendations() {
+        var data: [TVMDB]!
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        TVMDB.recommendations(tvShowID: 1399, page: nil, language: nil) { _, tv in
+            data = tv
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNotNil(data.first?.id)
+    }
 }
