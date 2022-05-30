@@ -37,4 +37,17 @@ final class CollectionMDBTests: XCTestCase {
         XCTAssertTrue(data?.collectionItems?.count ?? 0 > 0)
         XCTAssertNotNil(data?.poster_path)
     }
+
+    func testCollectionImages() {
+        var data: ImagesMDB?
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        CollectionMDB.collectionImages(collectionId: 10, language: "en-US") { _, images in
+            data = images
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNotNil(data)
+    }
 }

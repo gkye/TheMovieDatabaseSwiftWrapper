@@ -56,7 +56,7 @@ final class MovieMDBTests: XCTestCase {
     func testAlternateTitles() {
         var data: AlternativeMovieTitlesMDB!
         let expectation = self.expectation(description: "Wait for data to load.")
-        MovieMDB.alternativeTitles(movieID: 7984) { _, titles in
+        MovieMDB.alternativeTitles(movieID: 7984, country: "CN") { _, titles in
             data = titles
             expectation.fulfill()
         }
@@ -104,11 +104,11 @@ final class MovieMDBTests: XCTestCase {
     func testImages() {
         var data: ImagesMDB?
         let expectation = self.expectation(description: "Wait for data to load.")
-        MovieMDB.images(movieID: 871) { _, imgs in
+        MovieMDB.images(movieID: 871, language: nil) { _, imgs in
             data = imgs
             expectation.fulfill()
         }
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 30, handler: nil)
         XCTAssertNotNil(data)
         XCTAssertNotNil(data?.backdrops)
         XCTAssertNotNil(data?.posters)

@@ -48,7 +48,7 @@ final class PersonMDBTests: XCTestCase {
         var data: PersonMovieCredits!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        PersonMDB.movie_credits(personID: 19429, language: nil) { _, personMovieCredits in
+        PersonMDB.movie_credits(personID: 19429, language: "en-US") { _, personMovieCredits in
             data = personMovieCredits
             expectation.fulfill()
         }

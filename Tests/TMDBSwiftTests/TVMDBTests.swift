@@ -136,7 +136,7 @@ final class TVMDBTests: XCTestCase {
         var data: [DiscoverTVMDB]!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVMDB.similar(tvShowID: 1399, page: nil, language: nil) { _, similar in
+        TVMDB.similar(tvShowID: 1399, page: 1, language: nil) { _, similar in
             data = similar
             expectation.fulfill()
         }
@@ -209,7 +209,7 @@ final class TVMDBTests: XCTestCase {
         var data: [TVMDB]!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVMDB.airingtoday(page: nil, language: nil, timezone: nil) { _, today in
+        TVMDB.airingtoday(page: nil, language: nil) { _, today in
             data = today
             expectation.fulfill()
         }
@@ -249,6 +249,19 @@ final class TVMDBTests: XCTestCase {
         let expectation = self.expectation(description: "Wait for data to load.")
 
         TVMDB.recommendations(tvShowID: 1399, page: nil, language: nil) { _, tv in
+            data = tv
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNotNil(data.first?.id)
+    }
+
+    func testQuery() {
+        var data: [TVMDB]!
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        TVMDB.query(queryType: .airingtoday, page: nil, language: nil) { _, tv in
             data = tv
             expectation.fulfill()
         }

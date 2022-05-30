@@ -65,11 +65,4 @@ open class DiscoverTVMDB: DiscoverMDB {
         genreIds = try? container.decode([Int]?.self, forKey: .genreIds)
         try super.init(from: decoder)
     }
-
-    open class func discoverTV(params: [DiscoverParam], completionHandler: @escaping (_ clientReturn: ClientReturn, _ data: [TVMDB]?) -> Void) {
-        Client.discover(baseURL: "tv", params: params, completion: { apiReturn in
-            let data: [TVMDB]? = apiReturn.decodeResults()
-            completionHandler(apiReturn, data)
-        })
-    }
 }

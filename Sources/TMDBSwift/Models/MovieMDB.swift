@@ -29,7 +29,7 @@ extension MovieMDB {
     /// Get the alternative titles for a specific movie id.
     public class func alternativeTitles(movieID: Int!, country: String? = nil, completion: @escaping (_ clientReturn: ClientReturn, _ altTitles: AlternativeMovieTitlesMDB?) -> Void) {
         // language changed to country to avoid modifiying multiple defined functions.
-        Client.Movies(String(movieID) + "/alternative_titles", page: nil, language: country) { apiReturn in
+        Client.Movies(String(movieID) + "/alternative_titles", page: nil, language: nil, region: country) { apiReturn in
             let data: AlternativeMovieTitlesMDB? = apiReturn.decode()
             completion(apiReturn, data)
         }

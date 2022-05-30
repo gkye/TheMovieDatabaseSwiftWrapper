@@ -10,19 +10,14 @@ import Foundation
 
 extension Client {
 
-    static func Person(_ urlType: String!, language: String?, page: Int?, append_to: [String]? = nil, completion: @escaping (ClientReturn) -> Void) {
+    static func Person(_ urlType: String!, language: String?, page: Int?, completion: @escaping (ClientReturn) -> Void) {
         let url = "https://api.themoviedb.org/3/person/" + urlType
         var parameters: [String: AnyObject] = [:]
         if language != nil { parameters["language"] = language as AnyObject? }
         if page != nil {parameters["page"] = page as AnyObject?}
-        if append_to != nil {
-            parameters["append_to_response"] = append_to?.joined(separator: ",") as AnyObject?
-        }
 
         networkRequest(url: url, parameters: parameters, completion: { apiReturn in
-
             completion(apiReturn)
         })
     }
-
 }

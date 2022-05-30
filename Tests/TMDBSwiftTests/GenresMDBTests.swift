@@ -46,7 +46,7 @@ final class GenresMDBTests: XCTestCase {
         var data: [MovieMDB]?
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        GenresMDB.genre_movies(genreId: 28, include_adult_movies: false, language: nil) { _, movies in
+        GenresMDB.genre_movies(genreId: 28, include_adult_movies: false, language: "en-US") { _, movies in
             data = movies
             expectation.fulfill()
         }

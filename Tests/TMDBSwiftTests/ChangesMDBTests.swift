@@ -26,7 +26,7 @@ final class ChangesMDBTests: XCTestCase {
         var data: [ChangesMDB]!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        ChangesMDB.changes(type: .movie) { _, responseData in
+        ChangesMDB.changes(type: .movie, page: 1, startDate: "2019-05-10", endDate: "2019-05-20") { _, responseData in
             data = responseData
             expectation.fulfill()
         }
