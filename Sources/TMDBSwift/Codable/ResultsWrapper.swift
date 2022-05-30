@@ -11,6 +11,12 @@ struct ResultsWrapper<T: Decodable>: Decodable {
     var results: [T]
 }
 
+// Temporarily adding in until we rework these wrappers
+struct ResultsStringWrapper<T: Decodable>: Decodable {
+    var id: String?
+    var results: [T]
+}
+
 struct GenresWrapper<T: Decodable>: Decodable {
     var id: Int?
     var genres: [T]
