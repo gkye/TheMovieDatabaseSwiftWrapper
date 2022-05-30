@@ -32,11 +32,11 @@ open class CompanyMDB: Decodable {
     }
 
     /// Get the list of movies associated with a particular company.
-    open class func companyMovies(companyId: Int!, language: String?, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [DiscoverMDB]?) -> Void) {
+    open class func companyMovies(companyId: Int!, language: String?, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> Void) {
         Client.Company(companyId: companyId, language: language, page: page) { apiReturn in
-            var movies: [DiscoverMDB]?
+            var movies: [MovieMDB]?
             if let data = apiReturn.data,
-               let decodedWrapper = try? JSONDecoder().decode(ResultsStringWrapper<DiscoverMDB>.self, from: data) {
+               let decodedWrapper = try? JSONDecoder().decode(ResultsStringWrapper<MovieMDB>.self, from: data) {
                 movies = decodedWrapper.results
             }
             completion(apiReturn, movies)

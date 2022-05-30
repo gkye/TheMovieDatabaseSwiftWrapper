@@ -9,7 +9,7 @@
 import Foundation
 
 extension Client {
-    static func Genres(listType: String, language: String?, genreId: Int, page: Double?, include_all_movies: Bool?, include_adult: Bool?, movieList: Bool?, completion: @escaping (ClientReturn) -> Void) {
+    static func Genres(listType: String, language: String?, genreId: Int, include_all_movies: Bool?, movieList: Bool?, completion: @escaping (ClientReturn) -> Void) {
         var parameters: [String: AnyObject] = [:]
         var url = ""
         if movieList == false || movieList == nil {
@@ -22,14 +22,8 @@ extension Client {
             parameters["language"] = language as AnyObject?
         }
 
-        if page != nil {
-            parameters["page"] = page as AnyObject?
-        }
         if include_all_movies != nil {
             parameters["include_all_movies"] = include_all_movies as AnyObject?
-        }
-        if include_adult != nil {
-            parameters["include_adult"] = include_adult as AnyObject?
         }
 
         networkRequest(url: url, parameters: parameters, completion: { apiReturn in

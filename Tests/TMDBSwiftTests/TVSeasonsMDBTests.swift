@@ -21,7 +21,7 @@ final class TVSeasonsMDBTests: XCTestCase {
         var data: TVCreditsMDB!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        TVSeasonsMDB.credits(tvShowId: 1399, seasonNumber: 1, language: nil) { _, responseData in
+        TVSeasonsMDB.credits(tvShowId: 1399, seasonNumber: 1, language: "en-US") { _, responseData in
             data = responseData
             expectation.fulfill()
         }

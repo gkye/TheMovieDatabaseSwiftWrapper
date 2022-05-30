@@ -37,10 +37,10 @@ final class CompanyMDBTests: XCTestCase {
     }
 
     func testCompanyMovies() {
-        var data: [DiscoverMDB]!
+        var data: [MovieMDB]!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        CompanyMDB.companyMovies(companyId: 5, language: nil, page: nil) { _, company in
+        CompanyMDB.companyMovies(companyId: 5, language: "en-US", page: 1) { _, company in
             data = company
             expectation.fulfill()
         }

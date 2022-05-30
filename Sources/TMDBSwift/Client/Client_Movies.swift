@@ -10,7 +10,7 @@ import Foundation
 
 extension Client {
 
-    static func Movies(_ urlType: String!, page: Int?, language: String?, region: String? = nil, append_to: [String]? = nil, completion: @escaping (ClientReturn) -> Void) {
+    static func Movies(_ urlType: String!, page: Int?, language: String?, region: String? = nil, completion: @escaping (ClientReturn) -> Void) {
 
         var parameters: [String: AnyObject] = [:]
 
@@ -22,18 +22,8 @@ extension Client {
             parameters["language"] = language as AnyObject?
         }
 
-        if urlType.contains("alternative_titles") {
-            if language != nil {
-                parameters["country"] = language as AnyObject?
-            }
-        }
-
         if let reg = region {
             parameters["region"] = reg as AnyObject
-        }
-
-        if append_to != nil {
-            parameters["append_to_response"] = append_to?.joined(separator: ",") as AnyObject?
         }
 
         let url = "https://api.themoviedb.org/3/movie/" + urlType

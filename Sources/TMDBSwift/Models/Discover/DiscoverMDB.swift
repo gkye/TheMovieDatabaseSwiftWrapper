@@ -81,12 +81,4 @@ open class DiscoverMDB: Decodable {
             }
         })
     }
-
-    /// Discover movie by rating
-    public class func discoverByRating(discoverType: DiscoverType, certification: String, certification_country: String, ceritfication_lte: String? = nil, ceritfication_gte: String? = nil, sort_by: String? = nil, page: Int?, language: String?, completionHandler: @escaping (ClientReturn) -> Void) {
-        Client.discover(baseURL: discoverType.rawValue, sort_by: sort_by, certification_country: certification_country, certification: certification, certification_lte: ceritfication_lte, include_adult: nil, include_video: nil, primary_release_year: nil, primary_release_date_gte: nil, primary_release_date_lte: nil, release_date_gte: nil, release_date_lte: nil, air_date_gte: nil, air_date_lte: nil, first_air_date_gte: nil, first_air_date_lte: nil, first_air_date_year: nil, language: language, page: page, timezone: nil, vote_average_gte: nil, vote_average_lte: nil, vote_count_gte: nil, vote_count_lte: nil, with_genres: nil, with_cast: nil, with_crew: nil, with_companies: nil, with_keywords: nil, with_people: nil, with_networks: nil, year: nil, certification_gte: ceritfication_gte) { apiReturn in
-            completionHandler(apiReturn)
-        }
-
-    }
 }
