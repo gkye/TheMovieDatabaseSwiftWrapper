@@ -6,8 +6,8 @@
 //  Copyright © 2018 George. All rights reserved.
 //
 
-import XCTest
 @testable import TMDBSwift
+import XCTest
 
 final class ChangesMDBTests: XCTestCase {
 

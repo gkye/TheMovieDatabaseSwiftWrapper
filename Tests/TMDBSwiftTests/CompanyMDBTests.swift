@@ -20,12 +20,32 @@ final class CompanyMDBTests: XCTestCase {
         var data: CompanyMDB!
         let expectation = self.expectation(description: "Wait for data to load.")
 
-        CompanyMDB.companyInfo(companyId: 100) { _, responseData in
-            data = responseData
+        CompanyMDB.companyInfo(companyId: 5) { _, company in
+            data = company
             expectation.fulfill()
         }
 
         waitForExpectations(timeout: expecationTimeout, handler: nil)
         XCTAssertNotNil(data)
+
+        XCTAssertEqual(data?.id, 5)
+        XCTAssertEqual(data?.name, "Columbia Pictures")
+        XCTAssertNotNil(data?.logo_path)
+        XCTAssertEqual(data?.homepage, "http://www.sonypictures.com")
+        XCTAssertNotNil(data?.description)
+        XCTAssertNotNil(data?.headquarters)
+    }
+
+    func testCompanyMovies() {
+        var data: [DiscoverMDB]!
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        CompanyMDB.companyMovies(companyId: 5, language: nil, page: nil) { _, company in
+            data = company
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertGreaterThan(data.count, 0)
     }
 }

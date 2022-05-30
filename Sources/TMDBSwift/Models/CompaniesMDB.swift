@@ -9,9 +9,9 @@
 import Foundation
 
 public struct ParentCompanyMDB: Decodable {
-    public  var name: String!
-    public  var id: Int!
-    public  var logo_path: String!
+    public var name: String!
+    public var id: Int!
+    public var logo_path: String!
 }
 
 open class CompanyMDB: Decodable {
@@ -28,6 +28,18 @@ open class CompanyMDB: Decodable {
         Client.Company(companyId: companyId) { apiReturn in
             let data: CompanyMDB? = apiReturn.decode()
             completion(apiReturn, data)
+        }
+    }
+
+    /// Get the list of movies associated with a particular company.
+    open class func companyMovies(companyId: Int!, language: String?, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [DiscoverMDB]?) -> Void) {
+        Client.Company(companyId: companyId, language: language, page: page) { apiReturn in
+            var movies: [DiscoverMDB]?
+            if let data = apiReturn.data,
+               let decodedWrapper = try? JSONDecoder().decode(ResultsStringWrapper<DiscoverMDB>.self, from: data) {
+                movies = decodedWrapper.results
+            }
+            completion(apiReturn, movies)
         }
     }
 }
