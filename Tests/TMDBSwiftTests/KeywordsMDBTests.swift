@@ -37,6 +37,6 @@ final class KeywordsMDBTests: XCTestCase {
             expectation.fulfill()
         }
         waitForExpectations(timeout: expecationTimeout, handler: nil)
-        XCTAssertNotNil(data)
+        XCTAssertGreaterThan(data.count, 0)
     }
 }
