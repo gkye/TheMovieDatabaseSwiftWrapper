@@ -16,7 +16,7 @@ jobs:
     - name: Xcode version
       run: /usr/bin/xcodebuild -version
 
-    - run: swift package --allow-writing-to-directory ./docs generate-documentation --target TMDBSwift --output-path ./docs --transform-for-static-hosting --hosting-base-path TheMovieDatabaseSwiftWrapper
+    - run: swift package --allow-writing-to-directory ./docs generate-documentation --target TMDBSwift -disable-indexing --output-path ./docs --transform-for-static-hosting --hosting-base-path TheMovieDatabaseSwiftWrapper
     
     - name: Configure git
       run: |
