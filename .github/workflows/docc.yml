@@ -13,11 +13,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: swift package --allow-writing-to-directory ./docs generate-documentation --target TMDBSwift --disable-indexing --output-path ./docs --transform-for-static-hosting --hosting-base-path TheMovieDatabaseSwiftWrapper
+    - name: Compile Documentation
+      run: swift package --allow-writing-to-directory ./docs generate-documentation --target TMDBSwift --disable-indexing --output-path ./docs --transform-for-static-hosting --hosting-base-path TheMovieDatabaseSwiftWrapper
     
     - name: Configure git
       run: |
-        git config --global user.email "no-reply@tmdbswiftwrapper.com"
+        git config --global user.email "tmdbswift+github-actions[bot]@users.noreply.github.com"
         git config --global user.name "tmdb-bot"
         
     - name: Commit Changes

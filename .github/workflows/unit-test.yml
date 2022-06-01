@@ -7,16 +7,10 @@ on:
 
 jobs:
   test:
-    runs-on: macos-12
+    runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
     - uses: actions/checkout@v2
-
-    - name: Select Xcode
-      run: sudo xcode-select -switch /Applications/Xcode_13.3.1.app
-
-    - name: Xcode version
-      run: /usr/bin/xcodebuild -version
 
     - run: swift test
 
