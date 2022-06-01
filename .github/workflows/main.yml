@@ -17,3 +17,14 @@ jobs:
       run: /usr/bin/xcodebuild -version
 
     - run: swift package --allow-writing-to-directory ./docs generate-documentation --target TMDBSwift --output-path ./docs --transform-for-static-hosting --hosting-base-path TheMovieDatabaseSwiftWrapper
+    
+    - name: Configure git
+      run: |
+        git config --global user.email "no-reply@tmdbswiftwrapper.com"
+        git config --global user.name "tmdb-bot"
+        
+    - name: Commit Changes
+      run: |
+        git add docs/*
+        git commit -m "Updating Documentation"
+        git push origin master
