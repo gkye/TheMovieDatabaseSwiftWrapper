@@ -2,19 +2,16 @@ name: DocC
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - master
 
 jobs:
   Publish:
-    runs-on: macos-12
+    runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
     - uses: actions/checkout@v2
-
-    - name: Select Xcode
-      run: sudo xcode-select -switch /Applications/Xcode_13.3.1.app
-
-    - name: Xcode version
-      run: /usr/bin/xcodebuild -version
 
     - run: swift package --allow-writing-to-directory ./docs generate-documentation --target TMDBSwift --disable-indexing --output-path ./docs --transform-for-static-hosting --hosting-base-path TheMovieDatabaseSwiftWrapper
     
