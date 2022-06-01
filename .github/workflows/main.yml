@@ -7,6 +7,11 @@ jobs:
   Publish:
     runs-on: ubuntu-latest
     steps:
+    
+    - uses: swift-actions/setup-swift@v1
+      with:
+        swift-version: '5'
+    
     - uses: fwcd/swift-docc-action@v1
       with:
         target: TMDBSwift
