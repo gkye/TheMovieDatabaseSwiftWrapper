@@ -5,17 +5,20 @@ on:
 
 jobs:
   Publish:
-    runs-on: ubuntu-latest
+    runs-on: macos-12
+    timeout-minutes: 30
     steps:
-    
-    - uses: swift-actions/setup-swift@v1
-      with:
-        swift-version: '5'
-    
-    - uses: fwcd/swift-docc-action@v1
-      with:
-        target: TMDBSwift
-        output: ./docs
-        hosting-base-path: http://dpearce.github.io/TheMovieDatabaseSwiftWrapper/
-        disable-indexing: 'true'
-        transform-for-static-hosting: 'true'
+    - uses: actions/checkout@v2
+
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_13.3.1.app
+
+    - name: Xcode version
+      run: /usr/bin/xcodebuild -version
+
+    - run: swift swift package --allow-writing-to-directory ./docs \
+    generate-documentation --target TMDBSwift --output-path ./docs
+
+
+
+
