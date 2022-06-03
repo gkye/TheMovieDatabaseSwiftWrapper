@@ -9,7 +9,6 @@
 import Foundation
 
 extension Client {
-    //http://image.tmdb.org/t/p/w500/8uO0gUM8aNqYLs1OsTBQiXu0fEv.jpg
 
     static func Configuration(completion: @escaping (ClientReturn) -> Void) {
         let parameters: [String: AnyObject] = [:]
@@ -19,5 +18,4 @@ extension Client {
             completion(apiReturn)
         })
     }
-
 }

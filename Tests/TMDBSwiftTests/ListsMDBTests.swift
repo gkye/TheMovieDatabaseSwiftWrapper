@@ -11,7 +11,6 @@ import XCTest
 final class ListsMDBTests: XCTestCase {
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
         TMDBConfig.apikey = "8a7a49369d1af6a70ec5a6787bbfcf79"
     }
 
@@ -24,7 +23,7 @@ final class ListsMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 

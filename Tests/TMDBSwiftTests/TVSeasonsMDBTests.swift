@@ -5,13 +5,10 @@
 //  Created by Dylan Pearce on 5/27/22.
 //
 
-import XCTest
 @testable import TMDBSwift
+import XCTest
 
 final class TVSeasonsMDBTests: XCTestCase {
-
-    let expecationTimeout: TimeInterval = 50
-
     override func setUp() {
         super.setUp()
         TMDBConfig.apikey = "8a7a49369d1af6a70ec5a6787bbfcf79"

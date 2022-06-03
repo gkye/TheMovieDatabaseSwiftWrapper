@@ -20,16 +20,16 @@ public struct SpokenLanguages: Decodable {
     public var name: String!
 }
 
-open class MovieDetailedMDB: MovieMDB {
-    open var belongs_to_collection: BelongsToCollectionMovieMDB?
-    open var budget: Int?
-    open var homepage: String?
-    open var imdb_id: Int!
-    open var production_companies: [KeywordsMDB]? = []
-    open var production_countries: [KeywordsMDB]? = []
-    open var revenue: Int?
-    open var runtime: Int?
-    open var spoken_languages: [SpokenLanguages]? = []
-    open var status: String!
-    open var tagline: String!
+public class MovieDetailedMDB: MovieMDB {
+    public var belongs_to_collection: BelongsToCollectionMovieMDB?
+    public var budget: Int?
+    public var homepage: String?
+    public var imdb_id: Int!
+    public var production_companies: [KeywordsMDB]? = []
+    public var production_countries: [KeywordsMDB]? = []
+    public var revenue: Int?
+    public var runtime: Int?
+    public var spoken_languages: [SpokenLanguages]? = []
+    public var status: String!
+    public var tagline: String!
 }

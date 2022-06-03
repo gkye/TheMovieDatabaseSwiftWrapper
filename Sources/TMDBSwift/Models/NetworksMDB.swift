@@ -9,7 +9,6 @@
 import Foundation
 
 public struct NetworksMDB: Decodable {
-
     public var id: Double!
     public var name: String!
 

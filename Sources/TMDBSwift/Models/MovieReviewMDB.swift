@@ -8,11 +8,9 @@
 
 import Foundation
 
-open class MovieReviewsMDB: Decodable {
-
-    open var id: String!
-    open var author: String!
-    open var content: String!
-    open var url: String!
-
+public class MovieReviewsMDB: Decodable {
+    public var id: String!
+    public var author: String!
+    public var content: String!
+    public var url: String!
 }

@@ -31,5 +31,4 @@ extension Client {
             completion(apiReturn)
         }
     }
-
 }

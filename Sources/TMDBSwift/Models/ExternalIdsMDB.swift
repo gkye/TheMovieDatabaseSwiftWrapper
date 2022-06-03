@@ -7,13 +7,12 @@
 //
 
 import Foundation
-open class ExternalIdsMDB: Decodable {
 
-    open var  imdb_id: String?
-    open var  freebase_mid: String?
-    open var  id: Int!
-    open var  freebase_id: String?
-    open var  tvdb_id: Int?
-    open var  tvrage_id: Int?
-
+public class ExternalIdsMDB: Decodable {
+    public var  imdb_id: String?
+    public var  freebase_mid: String?
+    public var  id: Int!
+    public var  freebase_id: String?
+    public var  tvdb_id: Int?
+    public var  tvrage_id: Int?
 }

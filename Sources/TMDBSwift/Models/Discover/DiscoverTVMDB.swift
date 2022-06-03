@@ -26,27 +26,23 @@ public enum TVGenres: String {
     case Talk = "10767"
     case WarPolitics = "10768"
     case Western = "37"
-
 }
 
 public enum DiscoverSortByTV: String {
-
     case popularity_asc = "popularity.asc"
-    case  popularity_desc = "popularity_desc"
+    case popularity_desc = "popularity_desc"
     case vote_average_asc = "vote_average.asc"
     case vote_average_desc = "vote_average.desc"
-
     case first_air_date_desc = "first_air_date.desc"
     case first_air_date_asc = "first_air_date.asc"
 }
 
-open class DiscoverTVMDB: DiscoverMDB {
-
-    open var name: String!
-    open var origin_country: [String]?
-    open var original_name: String?
-    open var first_air_date: String?
-    open var genreIds: [Int]?
+public class DiscoverTVMDB: DiscoverMDB {
+    public var name: String!
+    public var origin_country: [String]?
+    public var original_name: String?
+    public var first_air_date: String?
+    public var genreIds: [Int]?
 
     enum CodingKeys: String, CodingKey {
         case name

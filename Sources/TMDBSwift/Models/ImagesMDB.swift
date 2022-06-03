@@ -8,15 +8,14 @@
 
 import Foundation
 
-open class ImageMDB: Decodable {
-    open var aspect_ratio: Double?
-    open var file_path: String?
-    open var height: Int?
-    open var iso_639_1: String?
-    open var vote_average: Double?
-    open var vote_count: Int?
-    open var width: Int?
-
+public class ImageMDB: Decodable {
+    public var aspect_ratio: Double?
+    public var file_path: String?
+    public var height: Int?
+    public var iso_639_1: String?
+    public var vote_average: Double?
+    public var vote_count: Int?
+    public var width: Int?
 }
 
 public struct ImagesMDB: Decodable {

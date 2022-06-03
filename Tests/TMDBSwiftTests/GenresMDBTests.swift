@@ -5,14 +5,12 @@
 //  Created by Dylan Pearce on 5/30/22.
 //
 
-import XCTest
 @testable import TMDBSwift
+import XCTest
 
 final class GenresMDBTests: XCTestCase {
-
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
         TMDBConfig.apikey = "8a7a49369d1af6a70ec5a6787bbfcf79"
     }
 
@@ -25,7 +23,7 @@ final class GenresMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -38,7 +36,7 @@ final class GenresMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -51,7 +49,7 @@ final class GenresMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
         XCTAssertGreaterThan(data?.count ?? 0, 0)
     }
 }

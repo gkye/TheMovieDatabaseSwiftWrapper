@@ -9,9 +9,6 @@
 import XCTest
 
 final class CollectionMDBTests: XCTestCase {
-
-    let expecationTimeout: TimeInterval = 50
-
     override func setUp() {
         super.setUp()
         TMDBConfig.apikey = "8a7a49369d1af6a70ec5a6787bbfcf79"

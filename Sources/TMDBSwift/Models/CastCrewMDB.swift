@@ -8,17 +8,17 @@
 
 import Foundation
 
-open class CastCrewCommonMDB: Decodable {
-    open var credit_id: String!
-    open var id: Int!
-    open var name: String!
-    open var profile_path: String?
+public class CastCrewCommonMDB: Decodable {
+    public var credit_id: String!
+    public var id: Int!
+    public var name: String!
+    public var profile_path: String?
 }
 
 // Common obj between both TVCredits & MovieCredits
-open class CrewMDB: CastCrewCommonMDB {
-    open var department: String!
-    open var job: String!
+public class CrewMDB: CastCrewCommonMDB {
+    public var department: String!
+    public var job: String!
 
     enum CodingKeys: String, CodingKey {
         case department
@@ -33,9 +33,9 @@ open class CrewMDB: CastCrewCommonMDB {
     }
 }
 
-open class TVCastMDB: CastCrewCommonMDB {
-    open var character: String!
-    open var order: Int!
+public class TVCastMDB: CastCrewCommonMDB {
+    public var character: String!
+    public var order: Int!
 
     enum CodingKeys: String, CodingKey {
         case character
@@ -50,7 +50,7 @@ open class TVCastMDB: CastCrewCommonMDB {
     }
 }
 
-open class TVCreditsMDB: Decodable {
-    open var cast = [TVCastMDB]()
-    open var crew = [CrewMDB]()
+public class TVCreditsMDB: Decodable {
+    public var cast = [TVCastMDB]()
+    public var crew = [CrewMDB]()
 }

@@ -32,12 +32,10 @@ public enum MovieGenres: String {
 }
 
 public enum DiscoverSortByMovie: String {
-    // FIND WAY TO INHERIT FROM MAIN
     case popularity_asc = "popularity.asc"
-    case  popularity_desc = "popularity.desc"
+    case popularity_desc = "popularity.desc"
     case vote_average_asc = "vote_average.asc"
     case vote_average_desc = "vote_average.desc"
-
     case release_date_asc = "release_date.asc"
     case release_date_desc = "release_date.desc"
     case revenue_asc = "revenue.asc"
@@ -51,12 +49,12 @@ public enum DiscoverSortByMovie: String {
 
 }
 
-open class DiscoverMovieMDB: DiscoverMDB {
-    open var title: String?
-    open var video: Bool?
-    open var adult: Bool?
-    open var release_date: String?
-    open var original_title: String?
+public class DiscoverMovieMDB: DiscoverMDB {
+    public var title: String?
+    public var video: Bool?
+    public var adult: Bool?
+    public var release_date: String?
+    public var original_title: String?
 
     enum CodingKeys: String, CodingKey {
         case title
@@ -77,7 +75,7 @@ open class DiscoverMovieMDB: DiscoverMDB {
     }
 
     /// Discover movies by different types of data like average rating, number of votes, genres and certifications. You can get a valid list of certifications from the /certifications method. Please note, when using certification \ certification.lte you must also specify certification_country. These two parameters work together in order to filter the results.
-    open class func discoverMovies(params: [DiscoverParam], completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> Void) {
+    public static func discoverMovies(params: [DiscoverParam], completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> Void) {
         Client.discover(baseURL: "movie", params: params, completion: { apiReturn in
             let data: [MovieMDB]? = apiReturn.decodeResults()
             completion(apiReturn, data)

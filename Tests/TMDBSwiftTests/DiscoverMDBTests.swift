@@ -9,15 +9,13 @@
 import XCTest
 
 final class DiscoverMDBTests: XCTestCase {
-    let expecationTimeout: TimeInterval = 50
-
     override func setUp() {
         super.setUp()
         TMDBConfig.apikey = "8a7a49369d1af6a70ec5a6787bbfcf79"
     }
 
     func testDiscoverTV() {
-        var tv:  [TVMDB]!
+        var tv: [TVMDB]!
         let expectation = self.expectation(description: "Wait for data to load.")
 
         DiscoverMDB.discover(discoverType: .tv, params: []) { _, _, tvData in
@@ -30,7 +28,7 @@ final class DiscoverMDBTests: XCTestCase {
     }
 
     func testDiscoverMovie() {
-        var movie:  [MovieMDB]!
+        var movie: [MovieMDB]!
         let expectation = self.expectation(description: "Wait for data to load.")
 
         DiscoverMDB.discover(discoverType: .movie, params: []) { _, movieData, _ in
