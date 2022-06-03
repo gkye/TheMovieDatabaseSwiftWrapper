@@ -8,9 +8,9 @@
 
 import Foundation
 
-open class MovieReleaseDatesMDB: Decodable {
-    open var iso_3166_1: String?
-    open var release_dates = [ReleaseDates]()
+public class MovieReleaseDatesMDB: Decodable {
+    public var iso_3166_1: String?
+    public var release_dates = [ReleaseDates]()
 }
 
 // move inside class?

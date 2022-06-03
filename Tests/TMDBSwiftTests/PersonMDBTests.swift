@@ -6,20 +6,13 @@
 //  Copyright © 2018 George. All rights reserved.
 //
 
-import XCTest
 @testable import TMDBSwift
+import XCTest
 
 final class PersonMDBTests: XCTestCase {
-
-    let expecationTimeout: TimeInterval = 50
-
     override func setUp() {
         super.setUp()
         TMDBConfig.apikey = "8a7a49369d1af6a70ec5a6787bbfcf79"
-    }
-
-    override func tearDown() {
-        super.tearDown()
     }
 
     func testPersonById() {

@@ -6,10 +6,11 @@
 //  Copyright © 2016 George Kye. All rights reserved.
 //
 
+import Foundation
+
 // MARK: Person
 
 public struct PersonMDB: Decodable {
-
     public var adult: Bool?
     public var also_known_as: [String]?
     public var biography: String?
@@ -102,55 +103,52 @@ public struct PersonMDB: Decodable {
     }
 }
 
-import Foundation
-
 // MARK: Movie Crew & TV Crew common
-open class PersonCrewCommon: Decodable {
-    open var poster_path: String?
-    open var credit_id: String!
-    open var department: String!
-    open var id: Int!
-    open var job: String!
+public class PersonCrewCommon: Decodable {
+    public var poster_path: String?
+    public var credit_id: String!
+    public var department: String!
+    public var id: Int!
+    public var job: String!
 }
 
 // MARK: Movie Crew
-open class PersonMovieCrew: PersonCrewCommon {
-    open var adult: Bool!
-    open var original_title: String!
-    open var release_date: String!
-    open var title: String!
+public class PersonMovieCrew: PersonCrewCommon {
+    public var adult: Bool!
+    public var original_title: String!
+    public var release_date: String!
+    public var title: String!
 }
 
 // MARK: TV Crew
-open class PersonTVCrew: PersonCrewCommon {
-    open var episode_count: Int!
-    open var first_air_date: String!
-    open var name: String!
-    open var original_name: String!
+public class PersonTVCrew: PersonCrewCommon {
+    public var episode_count: Int!
+    public var first_air_date: String!
+    public var name: String!
+    public var original_name: String!
 }
 
-open class PersonMovieTVCastCommon: Decodable {
-    open var poster_path: String?
-    open var credit_id: String!
-    open var id: Int!
-    open var character: String!
+public class PersonMovieTVCastCommon: Decodable {
+    public var poster_path: String?
+    public var credit_id: String!
+    public var id: Int!
+    public var character: String!
 }
 
 // MARK: TV CAST
-open class PersonTVCast: PersonMovieTVCastCommon {
-
-    open var episode_count: Int!
-    open var first_air_date: String!
-    open var name: String!
-    open var original_name: String!
+public class PersonTVCast: PersonMovieTVCastCommon {
+    public var episode_count: Int!
+    public var first_air_date: String!
+    public var name: String!
+    public var original_name: String!
 }
 
 // MARK: Movie Cast
-open class PersonMovieCast: PersonMovieTVCastCommon {
-    open var adult: Bool!
-    open var original_title: String!
-    open var release_date: String!
-    open var title: String!
+public class PersonMovieCast: PersonMovieTVCastCommon {
+    public var adult: Bool!
+    public var original_title: String!
+    public var release_date: String!
+    public var title: String!
 }
 
 public struct PersonTVCredits: Decodable {
@@ -160,14 +158,12 @@ public struct PersonTVCredits: Decodable {
 }
 
 public struct PersonMovieCredits: Decodable {
-
     public var crew: [PersonMovieCrew]
     public var cast: [PersonMovieCast]
     public var id: Int!
 }
 
 public struct PersonCreditsCombined: Decodable {
-
     public var tvCredits: (crew: [PersonTVCrew]?, cast: [PersonTVCast]?)
     public var movieCredits: (crew: [PersonMovieCrew]?, cast: [PersonMovieCast]?)
     public var id: Int?
@@ -215,7 +211,6 @@ public class TaggedImageMDB: ImageMDB {
 }
 
 public struct TaggedImagesMDB: Decodable {
-
     public var images: [TaggedImageMDB] = []
     public var id: Int!
     public var pageResults: PageResultsMDB!

@@ -54,7 +54,7 @@ struct Client {
 }
 
 class HTTPRequest {
-    class func request(_ url: String, httpMethod: String = "GET", parameters: [String: AnyObject], completionHandler: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) {
+   static func request(_ url: String, httpMethod: String = "GET", parameters: [String: AnyObject], completionHandler: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) {
         let parameterString = parameters.stringFromHttpParameters()
         let urlString = url + "?" + parameterString
         let requestURL = URL(string: urlString)!
@@ -92,7 +92,6 @@ extension String {
 
         return self.addingPercentEncoding(withAllowedCharacters: allowedCharacters)
     }
-
 }
 
 extension Dictionary {

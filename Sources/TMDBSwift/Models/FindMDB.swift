@@ -9,7 +9,6 @@
 import Foundation
 
 public enum ExternalIdTypes: String {
-
     case imdb_id
     case freebase_mid
     case freebase_id
@@ -18,8 +17,8 @@ public enum ExternalIdTypes: String {
     case id
 }
 
-open class KnownForMovie: DiscoverMovieMDB {
-    open var media_type: String!
+public class KnownForMovie: DiscoverMovieMDB {
+    public var media_type: String!
 
     enum CodingKeys: String, CodingKey {
         case media_type
@@ -32,8 +31,8 @@ open class KnownForMovie: DiscoverMovieMDB {
     }
 }
 
-open class KnownForTV: DiscoverTVMDB {
-    open var media_type: String!
+public class KnownForTV: DiscoverTVMDB {
+    public var media_type: String!
 
     enum CodingKeys: String, CodingKey {
         case media_type
@@ -77,9 +76,6 @@ public struct PersonResults: Decodable {
 }
 
 public struct FindMDB: Decodable {
-
-    // MARK: FindMDB all results returned are optional (Most results will return one section only
-
     public var movie_results = [MovieMDB]()
     public var person_results: [PersonResults]?
     public var tv_results =  [TVMDB]()
@@ -89,12 +85,10 @@ public struct FindMDB: Decodable {
     /**
      The find method makes it easy to search for objects in our database by an external id. For instance, an IMDB ID. This will search all objects (movies, TV shows and people) and return the results in a single response.
      */
-
     public static func find(id: String, external_source: ExternalIdTypes, completion: @escaping (_ clientReturn: ClientReturn, _ data: FindMDB?) -> Void) {
         Client.Find(external_id: id, external_source: external_source.rawValue) { apiReturn in
             let data: FindMDB? = apiReturn.decode()
             completion(apiReturn, data)
         }
     }
-
 }

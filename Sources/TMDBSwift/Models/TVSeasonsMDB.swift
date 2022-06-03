@@ -9,7 +9,6 @@
 import Foundation
 
 public struct TVSeasonsMDB: Decodable {
-
     public var air_date: String?
     public var episodes: [TVEpisodesMDB]?
     public var name: String?

@@ -8,12 +8,12 @@
 
 import Foundation
 
-open class MovieListMDB: Decodable {
-    open var description: String?
-    open var favorite_count: Int?
-    open var item_count: Int!
-    open var iso_639_1: String!
-    open var name: String!
-    open var poster_path: String?
-    open var id: Int!
+public class MovieListMDB: Decodable {
+    public var description: String?
+    public var favorite_count: Int?
+    public var item_count: Int!
+    public var iso_639_1: String!
+    public var name: String!
+    public var poster_path: String?
+    public var id: Int!
 }

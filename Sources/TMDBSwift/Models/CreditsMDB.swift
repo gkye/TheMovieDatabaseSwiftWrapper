@@ -72,5 +72,4 @@ public struct CreditsMDB: Decodable {
             completion(apiReturn, data)
         }
     }
-
 }

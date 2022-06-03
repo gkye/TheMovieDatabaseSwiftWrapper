@@ -12,10 +12,10 @@ public enum GenresListType: String {
     case tv, movie
 }
 
-open class GenresMDB: KeywordsMDB {
+public class GenresMDB: KeywordsMDB {
 
     /// Get the list of tv or movie genres.
-    open class func genres(listType: GenresListType, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [GenresMDB]?) -> Void) {
+    public static func genres(listType: GenresListType, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [GenresMDB]?) -> Void) {
         Client.Genres(listType: listType.rawValue, language: language, genreId: 0, include_all_movies: nil, movieList: false) { apiReturn in
             var genres: [GenresMDB]?
             if let data = apiReturn.data,
@@ -27,7 +27,7 @@ open class GenresMDB: KeywordsMDB {
     }
 
     /// Get the list of movies for a particular genre by id. By default, only movies with 10 or more votes are included.
-    open class func genre_movies(genreId: Int, include_adult_movies: Bool, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> Void) {
+    public static func genre_movies(genreId: Int, include_adult_movies: Bool, language: String?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> Void) {
         Client.Genres(listType: "movies", language: language, genreId: genreId, include_all_movies: true, movieList: true) { apiReturn in
             let data: [MovieMDB]? = apiReturn.decodeResults()
             completion(apiReturn, data)

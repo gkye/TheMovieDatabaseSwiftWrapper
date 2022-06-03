@@ -14,17 +14,17 @@ public struct ParentCompanyMDB: Decodable {
     public var logo_path: String!
 }
 
-open class CompanyMDB: Decodable {
-    open var description: String?
-    open var headquarters: String?
-    open var homepage: String!
-    open var id: Int!
-    open var logo_path: String!
-    open var name: String!
-    open var parent_company: ParentCompanyMDB?
+public class CompanyMDB: Decodable {
+    public var description: String?
+    public var headquarters: String?
+    public var homepage: String!
+    public var id: Int!
+    public var logo_path: String!
+    public var name: String!
+    public var parent_company: ParentCompanyMDB?
 
     /// This method is used to retrieve all of the basic information about a company.
-    open class func companyInfo(companyId: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: CompanyMDB?) -> Void) {
+    public static func companyInfo(companyId: Int!, completion: @escaping (_ clientReturn: ClientReturn, _ data: CompanyMDB?) -> Void) {
         Client.Company(companyId: companyId) { apiReturn in
             let data: CompanyMDB? = apiReturn.decode()
             completion(apiReturn, data)
@@ -32,7 +32,7 @@ open class CompanyMDB: Decodable {
     }
 
     /// Get the list of movies associated with a particular company.
-    open class func companyMovies(companyId: Int!, language: String?, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> Void) {
+    public static func companyMovies(companyId: Int!, language: String?, page: Int?, completion: @escaping (_ clientReturn: ClientReturn, _ data: [MovieMDB]?) -> Void) {
         Client.Company(companyId: companyId, language: language, page: page) { apiReturn in
             var movies: [MovieMDB]?
             if let data = apiReturn.data,

@@ -14,10 +14,6 @@ final class NetworksMDBTests: XCTestCase {
         TMDBConfig.apikey = "8a7a49369d1af6a70ec5a6787bbfcf79"
     }
 
-    override func tearDown() {
-        super.tearDown()
-    }
-
     func testNetworks() {
         var data: NetworksMDB!
         let expectation = self.expectation(description: "Wait for data to load.")
@@ -27,7 +23,7 @@ final class NetworksMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: 50, handler: nil)
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
         XCTAssertEqual(data?.name, "Fuji TV")
         XCTAssertEqual(data?.id, 1.0)
     }

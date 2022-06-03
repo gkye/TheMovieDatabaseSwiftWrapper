@@ -13,8 +13,8 @@ public struct GenreMDB: Decodable {
     let name: String?
 }
 
-open class MovieMDB: DiscoverMovieMDB {
-    open var genres: [GenreMDB]?
+public class MovieMDB: DiscoverMovieMDB {
+    public var genres: [GenreMDB]?
 
     enum CodingKeys: String, CodingKey {
         case genres

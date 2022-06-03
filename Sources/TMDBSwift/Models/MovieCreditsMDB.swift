@@ -8,9 +8,9 @@
 
 import Foundation
 
-open class MovieCreditsMDB: Decodable {
-    open var cast: [MovieCastMDB]?
-    open var crew: [CrewMDB]?
+public class MovieCreditsMDB: Decodable {
+    public var cast: [MovieCastMDB]?
+    public var crew: [CrewMDB]?
 
     enum CodingKeys: String, CodingKey {
         case cast
@@ -24,10 +24,10 @@ open class MovieCreditsMDB: Decodable {
     }
 }
 
-open class MovieCastMDB: CastCrewCommonMDB {
-    open var cast_id: Int!
-    open var character: String!
-    open var order: Int!
+public class MovieCastMDB: CastCrewCommonMDB {
+    public var cast_id: Int!
+    public var character: String!
+    public var order: Int!
 
     enum CodingKeys: String, CodingKey {
         case cast_id

@@ -8,7 +8,6 @@
 import Foundation
 
 public enum DiscoverSortBy: String {
-
     case popularity_asc = "popularity.asc"
     case popularity_desc = "popularity_desc"
     case vote_average_asc = "vote_average.asc"
@@ -54,22 +53,22 @@ public enum DiscoverParam {
     case certification_gte(String?)
 }
 
-open class DiscoverMDB: Decodable {
-    open var overview: String?
-    open var popularity: Double?
-    open var id: Int!
-    open var backdrop_path: String?
-    open var vote_average: Double?
-    open var original_language: String?
-    open var vote_count: Double?
-    open var poster_path: String?
-    open var genre_ids: [Int]?
+public class DiscoverMDB: Decodable {
+    public var overview: String?
+    public var popularity: Double?
+    public var id: Int!
+    public var backdrop_path: String?
+    public var vote_average: Double?
+    public var original_language: String?
+    public var vote_count: Double?
+    public var poster_path: String?
+    public var genre_ids: [Int]?
 
     /// Discover a movie or tv shows by different types of data like average rating, number of votes, genres and certifications.
     /// - Parameters:
     ///   - discoverType: TV or Movie
     ///   - params: Optional parameters. See more at https://developers.themoviedb.org/3/discover
-    public class func discover(discoverType: DiscoverType, params: [DiscoverParam], completionHandler: @escaping (ClientReturn, _ movieData: [MovieMDB]?, _ tvData: [TVMDB]?) -> Void) {
+    public static func discover(discoverType: DiscoverType, params: [DiscoverParam], completionHandler: @escaping (ClientReturn, _ movieData: [MovieMDB]?, _ tvData: [TVMDB]?) -> Void) {
         Client.discover(baseURL: discoverType.rawValue, params: params, completion: { apiReturn in
             let type = discoverType.rawValue.lowercased()
             if type == "tv"{

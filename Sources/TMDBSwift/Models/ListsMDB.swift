@@ -9,7 +9,6 @@
 import Foundation
 
 public struct ListsMDB: Decodable {
-
     public var created_by: String!
     public var description: String?
     public var favorite_count: Int!
@@ -27,6 +26,5 @@ public struct ListsMDB: Decodable {
             let data: ListsMDB? = apiReturn.decode()
             completion(apiReturn, data)
         }
-
     }
 }

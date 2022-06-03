@@ -6,20 +6,13 @@
 //  Copyright © 2017 George. All rights reserved.
 //
 
-import XCTest
 @testable import TMDBSwift
+import XCTest
 
 final class FindMDBTests: XCTestCase {
-
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
         TMDBConfig.apikey = "8a7a49369d1af6a70ec5a6787bbfcf79"
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
     }
 
     func testFind() {
@@ -31,7 +24,7 @@ final class FindMDBTests: XCTestCase {
             expectation.fulfill()
         })
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
         XCTAssertNotNil(data)
         guard let findData = data else { return }
         XCTAssertNotNil(findData.person_results)

@@ -9,8 +9,6 @@
 import XCTest
 
 final class ConfigurationsMDBTests: XCTestCase {
-    let expecationTimeout: TimeInterval = 50
-
     override func setUp() {
         super.setUp()
         TMDBConfig.apikey = "8a7a49369d1af6a70ec5a6787bbfcf79"
@@ -25,7 +23,7 @@ final class ConfigurationsMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
         XCTAssertNotNil(data)
         XCTAssertGreaterThan(data?.backdrop_sizes?.count ?? 0, 0)
         XCTAssertEqual(data?.base_url, "http://image.tmdb.org/t/p/")

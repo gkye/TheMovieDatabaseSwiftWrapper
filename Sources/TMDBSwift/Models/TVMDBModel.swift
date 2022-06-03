@@ -8,13 +8,13 @@
 
 import Foundation
 
-open class ContentRatingsMDB: Decodable {
-  open var iso_3166_1: String?
-  open var rating: String?
+public class ContentRatingsMDB: Decodable {
+    public var iso_3166_1: String?
+    public var rating: String?
 }
 
-open class TVMDB: DiscoverTVMDB {
-    open var genres: [GenresMDB]?
+public class TVMDB: DiscoverTVMDB {
+    public var genres: [GenresMDB]?
 
     enum CodingKeys: String, CodingKey {
         case genres
