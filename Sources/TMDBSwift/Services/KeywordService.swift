@@ -25,7 +25,7 @@ public final class KeywordService {
         var components = URLComponents()
         components.scheme = TMDBConfig.apiScheme
         components.host = TMDBConfig.apiHost
-        components.path = "/search/keyword"
+        components.path = "/3/search/keyword"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
             URLQueryItem(name: "language", value: TMDBConfig.language),
@@ -50,7 +50,7 @@ public final class KeywordService {
         var components = URLComponents()
         components.scheme = TMDBConfig.apiScheme
         components.host = TMDBConfig.apiHost
-        components.path = "/movie/\(movieID)/keywords"
+        components.path = "/3/movie/\(movieID)/keywords"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
             URLQueryItem(name: "language", value: TMDBConfig.language),
@@ -73,7 +73,7 @@ public final class KeywordService {
         var components = URLComponents()
         components.scheme = TMDBConfig.apiScheme
         components.host = TMDBConfig.apiHost
-        components.path = "/tv/\(tvID)/keywords"
+        components.path = "/3/tv/\(tvID)/keywords"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
             URLQueryItem(name: "language", value: TMDBConfig.language),
@@ -96,7 +96,7 @@ public final class KeywordService {
         var components = URLComponents()
         components.scheme = TMDBConfig.apiScheme
         components.host = TMDBConfig.apiHost
-        components.path = "/discover/tv"
+        components.path = "/3/discover/tv"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
             URLQueryItem(name: "language", value: TMDBConfig.language),
@@ -121,7 +121,7 @@ public final class KeywordService {
         var components = URLComponents()
         components.scheme = TMDBConfig.apiScheme
         components.host = TMDBConfig.apiHost
-        components.path = "/discover/movie"
+        components.path = "/3/discover/movie"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
             URLQueryItem(name: "language", value: TMDBConfig.language),
@@ -146,7 +146,7 @@ public final class KeywordService {
         var components = URLComponents()
         components.scheme = TMDBConfig.apiScheme
         components.host = TMDBConfig.apiHost
-        components.path = "/keyword/\(keywordID)"
+        components.path = "/3/keyword/\(keywordID)"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
             URLQueryItem(name: "language", value: TMDBConfig.language),

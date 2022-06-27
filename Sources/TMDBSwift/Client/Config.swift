@@ -23,5 +23,5 @@ public struct TMDBConfig {
     static let apiScheme = "https"
 
     /// API host.
-    static let apiHost = "api.themoviedb.org/3"
+    static let apiHost = "api.themoviedb.org"
 }

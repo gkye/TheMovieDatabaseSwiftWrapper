@@ -29,7 +29,7 @@ public final class MovieService {
         var components = URLComponents()
         components.scheme = TMDBConfig.apiScheme
         components.host = TMDBConfig.apiHost
-        components.path = "/movie/\(id)"
+        components.path = "/3/movie/\(id)"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
             URLQueryItem(name: "language", value: TMDBConfig.language),
@@ -79,7 +79,7 @@ public final class MovieService {
         var components = URLComponents()
         components.scheme = TMDBConfig.apiScheme
         components.host = TMDBConfig.apiHost
-        components.path = "/movie/\(id)/alternative_titles"
+        components.path = "/3/movie/\(id)/alternative_titles"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
             URLQueryItem(name: "language", value: TMDBConfig.language),
@@ -133,7 +133,7 @@ public final class MovieService {
         var components = URLComponents()
         components.scheme = TMDBConfig.apiScheme
         components.host = TMDBConfig.apiHost
-        components.path = "/movie/\(id)/external_ids"
+        components.path = "/3/movie/\(id)/external_ids"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
             URLQueryItem(name: "language", value: TMDBConfig.language),
