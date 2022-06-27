@@ -28,9 +28,13 @@ public final class MovieService {
 
         var components = URLComponents()
         components.scheme = TMDBConfig.apiScheme
+        components.host = TMDBConfig.apiHost
+        components.path = "/movie/\(id)"
+        components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
+            URLQueryItem(name: "language", value: TMDBConfig.language),
+        ]
 
-        let (data, _) = try await URLSession.shared.data(from: url)
         guard let url = components.url else { throw TMDBError.invalidURL }
 
         let (data, _) = try await urlSession.data(from: url)
