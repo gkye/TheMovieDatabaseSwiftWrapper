@@ -1,6 +1,6 @@
 import Foundation
 
-public enum ExternalIDType {
+public enum ExternalIDType: Codable {
     case facebook(String)
     case twitter(String)
     case instagram(String)

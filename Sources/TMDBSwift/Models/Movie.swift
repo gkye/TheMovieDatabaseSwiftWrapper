@@ -1,7 +1,7 @@
 import Foundation
 
 /// <#Description#>
-public struct Movie: Decodable {
+public struct Movie: Codable {
     /// <#Description#>
     public var id: Int
     /// <#Description#>
@@ -53,6 +53,10 @@ public struct Movie: Decodable {
     /// <#Description#>
     public var voteCount: Int?
 
+    public init(id: Int) {
+        self.id = id
+    }
+
     enum CodingKeys: String, CodingKey {
         case id
         case adult
@@ -79,6 +83,11 @@ public struct Movie: Decodable {
         case video
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
     }
 
     public init(from decoder: Decoder) throws {
