@@ -1,7 +1,7 @@
 import Foundation
 
 /// <#Description#>
-public struct Country: Decodable {
+public struct Country: Codable {
     /// <#Description#>
     public var countryCode: String // change to enum?
     /// <#Description#>

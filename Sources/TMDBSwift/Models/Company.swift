@@ -1,7 +1,7 @@
 import Foundation
 
 /// <#Description#>
-public struct Company: Decodable {
+public struct Company: Codable {
     /// <#Description#>
     public var id: Int
     /// <#Description#>

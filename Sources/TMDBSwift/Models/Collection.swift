@@ -1,7 +1,7 @@
 import Foundation
 
 /// <#Description#>
-public struct Collection: Decodable {
+public struct Collection: Codable {
     /// <#Description#>
     public var id: Int
     /// <#Description#>

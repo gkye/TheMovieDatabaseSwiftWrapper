@@ -10,12 +10,12 @@ struct KeywordResponse: Decodable {
     var keywords: [Keyword] = []
 }
 
-struct AlternativeTitlesResponse: Decodable {
+struct AlternativeTitlesResponse: Codable {
     var id: Int
     var titles: [Title] = []
 }
 
-struct ExternalIDResponse: Decodable {
+struct ExternalIDResponse: Codable {
     var id: Int
     var imdb: String?
     var facebook: String?
@@ -28,6 +28,14 @@ struct ExternalIDResponse: Decodable {
         case facebook = "facebook_id"
         case instagram = "instagram_id"
         case twitter = "twitter_id"
+    }
+
+    init(id: Int, imdb: String?, facebook: String?, instagram: String?, twitter: String?) {
+        self.id = id
+        self.imdb = imdb
+        self.facebook = facebook
+        self.instagram = instagram
+        self.twitter = twitter
     }
 
     init(from decoder: Decoder) throws {
