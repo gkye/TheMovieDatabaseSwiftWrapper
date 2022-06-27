@@ -39,10 +39,10 @@ final class MovieServiceTests: XCTestCase {
         }
     }
 
-    func testFetchDetails_Success() {
+    func testFetchDetails_Success() throws {
         var data: Movie?
         let urlSession = MockURLSession()
-        urlSession.result = try! .success(JSONEncoder().encode(Movie.mock))
+        urlSession.result = try .success(JSONEncoder().encode(Movie.mock))
 
         let expectation = self.expectation(description: "Wait for data to load.")
 
@@ -93,10 +93,10 @@ final class MovieServiceTests: XCTestCase {
         }
     }
 
-    func testFetchAlternativeTitles_Success() {
+    func testFetchAlternativeTitles_Success() throws {
         var data: [Title]?
         let urlSession = MockURLSession()
-        urlSession.result = try! .success(JSONEncoder().encode(AlternativeTitlesResponse.mock))
+        urlSession.result = try .success(JSONEncoder().encode(AlternativeTitlesResponse.mock))
 
         let expectation = self.expectation(description: "Wait for data to load.")
 
@@ -147,10 +147,10 @@ final class MovieServiceTests: XCTestCase {
         }
     }
 
-    func testFetchExternalIDs_Success() {
+    func testFetchExternalIDs_Success() throws {
         var data: [ExternalIDType]?
         let urlSession = MockURLSession()
-        urlSession.result = try! .success(JSONEncoder().encode(ExternalIDResponse(id: 1, imdb: nil, facebook: nil, instagram: nil, twitter: "12345")))
+        urlSession.result = try .success(JSONEncoder().encode(ExternalIDResponse(id: 1, imdb: nil, facebook: nil, instagram: nil, twitter: "12345")))
 
         let expectation = self.expectation(description: "Wait for data to load.")
 
