@@ -20,7 +20,7 @@ final class MovieServiceTests: XCTestCase {
     func testDetails() async throws {
         let urlSession = MockURLSession()
         urlSession.result = try .success(JSONEncoder().encode(Movie.mock))
-        
+
         let data = try? await MovieService(urlSession: urlSession).details(for: 11)
         XCTAssertNotNil(data)
     }
@@ -32,7 +32,7 @@ final class MovieServiceTests: XCTestCase {
         TMDBConfig.apikey = nil
 
         do {
-            let _ = try await MovieService(urlSession: urlSession).details(for: 11)
+            _ = try await MovieService(urlSession: urlSession).details(for: 11)
             XCTFail("Function should have thrown by now")
         } catch let error as TMDBError {
             XCTAssertEqual(error, TMDBError.invalidAPIKey)
@@ -86,7 +86,7 @@ final class MovieServiceTests: XCTestCase {
         TMDBConfig.apikey = nil
 
         do {
-            let _ = try await MovieService(urlSession: urlSession).alternativeTitles(for: 11)
+            _ = try await MovieService(urlSession: urlSession).alternativeTitles(for: 11)
             XCTFail("Function should have thrown by now")
         } catch let error as TMDBError {
             XCTAssertEqual(error, TMDBError.invalidAPIKey)
@@ -140,7 +140,7 @@ final class MovieServiceTests: XCTestCase {
         TMDBConfig.apikey = nil
 
         do {
-            let _ = try await MovieService(urlSession: urlSession).externalIDs(for: 11)
+            _ = try await MovieService(urlSession: urlSession).externalIDs(for: 11)
             XCTFail("Function should have thrown by now")
         } catch let error as TMDBError {
             XCTAssertEqual(error, TMDBError.invalidAPIKey)
