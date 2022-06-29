@@ -54,7 +54,7 @@ public final class MovieService {
     ///
     /// - Parameters:
     ///   - id: A movies ID.
-    ///   - completion:  A closure to be invoked asynchronously after MovieService fetches data. The closure takes one parameter:
+    ///   - completion: A closure to be invoked asynchronously after MovieService fetches data. The closure takes one parameter:
     ///   - movie: The fetched ``Movie``, or `nil` if none was found.
     public final func fetchDetails(for id: Int, completion: @escaping (Movie?) -> Void) {
         Task {
@@ -108,7 +108,7 @@ public final class MovieService {
     ///
     /// - Parameters:
     ///   - id: A movies ID.
-    ///   - completion:  A closure to be invoked asynchronously after ``MovieService`` fetches data. The closure takes one parameter:
+    ///   - completion: A closure to be invoked asynchronously after ``MovieService`` fetches data. The closure takes one parameter:
     ///   - titles: The fetched array of ``Title``, or `nil` if none was found.
     public final func fetchAlternativeTitles(for id: Int, completion: @escaping ([Title]?) -> Void) {
         Task {
@@ -177,12 +177,62 @@ public final class MovieService {
     ///
     /// - Parameters:
     ///   - id: A movies ID.
-    ///   - completion:  A closure to be invoked asynchronously after ``MovieService`` fetches data. The closure takes one parameter:
+    ///   - completion: A closure to be invoked asynchronously after ``MovieService`` fetches data. The closure takes one parameter:
     ///   - titles: The fetched array of ``ExternalIDType``, or `nil` if none was found.
     public final func fetchExternalIDs(for id: Int, completion: @escaping ([ExternalIDType]?) -> Void) {
         Task {
             do {
                 let types = try await self.externalIDs(for: id)
+                completion(types)
+            } catch {
+                completion(nil)
+            }
+        }
+    }
+
+    // MARK: - Get Keywords
+
+    /// Get the keywords that have been added to a movie.
+    /// - Parameter id: A movie's ID.
+    /// - Returns: Returns an array of ``Keyword`` for the requested movie id.
+    public final func keywords(for id: Int) async throws -> [Keyword] {
+
+        guard let apiKey = TMDBConfig.apikey else { throw TMDBError.invalidAPIKey }
+
+        var components = URLComponents()
+        components.scheme = TMDBConfig.apiScheme
+        components.host = TMDBConfig.apiHost
+        components.path = "/3/movie/\(id)/keywords"
+        components.queryItems = [
+            URLQueryItem(name: "api_key", value: apiKey),
+            URLQueryItem(name: "language", value: TMDBConfig.language),
+        ]
+
+        guard let url = components.url else { throw TMDBError.invalidURL }
+
+        let (data, _) = try await urlSession.data(from: url)
+
+        let result = try JSONDecoder().decode(KeywordResponse.self, from: data)
+        return result.keywords
+    }
+
+    /// Get the keywords that have been added to a movie.
+    ///
+    /// **Important**
+    ///
+    ///  You can call this method from synchronous code using a completion handler, as shown on this page, or you can call it as an asynchronous method that has the following declaration:
+    ///  ```
+    ///  func keywords(for id: Int) async throws -> [Keyword]
+    ///  ```
+    ///
+    /// - Parameters:
+    ///   - id: A movie's ID.
+    ///   - completion: A closure to be invoked asynchronously after ``MovieService`` fetches data. The closure takes one parameter:
+    ///   - keywords: The fetched array of ``Keyword``, or `nil` if none was found.
+    public final func fetchKeywords(for id: Int, completion: @escaping ([Keyword]?) -> Void) {
+        Task {
+            do {
+                let types = try await self.keywords(for: id)
                 completion(types)
             } catch {
                 completion(nil)

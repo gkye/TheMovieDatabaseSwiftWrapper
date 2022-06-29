@@ -5,7 +5,7 @@ struct ResultsResponse<T: Decodable>: Decodable {
     var results: T
 }
 
-struct KeywordResponse: Decodable {
+struct KeywordResponse: Codable {
     var id: Int
     var keywords: [Keyword] = []
 }

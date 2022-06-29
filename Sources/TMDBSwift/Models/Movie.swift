@@ -1,60 +1,126 @@
 import Foundation
 
-/// <#Description#>
-public struct Movie: Codable {
-    /// <#Description#>
+/// A movie with many optional attributes.
+public struct Movie: Codable, Equatable {
+    /// The ID of a movie from the database.
+    ///
+    /// Used in services to fetch additional data for a particular ID.
     public var id: Int
     /// <#Description#>
     public var adult: Bool?
-    /// <#Description#>
+    /// The backdrop image path.
+    ///
+    /// To build an image URL, you will need 3 pieces of data. The `base_url`, `size` and `file_path`. Simply combine them all and you will have a fully qualified URL.
+    ///
+    /// Here’s an example URL:
+    /// ```
+    /// https://image.tmdb.org/t/p/w500/8uO0gUM8aNqYLs1OsTBQiXu0fEv.jpg
+    /// ```
+    ///
     public var backdropPath: String?
-    /// <#Description#>
+    /// The budget for production, rounded to the nearest ``Int``.
     public var budget: Int?
-    /// <#Description#>
+    /// The collection of movies that contains this ID.
     public var collection: Collection?
-    /// <#Description#>
+    /// The related genres.
     public var genres: [Genre]?
-    /// <#Description#>
+    /// An external website's path.
+    ///
+    /// This is not necessarily a The Movie Database website.
     public var homepage: String?
-    /// <#Description#>
-    public var imdbID: String?
-    /// <#Description#>
+    /// The IMDB ID.
+    public var imdbID: ExternalIDType?
+    /// The language from its original release.
     public var originalLanguage: String? // change to enum?
-    /// <#Description#>
+    /// The official title from its original release.
     public var originalTitle: String?
-    /// <#Description#>
+    /// The overview.
     public var overview: String?
-    /// <#Description#>
+    /// The popularity rating with respect to The Movie Database.
     public var popularity: Double?
-    /// <#Description#>
+    /// The poster image path.
+    ///
+    /// To build an image URL, you will need 3 pieces of data. The `base_url`, `size` and `file_path`. Simply combine them all and you will have a fully qualified URL.
+    ///
+    /// Here’s an example URL:
+    /// ```
+    /// https://image.tmdb.org/t/p/w500/8uO0gUM8aNqYLs1OsTBQiXu0fEv.jpg
+    /// ```
+    ///
     public var posterPath: String?
-    /// <#Description#>
+    /// The production companies.
     public var productionCompanies: [Company]?
-    /// <#Description#>
+    /// The contries used for production.
     public var productionCountries: [Country]?
-    /// <#Description#>
+    /// The release date.
     public var releaseDate: Date?
-    /// <#Description#>
+    /// The revenue generated from the box office.
     public var revenue: Int?
-    /// <#Description#>
+    /// The runtime in minutes.
     public var runtime: Int?
     /// <#Description#>
     public var spokenLanguages: [Language]? // simplify to array of language types?
-    /// <#Description#>
+    /// The production status.
     public var status: String? // change to enum?
-    /// <#Description#>
+    /// The tagline.
     public var tagline: String?
-    /// <#Description#>
+    /// The title.
     public var title: String?
     /// <#Description#>
     public var video: Bool?
-    /// <#Description#>
+    /// The average user rating.
     public var voteAverage: Double?
-    /// <#Description#>
+    /// The total number of user ratings.
     public var voteCount: Int?
 
-    public init(id: Int) {
+    public init(id: Int,
+                adult: Bool? = nil,
+                backdropPath: String? = nil,
+                budget: Int? = nil,
+                collection: Collection? = nil,
+                genres: [Genre]? = nil,
+                homepage: String? = nil,
+                imdbID: ExternalIDType? = nil,
+                originalLanguage: String? = nil,
+                originalTitle: String? = nil,
+                overview: String? = nil,
+                popularity: Double? = nil,
+                productionCompanies: [Company]? = nil,
+                productionCountries: [Country]? = nil,
+                releaseDate: Date? = nil,
+                revenue: Int? = nil,
+                runtime: Int? = nil,
+                spokenLanguages: [Language]? = nil,
+                status: String? = nil,
+                tagline: String? = nil,
+                title: String? = nil,
+                video: Bool? = nil,
+                voteAverage: Double? = nil,
+                voteCount: Int? = nil) {
         self.id = id
+        self.adult = adult
+        self.backdropPath = backdropPath
+        self.budget = budget
+        self.collection = collection
+        self.genres = genres
+        self.homepage = homepage
+        self.imdbID = imdbID
+        self.originalLanguage = originalLanguage
+        self.originalTitle = originalTitle
+        self.overview = overview
+        self.popularity = popularity
+        self.productionCompanies = productionCompanies
+        self.productionCountries = productionCountries
+        self.releaseDate = releaseDate
+        self.revenue = revenue
+        self.runtime = runtime
+        self.spokenLanguages = spokenLanguages
+        self.status = status
+        self.tagline = tagline
+        self.title = title
+        self.video = video
+        self.voteAverage = voteAverage
+        self.voteCount = voteCount
     }
 
     enum CodingKeys: String, CodingKey {
@@ -72,7 +138,7 @@ public struct Movie: Codable {
         case popularity
         case posterPath = "poster_path"
         case productionCompanies = "production_companies"
-        case productionCountires = "production_countries"
+        case productionCountries = "production_countries"
         case releaseDate = "release_date"
         case revenue
         case runtime
@@ -88,6 +154,34 @@ public struct Movie: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
+        try? container.encode(adult, forKey: .adult)
+        try? container.encode(backdropPath, forKey: .backdropPath)
+        try? container.encode(budget, forKey: .budget)
+        try? container.encode(collection, forKey: .collection)
+        try? container.encode(genres, forKey: .genres)
+        try? container.encode(homepage, forKey: .homepage)
+        try? container.encode(imdbID?.id, forKey: .imdbID)
+        try? container.encode(originalLanguage, forKey: .originalLanguage)
+        try? container.encode(originalTitle, forKey: .originalTitle)
+        try? container.encode(overview, forKey: .overview)
+        try? container.encode(popularity, forKey: .popularity)
+        try? container.encode(posterPath, forKey: .posterPath)
+        try? container.encode(productionCompanies, forKey: .productionCompanies)
+        try? container.encode(productionCountries, forKey: .productionCountries)
+        if let releaseDate = releaseDate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            try? container.encode(dateFormatter.string(from: releaseDate), forKey: .releaseDate)
+        }
+        try? container.encode(revenue, forKey: .revenue)
+        try? container.encode(runtime, forKey: .runtime)
+        try? container.encode(spokenLanguages, forKey: .spokenLanguages)
+        try? container.encode(status, forKey: .status)
+        try? container.encode(tagline, forKey: .tagline)
+        try? container.encode(title, forKey: .title)
+        try? container.encode(video, forKey: .video)
+        try? container.encode(voteAverage, forKey: .voteAverage)
+        try? container.encode(voteCount, forKey: .voteCount)
     }
 
     public init(from decoder: Decoder) throws {
@@ -99,15 +193,21 @@ public struct Movie: Codable {
         collection = try? container.decode(Collection.self, forKey: .collection)
         genres = try? container.decode([Genre].self, forKey: .genres)
         homepage = try? container.decode(String.self, forKey: .homepage)
-        imdbID = try? container.decode(String.self, forKey: .imdbID)
+        if let imdbIDString = try? container.decode(String.self, forKey: .imdbID) {
+            imdbID = ExternalIDType.imdb(imdbIDString)
+        }
         originalLanguage = try? container.decode(String.self, forKey: .originalLanguage)
         originalTitle = try? container.decode(String.self, forKey: .originalTitle)
         overview = try? container.decode(String.self, forKey: .overview)
         popularity = try? container.decode(Double.self, forKey: .popularity)
         posterPath = try? container.decode(String.self, forKey: .posterPath)
         productionCompanies = try? container.decode([Company].self, forKey: .productionCompanies)
-        productionCountries = try? container.decode([Country].self, forKey: .productionCountires)
-        releaseDate = try? container.decode(Date.self, forKey: .releaseDate)
+        productionCountries = try? container.decode([Country].self, forKey: .productionCountries)
+        if let dateString = try? container.decode(String.self, forKey: .releaseDate) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            releaseDate = dateFormatter.date(from: dateString)
+        }
         revenue = try? container.decode(Int.self, forKey: .revenue)
         runtime = try? container.decode(Int.self, forKey: .runtime)
         spokenLanguages = try? container.decode([Language].self, forKey: .spokenLanguages)

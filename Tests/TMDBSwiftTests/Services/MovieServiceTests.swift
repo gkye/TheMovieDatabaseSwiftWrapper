@@ -176,4 +176,58 @@ final class MovieServiceTests: XCTestCase {
         waitForExpectations(timeout: expecationTimeout, handler: nil)
         XCTAssertNil(data)
     }
+
+    // MARK: - Get Keywords
+
+    func testKeywords() async throws {
+        let urlSession = MockURLSession()
+        urlSession.result = try .success(JSONEncoder().encode(KeywordResponse(id: 1, keywords: [Keyword(name: name, id: 1)])))
+
+        let data = try await MovieService(urlSession: urlSession).keywords(for: 11)
+        XCTAssertFalse(data.isEmpty)
+    }
+
+    func testKeywords_InvalidAPIKey() async throws {
+        let urlSession = MockURLSession()
+        urlSession.result = .failure(NSError())
+
+        TMDBConfig.apikey = nil
+
+        do {
+            _ = try await MovieService(urlSession: urlSession).keywords(for: 11)
+            XCTFail("Function should have thrown by now")
+        } catch let error as TMDBError {
+            XCTAssertEqual(error, TMDBError.invalidAPIKey)
+        }
+    }
+
+    func testFetchKeywords_Success() throws {
+        var data: [Keyword]?
+        let urlSession = MockURLSession()
+        urlSession.result = try .success(JSONEncoder().encode(KeywordResponse(id: 1, keywords: [Keyword(name: name, id: 1)])))
+
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieService(urlSession: urlSession).fetchKeywords(for: 11) { keywords in
+            data = keywords
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNotNil(data)
+    }
+
+    func testFetchKeywords_Failure() {
+        var data: [Keyword]? = [Keyword(name: "name", id: 0)]
+        let urlSession = MockURLSession()
+        urlSession.result = .failure(NSError())
+
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieService(urlSession: urlSession).fetchKeywords(for: 11) { keywords in
+            data = keywords
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNil(data)
+    }
 }
