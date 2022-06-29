@@ -16,10 +16,4 @@ public struct Country: Codable, Equatable {
         case countryCode = "iso_3166_1"
         case name
     }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        countryCode = try container.decode(String.self, forKey: .countryCode)
-        name = try container.decode(String.self, forKey: .name)
-    }
 }
