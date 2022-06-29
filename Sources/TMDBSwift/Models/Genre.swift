@@ -1,7 +1,7 @@
 import Foundation
 
 /// <#Description#>
-public struct Genre: Codable {
+public struct Genre: Codable, Equatable {
     /// <#Description#>
     public var id: Int
     /// <#Description#>
