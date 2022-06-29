@@ -34,7 +34,6 @@ final class PersonMDBTests: XCTestCase {
         XCTAssertEqual(data.name, "Bruce Lee")
         XCTAssertNotNil(data.place_of_birth)
         XCTAssertNotNil(data.popularity)
-        XCTAssertNotNil(data.profile_path)
     }
 
     func testMovieCredits() {

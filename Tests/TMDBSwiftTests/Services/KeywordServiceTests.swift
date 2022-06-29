@@ -12,23 +12,8 @@ final class KeywordServiceTests: XCTestCase {
         XCTAssertNotNil(data)
     }
 
-    func testMovieKeywords() async throws {
-        let data = try await KeywordService.shared.keywords(movieID: 11)
-        XCTAssertNotNil(data)
-    }
-
     func testTVKeywords() async throws {
         let data = try await KeywordService.shared.keywords(tvID: 92830)
-        XCTAssertNotNil(data)
-    }
-
-    func testMoviesForKeywords() async throws {
-        let data = try await KeywordService.shared.movies(keywords: ["android", "hermit"])
-        XCTAssertNotNil(data)
-    }
-
-    func testTVSeriesForKeywords() async throws {
-        let data = try await KeywordService.shared.tvSeries(keywords: ["android", "hermit"])
         XCTAssertNotNil(data)
     }
 
