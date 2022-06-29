@@ -17,12 +17,4 @@ public struct Collection: Codable {
         case posterPath = "poster_path"
         case backdropPath = "backdrop_path"
     }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        id = try container.decode(Int.self, forKey: .id)
-        name = try container.decode(String.self, forKey: .name)
-        posterPath = try? container.decode(String.self, forKey: .posterPath)
-        backdropPath = try? container.decode(String.self, forKey: .backdropPath)
-    }
 }

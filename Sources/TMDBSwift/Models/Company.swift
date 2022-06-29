@@ -17,12 +17,4 @@ public struct Company: Codable {
         case name
         case originCountry = "origin_country"
     }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        id = try container.decode(Int.self, forKey: .id)
-        logoPath = try? container.decode(String.self, forKey: .logoPath)
-        name = try? container.decode(String.self, forKey: .name)
-        originCountry = try? container.decode(String.self, forKey: .originCountry)
-    }
 }

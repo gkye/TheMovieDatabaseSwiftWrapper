@@ -37,13 +37,4 @@ struct ExternalIDResponse: Codable {
         self.instagram = instagram
         self.twitter = twitter
     }
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        id = try container.decode(Int.self, forKey: .id)
-        imdb = try? container.decode(String.self, forKey: .imdb)
-        facebook = try? container.decode(String.self, forKey: .facebook)
-        instagram = try? container.decode(String.self, forKey: .instagram)
-        twitter = try? container.decode(String.self, forKey: .twitter)
-    }
 }

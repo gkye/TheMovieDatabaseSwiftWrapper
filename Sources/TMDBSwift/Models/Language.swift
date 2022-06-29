@@ -11,10 +11,4 @@ public struct Language: Codable {
         case languageCode = "iso_639_1"
         case name
     }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        languageCode = try container.decode(String.self, forKey: .languageCode)
-        name = try container.decode(String.self, forKey: .name)
-    }
 }
