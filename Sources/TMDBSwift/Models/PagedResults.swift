@@ -1,6 +1,6 @@
 import Foundation
 
-public struct PagedResults<T: Decodable>: Decodable {
+public struct PagedResults<T: Codable & Equatable>: Codable, Equatable {
     public var page: Int
     public var pageCount: Int
     public var resultCount: Int

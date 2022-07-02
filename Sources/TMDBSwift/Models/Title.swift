@@ -1,13 +1,13 @@
 import Foundation
 
 /// <#Description#>
-public struct Title: Codable {
+public struct Title: Codable, Equatable {
     /// <#Description#>
     public var countryCode: String // change to enum?
     /// <#Description#>
     public var title: String
     /// <#Description#>
-    public var type: [String]?
+    public var type: String?
 
     enum CodingKeys: String, CodingKey {
         case countryCode = "iso_3166_1"
@@ -15,7 +15,7 @@ public struct Title: Codable {
         case type
     }
 
-    public init(countyCode: String, title: String, type: [String]?) {
+    public init(countyCode: String, title: String, type: String?) {
         self.countryCode = countyCode
         self.title = title
         self.type = type
@@ -25,7 +25,8 @@ public struct Title: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         countryCode = try container.decode(String.self, forKey: .countryCode)
         title = try container.decode(String.self, forKey: .title)
-        let typeString = try? container.decode(String.self, forKey: .type)
-        type = typeString?.components(separatedBy: ", ")
+        if let typeString = try? container.decode(String.self, forKey: .type), typeString != "" {
+            type = typeString
+        }
     }
 }
