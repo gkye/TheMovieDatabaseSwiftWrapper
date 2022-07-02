@@ -123,6 +123,60 @@ final class MovieServiceTests: XCTestCase {
         XCTAssertNil(data)
     }
 
+    // MARK: - Get Credits
+
+    func testCredits() async throws {
+        let urlSession = MockURLSession()
+        urlSession.result = try .success(JSONEncoder().encode(Credits.mock))
+
+        let data = try await MovieService(urlSession: urlSession).credits(for: 11)
+        XCTAssertNotNil(data)
+    }
+
+    func testCredits_InvalidAPIKey() async throws {
+        let urlSession = MockURLSession()
+        urlSession.result = .failure(NSError())
+
+        TMDBConfig.apikey = nil
+
+        do {
+            _ = try await MovieService(urlSession: urlSession).credits(for: 11)
+            XCTFail("Function should have thrown by now")
+        } catch let error as TMDBError {
+            XCTAssertEqual(error, TMDBError.invalidAPIKey)
+        }
+    }
+
+    func testFetchCredits_Success() throws {
+        var data: Credits?
+        let urlSession = MockURLSession()
+        urlSession.result = try .success(JSONEncoder().encode(Credits.mock))
+
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieService(urlSession: urlSession).fetchCredits(for: 11) { credits in
+            data = credits
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNotNil(data)
+    }
+
+    func testFetchCredits_Failure() {
+        var data: Credits? = Credits.mock
+        let urlSession = MockURLSession()
+        urlSession.result = .failure(NSError())
+
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieService(urlSession: urlSession).fetchCredits(for: 11) { credits in
+            data = credits
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNil(data)
+    }
+
     // MARK: - Get External IDs
 
     func testExternalIDs() async throws {
