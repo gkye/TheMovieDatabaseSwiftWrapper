@@ -19,7 +19,6 @@ private let data = """
 """
 
 final class CastMemberTests: XCTestCase {
-
     func testEncode() throws {
         let castMember = try JSONDecoder().decode(CastMember.self, from: data.data(using: .utf8)!)
         let encodedData = try JSONEncoder().encode(castMember)

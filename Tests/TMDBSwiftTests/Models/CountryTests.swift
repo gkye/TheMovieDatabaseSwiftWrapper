@@ -9,7 +9,6 @@ private let data = """
 """
 
 final class CountryTests: XCTestCase {
-
     func testEncode() throws {
         let country = try JSONDecoder().decode(Country.self, from: data.data(using: .utf8)!)
         let encodedData = try JSONEncoder().encode(country)

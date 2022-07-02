@@ -11,7 +11,6 @@ private let data = """
 """
 
 final class CollectionTests: XCTestCase {
-
     func testEncode() throws {
         let collection = try JSONDecoder().decode(Collection.self, from: data.data(using: .utf8)!)
         let encodedData = try JSONEncoder().encode(collection)
