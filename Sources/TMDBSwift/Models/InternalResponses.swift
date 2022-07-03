@@ -38,3 +38,20 @@ struct ExternalIDResponse: Codable {
         self.twitter = twitter
     }
 }
+
+struct ImageResponse: Codable {
+    var id: Int
+    var backdrops: [Image]?
+    var logos: [Image]?
+    var posters: [Image]?
+
+    init(id: Int,
+         backdrops: [Image]? = nil,
+         logos: [Image]? = nil,
+         posters: [Image]? = nil) {
+        self.id = id
+        self.backdrops = backdrops
+        self.logos = logos
+        self.posters = posters
+    }
+}
