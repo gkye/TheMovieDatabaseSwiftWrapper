@@ -240,6 +240,63 @@ public final class MovieService {
         }
     }
 
+    // MARK: - Get Images
+
+    /// Get the images for a movie.
+    /// - Parameters:
+    ///   - id: A movies ID.
+    ///   - languages: An array of languages to filter images.
+    /// - Returns: Returns an tuple of ``Images`` for the requested movie ID.
+    public final func images(for id: Int, languages: [String] = []) async throws -> (backdrops: [Image]?, logos: [Image]?, posters: [Image]?) {
+
+        guard let apiKey = TMDBConfig.apikey else { throw TMDBError.invalidAPIKey }
+
+        var components = URLComponents()
+        components.scheme = TMDBConfig.apiScheme
+        components.host = TMDBConfig.apiHost
+        components.path = "/3/movie/\(id)/images"
+        components.queryItems = [
+            URLQueryItem(name: "api_key", value: apiKey),
+            URLQueryItem(name: "language", value: TMDBConfig.language),
+            URLQueryItem(name: "include_image_language", value: languages.joined(separator: ","))
+        ]
+
+        guard let url = components.url else { throw TMDBError.invalidURL }
+
+        let (data, _) = try await urlSession.data(from: url)
+
+        let imageResponse = try JSONDecoder().decode(ImageResponse.self, from: data)
+
+        return (imageResponse.backdrops, imageResponse.logos, imageResponse.posters)
+    }
+
+    /// Get the images for a movie.
+    ///
+    /// **Important**
+    ///
+    ///  You can call this method from synchronous code using a completion handler, as shown on this page, or you can call it as an asynchronous method that has the following declaration:
+    ///  ```
+    ///  func images(for id: Int, languages: [String]) async throws -> (backdrops: [Image]?, logos: [Image]?, posters: [Image]?)
+    ///  ```
+    ///
+    /// - Parameters:
+    ///   - id: A movies ID.
+    ///   - languages: An array of languages to filter images.
+    ///   - completion: A closure to be invoked asynchronously after ``MovieService`` fetches data. The closure takes three parameters:
+    ///   - backdrops: An array of ``Image``, or nil.
+    ///   - logos: An array of ``Image``, or nil.
+    ///   - posters: An array of ``Image``, or nil.
+    public final func fetchImages(for id: Int, languages: [String] = [], completion: @escaping ((backdrops: [Image]?, logos: [Image]?, posters: [Image]?)) -> Void) {
+        Task {
+            do {
+                let images = try await self.images(for: id, languages: languages)
+                completion(images)
+            } catch {
+                completion((nil, nil, nil))
+            }
+        }
+    }
+
     // MARK: - Get Keywords
 
     /// Get the keywords that have been added to a movie.
@@ -284,6 +341,60 @@ public final class MovieService {
             do {
                 let types = try await self.keywords(for: id)
                 completion(types)
+            } catch {
+                completion(nil)
+            }
+        }
+    }
+
+    // MARK: - Get Lists
+
+    /// Get the lists that the provided movie has been added to.
+    /// - Parameters:
+    ///   - id: A movie's ID.
+    ///   - page: The page of results, defaults to the first page.
+    /// - Returns: Returns a ``PagedResults`` of ``List`` for the requested movie id.
+    public final func lists(for id: Int, page: Int = 1) async throws -> PagedResults<[List]> {
+
+        guard let apiKey = TMDBConfig.apikey else { throw TMDBError.invalidAPIKey }
+
+        var components = URLComponents()
+        components.scheme = TMDBConfig.apiScheme
+        components.host = TMDBConfig.apiHost
+        components.path = "/3/movie/\(id)/lists"
+        components.queryItems = [
+            URLQueryItem(name: "api_key", value: apiKey),
+            URLQueryItem(name: "language", value: TMDBConfig.language),
+            URLQueryItem(name: "page", value: "\(page)")
+        ]
+
+        guard let url = components.url else { throw TMDBError.invalidURL }
+
+        let (data, _) = try await urlSession.data(from: url)
+
+        let result = try JSONDecoder().decode(PagedResults<[List]>.self, from: data)
+        return result
+    }
+
+    /// Get the lists that the provided movie has been added to.
+    ///
+    /// **Important**
+    ///
+    ///  You can call this method from synchronous code using a completion handler, as shown on this page, or you can call it as an asynchronous method that has the following declaration:
+    ///  ```
+    ///  func lists(for id: Int, page: Int = 1) async throws -> PagedResults<[List]>
+    ///  ```
+    ///
+    /// - Parameters:
+    ///   - id: A movie's ID.
+    ///   - page: The page of results, defaults to the first page.
+    ///   - completion: A closure to be invoked asynchronously after ``MovieService`` fetches data. The closure takes one parameter:
+    ///   - results: A ``PagedResults`` of ``List`` for the requested movie id.
+    public final func fetchLists(for id: Int, page: Int = 1, completion: @escaping (PagedResults<[List]>?) -> Void) {
+        Task {
+            do {
+                let results = try await self.lists(for: id, page: page)
+                completion(results)
             } catch {
                 completion(nil)
             }
