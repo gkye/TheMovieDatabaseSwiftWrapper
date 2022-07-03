@@ -1,6 +1,6 @@
 import Foundation
 
-/// A movie with many optional attributes.
+/// Contains information about a movie with many optional attributes.
 public struct Movie: Codable, Equatable {
     /// The ID of a movie from the database.
     ///

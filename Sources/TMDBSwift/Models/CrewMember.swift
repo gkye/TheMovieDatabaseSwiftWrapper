@@ -1,6 +1,6 @@
 import Foundation
 
-/// <#Description#>
+/// A structure describing a member of the crew for a Movie or TV Series.
 public struct CrewMember: Codable, Equatable {
     /// <#Description#>
     public let id: Int

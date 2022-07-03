@@ -1,6 +1,6 @@
 import Foundation
 
-/// <#Description#>
+/// A structure describing a member of the cast for a Movie or TV Series.
 public struct CastMember: Codable, Equatable {
     /// <#Description#>
     public var id: Int
