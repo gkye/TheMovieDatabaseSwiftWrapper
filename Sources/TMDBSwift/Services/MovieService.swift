@@ -349,11 +349,11 @@ public final class MovieService {
 
     // MARK: - Get Lists
 
-    /// Get the keywords that have been added to a movie.
+    /// Get the lists that the provided movie has been added to.
     /// - Parameters:
     ///   - id: A movie's ID.
     ///   - page: The page of results, defaults to the first page.
-    /// - Returns: Returns an array of ``List`` for the requested movie id.
+    /// - Returns: Returns a ``PagedResults`` of ``List`` for the requested movie id.
     public final func lists(for id: Int, page: Int = 1) async throws -> PagedResults<[List]> {
 
         guard let apiKey = TMDBConfig.apikey else { throw TMDBError.invalidAPIKey }
@@ -376,20 +376,20 @@ public final class MovieService {
         return result
     }
 
-    /// Get the keywords that have been added to a movie.
+    /// Get the lists that the provided movie has been added to.
     ///
     /// **Important**
     ///
     ///  You can call this method from synchronous code using a completion handler, as shown on this page, or you can call it as an asynchronous method that has the following declaration:
     ///  ```
-    ///  func keywords(for id: Int) async throws -> [Keyword]
+    ///  func lists(for id: Int, page: Int = 1) async throws -> PagedResults<[List]>
     ///  ```
     ///
     /// - Parameters:
     ///   - id: A movie's ID.
     ///   - page: The page of results, defaults to the first page.
     ///   - completion: A closure to be invoked asynchronously after ``MovieService`` fetches data. The closure takes one parameter:
-    ///   - results: The fetched array of ``Keyword``, or `nil` if none was found.
+    ///   - results: A ``PagedResults`` of ``List`` for the requested movie id.
     public final func fetchLists(for id: Int, page: Int = 1, completion: @escaping (PagedResults<[List]>?) -> Void) {
         Task {
             do {
