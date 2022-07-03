@@ -1,12 +1,14 @@
+[![Platforms](https://img.shields.io/badge/Platforms-macOS_iOS_tvOS_watchOS_-yellowgreen?style=flat-square)](https://img.shields.io/badge/Platforms-macOS_iOS_tvOS_watchOS-Green?style=flat-square)
+[![Swift Package Manager](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/TMDBSwift.svg?style=flat-square)](https://img.shields.io/cocoapods/v/TMDBSwift.svg)
 [![codebeat badge](https://codebeat.co/badges/7a5d93bf-b630-4f1a-a968-4c17903d3906)](https://codebeat.co/projects/github-com-gkye-themoviedatabaseswiftwrapper)
 [![GitHub issues](https://img.shields.io/github/issues/gkye/TheMovieDatabaseSwiftWrapper.svg)](https://github.com/gkye/TheMovieDatabaseSwiftWrapper/issues)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/gkye/TheMovieDatabaseSwiftWrapper/master/LICENSE)
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/gkye/TheMovieDatabaseSwiftWrapper.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
 
 
 ## Usage
 
-1. Get an API key-> <a href="themoviedb.org">themoviedb.org</a>
+1. Get an API key-> <a href="https://www.themoviedb.org/documentation/api">themoviedb.org</a>
 <blockquote>
 <p>"A TMDb user account is required to request an API key."*</p>
 </blockquote>
@@ -24,7 +26,7 @@ pod "TMDBSwift"
 
 TMDBSwift is available through [Swift Package Manager](https://docs.swift.org/package-manager/PackageDescription/PackageDescription.html). To install it to your project, simply add the following to your Package.swift file:
 ``` swift
-.package(url: "https://github.com/gkye/TheMovieDatabaseSwiftWrapper", from: "0.6.1"),
+.package(url: "https://github.com/gkye/TheMovieDatabaseSwiftWrapper", from: "0.7.0"),
 ```
 
 ## ENDPOINTS
@@ -51,8 +53,5 @@ TMDBSwift is available through [Swift Package Manager](https://docs.swift.org/pa
 
 ## Author
 George Kye
-
-## License
-TMDBSwift is available under the MIT license. See the LICENSE file for more info.
 
 
