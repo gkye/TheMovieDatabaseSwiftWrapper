@@ -121,6 +121,56 @@ public final class MovieService {
         }
     }
 
+    // MARK: - Get Credits
+
+    /// Get the credits, cast and crew, for a movie.
+    /// - Parameter id: A movies ID.
+    /// - Returns: Returns the ``Credits`` for a requested movie ID.
+    public final func credits(for id: Int) async throws -> Credits {
+
+        guard let apiKey = TMDBConfig.apikey else { throw TMDBError.invalidAPIKey }
+
+        var components = URLComponents()
+        components.scheme = TMDBConfig.apiScheme
+        components.host = TMDBConfig.apiHost
+        components.path = "/3/movie/\(id)/credits"
+        components.queryItems = [
+            URLQueryItem(name: "api_key", value: apiKey),
+            URLQueryItem(name: "language", value: TMDBConfig.language),
+        ]
+
+        guard let url = components.url else { throw TMDBError.invalidURL }
+
+        let (data, _) = try await urlSession.data(from: url)
+
+        let credits = try JSONDecoder().decode(Credits.self, from: data)
+        return credits
+    }
+
+    /// Get the credits, cast and crew, for a movie.
+    ///
+    /// **Important**
+    ///
+    ///  You can call this method from synchronous code using a completion handler, as shown on this page, or you can call it as an asynchronous method that has the following declaration:
+    ///  ```
+    ///  func credits(for id: Int) async throws -> Credits
+    ///  ```
+    ///
+    /// - Parameters:
+    ///   - id: A movies ID.
+    ///   - completion: A closure to be invoked asynchronously after ``MovieService`` fetches data. The closure takes one parameter:
+    ///   - credits: The fetched array of ``Credits``, or `nil` if none was found.
+    public final func fetchCredits(for id: Int, completion: @escaping (Credits?) -> Void) {
+        Task {
+            do {
+                let types = try await self.credits(for: id)
+                completion(types)
+            } catch {
+                completion(nil)
+            }
+        }
+    }
+
     // MARK: - Get External IDs
 
     /// Get the external ids for a movie.

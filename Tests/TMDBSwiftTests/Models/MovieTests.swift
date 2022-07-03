@@ -74,7 +74,6 @@ private let data = """
 """
 
 final class MovieTests: XCTestCase {
-
     func testEncode() throws {
         let movie = try JSONDecoder().decode(Movie.self, from: data.data(using: .utf8)!)
         let encodedData = try JSONEncoder().encode(movie)
@@ -117,7 +116,7 @@ final class MovieTests: XCTestCase {
         XCTAssertEqual(movie.releaseDate, Calendar.current.date(from: DateComponents(year: 1977, month: 5, day: 25)))
         XCTAssertEqual(movie.revenue, 775398007)
         XCTAssertEqual(movie.runtime, 121)
-        XCTAssertEqual(movie.spokenLanguages, [Language(languageCode: "en", name: "English")])
+        XCTAssertEqual(movie.spokenLanguages, [Language(languageCode: "en", name: "English", englishName: "English")])
         XCTAssertEqual(movie.status, "Released")
         XCTAssertEqual(movie.tagline, "A long time ago in a galaxy far, far away...")
         XCTAssertEqual(movie.title, "Star Wars")
