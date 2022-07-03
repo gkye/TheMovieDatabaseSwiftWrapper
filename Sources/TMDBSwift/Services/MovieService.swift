@@ -400,4 +400,58 @@ public final class MovieService {
             }
         }
     }
+
+    // MARK: - Get Recommendations
+
+    /// Get a list of recommended movies for a movie.
+    /// - Parameters:
+    ///   - id: A movie's ID.
+    ///   - page: The page of results, defaults to the first page.
+    /// - Returns: Returns a ``PagedResults`` of recommended ``Movie`` for the requested movie id.
+    public final func recommendations(for id: Int, page: Int = 1) async throws -> PagedResults<[Movie]> {
+
+        guard let apiKey = TMDBConfig.apikey else { throw TMDBError.invalidAPIKey }
+
+        var components = URLComponents()
+        components.scheme = TMDBConfig.apiScheme
+        components.host = TMDBConfig.apiHost
+        components.path = "/3/movie/\(id)/recommendations"
+        components.queryItems = [
+            URLQueryItem(name: "api_key", value: apiKey),
+            URLQueryItem(name: "language", value: TMDBConfig.language),
+            URLQueryItem(name: "page", value: "\(page)")
+        ]
+
+        guard let url = components.url else { throw TMDBError.invalidURL }
+
+        let (data, _) = try await urlSession.data(from: url)
+
+        let result = try JSONDecoder().decode(PagedResults<[Movie]>.self, from: data)
+        return result
+    }
+
+    /// Get a list of recommended movies for a movie.
+    ///
+    /// **Important**
+    ///
+    ///  You can call this method from synchronous code using a completion handler, as shown on this page, or you can call it as an asynchronous method that has the following declaration:
+    ///  ```
+    ///  func recommendations(for id: Int, page: Int = 1) async throws -> PagedResults<[Movie]>
+    ///  ```
+    ///
+    /// - Parameters:
+    ///   - id: A movie's ID.
+    ///   - page: The page of results, defaults to the first page.
+    ///   - completion: A closure to be invoked asynchronously after ``MovieService`` fetches data. The closure takes one parameter:
+    ///   - results: A ``PagedResults`` of  recommended ``Movie`` for the requested movie id.
+    public final func fetchRecommendations(for id: Int, page: Int = 1, completion: @escaping (PagedResults<[Movie]>?) -> Void) {
+        Task {
+            do {
+                let results = try await self.recommendations(for: id, page: page)
+                completion(results)
+            } catch {
+                completion(nil)
+            }
+        }
+    }
 }

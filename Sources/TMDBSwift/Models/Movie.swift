@@ -30,6 +30,8 @@ public struct Movie: Codable, Equatable {
     public var homepage: String?
     /// The IMDB ID.
     public var imdbID: ExternalIDType?
+    /// <#Description#>
+    public var mediaType: String?
     /// The language from its original release.
     public var originalLanguage: String? // change to enum?
     /// The official title from its original release.
@@ -81,6 +83,7 @@ public struct Movie: Codable, Equatable {
                 genres: [Genre]? = nil,
                 homepage: String? = nil,
                 imdbID: ExternalIDType? = nil,
+                mediaType: String? = nil,
                 originalLanguage: String? = nil,
                 originalTitle: String? = nil,
                 overview: String? = nil,
@@ -105,6 +108,7 @@ public struct Movie: Codable, Equatable {
         self.genres = genres
         self.homepage = homepage
         self.imdbID = imdbID
+        self.mediaType = mediaType
         self.originalLanguage = originalLanguage
         self.originalTitle = originalTitle
         self.overview = overview
@@ -129,9 +133,11 @@ public struct Movie: Codable, Equatable {
         case backdropPath = "backdrop_path"
         case budget
         case collection = "belongs_to_collection"
+        case genreIDs = "genre_ids"
         case genres
         case homepage
         case imdbID = "imdb_id"
+        case mediaType = "media_type"
         case originalLanguage = "original_language"
         case originalTitle = "original_title"
         case overview
@@ -161,6 +167,7 @@ public struct Movie: Codable, Equatable {
         try? container.encode(genres, forKey: .genres)
         try? container.encode(homepage, forKey: .homepage)
         try? container.encode(imdbID?.id, forKey: .imdbID)
+        try? container.encode(mediaType, forKey: .mediaType)
         try? container.encode(originalLanguage, forKey: .originalLanguage)
         try? container.encode(originalTitle, forKey: .originalTitle)
         try? container.encode(overview, forKey: .overview)
@@ -191,11 +198,16 @@ public struct Movie: Codable, Equatable {
         backdropPath = try? container.decode(String.self, forKey: .backdropPath)
         budget = try? container.decode(Int.self, forKey: .budget)
         collection = try? container.decode(Collection.self, forKey: .collection)
-        genres = try? container.decode([Genre].self, forKey: .genres)
+        if let genreArray = try? container.decode([Genre].self, forKey: .genres) {
+            genres = genreArray
+        } else if let genreIDs = try? container.decode([Int].self, forKey: .genreIDs) {
+            genres = genreIDs.map({ Genre(id: $0) })
+        }
         homepage = try? container.decode(String.self, forKey: .homepage)
         if let imdbIDString = try? container.decode(String.self, forKey: .imdbID) {
             imdbID = ExternalIDType.imdb(imdbIDString)
         }
+        mediaType = try? container.decode(String.self, forKey: .mediaType)
         originalLanguage = try? container.decode(String.self, forKey: .originalLanguage)
         originalTitle = try? container.decode(String.self, forKey: .originalTitle)
         overview = try? container.decode(String.self, forKey: .overview)
