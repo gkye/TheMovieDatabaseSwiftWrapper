@@ -1,6 +1,7 @@
 @testable import TMDBSwift
 import XCTest
 
+// swiftlint:disable type_body_length
 final class MovieServiceTests: XCTestCase {
     override func setUp() {
         super.setUp()

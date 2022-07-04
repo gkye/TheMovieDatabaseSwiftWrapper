@@ -30,7 +30,6 @@ public struct Author: Codable, Equatable {
         case rating
     }
 
-
     public init(from decoder: Decoder) throws {
         let container: KeyedDecodingContainer<Author.CodingKeys> = try decoder.container(keyedBy: Author.CodingKeys.self)
 

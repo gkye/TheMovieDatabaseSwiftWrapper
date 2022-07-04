@@ -46,7 +46,7 @@ public struct Release: Codable, Equatable {
             note = noteString
         }
         self.type = try container.decode(ReleaseType.self, forKey: Release.CodingKeys.type)
-        
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         if let dateString = try? container.decode(String.self, forKey: .releaseDate), let releaseDate = dateFormatter.date(from: dateString) {

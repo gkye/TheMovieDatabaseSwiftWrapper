@@ -14,5 +14,6 @@ opt_in_rules: # some rules are turned off by default, so you need to opt-in
 included: # paths to include during linting. `--path` is ignored if present.
 
 excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - .build
 
 reporter: "github-actions-logging" # reporter type (xcode, json, csv, checkstyle, codeclimate, junit, html, emoji, sonarqube, markdown, github-actions-logging)
