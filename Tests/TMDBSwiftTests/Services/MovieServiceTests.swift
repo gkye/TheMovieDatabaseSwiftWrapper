@@ -452,4 +452,126 @@ final class MovieServiceTests: XCTestCase {
         waitForExpectations(timeout: expecationTimeout, handler: nil)
         XCTAssertNil(data)
     }
+
+    // MARK: - Get Release Dates
+
+    func testReleaseDates() async throws {
+        let urlSession = MockURLSession()
+        urlSession.result = try .success(JSONEncoder().encode(
+            ResultsResponse<[ReleaseDateResponse]>(id: 11,
+                                                   results: [ReleaseDateResponse(countryCode: "US",
+                                                                                 releases: [Release.mock])])
+        ))
+
+        let data = try await MovieService(urlSession: urlSession).releaseDates(for: 11)
+        XCTAssertNotNil(data)
+    }
+
+    func testReleaseDates_InvalidAPIKey() async throws {
+        let urlSession = MockURLSession()
+        urlSession.result = .failure(NSError())
+
+        TMDBConfig.apikey = nil
+
+        do {
+            _ = try await MovieService(urlSession: urlSession).releaseDates(for: 11)
+            XCTFail("Function should have thrown by now")
+        } catch let error as TMDBError {
+            XCTAssertEqual(error, TMDBError.invalidAPIKey)
+        }
+    }
+
+    func testReleaseDates_Success() throws {
+        var data: [(countryCode: String, releases: [Release])]?
+        let urlSession = MockURLSession()
+        urlSession.result = try .success(JSONEncoder().encode(
+            ResultsResponse<[ReleaseDateResponse]>(id: 11,
+                                                   results: [ReleaseDateResponse(countryCode: "US",
+                                                                                 releases: [Release.mock])])
+        ))
+
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieService(urlSession: urlSession).fetchReleaseDates(for: 11) { results in
+            data = results
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNotNil(data)
+    }
+
+    func testReleaseDates_Failure() {
+        var data: [(countryCode: String, releases: [Release])]? = [(countryCode: "US", releases: [Release.mock])]
+        let urlSession = MockURLSession()
+        urlSession.result = .failure(NSError())
+
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieService(urlSession: urlSession).fetchReleaseDates(for: 11) { results in
+            data = results
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNil(data)
+    }
+
+    // MARK: - Get Reviews
+
+    func testReviews() async throws {
+        let urlSession = MockURLSession()
+        urlSession.result = try .success(JSONEncoder().encode(
+            PagedResults<[Review]>(page: 1, pageCount: 10, resultCount: 100, results: [Review.mock])
+        ))
+        let data = try await MovieService(urlSession: urlSession).reviews(for: 11, page: 1)
+        XCTAssertNotNil(data)
+        XCTAssertEqual(data.results.count, 1)
+    }
+
+    func testReviews_InvalidAPIKey() async throws {
+        let urlSession = MockURLSession()
+        urlSession.result = .failure(NSError())
+
+        TMDBConfig.apikey = nil
+
+        do {
+            _ = try await MovieService(urlSession: urlSession).reviews(for: 11)
+            XCTFail("Function should have thrown by now")
+        } catch let error as TMDBError {
+            XCTAssertEqual(error, TMDBError.invalidAPIKey)
+        }
+    }
+
+    func testReviews_Success() throws {
+        var data: PagedResults<[Review]>?
+        let urlSession = MockURLSession()
+        urlSession.result = try .success(JSONEncoder().encode(
+            PagedResults<[Review]>(page: 1, pageCount: 10, resultCount: 100, results: [Review.mock])
+        ))
+
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieService(urlSession: urlSession).fetchReviews(for: 11) { results in
+            data = results
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNotNil(data)
+        XCTAssertEqual(data?.results.count, 1)
+    }
+
+    func testReviews_Failure() {
+        var data: PagedResults<[Review]>? = PagedResults<[Review]>(page: 1, pageCount: 10, resultCount: 100, results: [Review.mock])
+
+        let urlSession = MockURLSession()
+        urlSession.result = .failure(NSError())
+
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieService(urlSession: urlSession).fetchReviews(for: 11) { results in
+            data = results
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNil(data)
+    }
 }

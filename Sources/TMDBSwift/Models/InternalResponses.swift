@@ -1,8 +1,14 @@
 import Foundation
 
-struct ResultsResponse<T: Decodable>: Decodable {
+struct ResultsResponse<T: Codable>: Codable {
     var id: Int
     var results: T
+
+    init(id: Int,
+         results: T) {
+        self.id = id
+        self.results = results
+    }
 }
 
 struct KeywordResponse: Codable {
@@ -53,5 +59,15 @@ struct ImageResponse: Codable {
         self.backdrops = backdrops
         self.logos = logos
         self.posters = posters
+    }
+}
+
+struct ReleaseDateResponse: Codable, Equatable {
+    var countryCode: String
+    var releases: [Release]
+
+    enum CodingKeys: String, CodingKey {
+        case countryCode = "iso_3166_1"
+        case releases = "release_dates"
     }
 }
