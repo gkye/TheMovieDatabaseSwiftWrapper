@@ -635,4 +635,62 @@ final class MovieServiceTests: XCTestCase {
         waitForExpectations(timeout: expecationTimeout, handler: nil)
         XCTAssertNil(data)
     }
+
+    // MARK: - Get Translations
+
+    func testTranslations() async throws {
+        let urlSession = MockURLSession()
+        urlSession.result = try .success(JSONEncoder().encode(TranslationsResponse(id: 1, translations: [Translation.mock])))
+
+        let data = try await MovieService(urlSession: urlSession).translations(for: 11)
+        XCTAssertNotNil(data)
+        XCTAssertEqual(data.count, 1)
+    }
+
+    func testTranslations_InvalidAPIKey() async throws {
+        let urlSession = MockURLSession()
+        urlSession.result = .failure(NSError())
+
+        TMDBConfig.apikey = nil
+
+        do {
+            _ = try await MovieService(urlSession: urlSession).translations(for: 11)
+            XCTFail("Function should have thrown by now")
+        } catch let error as TMDBError {
+            XCTAssertEqual(error, TMDBError.invalidAPIKey)
+        }
+    }
+
+    func testTranslations_Success() throws {
+        var data: [TMDBSwift.Translation]?
+        let urlSession = MockURLSession()
+        urlSession.result = try .success(JSONEncoder().encode(TranslationsResponse(id: 1, translations: [Translation.mock])))
+
+
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieService(urlSession: urlSession).fetchTranslations(for: 11) { results in
+            data = results
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNotNil(data)
+        XCTAssertEqual(data?.count, 1)
+    }
+
+    func testTranslations_Failure() {
+        var data: [TMDBSwift.Translation]? = [Translation.mock]
+
+        let urlSession = MockURLSession()
+        urlSession.result = .failure(NSError())
+
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieService(urlSession: urlSession).fetchTranslations(for: 11) { results in
+            data = results
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNil(data)
+    }
 }

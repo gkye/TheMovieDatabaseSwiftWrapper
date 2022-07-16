@@ -596,7 +596,7 @@ public final class MovieService {
     ///
     ///  You can call this method from synchronous code using a completion handler, as shown on this page, or you can call it as an asynchronous method that has the following declaration:
     ///  ```
-    ///  func similarMovies(for id: Int, page: Int = 1) async throws -> PagedResults<[Review]>
+    ///  func similarMovies(for id: Int, page: Int = 1) async throws -> PagedResults<[Movie]>
     ///  ```
     ///
     /// - Parameters:
@@ -608,6 +608,57 @@ public final class MovieService {
         Task {
             do {
                 let results = try await self.similarMovies(for: id, page: page)
+                completion(results)
+            } catch {
+                completion(nil)
+            }
+        }
+    }
+
+    // MARK: - Get Translations
+
+    /// Get a list of translations that have been created for a movie.
+    /// - Parameters:
+    ///   - id: A movie's ID.
+    /// - Returns: A ``PagedResults`` of  recommended ``Movie`` for the requested movie id.
+    public final func translations(for id: Int) async throws -> [Translation] {
+
+        guard let apiKey = TMDBConfig.apikey else { throw TMDBError.invalidAPIKey }
+
+        var components = URLComponents()
+        components.scheme = TMDBConfig.apiScheme
+        components.host = TMDBConfig.apiHost
+        components.path = "/3/movie/\(id)/translations"
+        components.queryItems = [
+            URLQueryItem(name: "api_key", value: apiKey),
+            URLQueryItem(name: "language", value: TMDBConfig.language)
+        ]
+
+        guard let url = components.url else { throw TMDBError.invalidURL }
+
+        let (data, _) = try await urlSession.data(from: url)
+
+        let results = try JSONDecoder().decode(TranslationsResponse.self, from: data)
+        return results.translations
+    }
+
+    /// Get a list of translations that have been created for a movie.
+    ///
+    /// **Important**
+    ///
+    ///  You can call this method from synchronous code using a completion handler, as shown on this page, or you can call it as an asynchronous method that has the following declaration:
+    ///  ```
+    ///  func translations(for id: Int) async throws -> [Translation]
+    ///  ```
+    ///
+    /// - Parameters:
+    ///   - id: A movie's ID.
+    ///   - completion: A closure to be invoked asynchronously after ``MovieService`` fetches data. The closure takes one parameter:
+    ///   - results: Returns an array of ``Translation`` for the requested movie id.
+    public final func fetchTranslations(for id: Int, completion: @escaping ([Translation]?) -> Void) {
+        Task {
+            do {
+                let results = try await self.translations(for: id)
                 completion(results)
             } catch {
                 completion(nil)
