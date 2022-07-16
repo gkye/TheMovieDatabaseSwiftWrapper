@@ -666,7 +666,6 @@ final class MovieServiceTests: XCTestCase {
         let urlSession = MockURLSession()
         urlSession.result = try .success(JSONEncoder().encode(TranslationsResponse(id: 1, translations: [Translation.mock])))
 
-
         let expectation = self.expectation(description: "Wait for data to load.")
 
         MovieService(urlSession: urlSession).fetchTranslations(for: 11) { results in
@@ -723,7 +722,6 @@ final class MovieServiceTests: XCTestCase {
         var data: [Video]?
         let urlSession = MockURLSession()
         urlSession.result = try .success(JSONEncoder().encode(ResultsResponse(id: 1, results: [Video.mock])))
-
 
         let expectation = self.expectation(description: "Wait for data to load.")
 

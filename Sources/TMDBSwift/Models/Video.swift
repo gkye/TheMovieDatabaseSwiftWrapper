@@ -50,7 +50,6 @@ public struct Video: Codable, Equatable {
         case publishedDate = "published_at"
     }
 
-
     public init(from decoder: Decoder) throws {
         let container: KeyedDecodingContainer<Video.CodingKeys> = try decoder.container(keyedBy: Video.CodingKeys.self)
 
