@@ -71,3 +71,8 @@ struct ReleaseDateResponse: Codable, Equatable {
         case releases = "release_dates"
     }
 }
+
+struct TranslationsResponse: Codable, Equatable {
+    var id: Int
+    var translations: [Translation]
+}

@@ -575,4 +575,178 @@ final class MovieServiceTests: XCTestCase {
         waitForExpectations(timeout: expecationTimeout, handler: nil)
         XCTAssertNil(data)
     }
+
+    // MARK: - Get Similar Movies
+
+    func testSimilarMovies() async throws {
+        let urlSession = MockURLSession()
+        urlSession.result = try .success(JSONEncoder().encode(
+            PagedResults<[Movie]>(page: 1, pageCount: 10, resultCount: 100, results: [Movie.mock])
+        ))
+        let data = try await MovieService(urlSession: urlSession).similarMovies(for: 11, page: 1)
+        XCTAssertNotNil(data)
+        XCTAssertEqual(data.results.count, 1)
+    }
+
+    func testSimilarMovies_InvalidAPIKey() async throws {
+        let urlSession = MockURLSession()
+        urlSession.result = .failure(NSError())
+
+        TMDBConfig.apikey = nil
+
+        do {
+            _ = try await MovieService(urlSession: urlSession).similarMovies(for: 11)
+            XCTFail("Function should have thrown by now")
+        } catch let error as TMDBError {
+            XCTAssertEqual(error, TMDBError.invalidAPIKey)
+        }
+    }
+
+    func testSimilarMovies_Success() throws {
+        var data: PagedResults<[Movie]>?
+        let urlSession = MockURLSession()
+        urlSession.result = try .success(JSONEncoder().encode(
+            PagedResults<[Movie]>(page: 1, pageCount: 10, resultCount: 100, results: [Movie.mock])
+        ))
+
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieService(urlSession: urlSession).fetchSimilarMovies(for: 11) { results in
+            data = results
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNotNil(data)
+        XCTAssertEqual(data?.results.count, 1)
+    }
+
+    func testSimilarMovies_Failure() {
+        var data: PagedResults<[Movie]>? = PagedResults<[Movie]>(page: 1, pageCount: 10, resultCount: 100, results: [Movie.mock])
+
+        let urlSession = MockURLSession()
+        urlSession.result = .failure(NSError())
+
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieService(urlSession: urlSession).fetchSimilarMovies(for: 11) { results in
+            data = results
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNil(data)
+    }
+
+    // MARK: - Get Translations
+
+    func testTranslations() async throws {
+        let urlSession = MockURLSession()
+        urlSession.result = try .success(JSONEncoder().encode(TranslationsResponse(id: 1, translations: [Translation.mock])))
+
+        let data = try await MovieService(urlSession: urlSession).translations(for: 11)
+        XCTAssertNotNil(data)
+        XCTAssertEqual(data.count, 1)
+    }
+
+    func testTranslations_InvalidAPIKey() async throws {
+        let urlSession = MockURLSession()
+        urlSession.result = .failure(NSError())
+
+        TMDBConfig.apikey = nil
+
+        do {
+            _ = try await MovieService(urlSession: urlSession).translations(for: 11)
+            XCTFail("Function should have thrown by now")
+        } catch let error as TMDBError {
+            XCTAssertEqual(error, TMDBError.invalidAPIKey)
+        }
+    }
+
+    func testTranslations_Success() throws {
+        var data: [TMDBSwift.Translation]?
+        let urlSession = MockURLSession()
+        urlSession.result = try .success(JSONEncoder().encode(TranslationsResponse(id: 1, translations: [Translation.mock])))
+
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieService(urlSession: urlSession).fetchTranslations(for: 11) { results in
+            data = results
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNotNil(data)
+        XCTAssertEqual(data?.count, 1)
+    }
+
+    func testTranslations_Failure() {
+        var data: [TMDBSwift.Translation]? = [Translation.mock]
+
+        let urlSession = MockURLSession()
+        urlSession.result = .failure(NSError())
+
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieService(urlSession: urlSession).fetchTranslations(for: 11) { results in
+            data = results
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNil(data)
+    }
+
+    // MARK: - Get Videos
+
+    func testVideos() async throws {
+        let urlSession = MockURLSession()
+        urlSession.result = try .success(JSONEncoder().encode(ResultsResponse(id: 1, results: [Video.mock])))
+
+        let data = try await MovieService(urlSession: urlSession).videos(for: 11)
+        XCTAssertNotNil(data)
+        XCTAssertEqual(data.count, 1)
+    }
+
+    func testVideos_InvalidAPIKey() async throws {
+        let urlSession = MockURLSession()
+        urlSession.result = .failure(NSError())
+
+        TMDBConfig.apikey = nil
+
+        do {
+            _ = try await MovieService(urlSession: urlSession).videos(for: 11)
+            XCTFail("Function should have thrown by now")
+        } catch let error as TMDBError {
+            XCTAssertEqual(error, TMDBError.invalidAPIKey)
+        }
+    }
+
+    func testVideos_Success() throws {
+        var data: [Video]?
+        let urlSession = MockURLSession()
+        urlSession.result = try .success(JSONEncoder().encode(ResultsResponse(id: 1, results: [Video.mock])))
+
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieService(urlSession: urlSession).fetchVideos(for: 11) { results in
+            data = results
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNotNil(data)
+        XCTAssertEqual(data?.count, 1)
+    }
+
+    func testVideos_Failure() {
+        var data: [Video]? = [Video.mock]
+
+        let urlSession = MockURLSession()
+        urlSession.result = .failure(NSError())
+
+        let expectation = self.expectation(description: "Wait for data to load.")
+
+        MovieService(urlSession: urlSession).fetchVideos(for: 11) { results in
+            data = results
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        XCTAssertNil(data)
+    }
 }
