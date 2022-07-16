@@ -1,26 +1,14 @@
 @testable import TMDBSwift
 import Foundation
 
-private let data = """
-{
-    "iso_3166_1": "NL",
-    "iso_639_1": "nl",
-    "name": "Nederlands",
-    "english_name": "Dutch",
-    "data": {
-        "homepage": "",
-        "overview": "Luke Skywalker werkt op het land bij z'n oom en tante op de planeet Tatooine. Als zij door Keizerlijke troepen worden vermoord, sluit Luke zich aan bij de groep rebellen die vecht tegen de tirannie van de Keizer en de slechte Darth Vader. Luke, Princess Leia, Han Solo en de andere rebellen doen een poging de Death Star, het nieuwe wapen van de Keizer, te vernietigen.",
-        "runtime": 118,
-        "tagline": "",
-        "title": "Star Wars: Episode IV - A New Hope"
-    }
-}
-"""
-
 extension Translation {
-    static var mock: Translation {
-        let jsonDecoder = JSONDecoder()
-        let translation = try! jsonDecoder.decode(Translation.self, from: data.data(using: .utf8)!)
-        return translation
-    }
+    static var mock: Translation = Translation(countryCode: "MX", language: Language.mock, content: .mock)
+}
+
+extension Translation.Content {
+    static var mock = Translation.Content(homepage: "http://latino.starwars.com/",
+                                          overview: "La Princesa Leia Organa ha sido capturada por Darth Vader por tener los planos de la Estrella de la muerte, la temida estación espacial del imperio. Dos androides escapan al planeta Tatooine, ambos son comprados por Luke Skywalker, un joven granjero, este se entera de un mensaje que ella, uno de ellos y busca a Obi Wan Kenobi, un antiguo caballero Jedi que lo lleva a conocer sobre la fuerza y como utilizarla. Contratan a Han Solo, un foragido espacial que tiene al Halcón Milenario, una gran nave capaz de recorrer a la velocidad de la luz con la intención de rescatar a la princesa y luego organizar una batalla para destruir a la Estrella de la muerte.",
+                                          runtime: 121,
+                                          tagline: "Hace mucho tiempo, en una galaxia muy lejana....",
+                                          title: "La guerra de las galaxias")
 }
