@@ -38,11 +38,11 @@ public struct Translation: Codable, Equatable {
     /// <#Description#>
     public var countryCode: String // change to enum?
     /// <#Description#>
-    public var language: SupportedLanguage
+    public var language: Language
     /// <#Description#>
     public var content: Content
 
-    public init(countryCode: String, language: SupportedLanguage, content: Translation.Content) {
+    public init(countryCode: String, language: Language, content: Translation.Content) {
         self.countryCode = countryCode
         self.language = language
         self.content = content
@@ -67,7 +67,7 @@ public struct Translation: Codable, Equatable {
                                                  forKey: .content)
 
         self.countryCode = try container.decode(String.self, forKey: Translation.CodingKeys.countryCode)
-        self.language = try container.decode(SupportedLanguage.self, forKey: Translation.CodingKeys.language)
+        self.language = try container.decode(Language.self, forKey: Translation.CodingKeys.language)
         self.content = Content(homepage: try data.decode(String.self, forKey: Translation.CodingKeys.homepage),
                                overview: try data.decode(String.self, forKey: Translation.CodingKeys.overview),
                                runtime: try data.decode(Int.self, forKey: Translation.CodingKeys.runtime),

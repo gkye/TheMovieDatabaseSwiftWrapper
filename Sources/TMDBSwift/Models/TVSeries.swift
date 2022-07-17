@@ -19,7 +19,7 @@ public struct TVSeries: Decodable {
 //    public var isInProduction: Bool?
 
     /// <#Description#>
-    public var originalLanguage: SupportedLanguage?
+    public var originalLanguage: Language?
     /// <#Description#>
     public var overview: String?
     /// <#Description#>
@@ -31,7 +31,7 @@ public struct TVSeries: Decodable {
     /// <#Description#>
     public var productionCountries: [Country]?
     /// <#Description#>
-    public var spokenLanguages: [SupportedLanguage]?
+    public var spokenLanguages: [Language]?
     /// <#Description#>
     public var status: String? // change to enum?
     /// <#Description#>
@@ -56,7 +56,7 @@ public struct TVSeries: Decodable {
         case popularity
         case posterPath = "poster_path"
         case productionCompanies = "production_companies"
-        case productionCountires = "production_countries"
+        case productionCountries = "production_countries"
         case releaseDate = "release_date"
         case revenue
         case runtime
@@ -73,24 +73,42 @@ public struct TVSeries: Decodable {
         case language = "iso_639_1"
     }
 
+    enum ProductionCompanyCodingKeys: String, CodingKey {
+        case country = "iso_3166_1"
+    }
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(Int.self, forKey: .id)
         backdropPath = try? container.decode(String.self, forKey: .backdropPath)
         genres = try? container.decode([Genre].self, forKey: .genres)
         homepage = try? container.decode(String.self, forKey: .homepage)
-        originalLanguage = try? container.decode(SupportedLanguage.self, forKey: .originalLanguage)
+        originalLanguage = try? container.decode(Language.self, forKey: .originalLanguage)
         overview = try? container.decode(String.self, forKey: .overview)
         popularity = try? container.decode(Double.self, forKey: .popularity)
         posterPath = try? container.decode(String.self, forKey: .posterPath)
         productionCompanies = try? container.decode([Company].self, forKey: .productionCompanies)
-        productionCountries = try? container.decode([Country].self, forKey: .productionCountires)
-        if var content = try? container.nestedUnkeyedContainer(forKey: .spokenLanguages) {
-            var languages: [SupportedLanguage] = []
+        if var countryContent = try? container.nestedUnkeyedContainer(forKey: .productionCountries) {
+            var countries: [Country] = []
 
-            while !content.isAtEnd {
-                if let language = try? content.nestedContainer(keyedBy: SpokenLanguageCodingKeys.self) {
-                    if let supportedLanguage = try? language.decode(SupportedLanguage.self, forKey: .language) {
+            while !countryContent.isAtEnd {
+                if let country = try? countryContent.nestedContainer(keyedBy: ProductionCompanyCodingKeys.self) {
+                    if let supportedCountry = try? country.decode(Country.self, forKey: .country) {
+                        countries.append(supportedCountry)
+                    }
+                } else {
+                    break
+                }
+            }
+            productionCountries = countries
+        }
+
+        if var languageContent = try? container.nestedUnkeyedContainer(forKey: .spokenLanguages) {
+            var languages: [Language] = []
+
+            while !languageContent.isAtEnd {
+                if let language = try? languageContent.nestedContainer(keyedBy: SpokenLanguageCodingKeys.self) {
+                    if let supportedLanguage = try? language.decode(Language.self, forKey: .language) {
                         languages.append(supportedLanguage)
                     }
                 } else {

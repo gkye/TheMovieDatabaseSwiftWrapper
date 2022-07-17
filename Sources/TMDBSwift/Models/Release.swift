@@ -5,7 +5,7 @@ public struct Release: Codable, Equatable {
     /// <#Description#>
     public var certification: String?
     /// <#Description#>
-    public var language: SupportedLanguage?
+    public var language: Language?
     /// <#Description#>
     public var note: String?
     /// <#Description#>
@@ -14,7 +14,7 @@ public struct Release: Codable, Equatable {
     public var type: ReleaseType
 
     public init(certification: String? = nil,
-                language: SupportedLanguage? = nil,
+                language: Language? = nil,
                 note: String? = nil,
                 releaseDate: Date,
                 type: ReleaseType) {
@@ -39,7 +39,7 @@ public struct Release: Codable, Equatable {
         if let certificationString = try? container.decodeIfPresent(String.self, forKey: Release.CodingKeys.certification), certificationString != "" {
             certification = certificationString
         }
-        if let languageString = try? container.decodeIfPresent(SupportedLanguage.self, forKey: Release.CodingKeys.language) {
+        if let languageString = try? container.decodeIfPresent(Language.self, forKey: Release.CodingKeys.language) {
             language = languageString
         }
         if let noteString = try? container.decodeIfPresent(String.self, forKey: Release.CodingKeys.note), noteString != "" {

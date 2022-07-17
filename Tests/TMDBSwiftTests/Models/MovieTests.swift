@@ -176,7 +176,7 @@ final class MovieTests: XCTestCase {
                                                            logoPath: "/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
                                                            name: "20th Century Fox",
                                                            originCountry: "US")])
-        XCTAssertEqual(movie.productionCountries, [Country(countryCode: "US", name: "United States of America")])
+        XCTAssertEqual(movie.productionCountries, [.US])
         XCTAssertEqual(movie.releaseDate, Calendar.current.date(from: DateComponents(year: 1977, month: 5, day: 25)))
         XCTAssertEqual(movie.revenue, 775398007)
         XCTAssertEqual(movie.runtime, 121)
@@ -227,7 +227,7 @@ final class MovieTests: XCTestCase {
                                                            logoPath: "/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
                                                            name: "20th Century Fox",
                                                            originCountry: "US")])
-        XCTAssertEqual(movie.productionCountries, [Country(countryCode: "US", name: "United States of America")])
+        XCTAssertEqual(movie.productionCountries, [.US])
         XCTAssertEqual(movie.releaseDate, Calendar.current.date(from: DateComponents(year: 1977, month: 5, day: 25)))
         XCTAssertEqual(movie.revenue, 775398007)
         XCTAssertEqual(movie.runtime, 121)

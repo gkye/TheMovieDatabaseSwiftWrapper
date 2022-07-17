@@ -9,7 +9,7 @@ public struct List: Codable, Equatable {
     /// The total item count.
     public var itemCount: Int?
     /// The language.
-    public var language: SupportedLanguage?
+    public var language: Language?
     /// The name.
     public var name: String?
     /// The poster image path.
@@ -27,7 +27,7 @@ public struct List: Codable, Equatable {
                 description: String? = nil,
                 favoriteCount: Int? = nil,
                 itemCount: Int? = nil,
-                language: SupportedLanguage? = nil,
+                language: Language? = nil,
                 name: String? = nil,
                 posterPath: String? = nil) {
         self.id = id

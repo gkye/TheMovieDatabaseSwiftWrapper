@@ -33,7 +33,7 @@ public struct Movie: Codable, Equatable {
     /// <#Description#>
     public var mediaType: String?
     /// The language from its original release.
-    public var originalLanguage: SupportedLanguage?
+    public var originalLanguage: Language?
     /// The official title from its original release.
     public var originalTitle: String?
     /// The overview.
@@ -61,7 +61,7 @@ public struct Movie: Codable, Equatable {
     /// The runtime in minutes.
     public var runtime: Int?
     /// <#Description#>
-    public var spokenLanguages: [SupportedLanguage]? // simplify to array of language types?
+    public var spokenLanguages: [Language]? // simplify to array of language types?
     /// The production status.
     public var status: String? // change to enum?
     /// The tagline.
@@ -84,7 +84,7 @@ public struct Movie: Codable, Equatable {
                 homepage: String? = nil,
                 imdbID: ExternalIDType? = nil,
                 mediaType: String? = nil,
-                originalLanguage: SupportedLanguage? = nil,
+                originalLanguage: Language? = nil,
                 originalTitle: String? = nil,
                 overview: String? = nil,
                 popularity: Double? = nil,
@@ -93,7 +93,7 @@ public struct Movie: Codable, Equatable {
                 releaseDate: Date? = nil,
                 revenue: Int? = nil,
                 runtime: Int? = nil,
-                spokenLanguages: [SupportedLanguage]? = nil,
+                spokenLanguages: [Language]? = nil,
                 status: String? = nil,
                 tagline: String? = nil,
                 title: String? = nil,
@@ -161,6 +161,10 @@ public struct Movie: Codable, Equatable {
         case language = "iso_639_1"
     }
 
+    enum ProductionCompanyCodingKeys: String, CodingKey {
+        case country = "iso_3166_1"
+    }
+
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
@@ -178,7 +182,15 @@ public struct Movie: Codable, Equatable {
         try? container.encode(popularity, forKey: .popularity)
         try? container.encode(posterPath, forKey: .posterPath)
         try? container.encode(productionCompanies, forKey: .productionCompanies)
-        try? container.encode(productionCountries, forKey: .productionCountries)
+
+        if let productionCountries = productionCountries {
+            var countryDict: [[String: String]] = []
+            for country in productionCountries {
+                countryDict.append([ProductionCompanyCodingKeys.country.stringValue: country.rawValue])
+            }
+            try? container.encode(countryDict, forKey: .productionCountries)
+        }
+
         if let releaseDate = releaseDate {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -218,13 +230,28 @@ public struct Movie: Codable, Equatable {
             imdbID = ExternalIDType.imdb(imdbIDString)
         }
         mediaType = try? container.decode(String.self, forKey: .mediaType)
-        originalLanguage = try? container.decode(SupportedLanguage.self, forKey: .originalLanguage)
+        originalLanguage = try? container.decode(Language.self, forKey: .originalLanguage)
         originalTitle = try? container.decode(String.self, forKey: .originalTitle)
         overview = try? container.decode(String.self, forKey: .overview)
         popularity = try? container.decode(Double.self, forKey: .popularity)
         posterPath = try? container.decode(String.self, forKey: .posterPath)
         productionCompanies = try? container.decode([Company].self, forKey: .productionCompanies)
-        productionCountries = try? container.decode([Country].self, forKey: .productionCountries)
+
+        if var countryContent = try? container.nestedUnkeyedContainer(forKey: .productionCountries) {
+            var countries: [Country] = []
+
+            while !countryContent.isAtEnd {
+                if let country = try? countryContent.nestedContainer(keyedBy: ProductionCompanyCodingKeys.self) {
+                    if let supportedCountry = try? country.decode(Country.self, forKey: .country) {
+                        countries.append(supportedCountry)
+                    }
+                } else {
+                    break
+                }
+            }
+            productionCountries = countries
+        }
+
         if let dateString = try? container.decode(String.self, forKey: .releaseDate) {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -234,11 +261,11 @@ public struct Movie: Codable, Equatable {
         runtime = try? container.decode(Int.self, forKey: .runtime)
 
         if var content = try? container.nestedUnkeyedContainer(forKey: .spokenLanguages) {
-            var languages: [SupportedLanguage] = []
+            var languages: [Language] = []
 
             while !content.isAtEnd {
                 if let language = try? content.nestedContainer(keyedBy: SpokenLanguageCodingKeys.self) {
-                    if let supportedLanguage = try? language.decode(SupportedLanguage.self, forKey: .language) {
+                    if let supportedLanguage = try? language.decode(Language.self, forKey: .language) {
                         languages.append(supportedLanguage)
                     }
                 } else {
