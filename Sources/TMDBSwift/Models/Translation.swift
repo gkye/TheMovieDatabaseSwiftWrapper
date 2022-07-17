@@ -38,11 +38,11 @@ public struct Translation: Codable, Equatable {
     /// <#Description#>
     public var countryCode: String // change to enum?
     /// <#Description#>
-    public var language: Language
+    public var language: SupportedLanguage
     /// <#Description#>
     public var content: Content
 
-    public init(countryCode: String, language: Language, content: Translation.Content) {
+    public init(countryCode: String, language: SupportedLanguage, content: Translation.Content) {
         self.countryCode = countryCode
         self.language = language
         self.content = content
@@ -50,8 +50,7 @@ public struct Translation: Codable, Equatable {
 
     public enum CodingKeys: String, CodingKey {
         case countryCode = "iso_3166_1"
-        case language
-        case languageCode = "iso_639_1"
+        case language = "iso_639_1"
         case name
         case englishName = "english_name"
         case content = "data"
@@ -68,11 +67,7 @@ public struct Translation: Codable, Equatable {
                                                  forKey: .content)
 
         self.countryCode = try container.decode(String.self, forKey: Translation.CodingKeys.countryCode)
-        self.language = Language(
-            languageCode: try container.decode(String.self, forKey: Translation.CodingKeys.languageCode),
-            name: try container.decode(String.self, forKey: Translation.CodingKeys.name),
-            englishName: try container.decode(String.self, forKey: Translation.CodingKeys.englishName))
-
+        self.language = try container.decode(SupportedLanguage.self, forKey: Translation.CodingKeys.language)
         self.content = Content(homepage: try data.decode(String.self, forKey: Translation.CodingKeys.homepage),
                                overview: try data.decode(String.self, forKey: Translation.CodingKeys.overview),
                                runtime: try data.decode(Int.self, forKey: Translation.CodingKeys.runtime),
@@ -85,9 +80,7 @@ public struct Translation: Codable, Equatable {
         var container: KeyedEncodingContainer<Translation.CodingKeys> = encoder.container(keyedBy: Translation.CodingKeys.self)
 
         try container.encode(self.countryCode, forKey: Translation.CodingKeys.countryCode)
-        try container.encode(self.language.languageCode, forKey: .languageCode)
-        try container.encode(self.language.englishName, forKey: .englishName)
-        try container.encode(self.language.name, forKey: .name)
+        try container.encode(self.language, forKey: .language)
 
         var content = container.nestedContainer(keyedBy: Translation.Content.CodingKeys.self, forKey: .content)
         try content.encode(self.content.homepage, forKey: .homepage)

@@ -4,7 +4,7 @@ import XCTest
 private let data = """
 {
     "certification": "PG",
-    "iso_639_1": "US",
+    "iso_639_1": "en",
     "note": "IMAX",
     "release_date": "1997-06-17T00:00:00.000Z",
     "type": 3
@@ -48,7 +48,7 @@ final class ReleaseTests: XCTestCase {
         XCTAssertEqual(release.type, .theatrical)
         XCTAssertEqual(release.certification, "PG")
         XCTAssertEqual(release.note, "IMAX")
-        XCTAssertEqual(release.languageCode, "US")
+        XCTAssertEqual(release.language, .en)
     }
 
     func testEncode_EmptyValues() throws {
@@ -67,7 +67,7 @@ final class ReleaseTests: XCTestCase {
         XCTAssertEqual(release.type, .theatrical)
         XCTAssertNil(release.certification)
         XCTAssertNil(release.note)
-        XCTAssertNil(release.languageCode)
+        XCTAssertNil(release.language)
     }
 
     func testDecode_BadDateFormat() throws {

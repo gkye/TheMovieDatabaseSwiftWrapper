@@ -31,7 +31,7 @@ final class ListTests: XCTestCase {
         XCTAssertEqual(list.description, "All movies and shows I've seen")
         XCTAssertEqual(list.favoriteCount, 0)
         XCTAssertEqual(list.itemCount, 2569)
-        XCTAssertEqual(list.languageCode, "en")
+        XCTAssertEqual(list.language, .en)
         XCTAssertEqual(list.name, "Movies I've seen")
         XCTAssertEqual(list.posterPath, "/jBFxXKCrViA88hhO59fDx0Av4P.jpg")
     }

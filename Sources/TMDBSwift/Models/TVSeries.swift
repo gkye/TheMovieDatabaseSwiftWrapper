@@ -19,7 +19,7 @@ public struct TVSeries: Decodable {
 //    public var isInProduction: Bool?
 
     /// <#Description#>
-    public var originalLanguage: String? // change to enum?
+    public var originalLanguage: SupportedLanguage?
     /// <#Description#>
     public var overview: String?
     /// <#Description#>
@@ -31,7 +31,7 @@ public struct TVSeries: Decodable {
     /// <#Description#>
     public var productionCountries: [Country]?
     /// <#Description#>
-    public var spokenLanguages: [Language]? // simplify to array of language types?
+    public var spokenLanguages: [SupportedLanguage]?
     /// <#Description#>
     public var status: String? // change to enum?
     /// <#Description#>
@@ -69,19 +69,36 @@ public struct TVSeries: Decodable {
         case voteCount = "vote_count"
     }
 
+    enum SpokenLanguageCodingKeys: String, CodingKey {
+        case language = "iso_639_1"
+    }
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(Int.self, forKey: .id)
         backdropPath = try? container.decode(String.self, forKey: .backdropPath)
         genres = try? container.decode([Genre].self, forKey: .genres)
         homepage = try? container.decode(String.self, forKey: .homepage)
-        originalLanguage = try? container.decode(String.self, forKey: .originalLanguage)
+        originalLanguage = try? container.decode(SupportedLanguage.self, forKey: .originalLanguage)
         overview = try? container.decode(String.self, forKey: .overview)
         popularity = try? container.decode(Double.self, forKey: .popularity)
         posterPath = try? container.decode(String.self, forKey: .posterPath)
         productionCompanies = try? container.decode([Company].self, forKey: .productionCompanies)
         productionCountries = try? container.decode([Country].self, forKey: .productionCountires)
-        spokenLanguages = try? container.decode([Language].self, forKey: .spokenLanguages)
+        if var content = try? container.nestedUnkeyedContainer(forKey: .spokenLanguages) {
+            var languages: [SupportedLanguage] = []
+
+            while !content.isAtEnd {
+                if let language = try? content.nestedContainer(keyedBy: SpokenLanguageCodingKeys.self) {
+                    if let supportedLanguage = try? language.decode(SupportedLanguage.self, forKey: .language) {
+                        languages.append(supportedLanguage)
+                    }
+                } else {
+                    break
+                }
+            }
+            spokenLanguages = languages
+        }
         status = try? container.decode(String.self, forKey: .status)
         tagline = try? container.decode(String.self, forKey: .tagline)
         voteAverage = try? container.decode(Double.self, forKey: .voteAverage)

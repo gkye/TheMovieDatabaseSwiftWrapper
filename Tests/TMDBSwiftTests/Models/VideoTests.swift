@@ -30,7 +30,7 @@ final class VideoTests: XCTestCase {
         let video = try jsonDecoder.decode(Video.self, from: data.data(using: .utf8)!)
 
         XCTAssertEqual(video.countryCode, "US")
-        XCTAssertEqual(video.languageCode, "en")
+        XCTAssertEqual(video.language, .en)
         XCTAssertEqual(video.name, "Star Wars: A New Hope | All the Facts | Disney+ Deets")
         XCTAssertEqual(video.key, "SCBJJG_Ncl0")
         XCTAssertEqual(video.site, "YouTube")

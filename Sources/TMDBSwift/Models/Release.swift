@@ -5,7 +5,7 @@ public struct Release: Codable, Equatable {
     /// <#Description#>
     public var certification: String?
     /// <#Description#>
-    public var languageCode: String?
+    public var language: SupportedLanguage?
     /// <#Description#>
     public var note: String?
     /// <#Description#>
@@ -14,12 +14,12 @@ public struct Release: Codable, Equatable {
     public var type: ReleaseType
 
     public init(certification: String? = nil,
-                languageCode: String? = nil,
+                language: SupportedLanguage? = nil,
                 note: String? = nil,
                 releaseDate: Date,
                 type: ReleaseType) {
         self.certification = certification
-        self.languageCode = languageCode
+        self.language = language
         self.note = note
         self.releaseDate = releaseDate
         self.type = type
@@ -27,7 +27,7 @@ public struct Release: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case certification
-        case languageCode = "iso_639_1"
+        case language = "iso_639_1"
         case note
         case releaseDate = "release_date"
         case type
@@ -39,8 +39,8 @@ public struct Release: Codable, Equatable {
         if let certificationString = try? container.decodeIfPresent(String.self, forKey: Release.CodingKeys.certification), certificationString != "" {
             certification = certificationString
         }
-        if let languageCodeString = try? container.decodeIfPresent(String.self, forKey: Release.CodingKeys.languageCode), languageCodeString != "" {
-            languageCode = languageCodeString
+        if let languageString = try? container.decodeIfPresent(SupportedLanguage.self, forKey: Release.CodingKeys.language) {
+            language = languageString
         }
         if let noteString = try? container.decodeIfPresent(String.self, forKey: Release.CodingKeys.note), noteString != "" {
             note = noteString
@@ -60,7 +60,7 @@ public struct Release: Codable, Equatable {
         var container: KeyedEncodingContainer<Release.CodingKeys> = encoder.container(keyedBy: Release.CodingKeys.self)
 
         try container.encodeIfPresent(self.certification, forKey: Release.CodingKeys.certification)
-        try container.encodeIfPresent(self.languageCode, forKey: Release.CodingKeys.languageCode)
+        try container.encodeIfPresent(self.language, forKey: Release.CodingKeys.language)
         try container.encodeIfPresent(self.note, forKey: Release.CodingKeys.note)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"

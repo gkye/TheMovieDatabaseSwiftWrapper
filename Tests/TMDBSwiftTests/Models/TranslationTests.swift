@@ -31,9 +31,7 @@ final class TranslationTests: XCTestCase {
         let translation = try jsonDecoder.decode(Translation.self, from: data.data(using: .utf8)!)
 
         XCTAssertEqual(translation.countryCode, "NL")
-        XCTAssertEqual(translation.language.languageCode, "nl")
-        XCTAssertEqual(translation.language.name, "Nederlands")
-        XCTAssertEqual(translation.language.englishName, "Dutch")
+        XCTAssertEqual(translation.language, .nl)
         XCTAssertEqual(translation.content.homepage, "")
         XCTAssertEqual(translation.content.overview, "Luke Skywalker werkt op het land bij z'n oom en tante op de planeet Tatooine. Als zij door Keizerlijke troepen worden vermoord, sluit Luke zich aan bij de groep rebellen die vecht tegen de tirannie van de Keizer en de slechte Darth Vader. Luke, Princess Leia, Han Solo en de andere rebellen doen een poging de Death Star, het nieuwe wapen van de Keizer, te vernietigen.")
         XCTAssertEqual(translation.content.runtime, 118)

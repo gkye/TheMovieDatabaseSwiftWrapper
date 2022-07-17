@@ -28,7 +28,7 @@ final class ImageTests: XCTestCase {
 
         XCTAssertEqual(image.filePath, "/jBFxXKCrViA88hhO59fDx0Av4P.jpg")
         XCTAssertEqual(image.height, 1080)
-        XCTAssertEqual(image.languageCode, "en")
+        XCTAssertEqual(image.language, .en)
         XCTAssertEqual(image.voteAverage, 5.394)
         XCTAssertEqual(image.voteCount, 10)
         XCTAssertEqual(image.width, 1920)
