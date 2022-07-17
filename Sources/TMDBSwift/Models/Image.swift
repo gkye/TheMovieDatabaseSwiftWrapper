@@ -17,7 +17,7 @@ public struct Image: Codable, Equatable {
     /// The height.
     public var height: Int?
     /// The language, if any.
-    public var language: SupportedLanguage?
+    public var language: Language?
     /// The average voting score.
     public var voteAverage: Double?
     /// The total vote count.
@@ -38,7 +38,7 @@ public struct Image: Codable, Equatable {
     public init(filePath: String,
                 aspectRatio: Double? = nil,
                 height: Int? = nil,
-                language: SupportedLanguage? = nil,
+                language: Language? = nil,
                 voteAverage: Double? = nil,
                 voteCount: Int? = nil,
                 width: Int? = nil) {

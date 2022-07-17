@@ -8,7 +8,7 @@ public struct Video: Codable, Equatable {
     /// <#Description#>
     public var countryCode: String?
     /// <#Description#>
-    public var language: SupportedLanguage?
+    public var language: Language?
     /// <#Description#>
     public var key: String?
     /// <#Description#>
@@ -24,7 +24,7 @@ public struct Video: Codable, Equatable {
     /// <#Description#>
     public var publishedDate: Date?
 
-    public init(id: String, countryCode: String? = nil, language: SupportedLanguage? = nil, key: String? = nil, name: String? = nil, site: String? = nil, size: Int? = nil, type: String? = nil, isOfficial: Bool = false, publishedDate: Date? = nil) {
+    public init(id: String, countryCode: String? = nil, language: Language? = nil, key: String? = nil, name: String? = nil, site: String? = nil, size: Int? = nil, type: String? = nil, isOfficial: Bool = false, publishedDate: Date? = nil) {
         self.id = id
         self.countryCode = countryCode
         self.language = language
@@ -55,7 +55,7 @@ public struct Video: Codable, Equatable {
 
         self.id = try container.decode(String.self, forKey: Video.CodingKeys.id)
         self.countryCode = try container.decode(String.self, forKey: Video.CodingKeys.countryCode)
-        self.language = try container.decode(SupportedLanguage.self, forKey: Video.CodingKeys.language)
+        self.language = try container.decode(Language.self, forKey: Video.CodingKeys.language)
         self.key = try container.decode(String.self, forKey: Video.CodingKeys.key)
         self.name = try container.decode(String.self, forKey: Video.CodingKeys.name)
         self.site = try container.decode(String.self, forKey: Video.CodingKeys.site)
