@@ -1,5 +1,6 @@
 import Foundation
 
+// swiftlint:disable:next type_body_length
 public enum SupportedLanguage: String, Codable, Equatable {
     case xx
     case aa
