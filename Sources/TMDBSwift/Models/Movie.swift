@@ -33,7 +33,7 @@ public struct Movie: Codable, Equatable {
     /// <#Description#>
     public var mediaType: String?
     /// The language from its original release.
-    public var originalLanguage: String? // change to enum?
+    public var originalLanguage: SupportedLanguage?
     /// The official title from its original release.
     public var originalTitle: String?
     /// The overview.
@@ -61,7 +61,7 @@ public struct Movie: Codable, Equatable {
     /// The runtime in minutes.
     public var runtime: Int?
     /// <#Description#>
-    public var spokenLanguages: [Language]? // simplify to array of language types?
+    public var spokenLanguages: [SupportedLanguage]? // simplify to array of language types?
     /// The production status.
     public var status: String? // change to enum?
     /// The tagline.
@@ -84,7 +84,7 @@ public struct Movie: Codable, Equatable {
                 homepage: String? = nil,
                 imdbID: ExternalIDType? = nil,
                 mediaType: String? = nil,
-                originalLanguage: String? = nil,
+                originalLanguage: SupportedLanguage? = nil,
                 originalTitle: String? = nil,
                 overview: String? = nil,
                 popularity: Double? = nil,
@@ -93,7 +93,7 @@ public struct Movie: Codable, Equatable {
                 releaseDate: Date? = nil,
                 revenue: Int? = nil,
                 runtime: Int? = nil,
-                spokenLanguages: [Language]? = nil,
+                spokenLanguages: [SupportedLanguage]? = nil,
                 status: String? = nil,
                 tagline: String? = nil,
                 title: String? = nil,
@@ -157,6 +157,10 @@ public struct Movie: Codable, Equatable {
         case voteCount = "vote_count"
     }
 
+    enum SpokenLanguageCodingKeys: String, CodingKey {
+        case language = "iso_639_1"
+    }
+
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
@@ -182,7 +186,13 @@ public struct Movie: Codable, Equatable {
         }
         try? container.encode(revenue, forKey: .revenue)
         try? container.encode(runtime, forKey: .runtime)
-        try? container.encode(spokenLanguages, forKey: .spokenLanguages)
+        if let spokenLanguages = spokenLanguages {
+            var languageDict: [[String: String]] = []
+            for language in spokenLanguages {
+                languageDict.append([SpokenLanguageCodingKeys.language.stringValue: language.rawValue])
+            }
+            try? container.encode(languageDict, forKey: .spokenLanguages)
+        }
         try? container.encode(status, forKey: .status)
         try? container.encode(tagline, forKey: .tagline)
         try? container.encode(title, forKey: .title)
@@ -208,7 +218,7 @@ public struct Movie: Codable, Equatable {
             imdbID = ExternalIDType.imdb(imdbIDString)
         }
         mediaType = try? container.decode(String.self, forKey: .mediaType)
-        originalLanguage = try? container.decode(String.self, forKey: .originalLanguage)
+        originalLanguage = try? container.decode(SupportedLanguage.self, forKey: .originalLanguage)
         originalTitle = try? container.decode(String.self, forKey: .originalTitle)
         overview = try? container.decode(String.self, forKey: .overview)
         popularity = try? container.decode(Double.self, forKey: .popularity)
@@ -222,7 +232,22 @@ public struct Movie: Codable, Equatable {
         }
         revenue = try? container.decode(Int.self, forKey: .revenue)
         runtime = try? container.decode(Int.self, forKey: .runtime)
-        spokenLanguages = try? container.decode([Language].self, forKey: .spokenLanguages)
+
+        if var content = try? container.nestedUnkeyedContainer(forKey: .spokenLanguages) {
+            var languages: [SupportedLanguage] = []
+
+            while !content.isAtEnd {
+                if let language = try? content.nestedContainer(keyedBy: SpokenLanguageCodingKeys.self) {
+                    if let supportedLanguage = try? language.decode(SupportedLanguage.self, forKey: .language) {
+                        languages.append(supportedLanguage)
+                    }
+                } else {
+                    break
+                }
+            }
+            spokenLanguages = languages
+        }
+
         status = try? container.decode(String.self, forKey: .status)
         tagline = try? container.decode(String.self, forKey: .tagline)
         title = try? container.decode(String.self, forKey: .title)

@@ -16,8 +16,8 @@ public struct Image: Codable, Equatable {
     public var aspectRatio: Double?
     /// The height.
     public var height: Int?
-    /// The language code, if any.
-    public var languageCode: String?
+    /// The language, if any.
+    public var language: SupportedLanguage?
     /// The average voting score.
     public var voteAverage: Double?
     /// The total vote count.
@@ -29,7 +29,7 @@ public struct Image: Codable, Equatable {
         case filePath = "file_path"
         case aspectRatio = "aspect_ratio"
         case height
-        case languageCode = "iso_639_1"
+        case language = "iso_639_1"
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
         case width
@@ -38,14 +38,14 @@ public struct Image: Codable, Equatable {
     public init(filePath: String,
                 aspectRatio: Double? = nil,
                 height: Int? = nil,
-                languageCode: String? = nil,
+                language: SupportedLanguage? = nil,
                 voteAverage: Double? = nil,
                 voteCount: Int? = nil,
                 width: Int? = nil) {
         self.filePath = filePath
         self.aspectRatio = aspectRatio
         self.height = height
-        self.languageCode = languageCode
+        self.language = language
         self.voteAverage = voteAverage
         self.voteCount = voteCount
         self.width = width

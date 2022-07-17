@@ -32,7 +32,7 @@ public final class MovieService {
         components.path = "/3/movie/\(id)"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: TMDBConfig.language),
+            URLQueryItem(name: "language", value: TMDBConfig.language.rawValue),
         ]
 
         guard let url = components.url else { throw TMDBError.invalidURL }
@@ -82,7 +82,7 @@ public final class MovieService {
         components.path = "/3/movie/\(id)/alternative_titles"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: TMDBConfig.language),
+            URLQueryItem(name: "language", value: TMDBConfig.language.rawValue),
         ]
 
         if let country = country {
@@ -136,7 +136,7 @@ public final class MovieService {
         components.path = "/3/movie/\(id)/credits"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: TMDBConfig.language),
+            URLQueryItem(name: "language", value: TMDBConfig.language.rawValue),
         ]
 
         guard let url = components.url else { throw TMDBError.invalidURL }
@@ -186,7 +186,7 @@ public final class MovieService {
         components.path = "/3/movie/\(id)/external_ids"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: TMDBConfig.language),
+            URLQueryItem(name: "language", value: TMDBConfig.language.rawValue),
         ]
 
         guard let url = components.url else { throw TMDBError.invalidURL }
@@ -257,7 +257,7 @@ public final class MovieService {
         components.path = "/3/movie/\(id)/images"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: TMDBConfig.language),
+            URLQueryItem(name: "language", value: TMDBConfig.language.rawValue),
             URLQueryItem(name: "include_image_language", value: languages.joined(separator: ","))
         ]
 
@@ -312,7 +312,7 @@ public final class MovieService {
         components.path = "/3/movie/\(id)/keywords"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: TMDBConfig.language),
+            URLQueryItem(name: "language", value: TMDBConfig.language.rawValue),
         ]
 
         guard let url = components.url else { throw TMDBError.invalidURL }
@@ -364,7 +364,7 @@ public final class MovieService {
         components.path = "/3/movie/\(id)/lists"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: TMDBConfig.language),
+            URLQueryItem(name: "language", value: TMDBConfig.language.rawValue),
             URLQueryItem(name: "page", value: "\(page)")
         ]
 
@@ -418,7 +418,7 @@ public final class MovieService {
         components.path = "/3/movie/\(id)/recommendations"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: TMDBConfig.language),
+            URLQueryItem(name: "language", value: TMDBConfig.language.rawValue),
             URLQueryItem(name: "page", value: "\(page)")
         ]
 
@@ -471,7 +471,7 @@ public final class MovieService {
         components.path = "/3/movie/\(id)/release_dates"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: TMDBConfig.language)
+            URLQueryItem(name: "language", value: TMDBConfig.language.rawValue)
         ]
 
         guard let url = components.url else { throw TMDBError.invalidURL }
@@ -524,7 +524,7 @@ public final class MovieService {
         components.path = "/3/movie/\(id)/reviews"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: TMDBConfig.language),
+            URLQueryItem(name: "language", value: TMDBConfig.language.rawValue),
             URLQueryItem(name: "page", value: "\(page)")
         ]
 
@@ -578,7 +578,7 @@ public final class MovieService {
         components.path = "/3/movie/\(id)/similar"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: TMDBConfig.language),
+            URLQueryItem(name: "language", value: TMDBConfig.language.rawValue),
             URLQueryItem(name: "page", value: "\(page)")
         ]
 
@@ -631,7 +631,7 @@ public final class MovieService {
         components.path = "/3/movie/\(id)/translations"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: TMDBConfig.language)
+            URLQueryItem(name: "language", value: TMDBConfig.language.rawValue)
         ]
 
         guard let url = components.url else { throw TMDBError.invalidURL }
@@ -682,7 +682,7 @@ public final class MovieService {
         components.path = "/3/movie/\(id)/videos"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: TMDBConfig.language)
+            URLQueryItem(name: "language", value: TMDBConfig.language.rawValue)
         ]
 
         guard let url = components.url else { throw TMDBError.invalidURL }

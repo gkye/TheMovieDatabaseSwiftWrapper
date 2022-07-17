@@ -8,8 +8,8 @@ public struct List: Codable, Equatable {
     public var favoriteCount: Int?
     /// The total item count.
     public var itemCount: Int?
-    /// The 
-    public var languageCode: String?
+    /// The language.
+    public var language: SupportedLanguage?
     /// The name.
     public var name: String?
     /// The poster image path.
@@ -27,23 +27,24 @@ public struct List: Codable, Equatable {
                 description: String? = nil,
                 favoriteCount: Int? = nil,
                 itemCount: Int? = nil,
-                languageCode: String? = nil,
+                language: SupportedLanguage? = nil,
                 name: String? = nil,
                 posterPath: String? = nil) {
         self.id = id
         self.description = description
         self.favoriteCount = favoriteCount
         self.itemCount = itemCount
-        self.languageCode = languageCode
+        self.language = language
         self.name = name
         self.posterPath = posterPath
     }
+
     enum CodingKeys: String, CodingKey {
         case id
         case description
         case favoriteCount = "favorite_count"
         case itemCount = "item_count"
-        case languageCode = "iso_639_1"
+        case language = "iso_639_1"
         case name
         case posterPath = "poster_path"
     }

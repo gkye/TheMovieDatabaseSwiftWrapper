@@ -4,7 +4,7 @@ import Foundation
 extension Video {
     static let mock = Video(id: "12345",
                             countryCode: "US",
-                            languageCode: "en",
+                            language: .en,
                             key: "54321",
                             name: "something",
                             site: "eyes",

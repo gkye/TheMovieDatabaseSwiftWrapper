@@ -2,7 +2,7 @@
 import Foundation
 
 extension Translation {
-    static var mock: Translation = Translation(countryCode: "MX", language: Language.mock, content: .mock)
+    static var mock: Translation = Translation(countryCode: "MX", language: .en, content: .mock)
 }
 
 extension Translation.Content {

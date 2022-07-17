@@ -13,8 +13,8 @@ public struct TMDBConfig {
     /// API key to be used for queries.
     public static var apikey: String?
 
-    /// The language provided to all network requests.
-    public static var language: String = "en-US"
+    /// The language provided to all network requests, defaults to ``SupportedLanguage.en``.
+    public static var language: SupportedLanguage = .en
 
     /// API base url.
     static var apiUrl = "https://api.themoviedb.org/3"

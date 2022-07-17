@@ -28,7 +28,7 @@ public final class KeywordService {
         components.path = "/3/search/keyword"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: TMDBConfig.language),
+            URLQueryItem(name: "language", value: TMDBConfig.language.rawValue),
             URLQueryItem(name: "query", value: query),
             URLQueryItem(name: "page", value: "\(page)"),
         ]
@@ -53,7 +53,7 @@ public final class KeywordService {
         components.path = "/3/tv/\(tvID)/keywords"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: TMDBConfig.language),
+            URLQueryItem(name: "language", value: TMDBConfig.language.rawValue),
         ]
 
         guard let url = components.url else { throw TMDBError.invalidURL }
@@ -76,7 +76,7 @@ public final class KeywordService {
         components.path = "/3/keyword/\(keywordID)"
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: TMDBConfig.language),
+            URLQueryItem(name: "language", value: TMDBConfig.language.rawValue),
         ]
 
         guard let url = components.url else { throw TMDBError.invalidURL }

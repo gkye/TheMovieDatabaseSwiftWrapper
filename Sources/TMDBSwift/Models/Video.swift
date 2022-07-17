@@ -8,7 +8,7 @@ public struct Video: Codable, Equatable {
     /// <#Description#>
     public var countryCode: String?
     /// <#Description#>
-    public var languageCode: String?
+    public var language: SupportedLanguage?
     /// <#Description#>
     public var key: String?
     /// <#Description#>
@@ -24,10 +24,10 @@ public struct Video: Codable, Equatable {
     /// <#Description#>
     public var publishedDate: Date?
 
-    public init(id: String, countryCode: String? = nil, languageCode: String? = nil, key: String? = nil, name: String? = nil, site: String? = nil, size: Int? = nil, type: String? = nil, isOfficial: Bool = false, publishedDate: Date? = nil) {
+    public init(id: String, countryCode: String? = nil, language: SupportedLanguage? = nil, key: String? = nil, name: String? = nil, site: String? = nil, size: Int? = nil, type: String? = nil, isOfficial: Bool = false, publishedDate: Date? = nil) {
         self.id = id
         self.countryCode = countryCode
-        self.languageCode = languageCode
+        self.language = language
         self.key = key
         self.name = name
         self.site = site
@@ -40,7 +40,7 @@ public struct Video: Codable, Equatable {
     public enum CodingKeys: String, CodingKey {
         case id
         case countryCode = "iso_3166_1"
-        case languageCode = "iso_639_1"
+        case language = "iso_639_1"
         case key
         case name
         case site
@@ -55,7 +55,7 @@ public struct Video: Codable, Equatable {
 
         self.id = try container.decode(String.self, forKey: Video.CodingKeys.id)
         self.countryCode = try container.decode(String.self, forKey: Video.CodingKeys.countryCode)
-        self.languageCode = try container.decode(String.self, forKey: Video.CodingKeys.languageCode)
+        self.language = try container.decode(SupportedLanguage.self, forKey: Video.CodingKeys.language)
         self.key = try container.decode(String.self, forKey: Video.CodingKeys.key)
         self.name = try container.decode(String.self, forKey: Video.CodingKeys.name)
         self.site = try container.decode(String.self, forKey: Video.CodingKeys.site)
@@ -75,7 +75,7 @@ public struct Video: Codable, Equatable {
 
         try container.encode(self.id, forKey: Video.CodingKeys.id)
         try container.encode(self.countryCode, forKey: Video.CodingKeys.countryCode)
-        try container.encode(self.languageCode, forKey: Video.CodingKeys.languageCode)
+        try container.encode(self.language, forKey: Video.CodingKeys.language)
         try container.encode(self.key, forKey: Video.CodingKeys.key)
         try container.encode(self.name, forKey: Video.CodingKeys.name)
         try container.encode(self.site, forKey: Video.CodingKeys.site)
