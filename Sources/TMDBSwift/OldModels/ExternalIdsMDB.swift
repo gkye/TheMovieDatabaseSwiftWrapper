@@ -9,10 +9,10 @@
 import Foundation
 
 public class ExternalIdsMDB: Decodable {
-    public var  imdb_id: String?
-    public var  freebase_mid: String?
-    public var  id: Int!
-    public var  freebase_id: String?
-    public var  tvdb_id: Int?
-    public var  tvrage_id: Int?
+    public var imdb_id: String?
+    public var freebase_mid: String?
+    public var id: Int!
+    public var freebase_id: String?
+    public var tvdb_id: Int?
+    public var tvrage_id: Int?
 }
