@@ -24,7 +24,7 @@ final class TVMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertEqual(data.first_air_date, "2011-04-17")
         XCTAssertEqual(data.id, 1399)
         XCTAssertEqual(data.original_name, "Game of Thrones")
@@ -45,7 +45,7 @@ final class TVMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertEqual(data.id, 1399)
         XCTAssertTrue(data.titles?.contains(where: { $0.iso_3166_1 == "DE" && $0.title == "Game of Thrones: Das Lied von Eis und Feuer" }) ?? false)
     }
@@ -59,7 +59,7 @@ final class TVMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertTrue(data.count != 0)
         XCTAssertNotNil(data.first?.rating)
         XCTAssertNotNil(data.first?.iso_3166_1)
@@ -74,7 +74,7 @@ final class TVMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertTrue(data.cast.count > 0)
         XCTAssertTrue(data.crew.count > 0)
     }
@@ -88,7 +88,7 @@ final class TVMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertEqual(data.id, 1399)
         XCTAssertEqual(data.imdb_id, "tt0944947")
     }
@@ -102,7 +102,7 @@ final class TVMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertEqual(data.id, 1399)
         XCTAssertTrue(data.backdrops?.count ?? -1 > 0)
         XCTAssertTrue(data.posters?.count ?? -1 > 0)
@@ -120,7 +120,7 @@ final class TVMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data.first?.id)
         XCTAssertNotNil(data.first?.name)
     }
@@ -134,7 +134,7 @@ final class TVMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data.first?.poster_path)
         XCTAssertNotNil(data.first?.backdrop_path)
         XCTAssertNotNil(data.first?.first_air_date)
@@ -149,7 +149,7 @@ final class TVMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         //    XCTAssertNotNil()
         XCTAssertNotNil(data.first?.english_name)
         XCTAssertNotNil(data.first?.iso_639_1)
@@ -165,7 +165,7 @@ final class TVMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data.first?.id)
         XCTAssertNotNil(data.first?.iso_639_1)
         XCTAssertNotNil(data.first?.size)
@@ -181,7 +181,7 @@ final class TVMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data.id)
     }
 
@@ -194,7 +194,7 @@ final class TVMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data.first?.id)
     }
 
@@ -207,7 +207,7 @@ final class TVMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data.first?.id)
     }
 
@@ -220,7 +220,7 @@ final class TVMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data.first?.id)
     }
 
@@ -233,7 +233,7 @@ final class TVMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data.first?.id)
     }
 
@@ -246,7 +246,7 @@ final class TVMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data.first?.id)
     }
 
@@ -259,7 +259,7 @@ final class TVMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data.first?.id)
     }
 }

@@ -23,7 +23,7 @@ final class ConfigurationsMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
         XCTAssertGreaterThan(data?.backdrop_sizes?.count ?? 0, 0)
         XCTAssertEqual(data?.base_url, "http://image.tmdb.org/t/p/")

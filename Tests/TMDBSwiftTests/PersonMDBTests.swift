@@ -23,7 +23,7 @@ final class PersonMDBTests: XCTestCase {
             data = person
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data.adult)
         XCTAssertNotNil(data.also_known_as)
         XCTAssertNotNil(data.biography)
@@ -44,7 +44,7 @@ final class PersonMDBTests: XCTestCase {
             data = personMovieCredits
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertEqual(data.id, 19429)
         XCTAssertNotNil(data.crew)
         XCTAssertNotNil(data.cast)
@@ -58,7 +58,7 @@ final class PersonMDBTests: XCTestCase {
             data = responseData
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertEqual(data.id, 19429)
         XCTAssertNotNil(data.crew)
         XCTAssertNotNil(data.cast)
@@ -72,7 +72,7 @@ final class PersonMDBTests: XCTestCase {
             data = responseData
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertEqual(data.id, 19429)
         XCTAssertNotNil(data.movieCredits.cast)
         XCTAssertNotNil(data.movieCredits.crew)
@@ -88,7 +88,7 @@ final class PersonMDBTests: XCTestCase {
             data = responseData
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertEqual(data.id, 9813)
         XCTAssertNotNil(data.movieCredits)
         XCTAssertNotNil(data.tvCredits)
@@ -103,7 +103,7 @@ final class PersonMDBTests: XCTestCase {
             data = responseData
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertEqual(data.id, 19429)
         XCTAssertNotNil(data.imdb_id)
         XCTAssertNotNil(data.freebase_mid)
@@ -119,7 +119,7 @@ final class PersonMDBTests: XCTestCase {
             data = responseData
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data.first?.aspect_ratio)
         XCTAssertNotNil(data.first?.file_path)
         XCTAssertNotNil(data.first?.height)
@@ -137,7 +137,7 @@ final class PersonMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertEqual(data.id, 19429)
         XCTAssertNotNil(data.images.first?.file_path)
         XCTAssertNotNil(data.pageResults.total_pages)
@@ -154,7 +154,7 @@ final class PersonMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertEqual(data.id, 1223786)
         XCTAssertNotNil(data.images.first?.file_path)
         XCTAssertNotNil(data.pageResults.total_pages)
@@ -170,7 +170,7 @@ final class PersonMDBTests: XCTestCase {
             data = person
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data.id)
     }
 
@@ -182,7 +182,7 @@ final class PersonMDBTests: XCTestCase {
             data = responseData
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data.first)
     }
 }
