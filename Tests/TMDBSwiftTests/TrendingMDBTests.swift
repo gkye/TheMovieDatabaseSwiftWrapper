@@ -22,7 +22,7 @@ final class TrendingMDBTests: XCTestCase {
             data = tvData
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -34,7 +34,7 @@ final class TrendingMDBTests: XCTestCase {
             data = tvData
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -46,7 +46,7 @@ final class TrendingMDBTests: XCTestCase {
             data = movieData
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -58,7 +58,7 @@ final class TrendingMDBTests: XCTestCase {
             data = movieData
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 }
