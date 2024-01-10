@@ -22,7 +22,7 @@ final class SearchMDBTests: XCTestCase {
             data = collection
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertGreaterThan(data.count, 0)
     }
 
@@ -34,7 +34,7 @@ final class SearchMDBTests: XCTestCase {
             data = company
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertGreaterThan(data.count, 0)
     }
 
@@ -46,7 +46,7 @@ final class SearchMDBTests: XCTestCase {
             data = keyword
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertGreaterThan(data.count, 0)
     }
 
@@ -58,7 +58,7 @@ final class SearchMDBTests: XCTestCase {
             data = movie
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertGreaterThan(data.count, 0)
     }
 
@@ -74,7 +74,7 @@ final class SearchMDBTests: XCTestCase {
             people = person
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertGreaterThan(movies.count, 0)
         XCTAssertGreaterThan(tvshows.count, 0)
         XCTAssertGreaterThan(people.count, 0)
@@ -88,7 +88,7 @@ final class SearchMDBTests: XCTestCase {
             data = person
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertGreaterThan(data.count, 0)
     }
 
@@ -100,7 +100,7 @@ final class SearchMDBTests: XCTestCase {
             data = tvShows
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertGreaterThan(data.count, 0)
     }
 }

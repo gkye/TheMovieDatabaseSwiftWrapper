@@ -23,7 +23,7 @@ final class MovieMDBTests: XCTestCase {
             data = movie
             expectation.fulfill()
         })
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data[0])
         XCTAssertNotNil(data[0].title)
         XCTAssertNotNil(data[0].overview)
@@ -39,7 +39,7 @@ final class MovieMDBTests: XCTestCase {
             data = movie
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
         XCTAssertEqual(data?.title, "In the Name of the Father")
 
@@ -53,7 +53,7 @@ final class MovieMDBTests: XCTestCase {
             data = titles
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
         let french = data?.titles?.filter { $0.iso_3166_1 == "FR" }.first
 
@@ -70,7 +70,7 @@ final class MovieMDBTests: XCTestCase {
             data = creds
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data?.cast)
         XCTAssertNotNil(data?.crew)
 
@@ -101,7 +101,7 @@ final class MovieMDBTests: XCTestCase {
             data = imgs
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
         XCTAssertNotNil(data?.backdrops)
         XCTAssertNotNil(data?.posters)
@@ -127,7 +127,7 @@ final class MovieMDBTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
         XCTAssertEqual(data?[0].name, "human evolution")
         XCTAssertEqual(data?[0].id, 311)
@@ -143,7 +143,7 @@ final class MovieMDBTests: XCTestCase {
             data = dates
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
         let dates = data?[0].release_dates[0]
         XCTAssertNotNil(data?[0].iso_3166_1)
@@ -159,7 +159,7 @@ final class MovieMDBTests: XCTestCase {
             data = vids
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
 
         let planetOfTheApes = data?.filter { $0.id == "533ec657c3a3685448000678" }.first
@@ -180,7 +180,7 @@ final class MovieMDBTests: XCTestCase {
             data = lists
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
 
         let list = data?[0]
@@ -199,7 +199,7 @@ final class MovieMDBTests: XCTestCase {
             data = movies
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -211,7 +211,7 @@ final class MovieMDBTests: XCTestCase {
             data = movies
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -224,7 +224,7 @@ final class MovieMDBTests: XCTestCase {
             data = reviews
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
         let review = data?[0]
 
@@ -243,7 +243,7 @@ final class MovieMDBTests: XCTestCase {
             data = movie
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -255,7 +255,7 @@ final class MovieMDBTests: XCTestCase {
             data = movies
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -267,7 +267,7 @@ final class MovieMDBTests: XCTestCase {
             data = movies
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -279,7 +279,7 @@ final class MovieMDBTests: XCTestCase {
             data = movies
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -291,7 +291,7 @@ final class MovieMDBTests: XCTestCase {
             data = movies
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -303,7 +303,7 @@ final class MovieMDBTests: XCTestCase {
             data = movies
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -315,7 +315,7 @@ final class MovieMDBTests: XCTestCase {
             data = translations
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 }

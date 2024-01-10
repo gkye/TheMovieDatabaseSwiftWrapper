@@ -23,7 +23,7 @@ final class ChangesMDBTests: XCTestCase {
             data = responseData
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertGreaterThan(data.count, 0)
     }
 
@@ -35,7 +35,7 @@ final class ChangesMDBTests: XCTestCase {
             data = responseData
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertGreaterThan(data.count, 0)
     }
 
@@ -47,7 +47,7 @@ final class ChangesMDBTests: XCTestCase {
             data = responseData
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data[0].id)
         XCTAssertNotNil(data[0].adult)
     }

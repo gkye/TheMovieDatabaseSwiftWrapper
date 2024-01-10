@@ -51,7 +51,7 @@ final class MovieServiceTests: XCTestCase {
             data = movie
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -66,7 +66,7 @@ final class MovieServiceTests: XCTestCase {
             data = movie
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNil(data)
     }
 
@@ -105,7 +105,7 @@ final class MovieServiceTests: XCTestCase {
             data = titles
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -120,7 +120,7 @@ final class MovieServiceTests: XCTestCase {
             data = titles
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNil(data)
     }
 
@@ -159,7 +159,7 @@ final class MovieServiceTests: XCTestCase {
             data = credits
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -174,7 +174,7 @@ final class MovieServiceTests: XCTestCase {
             data = credits
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNil(data)
     }
 
@@ -213,7 +213,7 @@ final class MovieServiceTests: XCTestCase {
             data = types
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -228,7 +228,7 @@ final class MovieServiceTests: XCTestCase {
             data = types
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNil(data)
     }
 
@@ -269,7 +269,7 @@ final class MovieServiceTests: XCTestCase {
             data = (backdrops, logos, posters)
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data.0)
         XCTAssertNotNil(data.1)
         XCTAssertNotNil(data.2)
@@ -286,7 +286,7 @@ final class MovieServiceTests: XCTestCase {
             data = (backdrops, logos, posters)
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNil(data.0)
         XCTAssertNil(data.1)
         XCTAssertNil(data.2)
@@ -327,7 +327,7 @@ final class MovieServiceTests: XCTestCase {
             data = keywords
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -342,7 +342,7 @@ final class MovieServiceTests: XCTestCase {
             data = keywords
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNil(data)
     }
 
@@ -381,7 +381,7 @@ final class MovieServiceTests: XCTestCase {
             data = results
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -396,7 +396,7 @@ final class MovieServiceTests: XCTestCase {
             data = results
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNil(data)
     }
 
@@ -435,7 +435,7 @@ final class MovieServiceTests: XCTestCase {
             data = results
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -450,7 +450,7 @@ final class MovieServiceTests: XCTestCase {
             data = results
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNil(data)
     }
 
@@ -497,7 +497,7 @@ final class MovieServiceTests: XCTestCase {
             data = results
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
     }
 
@@ -512,7 +512,7 @@ final class MovieServiceTests: XCTestCase {
             data = results
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNil(data)
     }
 
@@ -555,7 +555,7 @@ final class MovieServiceTests: XCTestCase {
             data = results
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
         XCTAssertEqual(data?.results.count, 1)
     }
@@ -572,7 +572,7 @@ final class MovieServiceTests: XCTestCase {
             data = results
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNil(data)
     }
 
@@ -615,7 +615,7 @@ final class MovieServiceTests: XCTestCase {
             data = results
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
         XCTAssertEqual(data?.results.count, 1)
     }
@@ -632,7 +632,7 @@ final class MovieServiceTests: XCTestCase {
             data = results
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNil(data)
     }
 
@@ -672,7 +672,7 @@ final class MovieServiceTests: XCTestCase {
             data = results
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
         XCTAssertEqual(data?.count, 1)
     }
@@ -689,7 +689,7 @@ final class MovieServiceTests: XCTestCase {
             data = results
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNil(data)
     }
 
@@ -729,7 +729,7 @@ final class MovieServiceTests: XCTestCase {
             data = results
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNotNil(data)
         XCTAssertEqual(data?.count, 1)
     }
@@ -746,7 +746,7 @@ final class MovieServiceTests: XCTestCase {
             data = results
             expectation.fulfill()
         }
-        waitForExpectations(timeout: expecationTimeout, handler: nil)
+        waitForExpectations(timeout: expectationTimeout, handler: nil)
         XCTAssertNil(data)
     }
 }
